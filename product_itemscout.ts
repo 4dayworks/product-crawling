@@ -186,10 +186,10 @@ const f = async () => {
     const [keyword, keyword_id] = productList[i];
     if (!exceptList.includes(keyword_id)) {
       execute(keyword, keyword_id, `[${i + 1}/${max + 1}]`);
-      await wrapSlept(1000);
+      await wrapSlept(3000);
     }
   }
-  await wrapSlept(1000);
+  await wrapSlept(3000);
   console.log(`[${max + 1}/${max + 1}] Done!`);
 };
 f();
