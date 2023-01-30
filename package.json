@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node pillyze_필라이즈데이터가져오기.ts",
+    "dev": "ts-node product_crawling_brand_store.ts",
+    "brand": "ts-node product_crawling_brand_store.ts",
+    "catalog": "ts-node product_crawling_catalog.ts",
+    "shop": "ts-node product_crawling_othershop.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,10 +16,14 @@
     "assert": "^2.0.0",
     "axios": "^1.2.0",
     "cheerio": "^1.0.0-rc.12",
+    "lodash": "^4.17.21",
     "proxycrawl": "^2.5.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "@types/request": "^2.48.8"
+    "@types/lodash": "^4.14.191",
+    "@types/request": "^2.48.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
   }
 }
