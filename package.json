@@ -7,6 +7,7 @@
     "dev": "ts-node product_crawling_brand_store.ts",
     "brand": "ts-node product_crawling_brand_store.ts",
     "catalog": "ts-node product_crawling_catalog.ts",
+    "item": "ts-node product_itemscout.ts",
     "shop": "ts-node product_crawling_othershop.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
