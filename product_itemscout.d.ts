@@ -56,4 +56,5 @@ export interface TableProduct {
   delivery_fee: string | null;
   pc_product_url: string | undefined;
   mobile_product_url: string | undefined;
+  index: number;
 }
