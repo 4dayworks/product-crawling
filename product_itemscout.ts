@@ -25,11 +25,12 @@ const insertForm = ({
   delivery_fee = null,
   pc_product_url,
   mobile_product_url,
+  index,
 }: TableProduct) =>
   `INSERT INTO F_DAYWORKS.product_itemscout_data 
 (keyword, keyword_id, itemscout_product_name, itemscout_product_image, itemscout_product_id, 
   price, store_link, store_name, category, is_naver_shop, mall, review_count, review_score, delivery_fee, 
-  pc_product_url, mobile_product_url) 
+  pc_product_url, mobile_product_url, \`index\`) 
   VALUES(
   ${ifNull(keyword)},
   ${ifNull(keyword_id)},
@@ -46,7 +47,8 @@ const insertForm = ({
   ${ifNull(review_score)},
   ${ifNull(delivery_fee)},
   ${ifNull(pc_product_url)},
-  ${ifNull(mobile_product_url)})
+  ${ifNull(mobile_product_url)},
+  ${ifNull(index)})
  ON DUPLICATE KEY UPDATE
 keyword=${ifNull(keyword)},
 keyword_id=${ifNull(keyword_id)},
@@ -84,7 +86,7 @@ const execute = async (keyword: string, keyword_id: number, index: string) => {
   const result = await getData(keyword_id).then((d) =>
     d
       .filter((p) => p.isAd === false && p.isOversea === false)
-      .map((p) => {
+      .map((p, index) => {
         return {
           keyword,
           keyword_id,
@@ -102,10 +104,11 @@ const execute = async (keyword: string, keyword_id: number, index: string) => {
           delivery_fee: p.deliveryFee,
           pc_product_url: p.pcProductUrl,
           mobile_product_url: p.mobileProductUrl,
+          index: index + 1,
         };
       })
   );
-  if (result) result.map((p) => writeQuery(insertForm(p)));
+  if (result && result.length) result.map((p) => writeQuery(insertForm(p)));
   console.log(`${index} keyword:`, keyword, keyword_id, " Complete !");
 };
 //#endregion
@@ -114,14 +117,14 @@ const execute = async (keyword: string, keyword_id: number, index: string) => {
 const exceptList: number[] = [];
 // 찾을 리스트
 const productList: [string, number][] = [
-  // ["유한 코엔자임Q10", 349021813],
-  // ["닥터에스더 위케어 그린세라", 291075353],
-  // ["블랙킹 타임", 349018918],
-  // ["킨더츄 포도맛", 349022415],
-  // ["마더스 액상 철분", 247480734],
-  // ["진큐피에스(GinQPS)", 349022807],
-  // ["유한m 프리미엄 철분 엽산", 349023173],
-  // ["닥터에스더 식물성 알티지오메가3", 306513412],
+  ["유한 코엔자임Q10", 349021813],
+  ["닥터에스더 위케어 그린세라", 291075353],
+  ["블랙킹 타임", 349018918],
+  ["킨더츄 포도맛", 349022415],
+  ["마더스 액상 철분", 247480734],
+  ["진큐피에스(GinQPS)", 349022807],
+  ["유한m 프리미엄 철분 엽산", 349023173],
+  ["닥터에스더 식물성 알티지오메가3", 306513412],
   ["유한 코엔자임Q10", 349021813],
   ["닥터에스더 위케어 그린세라", 291075353],
   ["블랙킹 타임", 349018918],
@@ -180,16 +183,68 @@ const productList: [string, number][] = [
   ["데일리베스트 종합비타민 미네랄 츄잉정", 247618138],
 ];
 const wrapSlept = async (sec: number) => await new Promise((resolve) => setTimeout(resolve, sec));
-const f = async () => {
-  const max = productList.length;
-  for (let i = 0; i < max; i++) {
-    const [keyword, keyword_id] = productList[i];
-    if (!exceptList.includes(keyword_id)) {
-      execute(keyword, keyword_id, `[${i + 1}/${max + 1}]`);
-      await wrapSlept(3000);
+// 메인로직
+// const f = async () => {
+//   const max = 3; //productList.length;
+//   for (let i = 0; i < max; i++) {
+//     const [keyword, keyword_id] = productList[i];
+//     if (!exceptList.includes(keyword_id)) {
+//       if (i != 0) await wrapSlept(1002);
+//       execute(keyword, keyword_id, `[${i + 1}/${max}]`);
+//     }
+//     if (i === max - 1) {
+//       await wrapSlept(100);
+//       console.log(`[${max}/${max}] Done!`);
+//     }
+//   }
+// };
+// f();
+
+// 야기DB product_name / keyword 가져오기
+const getYagiProduct = async (page: number) => {
+  const url = `https://node3.yagiyagi.kr/product/keyword?size=100&page=${page}`;
+  const d: {
+    product_id: number; //100;
+    product_name: string | null; //"리퀴드씨엠(CM)";
+    keyword: string | null; //null;
+    keyword_id: string | null; //null;
+  }[] = await axios.get(url).then((d) => d.data.data);
+
+  d.map(async ({ keyword, keyword_id, product_name, product_id }, i, arr) => {
+    // 1.키워드id 없으면 itemscout에서 가져오기
+    if (keyword_id == null && product_id < 4) {
+      const search_keyword = keyword || product_name;
+      if (!search_keyword) return;
+      const url = `https://api.itemscout.io/api/keyword`;
+      const headers = { "Accept-Encoding": "deflate, br" };
+      const itemscout_keyword_id = await axios
+        .post(url, { keyword: search_keyword }, { headers })
+        .then((d) => d.data.data);
+      console.log(
+        `[${i + 1}/${arr.length}]`,
+        "search_keyword:",
+        search_keyword,
+        "itemscout_keyword_id:",
+        itemscout_keyword_id
+      );
+
+      //1-1. 수동추가여부(column:is_manual)
+      const is_manual = product_name !== search_keyword ? 1 : 0;
+      await axios.post("https://node3.yagiyagi.kr/product/keyword/id", {
+        keyword: search_keyword,
+        keyword_id,
+        product_id,
+        is_manual,
+      });
+      await wrapSlept(300);
     }
-  }
-  await wrapSlept(3000);
-  console.log(`[${max + 1}/${max + 1}] Done!`);
+
+    // 제외키워드(column:exception_keyword) 고려필요
+    // keyword가 있으면 키워드 우선 검색 - (keyword는 없고 product_name만 있으면 제품명으로 찾아보고)
+
+    // 키워드id가져오고나서 야기db product_itemscout_keyword에 keyword_id 넣기
+
+    // 키워드id 별로 가져오기 & 야기DB product_itemscout_data에 넣기로직
+  });
 };
-f();
+getYagiProduct(0);

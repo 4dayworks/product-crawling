@@ -9,6 +9,7 @@
     "catalog": "ts-node product_crawling_catalog.ts",
     "item": "ts-node product_itemscout.ts",
     "shop": "ts-node product_crawling_othershop.ts",
+    "update": "ts-node product_price_update.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
