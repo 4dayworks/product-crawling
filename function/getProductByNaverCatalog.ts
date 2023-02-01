@@ -11,7 +11,7 @@ type StoreType = {
   price: number | null;
 };
 
-export const getProductByNaverCatalog = (productId: number, catalogUrl: string) => {
+export const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: number, max: number) => {
   return new Promise((resolve) => {
     request(catalogUrl, (error, response, body) => {
       if (error) throw error;
@@ -60,7 +60,7 @@ export const getProductByNaverCatalog = (productId: number, catalogUrl: string) 
             "green",
             `(${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
               .toString()
-              .padStart(6)}, delivery:${delivery.toString().padStart(4)}, ${store_name}`
+              .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
           );
           const data = { product_id: productId, store_name, store_link, store_index: idx, price, delivery };
           axios.post("https://node3.yagiyagi.kr/product/catalog/id", data);
@@ -95,9 +95,9 @@ export const getProductByNaverCatalog = (productId: number, catalogUrl: string) 
         l(
           "LowPrice",
           "cyan",
-          `(${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${low_price
+          `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${low_price
             .toString()
-            .padStart(6)}, delivery:${delivery.toString().padStart(4)}, ${store_name}`
+            .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
         );
         axios
           .post("https://node3.yagiyagi.kr/product/price", data)
