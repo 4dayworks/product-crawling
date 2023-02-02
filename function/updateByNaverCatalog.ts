@@ -11,7 +11,7 @@ type StoreType = {
   price: number | null;
 };
 
-export const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: number, max: number) => {
+const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: number, max: number) => {
   return new Promise((resolve) => {
     request(catalogUrl, (error, response, body) => {
       if (error) throw error;
@@ -108,4 +108,18 @@ export const getProductByNaverCatalog = (productId: number, catalogUrl: string, 
       }
     });
   });
+};
+
+export const updateByNaverCatalog = async (size: number, page: number) => {
+  const d: {
+    product_id: number; //34074;
+    naver_catalog_link: string; //"https://msearch.shopping.naver.com/catalog/15282323215";
+  }[] = await axios(`https://node3.yagiyagi.kr/product/catalog/url?size=${size}&page=${page}`).then((d) => d.data.data);
+
+  for (let i = 0; i < d.length; i++) {
+    const { product_id, naver_catalog_link } = d[i];
+    await getProductByNaverCatalog(product_id, naver_catalog_link, i + 1, d.length);
+  }
+
+  l("[DONE]", "blue", "naver_catalog_link to product price");
 };
