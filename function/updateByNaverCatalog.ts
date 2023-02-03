@@ -104,7 +104,9 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             l(
               "Pass",
               "green",
-              `no cheapStore.data, cheapStore=${cheapStore} storeList.length=${storeList.length} product_id:${productId} store_link=${store_link}`
+              `no cheapStore.data, cheapStore=${JSON.stringify(cheapStore)} storeList.length=${
+                storeList.length
+              } product_id:${productId}`
             );
             return resolve(true);
           }
