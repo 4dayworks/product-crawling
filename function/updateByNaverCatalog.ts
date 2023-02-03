@@ -104,6 +104,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           store_name,
           store_link,
           review_count,
+          type: "naver",
         };
         const idx = cheapStore.index != null ? cheapStore.index + 1 : 0;
         l(
