@@ -100,10 +100,12 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
               cheapStore = { low_price: price, index, data };
           }
           // DB Insert 최저가 데이터 넣기
-          if (!cheapStore.data) return resolve(true);
+          if (!cheapStore.data) {
+            l("Pass", "green", `no cheapStore.data, cheapStore=${cheapStore} product_id:${productId}`);
+            return resolve(true);
+          }
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
           if (!product_id || !low_price || !delivery || !store_name || !store_link) {
-            console.log(cheapStore);
             if (!product_id) l("Pass", "green", `no product_id, product_id:${productId}`);
             if (!low_price) l("Pass", "green", `no low_price, product_id:${productId}`);
             if (!delivery) l("Pass", "green", `no delivery, product_id:${productId}`);
