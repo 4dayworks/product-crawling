@@ -37,7 +37,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
         return resolve(true);
       }
       //#endregion
-      request(catalogUrl, (error, response, body) => {
+      request(catalogUrl, async (error, response, body) => {
         if (error) {
           l("error request", "red", error);
           resolve(true);
@@ -48,7 +48,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           const storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
           const review_count = Number($(`#__next > div > div > div > div > div > div > a`).text().replace(regex, ""));
-          $("#section-price > ul > li").each((i, item): any => {
+          await $("#section-price > ul > li").each((i, item): any => {
             // 판매처이름
             const idx = i + 1;
             const store_name = $(
