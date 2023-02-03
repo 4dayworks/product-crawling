@@ -7,6 +7,8 @@
     "update:itemscout_is_expert": "ts-node product_price_update_itemscout_is_expert_review.ts",
     "update:itemscout_no_expert": "ts-node product_price_update_itemscout_no_expert_review.ts",
     "update:naver": "ts-node product_price_update_naver_catalog",
+    "update:naverjs": "node dist/product_price_update_naver_catalog.js",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
