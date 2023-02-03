@@ -25,7 +25,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           regular_price: number | null;
           is_manual: number | null;
         }
-      | undefined = await axios(`https://node3.yagiyagi.kr/product/price/manual?product_id=${productId}`).then(
+      | undefined = await axios(`https://node2.yagiyagi.kr/product/price/manual?product_id=${productId}`).then(
       (d) => d.data.data
     );
     if (manualData && (manualData.is_drugstore === 1 || manualData.is_manual === 1)) {
@@ -77,7 +77,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
               .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
           );
           const data = { product_id: productId, store_name, store_link, store_index: idx, price, delivery };
-          axios.post("https://node3.yagiyagi.kr/product/catalog/id", data);
+          axios.post("https://node2.yagiyagi.kr/product/catalog/id", data);
         });
 
         // 최저가 가져오기
@@ -115,7 +115,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
         );
         axios
-          .post("https://node3.yagiyagi.kr/product/price", data)
+          .post("https://node2.yagiyagi.kr/product/price", data)
           .then(() => resolve(true))
           .catch(() => resolve(true));
       } catch (error) {
@@ -130,7 +130,7 @@ export const updateByNaverCatalog = async (size: number, page: number) => {
   const d: {
     product_id: number; //34074;
     naver_catalog_link: string; //"https://msearch.shopping.naver.com/catalog/15282323215";
-  }[] = await axios(`https://node3.yagiyagi.kr/product/catalog/url?size=${size}&page=${page}`).then((d) => d.data.data);
+  }[] = await axios(`https://node2.yagiyagi.kr/product/catalog/url?size=${size}&page=${page}`).then((d) => d.data.data);
 
   for (let i = 0; i < d.length; i++) {
     const { product_id, naver_catalog_link } = d[i];
