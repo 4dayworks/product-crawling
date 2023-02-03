@@ -101,7 +101,11 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           }
           // DB Insert 최저가 데이터 넣기
           if (!cheapStore.data) {
-            l("Pass", "green", `no cheapStore.data, cheapStore=${cheapStore} product_id:${productId}`);
+            l(
+              "Pass",
+              "green",
+              `no cheapStore.data, cheapStore=${cheapStore} storeList.length=${storeList.length} product_id:${productId}`
+            );
             return resolve(true);
           }
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
