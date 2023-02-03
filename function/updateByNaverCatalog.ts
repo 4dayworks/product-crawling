@@ -184,6 +184,7 @@ export const updateByNaverCatalog = async (size: number, page: number) => {
   for (let i = 0; i < d.length; i++) {
     const { product_id, naver_catalog_link } = d[i];
     await getProductByNaverCatalog(product_id, naver_catalog_link, i + 1, d.length);
+    await wrapSlept(3000);
   }
 
   l("[DONE]", "blue", "naver_catalog_link to product price");
