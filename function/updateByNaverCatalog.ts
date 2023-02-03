@@ -1,3 +1,4 @@
+import { AuthorizationKey } from "./auth";
 import axios from "axios";
 import cheerio from "cheerio";
 import request from "request";
@@ -139,11 +140,12 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
 };
 
 export const updateByNaverCatalog = async (size: number, page: number) => {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
   const d: {
     product_id: number; //34074;
     naver_catalog_link: string; //"https://msearch.shopping.naver.com/catalog/15282323215";
   }[] = await axios(`https://node2.yagiyagi.kr/product/catalog/url?size=${size}&page=${page}`).then((d) => d.data.data);
-
+  console.log(d.length);
   for (let i = 0; i < d.length; i++) {
     const { product_id, naver_catalog_link } = d[i];
     await getProductByNaverCatalog(product_id, naver_catalog_link, i + 1, d.length);
