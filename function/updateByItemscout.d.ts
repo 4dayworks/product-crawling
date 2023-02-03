@@ -62,3 +62,25 @@ export interface ProductTable {
   index: number;
   is_oversea: 0 | 1 | null;
 }
+
+export interface ProductTableV2 {
+  keyword: string | null;
+  keyword_id: number | null;
+  itemscout_product_name: string;
+  itemscout_product_image: string;
+  itemscout_product_id: number;
+  mall: string;
+  itemscout_mall_img: string | null;
+  price: number;
+  category: string;
+  is_naver_shop: number;
+  store_link: string;
+  store_name: string;
+  review_count: number | null;
+  review_score: number | null;
+  delivery: string;
+  pc_product_url: string | undefined;
+  mobile_product_url: string | undefined;
+  index: number;
+  is_oversea: 0 | 1 | null;
+}

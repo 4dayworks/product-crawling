@@ -12,7 +12,29 @@ type StoreType = {
 };
 
 const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: number, max: number) => {
-  return new Promise((resolve) => {
+  return new Promise(async (resolve) => {
+    //#region product/is_drugstore = 1 이거나 product_price/is_manual = 1이면 새로 갱신 안함.
+    const manualData:
+      | {
+          product_id: string | null;
+          is_drugstore: number | null;
+          low_price: number | null;
+          delivery: number | null;
+          store_name: string | null;
+          store_link: string | null;
+          regular_price: number | null;
+          is_manual: number | null;
+        }
+      | undefined = await axios(`https://node3.yagiyagi.kr/product/price/manual?product_id=${productId}`).then(
+      (d) => d.data.data
+    );
+    if (manualData && (manualData.is_drugstore === 1 || manualData.is_manual === 1)) {
+      if (manualData.is_drugstore === 1) l("Pass", "green", `is_drugstore === 1, product_id:${productId}`);
+      else if (manualData.is_manual === 1) l("Pass", "green", `is_manual === 1, product_id:${productId}`);
+      return resolve(true);
+    }
+    //#endregion
+
     request(catalogUrl, (error, response, body) => {
       if (error) throw error;
       let $ = cheerio.load(body);
@@ -27,25 +49,17 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           const store_name = $(
             `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)  > span:nth-child(1) > span:nth-child(1)`
           ).text();
-          // 판매처 제품가격
 
-          let price = Number(
-            $(
-              `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)  > span:nth-child(2) > span:nth-child(1)`
-            )
-              .text()
-              .replace(regex, "")
-          );
-          price = price ? price : 0;
+          // 판매처 제품가격
+          // #section-price > ul > li:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)  > span:nth-child(2) > span:nth-child(1)
+          const priceStr = $(`#section-price > ul > li:nth-child(${idx}) > div > div > div > span > span > em`).text();
+          const price = priceStr ? Number(priceStr.replace(regex, "")) : 0;
+
           //판매처 배송비
-          let delivery = Number(
-            $(
-              `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)  > div:nth-child(2) > span:nth-child(1)`
-            )
-              .text()
-              .replace(regex, "")
-          );
-          price = price ? price : 0;
+          const deliveryStr = $(
+            `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)> span:nth-child(2)`
+          ).text();
+          const delivery = deliveryStr ? Number(deliveryStr.replace(regex, "")) : 0;
           // 판매처링크
           const store_link = $(`#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`).attr("href");
           storeList.push({
@@ -104,7 +118,8 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           .then(() => resolve(true))
           .catch(() => resolve(true));
       } catch (error) {
-        console.error(error);
+        l("error", "red", `[${index}/${max}] id:${productId.toString().padStart(5)}`);
+        resolve(true);
       }
     });
   });
