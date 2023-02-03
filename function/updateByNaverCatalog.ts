@@ -15,6 +15,7 @@ type StoreType = {
 
 const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: number, max: number) => {
   return new Promise(async (resolve) => {
+    console.log(1, productId);
     //#region product/is_drugstore = 1 이거나 product_price/is_manual = 1이면 새로 갱신 안함.
     try {
       const manualData:
@@ -31,13 +32,14 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
         | undefined = await axios(`https://node2.yagiyagi.kr/product/price/manual?product_id=${productId}`).then(
         (d) => d.data.data
       );
+      console.log(2, productId);
       if (manualData && (manualData.is_drugstore === 1 || manualData.is_manual === 1)) {
         if (manualData.is_drugstore === 1) l("Pass", "green", `is_drugstore === 1, product_id:${productId}`);
         else if (manualData.is_manual === 1) l("Pass", "green", `is_manual === 1, product_id:${productId}`);
         return resolve(true);
       }
       //#endregion
-
+      console.log(3, productId);
       request(catalogUrl, (error, response, body) => {
         if (error) {
           l("error request", "red", error);
@@ -45,7 +47,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           throw error;
         }
         let $ = cheerio.load(body);
-
+        console.log(4, productId);
         try {
           const storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
@@ -88,7 +90,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             const data = { product_id: productId, store_name, store_link, store_index: idx, price, delivery };
             axios.post("https://node2.yagiyagi.kr/product/catalog/id", data);
           });
-
+          console.log(5, productId);
           // 최저가 가져오기
           let cheapStore: { low_price: number | null; index: number | null; data: StoreType | null } = {
             low_price: null,
@@ -102,6 +104,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             else if (cheapStore.low_price != null && cheapStore.low_price > price)
               cheapStore = { low_price: price, index, data };
           }
+          console.log(6, productId);
           // DB Insert 최저가 데이터 넣기
           if (!cheapStore.data) return resolve(true);
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
@@ -145,8 +148,9 @@ export const updateByNaverCatalog = async (size: number, page: number) => {
     product_id: number; //34074;
     naver_catalog_link: string; //"https://msearch.shopping.naver.com/catalog/15282323215";
   }[] = await axios(`https://node2.yagiyagi.kr/product/catalog/url?size=${size}&page=${page}`).then((d) => d.data.data);
-  console.log(d.length);
+
   for (let i = 0; i < d.length; i++) {
+    console.log(d.length, i);
     const { product_id, naver_catalog_link } = d[i];
     await getProductByNaverCatalog(product_id, naver_catalog_link, i + 1, d.length);
   }
