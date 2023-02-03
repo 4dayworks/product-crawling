@@ -17,7 +17,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
             regular_price: number | null;
             is_manual: number | null;
           }
-        | undefined = await axios(`https://node3.yagiyagi.kr/product/price/manual?product_id=${product_id}`).then(
+        | undefined = await axios(`http://localhost:3001/product/price/manual?product_id=${product_id}`).then(
         (d) => d.data.data
       );
       if (manualData && (manualData.is_drugstore === 1 || manualData.is_manual === 1)) {
@@ -32,7 +32,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
         keyword: string; // '그린스토어 피로한눈엔 루테인 아스타잔틴오메가3',
         keyword_id: number | null; // 349123387,
         exception_keyword: string | null;
-      } | null = await axios(`https://node3.yagiyagi.kr/product/keyword/id?product_id=${product_id}`).then(
+      } | null = await axios(`http://localhost:3001/product/keyword/id?product_id=${product_id}`).then(
         (d) => d.data.data
       );
       let keyword_id = originData && originData.keyword_id ? originData.keyword_id : null;
@@ -48,7 +48,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
         // 야기DB에 저장
         keyword_id = itemscout_keyword_id;
         keyword = product_name;
-        await axios.post(`https://node3.yagiyagi.kr/product/keyword/id`, {
+        await axios.post(`http://localhost:3001/product/keyword/id`, {
           keyword: product_name,
           keyword_id: itemscout_keyword_id,
           yagi_product_id: product_id,
@@ -63,7 +63,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
         keyword_id = itemscout_keyword_id;
         keyword = originData.keyword;
         // 야기DB keyword, keyword_id 업데이트
-        await axios.patch(`https://node3.yagiyagi.kr/product/keyword/id`, {
+        await axios.patch(`http://localhost:3001/product/keyword/id`, {
           keyword: originData.keyword,
           keyword_id: itemscout_keyword_id,
           yagi_product_id: product_id,
@@ -79,7 +79,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
         // 야기DB keyword_id 업데이트
         keyword_id = itemscout_keyword_id;
         keyword = product_name;
-        await axios.patch(`https://node3.yagiyagi.kr/product/keyword/id`, {
+        await axios.patch(`http://localhost:3001/product/keyword/id`, {
           keyword: product_name,
           keyword_id: itemscout_keyword_id,
           yagi_product_id: product_id,
@@ -130,7 +130,12 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
           is_oversea: p.isOversea === false ? 0 : p.isOversea === true ? 1 : null,
         };
       });
-      await axios.post(`http://localhost:3001/v2/product/keyword/data`, { data: storeList, keyword_id });
+      if (storeList && storeList.length > 0)
+        await axios.post(`http://localhost:3001/v2/product/keyword/data`, { data: storeList, keyword_id });
+      else {
+        l("Pass", "green", `No Store(판매처) product_id:${product_id}, keyword:${keyword}, keyword_id=${keyword_id}`);
+        return resolve(true);
+      }
       // for (let i = 0; i < productListResult.length; i++) {
       //   const p = productListResult[i];
       //   const data: ProductTable = {
@@ -155,7 +160,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
       //     mobile_product_url: p.mobileProductUrl,
       //     is_oversea: p.isOversea === false ? 0 : p.isOversea === true ? 1 : null,
       //   };
-      //   await axios.post(`https://node3.yagiyagi.kr/product/keyword/data`, data);
+      //   await axios.post(`http://localhost:3001/product/keyword/data`, data);
       // }
       //#endregion
       //#region (4) product_price 최종 최저가 업데이트하기
@@ -194,8 +199,9 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
           .toString()
           .padStart(4)}, ${data.store_name}`
       );
+
       axios
-        .post("https://node3.yagiyagi.kr/product/price", data)
+        .post("http://localhost:3001/product/price", data)
         .then(() => resolve(true))
         .catch(() => resolve(true));
       //#endregion
@@ -215,12 +221,11 @@ export const updateByItemscout = async (size: number, page: number, is_expert_re
     product_id: number; //34074;
     product_name: string; //'리얼메디 어린콜라겐 펩타이드 비오틴 100'
   }[] = await axios(
-    `https://node3.yagiyagi.kr/product/keyword?size=${size}&page=${page}&is_expert_review=${is_expert_review ? 1 : 0}`
+    `http://localhost:3001/product/keyword?size=${size}&page=${page}&is_expert_review=${is_expert_review ? 1 : 0}`
   ).then((d) => d.data.data);
 
   for (let i = 0; i < d.length; i++) {
     const { product_id, product_name } = d[i];
-    // if (product_id === 6669 || product_id === 6670)
     await getProductByItemscout(product_id, product_name, i + 1, d.length);
   }
 
