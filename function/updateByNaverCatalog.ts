@@ -109,7 +109,15 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           if (!cheapStore.data) return resolve(true);
           console.log(7, productId);
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
-          if (!product_id || !low_price || !delivery || !store_name || !store_link) return resolve(true);
+          if (!product_id || !low_price || !delivery || !store_name || !store_link) {
+            console.log(cheapStore);
+            if (!product_id) l("Pass", "green", `no product_id, product_id:${productId}`);
+            if (!low_price) l("Pass", "green", `no low_price, product_id:${productId}`);
+            if (!delivery) l("Pass", "green", `no delivery, product_id:${productId}`);
+            if (!store_name) l("Pass", "green", `no store_name, product_id:${productId}`);
+            if (!store_link) l("Pass", "green", `no store_link, product_id:${productId}`);
+            return resolve(true);
+          }
           const data = {
             product_id,
             low_price,
