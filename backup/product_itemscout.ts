@@ -202,7 +202,7 @@ const wrapSlept = async (sec: number) => await new Promise((resolve) => setTimeo
 
 // 야기DB product_name / keyword 가져오기
 const getYagiProduct = async (page: number) => {
-  const url = `https://node3.yagiyagi.kr/product/keyword?size=100&page=${page}`;
+  const url = `https://node2.yagiyagi.kr/product/keyword?size=100&page=${page}`;
   const d: {
     product_id: number; //100;
     product_name: string | null; //"리퀴드씨엠(CM)";
@@ -230,7 +230,7 @@ const getYagiProduct = async (page: number) => {
 
       //1-1. 수동추가여부(column:is_manual)
       const is_manual = product_name !== search_keyword ? 1 : 0;
-      await axios.post("https://node3.yagiyagi.kr/product/keyword/id", {
+      await axios.post("https://node2.yagiyagi.kr/product/keyword/id", {
         keyword: search_keyword,
         keyword_id,
         product_id,
