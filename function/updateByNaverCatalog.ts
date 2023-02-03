@@ -48,9 +48,10 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           const storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
           const review_count = Number($(`#__next > div > div > div > div > div > div > a`).text().replace(regex, ""));
-          await $("#section-price > ul > li").each((i, item): any => {
+          $("#section-price > ul > li").each((i: any, item: any) => {
             // 판매처이름
             const idx = i + 1;
+
             const store_name = $(
               `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)  > span:nth-child(1) > span:nth-child(1)`
             ).text();
@@ -86,6 +87,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             const data = { product_id: productId, store_name, store_link, store_index: idx, price, delivery };
             axios.post("https://node2.yagiyagi.kr/product/catalog/id", data);
           });
+          await wrapSlept(3000);
           // 최저가 가져오기
           let cheapStore: { low_price: number | null; index: number | null; data: StoreType | null } = {
             low_price: null,
