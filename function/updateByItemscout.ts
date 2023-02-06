@@ -21,8 +21,10 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
         (d) => d.data.data
       );
       if (manualData && (manualData.is_drugstore === 1 || manualData.is_manual === 1)) {
-        if (manualData.is_drugstore === 1) l("Pass", "green", `is_drugstore === 1, product_id:${product_id}`);
-        else if (manualData.is_manual === 1) l("Pass", "green", `is_manual === 1, product_id:${product_id}`);
+        if (manualData.is_drugstore === 1)
+          l("Pass", "green", `[${index}/${max}] is_drugstore === 1, product_id:${product_id}`);
+        else if (manualData.is_manual === 1)
+          l("Pass", "green", `[${index}/${max}] is_manual === 1, product_id:${product_id}`);
         return resolve(true);
       }
       //#endregion
@@ -133,7 +135,11 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
       if (storeList && storeList.length > 0)
         await axios.post(`https://node2.yagiyagi.kr/v2/product/keyword/data`, { data: storeList, keyword_id });
       else {
-        l("Pass", "green", `No Store(판매처) product_id:${product_id}, keyword:${keyword}, keyword_id=${keyword_id}`);
+        l(
+          "Pass",
+          "green",
+          `[${index}/${max}] No Store(판매처) product_id:${product_id}, keyword:${keyword}, keyword_id=${keyword_id}`
+        );
         return resolve(true);
       }
       // for (let i = 0; i < productListResult.length; i++) {
@@ -206,7 +212,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
         .catch(() => resolve(true));
       //#endregion
     } catch (error) {
-      l("error", "red", product_id.toString() + product_name + index.toString() + max);
+      l("error", "red", `[${index}/${max}] product_id:${product_id.toString().padStart(5)}`);
       resolve(true);
     }
   });
@@ -226,6 +232,7 @@ export const updateByItemscout = async (size: number, page: number, is_expert_re
 
   for (let i = 0; i < d.length; i++) {
     const { product_id, product_name } = d[i];
+    if (i < 400) continue;
     await getProductByItemscout(product_id, product_name, i + 1, d.length);
   }
 

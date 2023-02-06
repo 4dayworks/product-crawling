@@ -144,7 +144,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             .then(() => resolve(true))
             .catch(() => resolve(true));
         } catch (error) {
-          l("error", "red", `[${index}/${max}] id:${productId.toString().padStart(5)}`);
+          l("error", "red", `[${index}/${max}] product_id:${product_id.toString().padStart(5)}`);
           resolve(true);
         }
       });
