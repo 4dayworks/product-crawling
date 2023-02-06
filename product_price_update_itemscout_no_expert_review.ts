@@ -1,5 +1,4 @@
 import { updateByItemscout } from "./function/updateByItemscout";
-
 import { AuthorizationKey } from "./function/auth";
 import axios from "axios";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
