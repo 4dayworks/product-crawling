@@ -1,5 +1,4 @@
 import { updateByNaverCatalog } from "./function/updateByNaverCatalog";
-
 import { AuthorizationKey } from "./function/auth";
 import axios from "axios";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
