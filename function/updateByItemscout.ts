@@ -1,6 +1,7 @@
 import { ProductTable, ItemscoutType, ProductTableV2 } from "./updateByItemscout.d";
 import axios from "axios";
 import { l } from "./console";
+import { wrapSlept } from "./wrapSlept";
 
 const getProductByItemscout = (product_id: number, product_name: string, index: number, max: number) =>
   new Promise(async (resolve, reject) => {
@@ -104,11 +105,21 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
       const productListResult: ItemscoutType[] = await axios(
         `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
         { headers }
-      ).then((d) =>
-        (d.data.data.productListResult as any[]).filter(
+      ).then((d) => {
+        if (!d.data.data.productListResult) return [];
+        return (d.data.data.productListResult as any[]).filter(
           (p: ItemscoutType) => p.isAd === false && p.isOversea === false && !isExceptionKeyword(p.title)
-        )
-      );
+        );
+      });
+
+      if (productListResult.length === 0) {
+        l(
+          "Pass",
+          "red",
+          `[${index}/${max}] No Store(판매처) product_id:${product_id}, keyword:${keyword}, keyword_id=${keyword_id}`
+        );
+        return resolve(true);
+      }
       const storeList: ProductTableV2[] = await productListResult.map((p, i) => {
         return {
           index: i + 1,
@@ -142,32 +153,6 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
         );
         return resolve(true);
       }
-      // for (let i = 0; i < productListResult.length; i++) {
-      //   const p = productListResult[i];
-      //   const data: ProductTable = {
-      //     is_init: i === 0, //product_price_itemscout_data DELETE 함.
-      //     index: i + 1,
-      //     keyword,
-      //     keyword_id,
-      //     itemscout_product_name: p.title,
-      //     itemscout_product_image: p.image,
-      //     itemscout_product_id: p.productId,
-      //     price: p.price,
-      //     store_link: p.link,
-      //     store_name: p.shop,
-      //     category: p.category,
-      //     is_naver_shop: p.isNaverShop === true ? 1 : 0,
-      //     mall: typeof p.mall === "string" ? p.mall : p.mall.join(","),
-      //     itemscout_mall_img: p.mallImg ? p.mallImg : null,
-      //     review_count: p.reviewCount,
-      //     review_score: p.reviewScore,
-      //     delivery: p.deliveryFee,
-      //     pc_product_url: p.pcProductUrl,
-      //     mobile_product_url: p.mobileProductUrl,
-      //     is_oversea: p.isOversea === false ? 0 : p.isOversea === true ? 1 : null,
-      //   };
-      //   await axios.post(`https://node2.yagiyagi.kr/product/keyword/data`, data);
-      // }
       //#endregion
       //#region (4) product_price 최종 최저가 업데이트하기
       const lowPriceObj =
@@ -213,6 +198,7 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
       //#endregion
     } catch (error) {
       l("error", "red", `[${index}/${max}] product_id:${product_id.toString().padStart(5)}`);
+      console.log(error);
       resolve(true);
     }
   });
@@ -232,8 +218,9 @@ export const updateByItemscout = async (size: number, page: number, is_expert_re
 
   for (let i = 0; i < d.length; i++) {
     const { product_id, product_name } = d[i];
-    if (i < 400) continue;
+    l("timestamp", "cyan", new Date().toISOString());
     await getProductByItemscout(product_id, product_name, i + 1, d.length);
+    await wrapSlept(1000);
   }
 
   l("[DONE]", "blue", "itemscout_keyword to product price");
