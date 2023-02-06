@@ -32,8 +32,10 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
         (d) => d.data.data
       );
       if (manualData && (manualData.is_drugstore === 1 || manualData.is_manual === 1)) {
-        if (manualData.is_drugstore === 1) l("Pass", "green", `is_drugstore === 1, product_id:${productId}`);
-        else if (manualData.is_manual === 1) l("Pass", "green", `is_manual === 1, product_id:${productId}`);
+        if (manualData.is_drugstore === 1)
+          l("Pass", "green", `[${index}/${max}] is_drugstore === 1, product_id:${productId}`);
+        else if (manualData.is_manual === 1)
+          l("Pass", "green", `[${index}/${max}] is_manual === 1, product_id:${productId}`);
         return resolve(true);
       }
       //#endregion
@@ -80,7 +82,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             l(
               "GET",
               "green",
-              `(${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
+              `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
                 .toString()
                 .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
             );
@@ -105,7 +107,7 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
             l(
               "Pass",
               "green",
-              `no cheapStore.data, cheapStore=${JSON.stringify(cheapStore)} storeList.length=${
+              `[${index}/${max}] no cheapStore.data, cheapStore=${JSON.stringify(cheapStore)} storeList.length=${
                 storeList.length
               } product_id:${productId} url=${catalogUrl}`
             );
@@ -113,11 +115,11 @@ const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: 
           }
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
           if (!product_id || !low_price || !delivery || !store_name || !store_link) {
-            if (!product_id) l("Pass", "green", `no product_id, product_id:${productId}`);
-            if (!low_price) l("Pass", "green", `no low_price, product_id:${productId}`);
-            if (!delivery) l("Pass", "green", `no delivery, product_id:${productId}`);
-            if (!store_name) l("Pass", "green", `no store_name, product_id:${productId}`);
-            if (!store_link) l("Pass", "green", `no store_link, product_id:${productId}`);
+            if (!product_id) l("Pass", "green", `[${index}/${max}] no product_id, product_id:${productId}`);
+            if (!low_price) l("Pass", "green", `[${index}/${max}] no low_price, product_id:${productId}`);
+            if (!delivery) l("Pass", "green", `[${index}/${max}] no delivery, product_id:${productId}`);
+            if (!store_name) l("Pass", "green", `[${index}/${max}] no store_name, product_id:${productId}`);
+            if (!store_link) l("Pass", "green", `[${index}/${max}] no store_link, product_id:${productId}`);
             return resolve(true);
           }
           const data = {
