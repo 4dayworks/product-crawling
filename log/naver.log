@@ -1,0 +1,1670 @@
+yarn run v1.22.19
+$ ts-node product_price_update_naver_catalog
+[32m       GET[0m ( 1) id:34830 price: 11820, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:34830 price: 11850, delivery: 3000, 부르소마
+[32m       GET[0m ( 3) id:34830 price: 12300, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:34830 price: 13100, delivery:    0, 위메프
+[32m       GET[0m ( 5) id:34830 price: 13120, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:34830 price: 13840, delivery:    0, 신세계라이브쇼핑
+[32m       GET[0m ( 7) id:34830 price: 13840, delivery:    0, 티몬
+[32m       GET[0m ( 8) id:34830 price: 14030, delivery:    0, 1300K
+[32m       GET[0m ( 9) id:34830 price: 14300, delivery:    0, 행복미소
+[32m       GET[0m (10) id:34830 price: 14300, delivery:    0, 엘본샵
+[36m  LowPrice[0m [1/190] ( 1) id:34830 price: 11820, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:10237 price: 58400, delivery: 3000, 설동마켓
+[32m       GET[0m ( 2) id:10237 price: 58450, delivery: 3000, 미러데일리
+[32m       GET[0m ( 3) id:10237 price: 58480, delivery: 3000, 위메프
+[32m       GET[0m ( 4) id:10237 price: 58570, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 5) id:10237 price: 58650, delivery: 3000, G마켓
+[32m       GET[0m ( 6) id:10237 price: 58650, delivery: 3000, 옥션
+[32m       GET[0m ( 7) id:10237 price: 58990, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 8) id:10237 price: 60800, delivery:    0, The angel
+[32m       GET[0m ( 9) id:10237 price: 60900, delivery:    0, 지니어스팜
+[32m       GET[0m (10) id:10237 price: 61370, delivery: 3000, 코코타임
+[36m  LowPrice[0m [2/190] ( 1) id:10237 price: 58400, delivery: 3000, 설동마켓
+[32m       GET[0m ( 1) id:28042 price:  5600, delivery: 3000, 이웃사랑팜
+[32m       GET[0m ( 2) id:28042 price:  9100, delivery: 3000, 다나아팜
+[32m       GET[0m ( 3) id:28042 price:  9180, delivery: 3000, 소담약방
+[32m       GET[0m ( 4) id:28042 price:  9810, delivery: 3000, 롯데ON
+[32m       GET[0m ( 5) id:28042 price:  9900, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:28042 price:  9900, delivery: 3000, 안아팜
+[32m       GET[0m ( 7) id:28042 price: 10500, delivery: 3000, 원하트
+[32m       GET[0m ( 8) id:28042 price: 11000, delivery: 3000, 통상제일
+[32m       GET[0m ( 9) id:28042 price: 11750, delivery: 2500, 셀맥스
+[32m       GET[0m (10) id:28042 price: 14400, delivery: 3000, 쿠팡
+[36m  LowPrice[0m [3/190] ( 1) id:28042 price:  5600, delivery: 3000, 이웃사랑팜
+[32m       GET[0m ( 1) id:  153 price:  4940, delivery: 3000, 옥션
+[32m       GET[0m ( 2) id:  153 price:  4940, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:  153 price:  4950, delivery: 3000, 페퍼파우더
+[32m       GET[0m ( 4) id:  153 price:  4960, delivery: 3000, 더클라우드세븐
+[32m       GET[0m ( 5) id:  153 price:  4960, delivery: 3000, mirplaza..
+[32m       GET[0m ( 6) id:  153 price:  5100, delivery: 3000, 모두공감
+[32m       GET[0m ( 7) id:  153 price:  5430, delivery: 3000, 11번가
+[32m       GET[0m ( 8) id:  153 price:  5960, delivery: 3000, 한국인터넷물류
+[32m       GET[0m ( 9) id:  153 price:  6200, delivery: 3500, RED BAND
+[32m       GET[0m (10) id:  153 price:  6510, delivery: 3000, 쿠팡
+[36m  LowPrice[0m [4/190] ( 1) id:  153 price:  4940, delivery: 3000, 옥션
+[32m       GET[0m ( 1) id:  736 price: 17790, delivery: 3000, 차오름건강
+[32m       GET[0m ( 2) id:  736 price: 17800, delivery: 3000, 다드림생활건강
+[32m       GET[0m ( 3) id:  736 price: 17850, delivery: 3000, 부르소마
+[32m       GET[0m ( 4) id:  736 price: 17970, delivery: 3500, 더 건강한 세상
+[32m       GET[0m ( 5) id:  736 price: 18500, delivery: 3000, 온팜. 건강을 선물하다
+[32m       GET[0m ( 6) id:  736 price: 19720, delivery: 3000, G마켓
+[32m       GET[0m ( 7) id:  736 price: 19720, delivery: 3000, 옥션
+[32m       GET[0m ( 8) id:  736 price: 19900, delivery: 3000, 연희헬스케어
+[32m       GET[0m ( 9) id:  736 price: 22000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m (10) id:  736 price: 22000, delivery:    0, 
+[36m  LowPrice[0m [5/190] ( 1) id:  736 price: 17790, delivery: 3000, 차오름건강
+[32m       GET[0m ( 1) id:  133 price: 12000, delivery: 3000, 건강비밀
+[32m       GET[0m ( 2) id:  133 price: 15500, delivery: 3000, 뉴그린팜
+[36m  LowPrice[0m [6/190] ( 1) id:  133 price: 12000, delivery: 3000, 건강비밀
+[32m       GET[0m ( 1) id:23857 price: 19000, delivery:    0, 건식마켓
+[32m      Pass[0m no delivery, product_id:23857
+[32m       GET[0m ( 1) id:15326 price:  7040, delivery: 3000, 매드스토어
+[32m       GET[0m ( 2) id:15326 price:  7050, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:15326 price:  7060, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:15326 price:  7070, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:15326 price:  7080, delivery: 3000, 페퍼파우더
+[32m       GET[0m ( 6) id:15326 price:  7120, delivery: 3000, 골든바닐라
+[32m       GET[0m ( 7) id:15326 price:  7130, delivery: 3000, 홈쇼핑앤샵
+[32m       GET[0m ( 8) id:15326 price:  7184, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 9) id:15326 price:  7200, delivery: 3000, mirplaza..
+[32m       GET[0m (10) id:15326 price:  7270, delivery: 3000, 써클홀딩스
+[36m  LowPrice[0m [8/190] ( 1) id:15326 price:  7040, delivery: 3000, 매드스토어
+[32m       GET[0m ( 1) id:24529 price: 37990, delivery: 2500, 퍼스트맘닥터
+[32m       GET[0m ( 2) id:24529 price: 38000, delivery: 2500, 힐링박스
+[32m       GET[0m ( 3) id:24529 price: 39990, delivery: 3000, 모모테일
+[32m       GET[0m ( 4) id:24529 price: 48000, delivery: 2800, 코코대디
+[32m       GET[0m ( 5) id:24529 price: 48000, delivery: 3500, 건강해지는지음몰
+[32m       GET[0m ( 6) id:24529 price: 52560, delivery:    0, 11번가
+[32m       GET[0m ( 7) id:24529 price: 52560, delivery: 3000, 서마녀몰
+[32m       GET[0m ( 8) id:24529 price: 52650, delivery: 3000, 써니데이즈샵
+[32m       GET[0m ( 9) id:24529 price: 52670, delivery:    0, 롯데ON
+[32m       GET[0m (10) id:24529 price: 54770, delivery:    0, 위메프
+[36m  LowPrice[0m [9/190] ( 1) id:24529 price: 37990, delivery: 2500, 퍼스트맘닥터
+[32m       GET[0m ( 1) id:20226 price: 45000, delivery: 2500, 힐링박스
+[32m       GET[0m ( 2) id:20226 price: 55000, delivery: 2500, 유플레이스
+[32m       GET[0m ( 3) id:20226 price: 58480, delivery: 3000, 장대리
+[32m       GET[0m ( 4) id:20226 price: 60170, delivery:    0, 위메프
+[32m       GET[0m ( 5) id:20226 price: 60300, delivery: 3000, 롯데ON
+[32m       GET[0m ( 6) id:20226 price: 64900, delivery:    0, 블랙하모니
+[32m       GET[0m ( 7) id:20226 price: 65000, delivery:    0, 모모테일
+[32m       GET[0m ( 8) id:20226 price: 65900, delivery:    0, 태풍태양
+[32m       GET[0m ( 9) id:20226 price: 65900, delivery:    0, 제이K컴퍼니
+[32m       GET[0m (10) id:20226 price: 67000, delivery:    0, 조이헬스케어
+[36m  LowPrice[0m [10/190] ( 1) id:20226 price: 45000, delivery: 2500, 힐링박스
+[32m       GET[0m ( 1) id:34100 price: 11340, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:34100 price: 11390, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:34100 price: 11390, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:34100 price: 11400, delivery: 3000, 다사라마트
+[32m       GET[0m ( 5) id:34100 price: 12560, delivery: 3000, 주식회사 제이제이몰
+[32m       GET[0m ( 6) id:34100 price: 12700, delivery: 2500, 주식회사 아나이스
+[32m       GET[0m ( 7) id:34100 price: 12790, delivery: 2500, 위메프
+[32m       GET[0m ( 8) id:34100 price: 14070, delivery: 2500, 멸치쇼핑
+[32m       GET[0m ( 9) id:34100 price: 14420, delivery: 3000, 재구매율1위
+[32m       GET[0m (10) id:34100 price: 15120, delivery: 3000, 워머더프트
+[36m  LowPrice[0m [11/190] ( 1) id:34100 price: 11340, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:  143 price: 37020, delivery:    0, G마켓
+[32m       GET[0m ( 2) id:  143 price: 37020, delivery:    0, 옥션
+[32m       GET[0m ( 3) id:  143 price: 37030, delivery:    0, 11번가
+[32m       GET[0m ( 4) id:  143 price: 37430, delivery: 3000, 마카다숍
+[32m       GET[0m ( 5) id:  143 price: 37800, delivery:    0, 명성헬스케어
+[32m       GET[0m ( 6) id:  143 price: 37800, delivery:    0, 센트리웰 홀딩스
+[32m       GET[0m ( 7) id:  143 price: 37800, delivery:    0, 센트리웰 마켓
+[32m       GET[0m ( 8) id:  143 price: 37800, delivery:    0, 센트리웰
+[32m       GET[0m ( 9) id:  143 price: 39700, delivery:    0, 인터파크
+[32m       GET[0m (10) id:  143 price: 45000, delivery: 4000, 베스트케어
+[32m      Pass[0m no delivery, product_id:143
+[32m       GET[0m ( 1) id:28635 price: 15990, delivery: 3000, 튼튼e스토어
+[32m       GET[0m ( 2) id:28635 price: 15990, delivery: 3000, 마녀팜
+[32m       GET[0m ( 3) id:28635 price: 16040, delivery: 3000, 더블유엘비에프
+[32m       GET[0m ( 4) id:28635 price: 16120, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:28635 price: 16170, delivery: 3000, G마켓
+[32m       GET[0m ( 6) id:28635 price: 16170, delivery: 3000, Health-Beauty
+[32m       GET[0m ( 7) id:28635 price: 16300, delivery: 3000, 제일다팜
+[32m       GET[0m ( 8) id:28635 price: 16840, delivery: 3000, 롯데ON
+[32m       GET[0m ( 9) id:28635 price: 17500, delivery: 2500, 태성헬스케어
+[32m       GET[0m (10) id:28635 price: 18000, delivery: 2500, 웰팩토리
+[36m  LowPrice[0m [13/190] ( 1) id:28635 price: 15990, delivery: 3000, 튼튼e스토어
+[32m       GET[0m ( 1) id:20945 price:  9440, delivery: 3000, 마트천국
+[32m       GET[0m ( 2) id:20945 price:  9990, delivery: 3000, -요기요기샵-
+[32m       GET[0m ( 3) id:20945 price: 10940, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:20945 price: 11210, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:20945 price: 11310, delivery: 3000, 11번가
+[32m       GET[0m ( 6) id:20945 price: 11610, delivery: 3000, 홈쇼핑나라
+[32m       GET[0m ( 7) id:20945 price: 11630, delivery: 3000, 호인
+[32m       GET[0m ( 8) id:20945 price: 11650, delivery: 3000, YK STORE
+[32m       GET[0m ( 9) id:20945 price: 11790, delivery: 3000, 이지세일
+[32m       GET[0m (10) id:20945 price: 11800, delivery: 3000, 디카라이프 주식회사
+[36m  LowPrice[0m [14/190] ( 1) id:20945 price:  9440, delivery: 3000, 마트천국
+[32m       GET[0m ( 1) id:34080 price: 30990, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id:34080 price: 31000, delivery: 3000, 다드림생활건강
+[32m       GET[0m ( 3) id:34080 price: 31400, delivery: 3000, 홀리데이브리즈
+[32m       GET[0m ( 4) id:34080 price: 32000, delivery:    0, 쿠팡
+[32m       GET[0m ( 5) id:34080 price: 32940, delivery: 3000, 인터파크
+[32m       GET[0m ( 6) id:34080 price: 32950, delivery: 3000, 11번가
+[32m       GET[0m ( 7) id:34080 price: 33190, delivery: 3000, 롯데ON
+[32m       GET[0m ( 8) id:34080 price: 33900, delivery: 2500, 꼼지팜
+[32m       GET[0m ( 9) id:34080 price: 34990, delivery: 3000, 건강해U.
+[32m       GET[0m (10) id:34080 price: 39000, delivery: 3000, 산소팜
+[36m  LowPrice[0m [15/190] ( 1) id:34080 price: 30990, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:34106 price: 19250, delivery: 3000, 온리케어
+[32m       GET[0m ( 2) id:34106 price: 20000, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 3) id:34106 price: 23530, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:34106 price: 23600, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:34106 price: 23610, delivery: 3000, 행복한 직구생활
+[32m       GET[0m ( 6) id:34106 price: 24590, delivery: 3000, ReTa
+[32m       GET[0m ( 7) id:34106 price: 24600, delivery: 3000, 주식회사 제이제이몰
+[32m       GET[0m ( 8) id:34106 price: 24680, delivery: 3000, 홈쇼핑앤샵
+[32m       GET[0m ( 9) id:34106 price: 24800, delivery: 3000, 헤세드헬씨
+[32m       GET[0m (10) id:34106 price: 24800, delivery: 3000, 파란고래
+[36m  LowPrice[0m [16/190] ( 1) id:34106 price: 19250, delivery: 3000, 온리케어
+[32m       GET[0m ( 1) id:34074 price: 20970, delivery: 3000, 티몬
+[32m       GET[0m ( 2) id:34074 price: 23480, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:34074 price: 23570, delivery: 3000, 행복한 직구생활
+[32m       GET[0m ( 4) id:34074 price: 23580, delivery: 3000, 케이커머스 주식회사
+[32m       GET[0m ( 5) id:34074 price: 23610, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:34074 price: 24000, delivery: 3000, 산다고샵
+[32m       GET[0m ( 7) id:34074 price: 24000, delivery: 3000, 다사라마트
+[32m       GET[0m ( 8) id:34074 price: 25430, delivery: 3000, 11번가
+[32m       GET[0m ( 9) id:34074 price: 25490, delivery: 3000, 수딩몰
+[32m       GET[0m (10) id:34074 price: 25500, delivery: 3000, 어게인상점
+[36m  LowPrice[0m [17/190] ( 1) id:34074 price: 20970, delivery: 3000, 티몬
+[32m       GET[0m ( 1) id:10185 price: 88000, delivery:    0, 맘스쿠우팜
+[32m       GET[0m ( 2) id:10185 price: 98000, delivery:    0, 드시모네 스토어
+[32m       GET[0m ( 3) id:10185 price: 98000, delivery:    0, 드시모네
+[32m       GET[0m ( 4) id:10185 price: 98000, delivery:    0, 
+[32m       GET[0m ( 5) id:10185 price: 98000, delivery:    0, 약사맘닷컴
+[32m       GET[0m ( 6) id:10185 price: 98000, delivery:    0, 몽쥬스토어
+[32m       GET[0m ( 7) id:10185 price: 98000, delivery:    0, 아이비웰니스
+[32m       GET[0m ( 8) id:10185 price: 98000, delivery:    0, 뉴트메디스토어
+[32m       GET[0m ( 9) id:10185 price: 98000, delivery:    0, 다나아팜
+[32m       GET[0m (10) id:10185 price: 98000, delivery:    0, 맘스쿠우몰
+[32m      Pass[0m no delivery, product_id:10185
+[32m       GET[0m ( 1) id:18241 price:  9430, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:18241 price:  9440, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:18241 price:  9440, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:18241 price:  9490, delivery: 3000, KHGlobal
+[32m       GET[0m ( 5) id:18241 price:  9650, delivery: 3000, 제이엠쇼핑몰JM
+[32m       GET[0m ( 6) id:18241 price:  9780, delivery: 3000, 떳다웰빙
+[32m       GET[0m ( 7) id:18241 price:  9890, delivery: 3000, Lunes
+[32m       GET[0m ( 8) id:18241 price:  9900, delivery: 3000, HS.COMPANY
+[32m       GET[0m ( 9) id:18241 price: 10000, delivery: 3500, RED BAND
+[32m       GET[0m (10) id:18241 price: 10300, delivery: 2500, 주식회사 아나이스
+[36m  LowPrice[0m [19/190] ( 1) id:18241 price:  9430, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id: 2005 price: 65960, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id: 2005 price: 65990, delivery: 3000, 일일섭취량
+[32m       GET[0m ( 3) id: 2005 price: 66000, delivery: 2900, 카카이스토어
+[32m       GET[0m ( 4) id: 2005 price: 66000, delivery: 3000, 인생샷몰
+[32m       GET[0m ( 5) id: 2005 price: 66760, delivery: 3000, 주식회사 어컴퍼니
+[32m       GET[0m ( 6) id: 2005 price: 66900, delivery: 3000, KHGlobal
+[32m       GET[0m ( 7) id: 2005 price: 68820, delivery:    0, 위메프
+[32m       GET[0m ( 8) id: 2005 price: 69000, delivery:    0, 쿠팡
+[32m       GET[0m ( 9) id: 2005 price: 69500, delivery: 3000, MWM컴퍼니
+[32m       GET[0m (10) id: 2005 price: 69900, delivery: 3000, 유바이마켓
+[36m  LowPrice[0m [20/190] ( 1) id: 2005 price: 65960, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:34170 price: 65960, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:34170 price: 65990, delivery: 3000, 일일섭취량
+[32m       GET[0m ( 3) id:34170 price: 66000, delivery: 2900, 카카이스토어
+[32m       GET[0m ( 4) id:34170 price: 66000, delivery: 3000, 인생샷몰
+[32m       GET[0m ( 5) id:34170 price: 66760, delivery: 3000, 주식회사 어컴퍼니
+[32m       GET[0m ( 6) id:34170 price: 66900, delivery: 3000, KHGlobal
+[32m       GET[0m ( 7) id:34170 price: 68820, delivery:    0, 위메프
+[32m       GET[0m ( 8) id:34170 price: 69000, delivery:    0, 쿠팡
+[32m       GET[0m ( 9) id:34170 price: 69500, delivery: 3000, MWM컴퍼니
+[32m       GET[0m (10) id:34170 price: 69900, delivery: 3000, 유바이마켓
+[36m  LowPrice[0m [21/190] ( 1) id:34170 price: 65960, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:27855 price: 18860, delivery: 3000, 스쿠버나라
+[32m       GET[0m ( 2) id:27855 price: 18960, delivery: 3000, 드럭플러스
+[32m       GET[0m ( 3) id:27855 price: 18970, delivery: 2500, 팜폭스
+[32m       GET[0m ( 4) id:27855 price: 20350, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 5) id:27855 price: 20360, delivery: 2500, 더 건강한 세상
+[32m       GET[0m ( 6) id:27855 price: 25410, delivery: 3000, 옥션
+[36m  LowPrice[0m [22/190] ( 1) id:27855 price: 18860, delivery: 3000, 스쿠버나라
+[32m       GET[0m ( 1) id:   98 price:  6890, delivery: 3000, DW그린케어
+[32m       GET[0m ( 2) id:   98 price:  6900, delivery: 3000, 다드림생활건강
+[32m       GET[0m ( 3) id:   98 price: 18000, delivery: 2500, 위드유팜
+[36m  LowPrice[0m [23/190] ( 1) id:   98 price:  6890, delivery: 3000, DW그린케어
+[32m       GET[0m ( 1) id:   90 price:  3530, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 2) id:   90 price:  3540, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:   90 price:  3550, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:   90 price:  3650, delivery: 3000, 멸치쇼핑
+[32m       GET[0m ( 5) id:   90 price:  3700, delivery: 3000, YGGlobal story
+[32m       GET[0m ( 6) id:   90 price:  3720, delivery: 3000, 11번가
+[32m       GET[0m ( 7) id:   90 price:  3750, delivery: 3000, 잼리
+[32m       GET[0m ( 8) id:   90 price:  3750, delivery: 3000, 위메프
+[32m       GET[0m ( 9) id:   90 price:  3790, delivery: 3000, MJCO
+[32m       GET[0m (10) id:   90 price:  3840, delivery: 3000, 램프진
+[36m  LowPrice[0m [24/190] ( 1) id:   90 price:  3530, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 1) id:34359 price: 21900, delivery:    0, 솔가 공식스토어
+[32m       GET[0m ( 2) id:34359 price: 21900, delivery:    0, 쿠팡
+[32m       GET[0m ( 3) id:34359 price: 29900, delivery: 3000, 내방클라쓰
+[32m       GET[0m ( 4) id:34359 price: 30060, delivery:    0, G마켓
+[32m       GET[0m ( 5) id:34359 price: 30060, delivery:    0, 옥션
+[32m       GET[0m ( 6) id:34359 price: 32120, delivery:    0, AK몰
+[32m       GET[0m ( 7) id:34359 price: 32640, delivery:    0, 11번가
+[32m       GET[0m ( 8) id:34359 price: 34000, delivery:    0, CJ온스타일
+[32m       GET[0m ( 9) id:34359 price: 36600, delivery: 3500, RED BAND
+[32m      Pass[0m no delivery, product_id:34359
+[32m       GET[0m ( 1) id:34224 price: 54520, delivery: 3000, 펄시티
+[32m       GET[0m ( 2) id:34224 price: 55440, delivery:    0, 11번가
+[32m       GET[0m ( 3) id:34224 price: 57000, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 4) id:34224 price: 60700, delivery:    0, 뉴오리진
+[32m       GET[0m ( 5) id:34224 price: 60700, delivery:    0, 
+[32m       GET[0m ( 6) id:34224 price: 60890, delivery:    0, 옥션
+[32m       GET[0m ( 7) id:34224 price: 60970, delivery:    0, G마켓
+[32m       GET[0m ( 8) id:34224 price: 65170, delivery: 3000, 위메프
+[32m       GET[0m ( 9) id:34224 price: 65700, delivery:    0, RONS
+[32m       GET[0m (10) id:34224 price: 66290, delivery:    0, 인터파크
+[36m  LowPrice[0m [26/190] ( 1) id:34224 price: 54520, delivery: 3000, 펄시티
+[32m       GET[0m ( 1) id:   46 price: 42660, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:   46 price: 43770, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 3) id:   46 price: 43800, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 4) id:   46 price: 43830, delivery: 3000, 뷰티선생
+[32m       GET[0m ( 5) id:   46 price: 43860, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:   46 price: 43860, delivery: 3000, G마켓
+[32m       GET[0m ( 7) id:   46 price: 43870, delivery: 3000, 헤이샵 HEJOSHOP
+[32m       GET[0m ( 8) id:   46 price: 44000, delivery:    0, 쿠팡
+[32m       GET[0m ( 9) id:   46 price: 46000, delivery: 4000, 팬드래건
+[32m       GET[0m (10) id:   46 price: 47990, delivery: 3000, 인터파크
+[36m  LowPrice[0m [27/190] ( 1) id:   46 price: 42660, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:  117 price:  5370, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id:  117 price:  5370, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:  117 price:  5380, delivery: 3000, 11번가
+[32m       GET[0m ( 4) id:  117 price:  5480, delivery: 3000, narsha mall
+[32m       GET[0m ( 5) id:  117 price:  5490, delivery: 3000, Lunes
+[32m       GET[0m ( 6) id:  117 price:  5496, delivery: 3000, 지엔엘GNL
+[32m       GET[0m ( 7) id:  117 price:  5740, delivery: 3000, 티몬
+[32m       GET[0m ( 8) id:  117 price:  5790, delivery: 3000, 대성케이
+[32m       GET[0m ( 9) id:  117 price:  6000, delivery: 3000, MJCO
+[32m       GET[0m (10) id:  117 price:  6100, delivery: 2800, 주식회사 아나이스
+[36m  LowPrice[0m [28/190] ( 1) id:  117 price:  5370, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:  206 price: 17000, delivery: 3000, 바로건강몰
+[32m       GET[0m ( 2) id:  206 price: 17050, delivery: 2700, 건강헬스포유
+[32m       GET[0m ( 3) id:  206 price: 17550, delivery: 3000, 홀리데이브리즈
+[32m       GET[0m ( 4) id:  206 price: 17600, delivery: 2500, 태성헬스케어
+[32m       GET[0m ( 5) id:  206 price: 17970, delivery: 3500, 건강온
+[32m       GET[0m ( 6) id:  206 price: 19900, delivery: 3000, 팜트롱
+[32m       GET[0m ( 7) id:  206 price: 20970, delivery: 3000, 브이타민
+[32m       GET[0m ( 8) id:  206 price: 23400, delivery: 3000, 롯데ON
+[32m       GET[0m ( 9) id:  206 price: 26400, delivery: 3000, 통상제일
+[32m       GET[0m (10) id:  206 price: 29550, delivery:    0, 내친구약방
+[36m  LowPrice[0m [29/190] ( 1) id:  206 price: 17000, delivery: 3000, 바로건강몰
+[32m       GET[0m ( 1) id:34107 price: 21900, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 2) id:34107 price: 22060, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:34107 price: 22380, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:34107 price: 23320, delivery: 3000, 11번가
+[32m       GET[0m ( 5) id:34107 price: 24100, delivery: 3000, 위메프
+[32m       GET[0m ( 6) id:34107 price: 25600, delivery:    0, 쿠팡
+[32m       GET[0m ( 7) id:34107 price: 27470, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 8) id:34107 price: 27500, delivery: 3000, 방글 마켓
+[32m       GET[0m ( 9) id:34107 price: 28220, delivery: 3000, 인터파크
+[32m       GET[0m (10) id:34107 price: 28420, delivery: 3000, 내방클라쓰
+[36m  LowPrice[0m [30/190] ( 1) id:34107 price: 21900, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 1) id:   35 price: 21050, delivery: 3500, The Mine
+[32m       GET[0m ( 2) id:   35 price: 21060, delivery: 3000, 핫플스토어
+[32m       GET[0m ( 3) id:   35 price: 22600, delivery: 3000, KHGlobal
+[32m       GET[0m ( 4) id:   35 price: 22730, delivery:    0, 쿠팡
+[32m       GET[0m ( 5) id:   35 price: 23210, delivery:    0, G마켓
+[32m       GET[0m ( 6) id:   35 price: 23500, delivery:    0, 옥션
+[32m       GET[0m ( 7) id:   35 price: 23500, delivery:    0, CJ온스타일
+[32m       GET[0m ( 8) id:   35 price: 23500, delivery:    0, 11번가
+[32m       GET[0m ( 9) id:   35 price: 23510, delivery:    0, GSSHOP
+[32m       GET[0m (10) id:   35 price: 25500, delivery:    0, 롯데홈쇼핑
+[36m  LowPrice[0m [31/190] ( 1) id:   35 price: 21050, delivery: 3500, The Mine
+[32m       GET[0m ( 1) id:23584 price:  8200, delivery: 2790, 오메가스토어
+[32m       GET[0m ( 2) id:23584 price:  8200, delivery: 2780, 다나아팜
+[32m       GET[0m ( 3) id:23584 price:  8890, delivery: 3000, 나눔상사
+[32m       GET[0m ( 4) id:23584 price:  9170, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:23584 price:  9250, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:23584 price:  9500, delivery:    0, The D S
+[32m       GET[0m ( 7) id:23584 price:  9650, delivery: 3000, 소담약방
+[32m       GET[0m ( 8) id:23584 price:  9720, delivery: 3000, 아이케어유
+[32m       GET[0m ( 9) id:23584 price: 11620, delivery: 3000, 11번가
+[32m       GET[0m (10) id:23584 price: 11750, delivery: 3000, The angel
+[36m  LowPrice[0m [32/190] ( 1) id:23584 price:  8200, delivery: 2790, 오메가스토어
+[32m       GET[0m ( 1) id:  202 price: 11070, delivery: 3000, 장대리
+[32m       GET[0m ( 2) id:  202 price: 11080, delivery: 3000, 하이코지
+[32m       GET[0m ( 3) id:  202 price: 11530, delivery:    0, G마켓
+[32m       GET[0m ( 4) id:  202 price: 11530, delivery:    0, 옥션
+[32m       GET[0m ( 5) id:  202 price: 11730, delivery:    0, 쿠팡
+[32m       GET[0m ( 6) id:  202 price: 11740, delivery:    0, 롯데ON
+[32m       GET[0m ( 7) id:  202 price: 12260, delivery:    0, 위메프
+[32m       GET[0m ( 8) id:  202 price: 12660, delivery:    0, SSG닷컴
+[32m       GET[0m ( 9) id:  202 price: 12660, delivery:    0, 신세계몰
+[32m       GET[0m (10) id:  202 price: 12660, delivery:    0, 이마트몰
+[36m  LowPrice[0m [33/190] ( 1) id:  202 price: 11070, delivery: 3000, 장대리
+[32m       GET[0m ( 1) id:  182 price: 65000, delivery:    0, 듀오락 유산균
+[32m       GET[0m ( 2) id:  182 price: 65000, delivery:    0, 
+[32m      Pass[0m no delivery, product_id:182
+[32m       GET[0m ( 1) id:  123 price: 58900, delivery: 2500, 라운드 ROUND
+[32m       GET[0m ( 2) id:  123 price: 59800, delivery: 2500, 파이토뉴트리
+[32m       GET[0m ( 3) id:  123 price: 59800, delivery: 2500, 파이토뉴트리
+[32m       GET[0m ( 4) id:  123 price: 74250, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:  123 price: 74250, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:  123 price: 96400, delivery: 3000, 인터파크
+[32m       GET[0m ( 7) id:  123 price: 99720, delivery: 3000, 롯데ON
+[36m  LowPrice[0m [35/190] ( 1) id:  123 price: 58900, delivery: 2500, 라운드 ROUND
+[32m       GET[0m ( 1) id:  151 price: 12530, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 2) id:  151 price: 13040, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:  151 price: 13040, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:  151 price: 13260, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 5) id:  151 price: 13490, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 6) id:  151 price: 16370, delivery: 3000, 11번가
+[32m       GET[0m ( 7) id:  151 price: 17450, delivery: 3000, 롯데ON
+[32m       GET[0m ( 8) id:  151 price: 17460, delivery: 3000, 위메프
+[32m       GET[0m ( 9) id:  151 price: 17490, delivery: 3000, 초코코샵
+[32m       GET[0m (10) id:  151 price: 17710, delivery: 3000, MJCO
+[36m  LowPrice[0m [36/190] ( 1) id:  151 price: 12530, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 1) id:  132 price: 11400, delivery: 3000, 오케이홈쇼핑
+[32m       GET[0m ( 2) id:  132 price: 11800, delivery: 3000, 헬스키퍼1
+[32m       GET[0m ( 3) id:  132 price: 12810, delivery: 3000, 위니딧
+[32m       GET[0m ( 4) id:  132 price: 13470, delivery:    0, 11번가
+[32m       GET[0m ( 5) id:  132 price: 13800, delivery:    0, 롯데ON
+[32m       GET[0m ( 6) id:  132 price: 13900, delivery:    0, 티몬
+[32m       GET[0m ( 7) id:  132 price: 14350, delivery:    0, 에프터샵
+[32m       GET[0m ( 8) id:  132 price: 14790, delivery:    0, 위메프
+[32m       GET[0m ( 9) id:  132 price: 14800, delivery:    0, G마켓
+[32m       GET[0m (10) id:  132 price: 14900, delivery:    0, 인터파크
+[36m  LowPrice[0m [37/190] ( 1) id:  132 price: 11400, delivery: 3000, 오케이홈쇼핑
+[32m       GET[0m ( 1) id: 6733 price: 32010, delivery: 3000, DW그린케어
+[32m       GET[0m ( 2) id: 6733 price: 32020, delivery: 3000, 팔팔건강
+[32m       GET[0m ( 3) id: 6733 price: 32040, delivery: 3000, 픽앳도어
+[32m       GET[0m ( 4) id: 6733 price: 32070, delivery: 3000, 건강-나눔
+[32m       GET[0m ( 5) id: 6733 price: 35710, delivery: 3000, 스마일팜
+[32m       GET[0m ( 6) id: 6733 price: 35780, delivery: 3000, 쇼핑서점
+[32m       GET[0m ( 7) id: 6733 price: 36400, delivery: 3000, 종로강남팜
+[32m       GET[0m ( 8) id: 6733 price: 36990, delivery: 3000, 브로콜리몰
+[32m       GET[0m ( 9) id: 6733 price: 37350, delivery: 2500, 쿠팡
+[32m       GET[0m (10) id: 6733 price: 38000, delivery: 3000, 일등프라자팜
+[36m  LowPrice[0m [38/190] ( 1) id: 6733 price: 32010, delivery: 3000, DW그린케어
+[32m       GET[0m ( 1) id:    1 price: 32050, delivery: 3000, DW그린케어
+[32m       GET[0m ( 2) id:    1 price: 32050, delivery: 3000, 픽앳도어
+[32m       GET[0m ( 3) id:    1 price: 32150, delivery: 3000, 건강-나눔
+[32m       GET[0m ( 4) id:    1 price: 32160, delivery: 3000, 팔팔건강
+[32m       GET[0m ( 5) id:    1 price: 33190, delivery: 3000, 스마일팜
+[32m       GET[0m ( 6) id:    1 price: 33870, delivery: 2990, 다나아팜
+[32m       GET[0m ( 7) id:    1 price: 34570, delivery: 3000, G마켓
+[32m       GET[0m ( 8) id:    1 price: 34900, delivery: 3200, 강남비타민
+[32m       GET[0m ( 9) id:    1 price: 35310, delivery: 3000, 옥션
+[32m       GET[0m (10) id:    1 price: 35780, delivery: 2500, 인터파크
+[36m  LowPrice[0m [39/190] ( 1) id:    1 price: 32050, delivery: 3000, DW그린케어
+[32m       GET[0m ( 1) id: 7332 price: 29700, delivery:    0, 라운드 ROUND
+[32m       GET[0m ( 2) id: 7332 price: 29800, delivery:    0, 뉴트라라이프
+[32m       GET[0m ( 3) id: 7332 price: 29800, delivery:    0, 
+[32m       GET[0m ( 4) id: 7332 price: 29800, delivery:    0, 엘카라
+[32m       GET[0m ( 5) id: 7332 price: 32670, delivery: 2500, G마켓
+[32m       GET[0m ( 6) id: 7332 price: 37800, delivery:    0, hcmall 헬스케어
+[32m       GET[0m ( 7) id: 7332 price: 39590, delivery: 3000, 티몬
+[32m       GET[0m ( 8) id: 7332 price: 39800, delivery:    0, 도토리토
+[32m       GET[0m ( 9) id: 7332 price: 42930, delivery:    0, 롯데ON
+[32m       GET[0m (10) id: 7332 price: 59900, delivery:    0, 옥션
+[32m      Pass[0m no delivery, product_id:7332
+[32m       GET[0m ( 1) id:34111 price: 15980, delivery: 2800, 라운드 ROUND
+[32m       GET[0m ( 2) id:34111 price: 15990, delivery: 3000, 부르소마
+[32m       GET[0m ( 3) id:34111 price: 16040, delivery: 3000, 케이커머스 주식회사
+[32m       GET[0m ( 4) id:34111 price: 16410, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:34111 price: 17520, delivery: 3000, 11번가
+[32m       GET[0m ( 6) id:34111 price: 18110, delivery: 3000, 롯데ON
+[32m       GET[0m ( 7) id:34111 price: 18150, delivery:    0, 위메프
+[32m       GET[0m ( 8) id:34111 price: 18570, delivery:    0, G마켓
+[32m       GET[0m ( 9) id:34111 price: 18810, delivery:    0, W쇼핑
+[32m       GET[0m (10) id:34111 price: 19470, delivery: 3000, Like Tree
+[36m  LowPrice[0m [41/190] ( 1) id:34111 price: 15980, delivery: 2800, 라운드 ROUND
+[32m       GET[0m ( 1) id: 5334 price:  8900, delivery:    0, 뉴트리디데이
+[32m       GET[0m ( 2) id: 5334 price:  8900, delivery:    0, 
+[32m       GET[0m ( 3) id: 5334 price:  9260, delivery:    0, AK몰
+[32m      Pass[0m no delivery, product_id:5334
+[32m       GET[0m ( 1) id:   25 price: 40000, delivery:    0, 건강비밀
+[32m       GET[0m ( 2) id:   25 price: 40000, delivery: 2800, 그린네이처팜
+[32m       GET[0m ( 3) id:   25 price: 40000, delivery: 3000, 다드림생활건강
+[32m       GET[0m ( 4) id:   25 price: 44400, delivery: 2990, 뷰랩 스토어
+[32m       GET[0m ( 5) id:   25 price: 44450, delivery: 3000, 올바른약
+[32m       GET[0m ( 6) id:   25 price: 44500, delivery:    0, 당.고.몰
+[32m       GET[0m ( 7) id:   25 price: 45100, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 8) id:   25 price: 46900, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 9) id:   25 price: 55000, delivery:    0, 
+[32m       GET[0m (10) id:   25 price: 55800, delivery:    0, GSSHOP
+[32m      Pass[0m no delivery, product_id:25
+[32m       GET[0m ( 1) id:   65 price: 19300, delivery: 3000, 365라파팜
+[32m       GET[0m ( 2) id:   65 price: 19400, delivery: 3000, 건강비밀 vi-meal
+[32m       GET[0m ( 3) id:   65 price: 19400, delivery: 3000, 건강비밀
+[32m       GET[0m ( 4) id:   65 price: 20480, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 5) id:   65 price: 20500, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 6) id:   65 price: 21000, delivery: 3000, 쿠팡
+[32m       GET[0m ( 7) id:   65 price: 22870, delivery: 3000, G마켓
+[32m       GET[0m ( 8) id:   65 price: 23950, delivery: 2500, 꼼지팜
+[32m       GET[0m ( 9) id:   65 price: 24060, delivery: 3000, 온리원 스토어
+[32m       GET[0m (10) id:   65 price: 24500, delivery: 3000, 뉴그린팜
+[36m  LowPrice[0m [44/190] ( 1) id:   65 price: 19300, delivery: 3000, 365라파팜
+[32m       GET[0m ( 1) id:24725 price: 65510, delivery:    0, 롯데ON
+[32m       GET[0m ( 2) id:24725 price: 67970, delivery:    0, 롯데백화점
+[32m       GET[0m ( 3) id:24725 price: 68000, delivery:    0, GNC공식스토어
+[32m       GET[0m ( 4) id:24725 price: 68000, delivery:    0, 쿠팡
+[32m       GET[0m ( 5) id:24725 price: 68410, delivery:    0, AK플라자 분당점
+[32m       GET[0m ( 6) id:24725 price: 69420, delivery:    0, 대구백화점
+[32m       GET[0m ( 7) id:24725 price: 69650, delivery: 5000, The Mine
+[32m       GET[0m ( 8) id:24725 price: 70920, delivery:    0, AK몰
+[32m       GET[0m ( 9) id:24725 price: 71200, delivery:    0, gncmall
+[32m       GET[0m (10) id:24725 price: 72630, delivery:    0, 11번가
+[32m      Pass[0m no delivery, product_id:24725
+[32m       GET[0m ( 1) id:43246 price: 37730, delivery: 2900, 다솜팜 스토어
+[32m       GET[0m ( 2) id:43246 price: 37740, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 3) id:43246 price: 38050, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 4) id:43246 price: 38150, delivery: 3000, 리즈몰 Liz-mall
+[32m       GET[0m ( 5) id:43246 price: 45900, delivery:    0, 그린스토어공식몰
+[32m       GET[0m ( 6) id:43246 price: 50000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 7) id:43246 price: 50000, delivery:    0, 
+[32m       GET[0m ( 8) id:43246 price: 50000, delivery:    0, 쿠팡
+[32m       GET[0m ( 9) id:43246 price: 57000, delivery:    0, CJ온스타일
+[36m  LowPrice[0m [46/190] ( 1) id:43246 price: 37730, delivery: 2900, 다솜팜 스토어
+[32m       GET[0m ( 1) id:13504 price: 27600, delivery: 3500, 박장군상회
+[32m       GET[0m ( 2) id:13504 price: 27940, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 3) id:13504 price: 28100, delivery:    0, 쿠팡
+[32m       GET[0m ( 4) id:13504 price: 28600, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 5) id:13504 price: 31500, delivery: 3000, HAP헬스엔팜
+[32m       GET[0m ( 6) id:13504 price: 31500, delivery: 3000, 제일다팜
+[32m       GET[0m ( 7) id:13504 price: 35000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 8) id:13504 price: 35000, delivery:    0, 
+[32m       GET[0m ( 9) id:13504 price: 35000, delivery:    0, 그린스토어공식몰
+[32m       GET[0m (10) id:13504 price: 35100, delivery:    0, GSSHOP
+[36m  LowPrice[0m [47/190] ( 1) id:13504 price: 27600, delivery: 3500, 박장군상회
+[32m       GET[0m ( 1) id:  124 price:  8960, delivery: 3000, 매드스토어
+[32m       GET[0m ( 2) id:  124 price:  8970, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 3) id:  124 price:  9000, delivery: 3000, PL파트너스
+[32m       GET[0m ( 4) id:  124 price:  9030, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:  124 price:  9030, delivery: 3000, G마켓
+[32m       GET[0m ( 6) id:  124 price:  9490, delivery: 2900, 여우샵
+[32m       GET[0m ( 7) id:  124 price:  9500, delivery: 3000, 잼리
+[32m       GET[0m ( 8) id:  124 price:  9670, delivery: 3000, 11번가
+[32m       GET[0m ( 9) id:  124 price:  9780, delivery: 3000, WH마켓
+[32m       GET[0m (10) id:  124 price:  9790, delivery: 3000, 에프터샵
+[36m  LowPrice[0m [48/190] ( 1) id:  124 price:  8960, delivery: 3000, 매드스토어
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:32183 url=https://msearch.shopping.naver.com/catalog/19301686546
+[32m       GET[0m ( 1) id:19649 price: 70000, delivery:    0, 모아철플러스
+[32m       GET[0m ( 2) id:19649 price: 70000, delivery:    0, 
+[32m      Pass[0m no delivery, product_id:19649
+[32m       GET[0m ( 1) id:   83 price: 18070, delivery:    0, 11번가
+[32m       GET[0m ( 2) id:   83 price: 18080, delivery: 3000, 파라천사
+[32m       GET[0m ( 3) id:   83 price: 18100, delivery: 3000, 글로벌버킷
+[32m       GET[0m ( 4) id:   83 price: 18450, delivery:    0, 롯데ON
+[32m       GET[0m ( 5) id:   83 price: 19520, delivery:    0, 위메프
+[32m       GET[0m ( 6) id:   83 price: 20250, delivery:    0, 
+[32m       GET[0m ( 7) id:   83 price: 20250, delivery:    0, 다나음직영몰
+[32m       GET[0m ( 8) id:   83 price: 20250, delivery:    0, 건식넘버원
+[32m       GET[0m ( 9) id:   83 price: 20250, delivery:    0, 약사와닷컴
+[32m       GET[0m (10) id:   83 price: 20250, delivery:    0, 뉴트리키즈
+[32m      Pass[0m no delivery, product_id:83
+[32m       GET[0m ( 1) id:  234 price: 14990, delivery:    0, 팜폭스
+[32m       GET[0m ( 2) id:  234 price: 15000, delivery:    0, 
+[32m       GET[0m ( 3) id:  234 price: 15000, delivery:    0, 다나음직영몰
+[32m       GET[0m ( 4) id:  234 price: 15000, delivery:    0, 뉴트리키즈
+[32m       GET[0m ( 5) id:  234 price: 15000, delivery:    0, 위메프
+[32m       GET[0m ( 6) id:  234 price: 15000, delivery:    0, 건식넘버원
+[32m       GET[0m ( 7) id:  234 price: 15000, delivery:    0, 약사와닷컴
+[32m       GET[0m ( 8) id:  234 price: 16500, delivery:    0, SSG닷컴
+[32m       GET[0m ( 9) id:  234 price: 16500, delivery:    0, 이마트몰
+[32m       GET[0m (10) id:  234 price: 16500, delivery:    0, 신세계몰
+[32m      Pass[0m no delivery, product_id:234
+[32m       GET[0m ( 1) id:21078 price: 15420, delivery:    0, 11번가
+[32m       GET[0m ( 2) id:21078 price: 15450, delivery: 3000, 가온해몰
+[32m       GET[0m ( 3) id:21078 price: 18000, delivery:    0, 다나음직영몰
+[32m       GET[0m ( 4) id:21078 price: 18000, delivery:    0, 
+[32m       GET[0m ( 5) id:21078 price: 18000, delivery:    0, 필스윤
+[32m       GET[0m ( 6) id:21078 price: 18000, delivery:    0, 뉴트리키즈
+[32m       GET[0m ( 7) id:21078 price: 18000, delivery:    0, 약사와닷컴
+[32m       GET[0m ( 8) id:21078 price: 18000, delivery:    0, 건식넘버원
+[32m       GET[0m ( 9) id:21078 price: 18000, delivery:    0, 위메프
+[32m       GET[0m (10) id:21078 price: 18400, delivery: 3500, 까까조
+[32m      Pass[0m no delivery, product_id:21078
+[32m       GET[0m ( 1) id:21454 price: 21480, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 2) id:21454 price: 22980, delivery:    0, 쿠팡
+[32m       GET[0m ( 3) id:21454 price: 25000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 4) id:21454 price: 25000, delivery:    0, 
+[32m       GET[0m ( 5) id:21454 price: 25000, delivery:    0, 그린스토어공식몰
+[32m       GET[0m ( 6) id:21454 price: 25200, delivery:    0, GSSHOP
+[32m       GET[0m ( 7) id:21454 price: 28500, delivery:    0, CJ온스타일
+[32m       GET[0m ( 8) id:21454 price: 32300, delivery: 3000, 통상제일
+[36m  LowPrice[0m [54/190] ( 1) id:21454 price: 21480, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 1) id:17094 price: 29900, delivery: 3000, 건강비밀
+[32m       GET[0m ( 2) id:17094 price: 29900, delivery: 3000, 건강비밀 vi-meal
+[32m       GET[0m ( 3) id:17094 price: 30900, delivery:    0, 쿠팡
+[32m       GET[0m ( 4) id:17094 price: 31500, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 5) id:17094 price: 31500, delivery: 3000, 굿마미팜
+[32m       GET[0m ( 6) id:17094 price: 31500, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 7) id:17094 price: 35980, delivery: 3000, 이온팜
+[32m       GET[0m ( 8) id:17094 price: 38000, delivery:    0, 
+[32m       GET[0m ( 9) id:17094 price: 38000, delivery: 3000, 연희헬스케어
+[32m       GET[0m (10) id:17094 price: 41790, delivery: 3000, 뉴그린팜
+[36m  LowPrice[0m [55/190] ( 1) id:17094 price: 29900, delivery: 3000, 건강비밀
+[32m       GET[0m ( 1) id:17343 price: 28780, delivery: 3000, marketyoo
+[32m       GET[0m ( 2) id:17343 price: 28790, delivery:    0, 11번가
+[32m       GET[0m ( 3) id:17343 price: 28870, delivery: 3000, 사자더사자
+[32m       GET[0m ( 4) id:17343 price: 30900, delivery: 3000, 설동마켓
+[32m       GET[0m ( 5) id:17343 price: 33770, delivery: 3500, narsha mall
+[32m       GET[0m ( 6) id:17343 price: 37290, delivery:    0, 코스트코나
+[32m       GET[0m ( 7) id:17343 price: 39820, delivery: 3000, COCOFARM
+[32m       GET[0m ( 8) id:17343 price: 39840, delivery:    0, 맘스 상점
+[32m       GET[0m ( 9) id:17343 price: 39850, delivery:    0, 코코타임
+[32m       GET[0m (10) id:17343 price: 39910, delivery:    0, G마켓
+[36m  LowPrice[0m [56/190] ( 1) id:17343 price: 28780, delivery: 3000, marketyoo
+[32m       GET[0m ( 1) id:   88 price: 49540, delivery:    0, 조조케이스
+[32m       GET[0m ( 2) id:   88 price: 49550, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:   88 price: 49560, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:   88 price: 49610, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:   88 price: 51900, delivery: 2800, 주식회사 아나이스
+[32m       GET[0m ( 6) id:   88 price: 51950, delivery: 3000, 행복한 직구생활
+[32m       GET[0m ( 7) id:   88 price: 51950, delivery: 3000, 디카라이프 주식회사
+[32m       GET[0m ( 8) id:   88 price: 52000, delivery: 3000, 인생샷몰
+[32m       GET[0m ( 9) id:   88 price: 52050, delivery: 5000, 하스제이
+[32m       GET[0m (10) id:   88 price: 52350, delivery: 3000, 주식회사 제이제이몰
+[32m      Pass[0m no delivery, product_id:88
+[32m       GET[0m ( 1) id:27586 price:  4600, delivery: 2500, 골드문생활건강
+[32m       GET[0m ( 2) id:27586 price:  4800, delivery: 3000, 엠제이리테일
+[32m       GET[0m ( 3) id:27586 price:  5000, delivery: 3000, 부르소마
+[32m       GET[0m ( 4) id:27586 price:  5200, delivery: 3000, 백년친구
+[32m       GET[0m ( 5) id:27586 price:  5400, delivery: 3000, Zero스토어
+[32m       GET[0m ( 6) id:27586 price:  5800, delivery: 3000, 구칠이오
+[32m       GET[0m ( 7) id:27586 price:  6150, delivery: 3000, G마켓
+[32m       GET[0m ( 8) id:27586 price:  6180, delivery: 3000, 옥션
+[32m       GET[0m ( 9) id:27586 price:  6280, delivery: 3000, 롯데ON
+[32m       GET[0m (10) id:27586 price:  6300, delivery: 3000, 떳다웰빙
+[36m  LowPrice[0m [58/190] ( 1) id:27586 price:  4600, delivery: 2500, 골드문생활건강
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:14 url=https://msearch.shopping.naver.com/catalog/20022577538
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:295 url=https://msearch.shopping.naver.com/catalog/20023283588
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:18205 url=https://msearch.shopping.naver.com/catalog/20052562892
+[32m       GET[0m ( 1) id:19023 price: 53750, delivery:    0, 위메프
+[32m       GET[0m ( 2) id:19023 price: 53900, delivery:    0, AMOLA
+[32m       GET[0m ( 3) id:19023 price: 53900, delivery:    0, CHA the SHOP
+[32m       GET[0m ( 4) id:19023 price: 53900, delivery:    0, 
+[32m       GET[0m ( 5) id:19023 price: 53900, delivery:    0, 쿠팡
+[32m      Pass[0m no delivery, product_id:19023
+[32m       GET[0m ( 1) id:19024 price: 53750, delivery:    0, 위메프
+[32m       GET[0m ( 2) id:19024 price: 53900, delivery:    0, CHA the SHOP
+[32m       GET[0m ( 3) id:19024 price: 53900, delivery:    0, 
+[32m       GET[0m ( 4) id:19024 price:199980, delivery: 3000, 써클홀딩스
+[32m      Pass[0m no delivery, product_id:19024
+[32m       GET[0m ( 1) id:16581 price: 10180, delivery: 2800, G마켓
+[32m       GET[0m ( 2) id:16581 price: 10210, delivery: 2800, 옥션
+[32m       GET[0m ( 3) id:16581 price: 10640, delivery: 2800, 11번가
+[32m       GET[0m ( 4) id:16581 price: 10700, delivery: 3000, 인생샷몰
+[32m       GET[0m ( 5) id:16581 price: 10780, delivery: 3000, narsha mall
+[32m       GET[0m ( 6) id:16581 price: 10800, delivery: 2800, 주식회사 아나이스
+[32m       GET[0m ( 7) id:16581 price: 10800, delivery: 3000, 멸치쇼핑
+[32m       GET[0m ( 8) id:16581 price: 12000, delivery: 3000, 디카라이프 주식회사
+[32m       GET[0m ( 9) id:16581 price: 12290, delivery: 3000, 인터파크
+[32m       GET[0m (10) id:16581 price: 12500, delivery: 3000, 판다친구
+[36m  LowPrice[0m [64/190] ( 1) id:16581 price: 10180, delivery: 2800, G마켓
+[32m       GET[0m ( 1) id:  159 price: 10090, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 2) id:  159 price: 11080, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 3) id:  159 price: 11910, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:  159 price: 11910, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:  159 price: 12460, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 6) id:  159 price: 12460, delivery: 3000, 드럭스토어몰
+[32m       GET[0m ( 7) id:  159 price: 13200, delivery: 3000, 11번가
+[32m       GET[0m ( 8) id:  159 price: 13700, delivery: 3000, 위메프
+[32m       GET[0m ( 9) id:  159 price: 14240, delivery: 3000, 인터파크
+[32m       GET[0m (10) id:  159 price: 14860, delivery: 2500, SSG닷컴
+[36m  LowPrice[0m [65/190] ( 1) id:  159 price: 10090, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 1) id:36393 price: 18000, delivery: 3000, The D S
+[32m       GET[0m ( 2) id:36393 price: 19970, delivery:    0, G마켓
+[32m       GET[0m ( 3) id:36393 price: 19970, delivery:    0, 옥션
+[32m       GET[0m ( 4) id:36393 price: 20730, delivery:    0, 위메프
+[32m       GET[0m ( 5) id:36393 price: 20800, delivery:    0, K-터틀팜
+[32m       GET[0m ( 6) id:36393 price: 22000, delivery:    0, 바이오렉트라
+[32m       GET[0m ( 7) id:36393 price: 22000, delivery:    0, 착한고약사몰
+[32m       GET[0m ( 8) id:36393 price: 22000, delivery:    0, 아너스블루
+[32m       GET[0m ( 9) id:36393 price: 22000, delivery:    0, 쿠팡
+[32m       GET[0m (10) id:36393 price: 22000, delivery:    0, 미향 스토어
+[36m  LowPrice[0m [66/190] ( 1) id:36393 price: 18000, delivery: 3000, The D S
+[32m       GET[0m ( 1) id:34097 price: 77760, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 2) id:34097 price: 77770, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 3) id:34097 price: 77900, delivery: 3000, 수양건강
+[32m       GET[0m ( 4) id:34097 price:122790, delivery: 3000, Biz Mall
+[36m  LowPrice[0m [67/190] ( 1) id:34097 price: 77760, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 1) id:16261 price:  2480, delivery: 3000, 롯데ON
+[32m       GET[0m ( 2) id:16261 price: 41170, delivery: 2500, 옥션
+[32m       GET[0m ( 3) id:16261 price: 48500, delivery: 3000, 안아팜
+[32m       GET[0m ( 4) id:16261 price: 48500, delivery: 3000, 위메프
+[32m       GET[0m ( 5) id:16261 price: 53890, delivery: 3500, 건강온
+[32m       GET[0m ( 6) id:16261 price: 53900, delivery: 2500, 지앤유 GU
+[32m       GET[0m ( 7) id:16261 price: 54690, delivery: 3500, 스마트헬스장터
+[32m       GET[0m ( 8) id:16261 price: 54800, delivery:    0, 약이오
+[32m       GET[0m ( 9) id:16261 price: 57200, delivery:    0, G마켓
+[32m       GET[0m (10) id:16261 price: 68800, delivery:    0, 뉴그린팜
+[36m  LowPrice[0m [68/190] ( 1) id:16261 price:  2480, delivery: 3000, 롯데ON
+[32m       GET[0m ( 1) id:  738 price: 30000, delivery: 3000, 제일다팜
+[32m       GET[0m ( 2) id:  738 price: 30000, delivery: 3000, 아기건강365
+[32m       GET[0m ( 3) id:  738 price: 30100, delivery: 3000, 팜폭스
+[32m       GET[0m ( 4) id:  738 price: 30110, delivery: 3000, 태성헬스케어
+[32m       GET[0m ( 5) id:  738 price: 30270, delivery: 3000, 바이타민스
+[32m       GET[0m ( 6) id:  738 price: 30440, delivery: 3000, 더블유엘비에프
+[32m       GET[0m ( 7) id:  738 price: 32500, delivery: 3000, 라포몰
+[32m       GET[0m ( 8) id:  738 price: 33000, delivery: 3000, 쿠팡
+[32m       GET[0m ( 9) id:  738 price: 35990, delivery: 3000, 나눔상사
+[32m       GET[0m (10) id:  738 price: 36990, delivery: 3000, 에스제이바이오
+[36m  LowPrice[0m [69/190] ( 1) id:  738 price: 30000, delivery: 3000, 제일다팜
+[32m       GET[0m ( 1) id:  356 price:133180, delivery: 3000, 포티아
+[32m       GET[0m ( 2) id:  356 price:133180, delivery: 3000, 브이타민
+[32m       GET[0m ( 3) id:  356 price:133190, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 4) id:  356 price:136960, delivery: 3000, 바로건강몰
+[32m       GET[0m ( 5) id:  356 price:137000, delivery:    0, 태성헬스케어
+[32m       GET[0m ( 6) id:  356 price:139800, delivery: 2500, 팜팜팜스토어
+[32m       GET[0m ( 7) id:  356 price:142500, delivery: 3000, G마켓
+[32m       GET[0m ( 8) id:  356 price:143900, delivery:    0, 건식마켓
+[32m       GET[0m ( 9) id:  356 price:145900, delivery:    0, 하미팜
+[32m       GET[0m (10) id:  356 price:169500, delivery:    0, 11번가
+[36m  LowPrice[0m [70/190] ( 1) id:  356 price:133180, delivery: 3000, 포티아
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:180 url=https://msearch.shopping.naver.com/catalog/21124566060
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:24104 url=https://msearch.shopping.naver.com/catalog/21124597532
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:17111 url=https://msearch.shopping.naver.com/catalog/21124598188
+[32m       GET[0m ( 1) id:  756 price: 50000, delivery: 2500, 셀로닉스
+[36m  LowPrice[0m [74/190] ( 1) id:  756 price: 50000, delivery: 2500, 셀로닉스
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:25180 url=https://msearch.shopping.naver.com/catalog/21126215206
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:24452 url=https://msearch.shopping.naver.com/catalog/21126215208
+[32m       GET[0m ( 1) id:20167 price: 12710, delivery: 3000, DW그린케어
+[32m       GET[0m ( 2) id:20167 price: 12720, delivery: 3000, 제일다팜
+[32m       GET[0m ( 3) id:20167 price: 12740, delivery: 2500, 태성헬스케어
+[32m       GET[0m ( 4) id:20167 price: 12750, delivery: 3000, 튼튼e스토어
+[32m       GET[0m ( 5) id:20167 price: 12790, delivery: 3000, Health-Beauty
+[32m       GET[0m ( 6) id:20167 price: 12940, delivery: 3000, 더블유엘비에프
+[32m       GET[0m ( 7) id:20167 price: 13180, delivery: 3000, 오메가스토어
+[32m       GET[0m ( 8) id:20167 price: 13620, delivery: 2500, 튼튼바이오
+[32m       GET[0m ( 9) id:20167 price: 14050, delivery: 2500, 맘케어
+[32m       GET[0m (10) id:20167 price: 14100, delivery: 2500, 바이타민스
+[36m  LowPrice[0m [77/190] ( 1) id:20167 price: 12710, delivery: 3000, DW그린케어
+[32m       GET[0m ( 1) id:   99 price: 24900, delivery: 3000, 메디에이트
+[32m       GET[0m ( 2) id:   99 price: 25990, delivery: 3000, 브로콜리몰
+[32m       GET[0m ( 3) id:   99 price: 29500, delivery: 3000, 유산균박사
+[32m       GET[0m ( 4) id:   99 price: 30000, delivery:    0, 쿠팡
+[32m       GET[0m ( 5) id:   99 price: 55000, delivery: 3000, 스마일팜
+[32m       GET[0m ( 6) id:   99 price: 59990, delivery: 3000, DW그린케어
+[36m  LowPrice[0m [78/190] ( 1) id:   99 price: 24900, delivery: 3000, 메디에이트
+[32m       GET[0m ( 1) id:  718 price: 59800, delivery:    0, 온궁민건강프로젝트
+[32m       GET[0m ( 2) id:  718 price: 59800, delivery:    0, 온궁민건강프로젝트
+[32m       GET[0m ( 3) id:  718 price: 68770, delivery:    0, 인터파크
+[32m       GET[0m ( 4) id:  718 price: 68800, delivery:    0, G마켓
+[32m       GET[0m ( 5) id:  718 price: 68800, delivery:    0, 옥션
+[32m       GET[0m ( 6) id:  718 price: 69990, delivery:    0, 롯데ON
+[32m       GET[0m ( 7) id:  718 price: 70400, delivery:    0, 11번가
+[32m       GET[0m ( 8) id:  718 price: 71760, delivery:    0, 예스24
+[32m       GET[0m ( 9) id:  718 price: 80000, delivery:    0, 위메프
+[32m       GET[0m (10) id:  718 price: 81740, delivery:    0, 쿠팡
+[32m      Pass[0m no delivery, product_id:718
+[32m       GET[0m ( 1) id:24528 price: 32000, delivery: 2500, 힐링박스
+[32m       GET[0m ( 2) id:24528 price: 38000, delivery: 2800, 코코대디
+[32m       GET[0m ( 3) id:24528 price: 42370, delivery:    0, 롯데ON
+[32m       GET[0m ( 4) id:24528 price: 48000, delivery: 3000, 모모테일
+[32m       GET[0m ( 5) id:24528 price: 51900, delivery: 3000, 통상제일
+[32m       GET[0m ( 6) id:24528 price: 51900, delivery: 3000, 제시제이몰
+[32m       GET[0m ( 7) id:24528 price: 52500, delivery: 3500, 제이K컴퍼니
+[32m       GET[0m ( 8) id:24528 price: 56000, delivery:    0, 위메프
+[36m  LowPrice[0m [80/190] ( 1) id:24528 price: 32000, delivery: 2500, 힐링박스
+[32m       GET[0m ( 1) id:  156 price: 20900, delivery: 3000, 건강비밀 vi-meal
+[32m       GET[0m ( 2) id:  156 price: 22000, delivery: 3000, 365라파팜
+[32m       GET[0m ( 3) id:  156 price: 22900, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 4) id:  156 price: 22910, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 5) id:  156 price: 23000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 6) id:  156 price: 24670, delivery: 3000, 온리원 스토어
+[32m       GET[0m ( 7) id:  156 price: 25650, delivery: 3500, 이온팜
+[32m       GET[0m ( 8) id:  156 price: 27900, delivery:    0, GSSHOP
+[32m       GET[0m ( 9) id:  156 price: 28000, delivery:    0, 그린스토어공식몰
+[32m       GET[0m (10) id:  156 price: 31920, delivery:    0, CJ온스타일
+[36m  LowPrice[0m [81/190] ( 1) id:  156 price: 20900, delivery: 3000, 건강비밀 vi-meal
+[32m       GET[0m ( 1) id: 4848 price: 30480, delivery: 3000, 이미몰
+[32m       GET[0m ( 2) id: 4848 price: 31350, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id: 4848 price: 31410, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id: 4848 price: 31410, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id: 4848 price: 31420, delivery: 3000, 코스트코유니온
+[32m       GET[0m ( 6) id: 4848 price: 31440, delivery: 3000, 꼰대마트주식회사
+[32m       GET[0m ( 7) id: 4848 price: 31480, delivery: 3000, 스마일팜
+[32m       GET[0m ( 8) id: 4848 price: 31490, delivery: 3000, H.K 커머스
+[32m       GET[0m ( 9) id: 4848 price: 31500, delivery: 3000, 보니 스토리
+[32m       GET[0m (10) id: 4848 price: 31500, delivery: 3000, 블루트레이딩
+[36m  LowPrice[0m [82/190] ( 1) id: 4848 price: 30480, delivery: 3000, 이미몰
+[32m       GET[0m ( 1) id:   78 price: 33530, delivery: 3000, 코사몰.
+[32m       GET[0m ( 2) id:   78 price: 33820, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:   78 price: 33840, delivery: 3000, 코코일이오삼
+[32m       GET[0m ( 4) id:   78 price: 33850, delivery: 3000, 스마일팜
+[32m       GET[0m ( 5) id:   78 price: 33870, delivery: 3000, 케이준스토어
+[32m       GET[0m ( 6) id:   78 price: 33890, delivery: 3000, 코이코이
+[32m       GET[0m ( 7) id:   78 price: 34340, delivery: 3000, 블망몰
+[32m       GET[0m ( 8) id:   78 price: 34490, delivery: 3000, 드럭스토어몰
+[32m       GET[0m ( 9) id:   78 price: 34500, delivery: 3000, 케이플러스Mall
+[32m       GET[0m (10) id:   78 price: 34990, delivery: 3000, 다있는 마트
+[36m  LowPrice[0m [83/190] ( 1) id:   78 price: 33530, delivery: 3000, 코사몰.
+[32m       GET[0m ( 1) id:  461 price: 47300, delivery: 3000, 위메프
+[32m       GET[0m ( 2) id:  461 price: 47390, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:  461 price: 47600, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:  461 price: 48540, delivery: 3000, SC코스메틱
+[32m       GET[0m ( 5) id:  461 price: 48550, delivery: 3000, DW그린케어
+[32m       GET[0m ( 6) id:  461 price: 49160, delivery: 2900, 인터파크
+[32m       GET[0m ( 7) id:  461 price: 49590, delivery: 3000, 다이아옐로
+[32m       GET[0m ( 8) id:  461 price: 50400, delivery: 3000, 롯데ON
+[32m       GET[0m ( 9) id:  461 price: 50470, delivery: 3000, 티몬
+[32m       GET[0m (10) id:  461 price: 51200, delivery: 3500, RED BAND
+[36m  LowPrice[0m [84/190] ( 1) id:  461 price: 47300, delivery: 3000, 위메프
+[32m       GET[0m ( 1) id:   28 price: 50120, delivery: 2500, 11번가
+[32m       GET[0m ( 2) id:   28 price: 50150, delivery: 3000, 브이타민
+[32m       GET[0m ( 3) id:   28 price: 50630, delivery: 2500, 수양건강
+[32m       GET[0m ( 4) id:   28 price: 52030, delivery: 2500, 옥션
+[32m       GET[0m ( 5) id:   28 price: 52060, delivery:    0, G마켓
+[32m       GET[0m ( 6) id:   28 price: 60300, delivery:    0, 행복이 열리는 바른건강몰
+[32m       GET[0m ( 7) id:   28 price: 75000, delivery:    0, 쿠팡
+[36m  LowPrice[0m [85/190] ( 1) id:   28 price: 50120, delivery: 2500, 11번가
+[32m       GET[0m ( 1) id:38503 price: 12900, delivery: 3000, 건강비밀
+[32m       GET[0m ( 2) id:38503 price: 15580, delivery: 3000, 티몬
+[32m       GET[0m ( 3) id:38503 price: 16900, delivery:    0, 이롭 스토어
+[32m       GET[0m ( 4) id:38503 price: 17900, delivery:    0, 
+[32m       GET[0m ( 5) id:38503 price: 17900, delivery:    0, Naturalize
+[32m       GET[0m ( 6) id:38503 price: 18900, delivery: 3000, 통통호랑이
+[32m       GET[0m ( 7) id:38503 price: 19300, delivery:    0, 하나존
+[32m       GET[0m ( 8) id:38503 price: 20900, delivery: 2500, 웰빙굿타임
+[32m       GET[0m ( 9) id:38503 price: 20900, delivery:    0, 웰빙건강
+[32m       GET[0m (10) id:38503 price: 21000, delivery:    0, 포텐스토어
+[36m  LowPrice[0m [86/190] ( 1) id:38503 price: 12900, delivery: 3000, 건강비밀
+[32m       GET[0m ( 1) id: 6797 price: 44000, delivery: 3000, 미니팜
+[32m       GET[0m ( 2) id: 6797 price: 46000, delivery:    0, 힐링박스
+[32m       GET[0m ( 3) id: 6797 price: 47000, delivery:    0, 퍼스트맘닥터
+[32m       GET[0m ( 4) id: 6797 price: 55000, delivery: 2800, 코코대디
+[32m       GET[0m ( 5) id: 6797 price: 71000, delivery: 3000, 통상제일
+[36m  LowPrice[0m [87/190] ( 1) id: 6797 price: 44000, delivery: 3000, 미니팜
+[32m       GET[0m ( 1) id: 8309 price: 76900, delivery: 3000, 모모테일
+[32m       GET[0m ( 2) id: 8309 price: 77000, delivery:    0, 퍼스트맘닥터
+[32m       GET[0m ( 3) id: 8309 price: 86000, delivery: 3000, 생활헬프몰
+[32m       GET[0m ( 4) id: 8309 price: 95000, delivery: 2800, 코코대디
+[36m  LowPrice[0m [88/190] ( 1) id: 8309 price: 76900, delivery: 3000, 모모테일
+[32m       GET[0m ( 1) id:27337 price: 80000, delivery: 3000, 영네이처
+[32m       GET[0m ( 2) id:27337 price: 85900, delivery:    0, K-터틀팜
+[36m  LowPrice[0m [89/190] ( 1) id:27337 price: 80000, delivery: 3000, 영네이처
+[32m       GET[0m ( 1) id:  122 price:  5440, delivery: 3000, 로아가게
+[32m       GET[0m ( 2) id:  122 price:  5503, delivery: 3000, 티몬
+[32m       GET[0m ( 3) id:  122 price:  5513, delivery: 3000, 마트천국
+[32m       GET[0m ( 4) id:  122 price:  5550, delivery: 3000, YK STORE
+[32m       GET[0m ( 5) id:  122 price:  5750, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:  122 price:  5780, delivery: 3000, G마켓
+[32m       GET[0m ( 7) id:  122 price:  6140, delivery: 3000, 와이디에스몰
+[32m       GET[0m ( 8) id:  122 price:  6190, delivery: 3000, 여우샵
+[32m       GET[0m ( 9) id:  122 price:  6192, delivery: 3000, 지엔엘GNL
+[32m       GET[0m (10) id:  122 price:  6200, delivery: 3000, ITTTEM
+[36m  LowPrice[0m [90/190] ( 1) id:  122 price:  5440, delivery: 3000, 로아가게
+[32m       GET[0m ( 1) id:  135 price:  5440, delivery: 3000, 로아가게
+[32m       GET[0m ( 2) id:  135 price:  5503, delivery: 3000, 티몬
+[32m       GET[0m ( 3) id:  135 price:  5513, delivery: 3000, 마트천국
+[32m       GET[0m ( 4) id:  135 price:  5550, delivery: 3000, YK STORE
+[32m       GET[0m ( 5) id:  135 price:  5750, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:  135 price:  5780, delivery: 3000, G마켓
+[32m       GET[0m ( 7) id:  135 price:  6140, delivery: 3000, 와이디에스몰
+[32m       GET[0m ( 8) id:  135 price:  6190, delivery: 3000, 여우샵
+[32m       GET[0m ( 9) id:  135 price:  6192, delivery: 3000, 지엔엘GNL
+[32m       GET[0m (10) id:  135 price:  6200, delivery: 3000, ITTTEM
+[36m  LowPrice[0m [91/190] ( 1) id:  135 price:  5440, delivery: 3000, 로아가게
+[32m       GET[0m ( 1) id:15866 price: 13970, delivery:    0, 11번가
+[32m       GET[0m ( 2) id:15866 price: 14000, delivery:    0, 지엔엘
+[32m       GET[0m ( 3) id:15866 price: 14000, delivery:    0, 
+[32m       GET[0m ( 4) id:15866 price: 14000, delivery:    0, 에이치원
+[32m       GET[0m ( 5) id:15866 price: 14000, delivery:    0, 바이더웰
+[32m       GET[0m ( 6) id:15866 price: 14000, delivery:    0, 해바라기건강
+[32m      Pass[0m no delivery, product_id:15866
+[32m       GET[0m ( 1) id:27735 price:124560, delivery: 3000, 브이타민
+[32m       GET[0m ( 2) id:27735 price:124570, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 3) id:27735 price:124610, delivery: 3000, 뉴트리케어
+[32m       GET[0m ( 4) id:27735 price:124670, delivery:    0, 헤이팜
+[32m       GET[0m ( 5) id:27735 price:126320, delivery: 2500, 태성헬스케어
+[32m       GET[0m ( 6) id:27735 price:150000, delivery:    0, 매디팡
+[36m  LowPrice[0m [93/190] ( 1) id:27735 price:124560, delivery: 3000, 브이타민
+[32m       GET[0m ( 1) id:24907 price: 10140, delivery:    0, 11번가
+[32m       GET[0m ( 2) id:24907 price: 22690, delivery:    0, 쿠팡
+[32m       GET[0m ( 3) id:24907 price: 25660, delivery: 3500, 박장군상회
+[32m       GET[0m ( 4) id:24907 price: 25960, delivery:    0, 신세계라이브쇼핑
+[32m       GET[0m ( 5) id:24907 price: 26970, delivery:    0, G마켓
+[32m       GET[0m ( 6) id:24907 price: 27580, delivery:    0, 옥션
+[32m       GET[0m ( 7) id:24907 price: 28500, delivery:    0, 하프클럽
+[32m       GET[0m ( 8) id:24907 price: 28750, delivery:    0, 위메프
+[32m       GET[0m ( 9) id:24907 price: 28880, delivery: 2500, 태성헬스케어
+[32m       GET[0m (10) id:24907 price: 29800, delivery: 2500, 건강-나눔
+[32m      Pass[0m no delivery, product_id:24907
+[32m       GET[0m ( 1) id:14409 price: 27350, delivery: 3000, 뷰티선생
+[32m       GET[0m ( 2) id:14409 price: 27350, delivery: 3000, 제이오션몰
+[32m       GET[0m ( 3) id:14409 price: 27780, delivery: 3000, SC코스메틱
+[32m       GET[0m ( 4) id:14409 price: 27790, delivery: 3000, Golden pass
+[32m       GET[0m ( 5) id:14409 price: 27850, delivery: 3000, G마켓
+[32m       GET[0m ( 6) id:14409 price: 27920, delivery: 3000, 옥션
+[32m       GET[0m ( 7) id:14409 price: 28230, delivery: 3000, 뷰티맘케어
+[32m       GET[0m ( 8) id:14409 price: 28400, delivery: 3000, 마트천국
+[32m       GET[0m ( 9) id:14409 price: 30210, delivery: 3000, 굿웰빙클럽
+[32m       GET[0m (10) id:14409 price: 30500, delivery:    0, 위메프
+[36m  LowPrice[0m [95/190] ( 1) id:14409 price: 27350, delivery: 3000, 뷰티선생
+[32m       GET[0m ( 1) id:  175 price: 37240, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 2) id:  175 price: 37270, delivery: 3000, 바른마켓S
+[32m       GET[0m ( 3) id:  175 price: 37280, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 4) id:  175 price: 37370, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:  175 price: 37370, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:  175 price: 39690, delivery: 3000, 11번가
+[32m       GET[0m ( 7) id:  175 price: 40000, delivery: 3000, 닥터앤뷰티
+[32m       GET[0m ( 8) id:  175 price: 40050, delivery: 3000, 롯데ON
+[32m       GET[0m ( 9) id:  175 price: 40500, delivery: 3000, 늘품서치
+[32m       GET[0m (10) id:  175 price: 41600, delivery: 3000, 위메프
+[36m  LowPrice[0m [96/190] ( 1) id:  175 price: 37240, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 1) id:   56 price: 14420, delivery: 2500, 마트천국
+[32m       GET[0m ( 2) id:   56 price: 14770, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:   56 price: 14910, delivery: 2500, 옥션
+[32m       GET[0m ( 4) id:   56 price: 15390, delivery: 2500, 오루고유통
+[32m       GET[0m ( 5) id:   56 price: 15390, delivery: 2500, 무성유통
+[32m       GET[0m ( 6) id:   56 price: 15400, delivery: 2500, 인생샷몰
+[32m       GET[0m ( 7) id:   56 price: 16110, delivery: 3000, 롯데ON
+[32m       GET[0m ( 8) id:   56 price: 16600, delivery: 3000, 링커머스
+[32m       GET[0m ( 9) id:   56 price: 16750, delivery: 3000, 이지세일
+[32m       GET[0m (10) id:   56 price: 16800, delivery: 3000, 11번가
+[36m  LowPrice[0m [97/190] ( 1) id:   56 price: 14420, delivery: 2500, 마트천국
+[32m       GET[0m ( 1) id:  280 price: 22370, delivery: 2500, 더 건강한 세상
+[32m       GET[0m ( 2) id:  280 price: 25000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 3) id:  280 price: 25000, delivery:    0, 
+[32m       GET[0m ( 4) id:  280 price: 25000, delivery:    0, 그린스토어공식몰
+[32m       GET[0m ( 5) id:  280 price: 25200, delivery:    0, GSSHOP
+[32m       GET[0m ( 6) id:  280 price: 28500, delivery:    0, CJ온스타일
+[32m       GET[0m ( 7) id:  280 price: 30000, delivery:    0, CJ온스타일
+[32m       GET[0m ( 8) id:  280 price: 43900, delivery: 3200, 보듬
+[36m  LowPrice[0m [98/190] ( 1) id:  280 price: 22370, delivery: 2500, 더 건강한 세상
+[32m       GET[0m ( 1) id:42935 price: 30870, delivery: 2800, 라운드 ROUND
+[32m       GET[0m ( 2) id:42935 price: 30880, delivery: 3000, 지구살이29
+[32m       GET[0m ( 3) id:42935 price: 30890, delivery: 3000, Like Tree
+[32m       GET[0m ( 4) id:42935 price: 30910, delivery: 3000, 건강도우미
+[32m       GET[0m ( 5) id:42935 price: 31120, delivery: 3000, 뉴트리포
+[32m       GET[0m ( 6) id:42935 price: 31900, delivery: 3000, 선데이 모닝-
+[32m       GET[0m ( 7) id:42935 price: 35300, delivery: 3000, 빅센마켓
+[32m       GET[0m ( 8) id:42935 price: 35910, delivery: 3000, 롯데ON
+[32m       GET[0m ( 9) id:42935 price: 36000, delivery: 3000, 알럽스포츠
+[32m       GET[0m (10) id:42935 price: 37300, delivery: 3000, 메스티지
+[36m  LowPrice[0m [99/190] ( 1) id:42935 price: 30870, delivery: 2800, 라운드 ROUND
+[32m       GET[0m ( 1) id:  174 price: 20380, delivery: 3000, Zero스토어
+[32m       GET[0m ( 2) id:  174 price: 20390, delivery: 2900, 인생샷몰
+[32m       GET[0m ( 3) id:  174 price: 20390, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:  174 price: 20420, delivery: 3000, WH마켓
+[32m       GET[0m ( 5) id:  174 price: 20520, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:  174 price: 20600, delivery: 3000, THE 담다
+[32m       GET[0m ( 7) id:  174 price: 20760, delivery: 3000, ReTa
+[32m       GET[0m ( 8) id:  174 price: 20850, delivery: 3000, 건강친구샵
+[32m       GET[0m ( 9) id:  174 price: 20990, delivery: 3000, MJCO
+[32m       GET[0m (10) id:  174 price: 21250, delivery: 3000, 11번가
+[36m  LowPrice[0m [100/190] ( 1) id:  174 price: 20380, delivery: 3000, Zero스토어
+[32m       GET[0m ( 1) id:   89 price: 19880, delivery: 2900, 그린네이처팜
+[32m       GET[0m ( 2) id:   89 price: 19940, delivery: 3000, 그린이네 상점
+[32m       GET[0m ( 3) id:   89 price: 21850, delivery: 3000, 이온팜
+[32m       GET[0m ( 4) id:   89 price: 22000, delivery: 3000, 홀리데이브리즈
+[32m       GET[0m ( 5) id:   89 price: 22000, delivery: 3000, 쿠팡
+[32m       GET[0m ( 6) id:   89 price: 22040, delivery: 3000, 차오름건강
+[32m       GET[0m ( 7) id:   89 price: 22050, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 8) id:   89 price: 22180, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 9) id:   89 price: 22390, delivery: 3000, 뉴그린팜
+[32m       GET[0m (10) id:   89 price: 23000, delivery: 3000, 서치앤고 Search-Go
+[36m  LowPrice[0m [101/190] ( 1) id:   89 price: 19880, delivery: 2900, 그린네이처팜
+[32m       GET[0m ( 1) id:   29 price: 24000, delivery: 3000, 건강비밀
+[32m       GET[0m ( 2) id:   29 price: 24000, delivery: 3000, 건강비밀 vi-meal
+[32m       GET[0m ( 3) id:   29 price: 25000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 4) id:   29 price: 25000, delivery:    0, 
+[32m       GET[0m ( 5) id:   29 price: 30000, delivery:    0, CJ온스타일
+[32m       GET[0m ( 6) id:   29 price: 40000, delivery: 3000, 뉴그린팜
+[32m       GET[0m ( 7) id:   29 price:127000, delivery:    0, 쿠팡
+[36m  LowPrice[0m [102/190] ( 1) id:   29 price: 24000, delivery: 3000, 건강비밀
+[32m       GET[0m ( 1) id:16407 price: 36250, delivery:    0, 쿠팡
+[32m       GET[0m ( 2) id:16407 price: 49000, delivery:    0, 더 건강한 세상
+[32m       GET[0m ( 3) id:16407 price: 76240, delivery: 3000, 파라천사
+[32m      Pass[0m no delivery, product_id:16407
+[32m       GET[0m ( 1) id:11844 price: 22890, delivery: 3000, narsha mall
+[32m       GET[0m ( 2) id:11844 price: 22900, delivery: 3000, 홈쇼핑앤샵
+[32m       GET[0m ( 3) id:11844 price: 23000, delivery: 3000, 잼리
+[32m       GET[0m ( 4) id:11844 price: 23130, delivery: 3000, 위니딧
+[32m       GET[0m ( 5) id:11844 price: 23690, delivery: 3000, MJCO
+[32m       GET[0m ( 6) id:11844 price: 24410, delivery:    0, G마켓
+[32m       GET[0m ( 7) id:11844 price: 24590, delivery:    0, 옥션
+[32m       GET[0m ( 8) id:11844 price: 24890, delivery:    0, 인터파크
+[32m       GET[0m ( 9) id:11844 price: 24900, delivery: 3000, 바 디 포 유
+[32m       GET[0m (10) id:11844 price: 25480, delivery:    0, 롯데ON
+[36m  LowPrice[0m [104/190] ( 1) id:11844 price: 22890, delivery: 3000, narsha mall
+[32m       GET[0m ( 1) id:34086 price: 22300, delivery: 3000, 올팜든든 24시
+[32m       GET[0m ( 2) id:34086 price: 25000, delivery: 3000, 엠제이리테일
+[32m       GET[0m ( 3) id:34086 price: 27800, delivery:    0, 
+[32m       GET[0m ( 4) id:34086 price: 27800, delivery:    0, Naturalize
+[32m       GET[0m ( 5) id:34086 price: 30900, delivery:    0, 리리건강스토어
+[32m       GET[0m ( 6) id:34086 price: 35100, delivery: 3000, 봄나리
+[32m       GET[0m ( 7) id:34086 price: 36020, delivery:    0, CJ온스타일
+[32m       GET[0m ( 8) id:34086 price: 36450, delivery: 3000, Like Tree
+[32m       GET[0m ( 9) id:34086 price: 38450, delivery:    0, 뉴트리포
+[32m       GET[0m (10) id:34086 price: 38500, delivery:    0, 건강밸런스
+[36m  LowPrice[0m [105/190] ( 1) id:34086 price: 22300, delivery: 3000, 올팜든든 24시
+[32m       GET[0m ( 1) id:11985 price:  8460, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:11985 price:  8490, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 3) id:11985 price:  8570, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 4) id:11985 price:  8590, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:11985 price:  8590, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:11985 price:  8990, delivery: 3000, KHGlobal
+[32m       GET[0m ( 7) id:11985 price:  9100, delivery: 3000, TheMe
+[32m       GET[0m ( 8) id:11985 price:  9500, delivery: 3000, 라운드 ROUND
+[32m       GET[0m ( 9) id:11985 price: 10900, delivery: 3000, SC코스메틱
+[32m       GET[0m (10) id:11985 price: 11320, delivery: 2500, 티몬
+[36m  LowPrice[0m [106/190] ( 1) id:11985 price:  8460, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:19806 price: 39000, delivery: 3000, 안야뷰티
+[32m       GET[0m ( 2) id:19806 price: 40020, delivery: 3000, 티몬
+[32m       GET[0m ( 3) id:19806 price: 40840, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:19806 price: 40840, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:19806 price: 42840, delivery: 3000, 세상의모든선물
+[32m       GET[0m ( 6) id:19806 price: 43480, delivery: 3000, 11번가
+[32m       GET[0m ( 7) id:19806 price: 43900, delivery: 3000, 케이뷰티즈
+[32m       GET[0m ( 8) id:19806 price: 44000, delivery: 3300, 만다라-MANDARA
+[32m       GET[0m ( 9) id:19806 price: 44550, delivery: 3000, 롯데ON
+[32m       GET[0m (10) id:19806 price: 44900, delivery: 3000, 한방울
+[36m  LowPrice[0m [107/190] ( 1) id:19806 price: 39000, delivery: 3000, 안야뷰티
+[32m       GET[0m ( 1) id:12601 price: 27300, delivery: 3000, DW그린케어
+[32m       GET[0m ( 2) id:12601 price: 27450, delivery: 3000, 라이크 켈리
+[32m       GET[0m ( 3) id:12601 price: 28800, delivery:    0, 헬스홀케어
+[32m       GET[0m ( 4) id:12601 price: 31500, delivery: 3000, 라임건강몰
+[32m       GET[0m ( 5) id:12601 price: 31510, delivery:    0, 11번가
+[32m       GET[0m ( 6) id:12601 price: 32100, delivery:    0, 옥션
+[32m       GET[0m ( 7) id:12601 price: 32260, delivery: 3000, 에이데일리
+[32m       GET[0m ( 8) id:12601 price: 34500, delivery: 3000, 블루키워드
+[32m       GET[0m ( 9) id:12601 price: 35000, delivery:    0, 쿠팡
+[32m       GET[0m (10) id:12601 price: 35400, delivery:    0, 롯데ON
+[36m  LowPrice[0m [108/190] ( 1) id:12601 price: 27300, delivery: 3000, DW그린케어
+[32m       GET[0m ( 1) id:13651 price: 16130, delivery: 3000, 롯데ON
+[32m       GET[0m ( 2) id:13651 price: 30450, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:13651 price: 30450, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:13651 price: 30790, delivery: 3000, 늘품서치
+[32m       GET[0m ( 5) id:13651 price: 52000, delivery: 3000, 11번가
+[32m       GET[0m ( 6) id:13651 price: 88540, delivery: 4500, 핑까
+[32m       GET[0m ( 7) id:13651 price:111240, delivery: 3000, 쿠팡
+[36m  LowPrice[0m [109/190] ( 1) id:13651 price: 16130, delivery: 3000, 롯데ON
+[32m       GET[0m ( 1) id:   34 price: 57560, delivery: 3000, IRUDAM 이루담
+[32m       GET[0m ( 2) id:   34 price: 57560, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:   34 price: 57580, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:   34 price: 57580, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:   34 price: 62680, delivery: 3500, artpower
+[32m       GET[0m ( 6) id:   34 price: 62690, delivery: 3000, 위니딧
+[32m       GET[0m ( 7) id:   34 price: 64500, delivery:    0, SMDR
+[32m       GET[0m ( 8) id:   34 price:100000, delivery: 3000, 파라천사
+[32m       GET[0m ( 9) id:   34 price:135000, delivery: 3000, 롯데ON
+[32m       GET[0m (10) id:   34 price:140000, delivery: 3000, 인터파크
+[36m  LowPrice[0m [110/190] ( 1) id:   34 price: 57560, delivery: 3000, IRUDAM 이루담
+[32m       GET[0m ( 1) id:15895 price: 34140, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id:15895 price: 34140, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:15895 price: 34150, delivery: 3000, 뷰티리빙
+[32m       GET[0m ( 4) id:15895 price: 34160, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 5) id:15895 price: 34170, delivery: 3000, 스토어앤우림
+[32m       GET[0m ( 6) id:15895 price: 36900, delivery: 2700, 건강헬스포유
+[32m       GET[0m ( 7) id:15895 price: 37000, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 8) id:15895 price: 37000, delivery: 3000, 굿마미팜
+[32m       GET[0m ( 9) id:15895 price: 38400, delivery: 2500, 약사몰닷컴
+[32m       GET[0m (10) id:15895 price: 50000, delivery: 3500, 굿힐링팜
+[36m  LowPrice[0m [111/190] ( 1) id:15895 price: 34140, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:35362 price: 65550, delivery:    0, 11번가
+[32m       GET[0m ( 2) id:35362 price: 65580, delivery:    0, G마켓
+[32m       GET[0m ( 3) id:35362 price: 65990, delivery: 3000, 언니디쉬
+[32m       GET[0m ( 4) id:35362 price: 66000, delivery:    0, 아너스블루
+[32m       GET[0m ( 5) id:35362 price: 66000, delivery:    0, 바이오렉트라
+[32m       GET[0m ( 6) id:35362 price: 66000, delivery:    0, 롯데ON
+[32m       GET[0m ( 7) id:35362 price: 66000, delivery:    0, 위바스켓
+[32m       GET[0m ( 8) id:35362 price: 66000, delivery:    0, 감성편의점
+[32m       GET[0m ( 9) id:35362 price: 66000, delivery:    0, 해피아히브
+[32m       GET[0m (10) id:35362 price: 66000, delivery:    0, 미향 스토어
+[32m      Pass[0m no delivery, product_id:35362
+[32m       GET[0m ( 1) id:  721 price: 15790, delivery: 3000, 건강해U.
+[32m       GET[0m ( 2) id:  721 price: 15800, delivery: 3000, 건강비밀 vi-meal
+[32m       GET[0m ( 3) id:  721 price: 15970, delivery: 3000, 그린이네 상점
+[32m       GET[0m ( 4) id:  721 price: 15990, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 5) id:  721 price: 17780, delivery: 2500, 더 건강한 세상
+[32m       GET[0m ( 6) id:  721 price: 17790, delivery: 2500, 꼼지팜
+[32m       GET[0m ( 7) id:  721 price: 19300, delivery:    0, 스마트건강팜
+[32m       GET[0m ( 8) id:  721 price: 19800, delivery:    0, GSSHOP
+[32m       GET[0m ( 9) id:  721 price: 19900, delivery:    0, 쿠팡
+[32m       GET[0m (10) id:  721 price: 20000, delivery:    0, 그린스토어 공식몰
+[36m  LowPrice[0m [113/190] ( 1) id:  721 price: 15790, delivery: 3000, 건강해U.
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:7186 url=https://msearch.shopping.naver.com/catalog/25153051522
+[32m       GET[0m ( 1) id:  106 price: 40000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 2) id:  106 price: 40000, delivery:    0, 그린스토어공식몰
+[32m      Pass[0m no delivery, product_id:106
+[32m       GET[0m ( 1) id:34090 price: 24320, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:34090 price: 24330, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:34090 price: 24330, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:34090 price: 24440, delivery: 3000, 더 선
+[32m       GET[0m ( 5) id:34090 price: 24490, delivery: 3000, KHGlobal
+[32m       GET[0m ( 6) id:34090 price: 24490, delivery: 3000, 블망몰
+[32m       GET[0m ( 7) id:34090 price: 25500, delivery: 2500, 주식회사 아나이스
+[32m       GET[0m ( 8) id:34090 price: 25500, delivery: 3000, 내방클라쓰
+[32m       GET[0m ( 9) id:34090 price: 25900, delivery: 3000, 드럭스토어몰
+[32m       GET[0m (10) id:34090 price: 25940, delivery: 3000, SELLFORYOU
+[36m  LowPrice[0m [116/190] ( 1) id:34090 price: 24320, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:  204 price: 73000, delivery: 2500, 이너뷰티 스토어
+[36m  LowPrice[0m [117/190] ( 1) id:  204 price: 73000, delivery: 2500, 이너뷰티 스토어
+[32m       GET[0m ( 1) id:   71 price: 13910, delivery: 3000, 온리케어
+[32m       GET[0m ( 2) id:   71 price: 13910, delivery: 3000, 즐건생활 더하기
+[32m       GET[0m ( 3) id:   71 price: 16230, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 4) id:   71 price: 16240, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 5) id:   71 price: 16330, delivery: 3000, 마트천국
+[32m       GET[0m ( 6) id:   71 price: 17570, delivery: 3000, 옥션
+[32m       GET[0m ( 7) id:   71 price: 17620, delivery: 3000, G마켓
+[32m       GET[0m ( 8) id:   71 price: 18100, delivery: 3000, 그늘마켓
+[32m       GET[0m ( 9) id:   71 price: 18600, delivery: 3000, 주식회사 리플레이
+[32m       GET[0m (10) id:   71 price: 18600, delivery: 3000, 마이몰 카페 스토어
+[36m  LowPrice[0m [118/190] ( 1) id:   71 price: 13910, delivery: 3000, 온리케어
+[32m       GET[0m ( 1) id:10504 price: 12640, delivery: 3000, 오케이홈쇼핑
+[32m       GET[0m ( 2) id:10504 price: 14070, delivery:    0, 옥션
+[32m       GET[0m ( 3) id:10504 price: 15790, delivery: 3000, 오감공감
+[32m       GET[0m ( 4) id:10504 price: 15800, delivery: 3000, -오늘도 화이팅-
+[32m       GET[0m ( 5) id:10504 price: 15900, delivery:    0, 티몬
+[32m       GET[0m ( 6) id:10504 price: 16250, delivery: 3000, 위니딧
+[32m       GET[0m ( 7) id:10504 price: 16900, delivery:    0, G마켓
+[32m       GET[0m ( 8) id:10504 price: 16900, delivery: 3000, 소비탐탐
+[32m       GET[0m ( 9) id:10504 price: 17520, delivery:    0, 11번가
+[32m       GET[0m (10) id:10504 price: 17910, delivery:    0, 롯데ON
+[36m  LowPrice[0m [119/190] ( 1) id:10504 price: 12640, delivery: 3000, 오케이홈쇼핑
+[32m       GET[0m ( 1) id:11416 price: 33000, delivery:    0, 티타니아
+[32m      Pass[0m no delivery, product_id:11416
+[32m       GET[0m ( 1) id:10694 price: 14050, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:10694 price: 14060, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:10694 price: 14070, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:10694 price: 14140, delivery: 3000, 늘품서치
+[32m       GET[0m ( 5) id:10694 price: 14150, delivery: 3000, MJCO
+[32m       GET[0m ( 6) id:10694 price: 15100, delivery: 2500, WH마켓
+[32m       GET[0m ( 7) id:10694 price: 18000, delivery: 3000, 뉴트리원공식쇼핑몰
+[32m       GET[0m ( 8) id:10694 price: 18000, delivery:    0, 롯데홈쇼핑
+[32m       GET[0m ( 9) id:10694 price: 18000, delivery:    0, CJ온스타일
+[32m       GET[0m (10) id:10694 price: 18630, delivery:    0, 현대Hmall
+[36m  LowPrice[0m [121/190] ( 1) id:10694 price: 14050, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id: 9071 price:  8590, delivery: 3000, 케이커머스 주식회사
+[32m       GET[0m ( 2) id: 9071 price:  8600, delivery: 3000, marketyoo
+[32m       GET[0m ( 3) id: 9071 price: 11900, delivery: 3000, 비타민마을
+[32m       GET[0m ( 4) id: 9071 price: 14650, delivery:    0, 위메프
+[32m       GET[0m ( 5) id: 9071 price: 15040, delivery:    0, 신세계라이브쇼핑
+[32m       GET[0m ( 6) id: 9071 price: 15100, delivery:    0, G마켓
+[32m       GET[0m ( 7) id: 9071 price: 15260, delivery:    0, AK몰
+[32m       GET[0m ( 8) id: 9071 price: 16300, delivery:    0, 티몬
+[32m       GET[0m ( 9) id: 9071 price: 16500, delivery:    0, 하프클럽
+[32m       GET[0m (10) id: 9071 price: 16590, delivery:    0, 신세계몰
+[36m  LowPrice[0m [122/190] ( 1) id: 9071 price:  8590, delivery: 3000, 케이커머스 주식회사
+[32m       GET[0m ( 1) id: 9855 price: 35990, delivery: 2500, 이너뷰티 스토어
+[32m       GET[0m ( 2) id: 9855 price: 36000, delivery: 2500, 세민스토어
+[32m       GET[0m ( 3) id: 9855 price: 37800, delivery: 3000, 애나마켓
+[32m       GET[0m ( 4) id: 9855 price:117000, delivery:    0, 롯데ON
+[36m  LowPrice[0m [123/190] ( 1) id: 9855 price: 35990, delivery: 2500, 이너뷰티 스토어
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:12631 url=https://msearch.shopping.naver.com/catalog/26119204522
+[32m       GET[0m ( 1) id:   42 price: 28380, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:   42 price: 28400, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:   42 price: 28400, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:   42 price: 28410, delivery: 3000, 킴벌리쇼핑
+[32m       GET[0m ( 5) id:   42 price: 28500, delivery: 3000, 슈프레임몰
+[32m       GET[0m ( 6) id:   42 price: 29110, delivery: 3000, 롯데ON
+[32m       GET[0m ( 7) id:   42 price: 29940, delivery: 3000, skin pick
+[32m       GET[0m ( 8) id:   42 price: 29950, delivery: 3000, 행복한 직구생활
+[32m       GET[0m ( 9) id:   42 price: 30000, delivery: 3000, 어게인상점
+[32m       GET[0m (10) id:   42 price: 31000, delivery: 3000, 잼리
+[36m  LowPrice[0m [125/190] ( 1) id:   42 price: 28380, delivery: 3000, 11번가
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:34067 url=https://msearch.shopping.naver.com/catalog/26558797524
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:167 url=https://msearch.shopping.naver.com/catalog/26558831522
+[32m       GET[0m ( 1) id:12470 price: 21990, delivery:    0, 코어천연
+[32m       GET[0m ( 2) id:12470 price: 22000, delivery: 2500, 하미팜
+[32m       GET[0m ( 3) id:12470 price: 22900, delivery:    0, 태성헬스케어
+[32m       GET[0m ( 4) id:12470 price: 30000, delivery:    0, 일동제약
+[32m       GET[0m ( 5) id:12470 price: 31000, delivery:    0, 미쓰가인
+[32m       GET[0m ( 6) id:12470 price: 31000, delivery:    0, 벨라코프
+[32m       GET[0m ( 7) id:12470 price: 34040, delivery:    0, 롯데ON
+[32m       GET[0m ( 8) id:12470 price: 37400, delivery:    0, 위메프
+[32m       GET[0m ( 9) id:12470 price: 37500, delivery:    0, 포텐스토어
+[32m      Pass[0m no delivery, product_id:12470
+[32m       GET[0m ( 1) id:  387 price: 54640, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:  387 price: 54670, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:  387 price: 54670, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:  387 price: 54780, delivery: 2500, 이너뷰티 스토어
+[32m       GET[0m ( 5) id:  387 price: 54830, delivery: 3000, DW그린케어
+[32m       GET[0m ( 6) id:  387 price: 54880, delivery: 3000, 아나스 생활건강
+[32m       GET[0m ( 7) id:  387 price: 55500, delivery: 3000, 골든바닐라
+[32m       GET[0m ( 8) id:  387 price: 56080, delivery: 3000, 롯데ON
+[32m       GET[0m ( 9) id:  387 price: 56800, delivery: 3000, INNO01
+[32m       GET[0m (10) id:  387 price: 59400, delivery: 2900, 코스트코 당일배송
+[36m  LowPrice[0m [129/190] ( 1) id:  387 price: 54640, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:  107 price:113220, delivery: 3000, 인터파크
+[32m       GET[0m ( 2) id:  107 price:113650, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:  107 price:113730, delivery: 3000, 드럭스토어몰
+[32m       GET[0m ( 4) id:  107 price:113740, delivery: 3000, modeunmall
+[32m       GET[0m ( 5) id:  107 price:113780, delivery: 3000, 월촌마트
+[32m       GET[0m ( 6) id:  107 price:114500, delivery: 3000, 판다친구
+[32m       GET[0m ( 7) id:  107 price:114500, delivery: 3000, YGGlobal story
+[32m       GET[0m ( 8) id:  107 price:116830, delivery:    0, 오키도키
+[32m       GET[0m ( 9) id:  107 price:119500, delivery: 3000, 특가클라쓰
+[32m       GET[0m (10) id:  107 price:120000, delivery: 3000, 블망몰
+[36m  LowPrice[0m [130/190] ( 1) id:  107 price:113220, delivery: 3000, 인터파크
+[32m       GET[0m ( 1) id:   66 price:  9050, delivery: 2800, 11번가
+[32m       GET[0m ( 2) id:   66 price:  9060, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id:   66 price:  9060, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:   66 price:  9200, delivery: 3000, 제이컴퍼니-
+[32m       GET[0m ( 5) id:   66 price:  9210, delivery: 3000, 홈쇼핑앤샵
+[32m       GET[0m ( 6) id:   66 price:  9300, delivery: 2800, 주식회사 아나이스
+[32m       GET[0m ( 7) id:   66 price:  9300, delivery: 2800, 멸치쇼핑
+[32m       GET[0m ( 8) id:   66 price:  9390, delivery: 3000, KHGlobal
+[32m       GET[0m ( 9) id:   66 price:  9400, delivery: 3000, 스타유통
+[32m       GET[0m (10) id:   66 price:  9770, delivery: 2800, 인터파크
+[36m  LowPrice[0m [131/190] ( 1) id:   66 price:  9050, delivery: 2800, 11번가
+[32m       GET[0m ( 1) id:  283 price: 74800, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:  283 price: 74830, delivery: 3000, 위메프
+[32m       GET[0m ( 3) id:  283 price: 74900, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 4) id:  283 price: 74970, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 5) id:  283 price: 74990, delivery: 3000, G마켓
+[32m       GET[0m ( 6) id:  283 price: 74990, delivery: 3000, 옥션
+[32m       GET[0m ( 7) id:  283 price: 78000, delivery:    0, 트루엔
+[32m       GET[0m ( 8) id:  283 price: 78000, delivery:    0, 
+[32m       GET[0m ( 9) id:  283 price: 78000, delivery:    0, 쿠팡
+[32m       GET[0m (10) id:  283 price: 81560, delivery: 3000, 멸치쇼핑
+[36m  LowPrice[0m [132/190] ( 1) id:  283 price: 74800, delivery: 3000, 11번가
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:1086 url=https://msearch.shopping.naver.com/catalog/27697229522
+[32m       GET[0m ( 1) id: 1178 price:  4370, delivery: 3000, 마트천국
+[32m       GET[0m ( 2) id: 1178 price:  4500, delivery: 3000, -요기요기샵-
+[32m       GET[0m ( 3) id: 1178 price:  8140, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id: 1178 price:  8190, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id: 1178 price:  8680, delivery: 3000, 링커머스
+[32m       GET[0m ( 6) id: 1178 price:  8690, delivery: 3000, 인생샷몰
+[32m       GET[0m ( 7) id: 1178 price:  8700, delivery: 3000, 멸치쇼핑
+[32m       GET[0m ( 8) id: 1178 price:  8880, delivery: 3000, 행복한 직구생활
+[32m       GET[0m ( 9) id: 1178 price:  8900, delivery: 3000, 잼리
+[32m       GET[0m (10) id: 1178 price:  9000, delivery: 3000, 코스앤블루
+[36m  LowPrice[0m [134/190] ( 1) id: 1178 price:  4370, delivery: 3000, 마트천국
+[32m       GET[0m ( 1) id: 7138 price: 10900, delivery:    0, BOTO
+[32m       GET[0m ( 2) id: 7138 price: 10900, delivery:    0, 
+[32m       GET[0m ( 3) id: 7138 price: 11610, delivery:    0, GSSHOP
+[32m       GET[0m ( 4) id: 7138 price: 11740, delivery:    0, 옥션
+[32m       GET[0m ( 5) id: 7138 price: 11900, delivery:    0, 쿠팡
+[32m       GET[0m ( 6) id: 7138 price: 12970, delivery:    0, 신세계라이브쇼핑
+[32m       GET[0m ( 7) id: 7138 price: 13310, delivery:    0, 롯데ON
+[32m       GET[0m ( 8) id: 7138 price: 13410, delivery:    0, 롯데백화점
+[32m       GET[0m ( 9) id: 7138 price: 13900, delivery:    0, 하프클럽
+[32m       GET[0m (10) id: 7138 price: 14360, delivery:    0, SK스토아
+[32m      Pass[0m no delivery, product_id:7138
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:9688 url=https://msearch.shopping.naver.com/catalog/28388138554
+[32m       GET[0m ( 1) id:   55 price: 29000, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 2) id:   55 price: 29030, delivery: 3000, 위메프
+[32m       GET[0m ( 3) id:   55 price: 31050, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 4) id:   55 price: 31110, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:   55 price: 31110, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:   55 price: 31160, delivery: 3000, 11번가
+[32m       GET[0m ( 7) id:   55 price: 31300, delivery: 3000, 투핸즈메이트
+[32m       GET[0m ( 8) id:   55 price: 32490, delivery:    0, 쿠팡
+[32m       GET[0m ( 9) id:   55 price: 35640, delivery: 3000, 롯데ON
+[32m       GET[0m (10) id:   55 price: 37500, delivery: 3000, 태풍태양
+[36m  LowPrice[0m [137/190] ( 1) id:   55 price: 29000, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 1) id: 9631 price: 16600, delivery: 3000, 건강해U.
+[32m       GET[0m ( 2) id: 9631 price: 16610, delivery: 2500, 코어천연
+[32m       GET[0m ( 3) id: 9631 price: 16700, delivery: 2500, 태성헬스케어
+[32m       GET[0m ( 4) id: 9631 price: 17000, delivery: 2500, 하미팜
+[32m       GET[0m ( 5) id: 9631 price: 18400, delivery: 3000, 제일다팜
+[32m       GET[0m ( 6) id: 9631 price: 21760, delivery: 3000, 롯데ON
+[32m       GET[0m ( 7) id: 9631 price: 22500, delivery:    0, ALL바른연구소
+[32m       GET[0m ( 8) id: 9631 price: 25500, delivery:    0, 임스바이오팜
+[32m       GET[0m ( 9) id: 9631 price: 28050, delivery:    0, G마켓
+[32m       GET[0m (10) id: 9631 price: 30260, delivery:    0, 인터파크
+[36m  LowPrice[0m [138/190] ( 1) id: 9631 price: 16600, delivery: 3000, 건강해U.
+[32m       GET[0m ( 1) id: 7203 price: 33690, delivery:    0, 오메가스토어
+[32m       GET[0m ( 2) id: 7203 price: 33700, delivery:    0, 태성헬스케어
+[32m       GET[0m ( 3) id: 7203 price: 33720, delivery:    0, 더블유엘비에프
+[32m       GET[0m ( 4) id: 7203 price: 33730, delivery:    0, 제일다팜
+[32m       GET[0m ( 5) id: 7203 price: 36420, delivery:    0, 쿠팡
+[32m       GET[0m ( 6) id: 7203 price: 44000, delivery:    0, 11번가
+[32m       GET[0m ( 7) id: 7203 price: 57750, delivery:    0, 옥션
+[32m       GET[0m ( 8) id: 7203 price: 63000, delivery:    0, 롯데ON
+[32m       GET[0m ( 9) id: 7203 price: 70000, delivery:    0, G마켓
+[32m      Pass[0m no delivery, product_id:7203
+[32m       GET[0m ( 1) id:34109 price: 19620, delivery: 3000, 이미몰
+[32m       GET[0m ( 2) id:34109 price: 19740, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:34109 price: 19870, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:34109 price: 19890, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:34109 price: 20050, delivery: 3000, 아레스유통
+[32m       GET[0m ( 6) id:34109 price: 20170, delivery: 3000, 마음 가게
+[32m       GET[0m ( 7) id:34109 price: 20400, delivery: 3000, 케이플러스Mall
+[32m       GET[0m ( 8) id:34109 price: 20430, delivery: 3000, SH 다팜
+[32m       GET[0m ( 9) id:34109 price: 20690, delivery: 4900, 쿠팡
+[32m       GET[0m (10) id:34109 price: 20850, delivery: 3000, 오키도키
+[36m  LowPrice[0m [140/190] ( 1) id:34109 price: 19620, delivery: 3000, 이미몰
+[32m       GET[0m ( 1) id: 9703 price: 47730, delivery:    0, 11번가
+[32m       GET[0m ( 2) id: 9703 price: 47790, delivery:    0, 티몬
+[32m       GET[0m ( 3) id: 9703 price: 47800, delivery: 3000, 잘되는 SKBC
+[32m       GET[0m ( 4) id: 9703 price: 48000, delivery:    0, 드시모네 스토어
+[32m       GET[0m ( 5) id: 9703 price: 48000, delivery:    0, 
+[32m       GET[0m ( 6) id: 9703 price: 48000, delivery:    0, 약사맘닷컴
+[32m       GET[0m ( 7) id: 9703 price: 52560, delivery: 3000, 파라천사
+[32m      Pass[0m no delivery, product_id:9703
+[32m       GET[0m ( 1) id:43209 price: 11780, delivery: 3000, 롯데ON
+[32m       GET[0m ( 2) id:43209 price: 11780, delivery: 3000, 롯데백화점
+[32m       GET[0m ( 3) id:43209 price: 12380, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:43209 price: 12380, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:43209 price: 13060, delivery: 3000, 11번가
+[32m       GET[0m ( 6) id:43209 price: 13240, delivery: 3000, 인터파크
+[32m       GET[0m ( 7) id:43209 price: 13600, delivery: 3000, 위메프
+[32m       GET[0m ( 8) id:43209 price: 13920, delivery:    0, 티몬
+[32m       GET[0m ( 9) id:43209 price: 14400, delivery:    0, 쿠팡
+[32m       GET[0m (10) id:43209 price: 14400, delivery:    0, W쇼핑
+[36m  LowPrice[0m [142/190] ( 1) id:43209 price: 11780, delivery: 3000, 롯데ON
+[32m       GET[0m ( 1) id:   87 price: 26750, delivery:    0, 프리모리빙
+[32m       GET[0m ( 2) id:   87 price: 26760, delivery: 3000, 앤듀마켓
+[32m       GET[0m ( 3) id:   87 price: 26770, delivery: 3000, 11번가
+[32m       GET[0m ( 4) id:   87 price: 27050, delivery: 3000, 마켓 뉴트리
+[32m       GET[0m ( 5) id:   87 price: 27320, delivery: 3000, 이로븐
+[32m       GET[0m ( 6) id:   87 price: 28230, delivery: 3000, 오키도키
+[32m       GET[0m ( 7) id:   87 price: 29000, delivery:    0, 뉴트리코어
+[32m       GET[0m ( 8) id:   87 price: 29970, delivery: 3000, 행복한 직구생활
+[32m       GET[0m ( 9) id:   87 price: 32630, delivery: 3000, 써니데이즈샵
+[32m       GET[0m (10) id:   87 price: 32840, delivery:    0, G마켓
+[32m      Pass[0m no delivery, product_id:87
+[32m       GET[0m ( 1) id:34068 price: 86580, delivery: 3000, 위메프
+[32m       GET[0m ( 2) id:34068 price: 86680, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:34068 price: 86810, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 4) id:34068 price: 86900, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:34068 price: 86900, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:34068 price: 87740, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 7) id:34068 price: 87750, delivery: 3000, 오키 뿡키
+[32m       GET[0m ( 8) id:34068 price: 87990, delivery: 3000, KHGlobal
+[32m       GET[0m ( 9) id:34068 price: 91980, delivery: 3000, 더클라우드세븐
+[32m       GET[0m (10) id:34068 price: 92500, delivery: 3000, 위니딧
+[36m  LowPrice[0m [144/190] ( 1) id:34068 price: 86580, delivery: 3000, 위메프
+[32m       GET[0m ( 1) id:  533 price: 42870, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id:  533 price: 42900, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 3) id:  533 price: 42980, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 4) id:  533 price: 43000, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:  533 price: 43000, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:  533 price: 47940, delivery:    0, 롯데ON
+[32m       GET[0m ( 7) id:  533 price: 48950, delivery: 3000, 인터파크
+[32m       GET[0m ( 8) id:  533 price: 49780, delivery:    0, 멸치쇼핑
+[32m       GET[0m ( 9) id:  533 price: 49900, delivery:    0, 트루엔
+[32m       GET[0m (10) id:  533 price: 49900, delivery:    0, 
+[36m  LowPrice[0m [145/190] ( 1) id:  533 price: 42870, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id:   91 price: 44800, delivery:    0, 헬시라이프365
+[32m       GET[0m ( 2) id:   91 price: 46800, delivery:    0, 명기삼
+[32m       GET[0m ( 3) id:   91 price: 97000, delivery:    0, 엠에프컴퍼니
+[32m       GET[0m ( 4) id:   91 price: 98600, delivery:    0, 뉴욕스킨
+[32m       GET[0m ( 5) id:   91 price: 99000, delivery:    0, 옥션
+[32m       GET[0m ( 6) id:   91 price:191260, delivery:    0, 1300K
+[32m       GET[0m ( 7) id:   91 price:221340, delivery:    0, 하프클럽
+[32m       GET[0m ( 8) id:   91 price:222300, delivery:    0, 롯데ON
+[32m       GET[0m ( 9) id:   91 price:237000, delivery:    0, 99 산타스 마켓
+[32m       GET[0m (10) id:   91 price:238000, delivery:    0, nbnmall shop
+[32m      Pass[0m no delivery, product_id:91
+[32m       GET[0m ( 1) id:   63 price:  8990, delivery: 3000, 로아가게
+[32m       GET[0m ( 2) id:   63 price:  9130, delivery: 3000, 마트천국
+[32m       GET[0m ( 3) id:   63 price:  9430, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:   63 price:  9430, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:   63 price:  9650, delivery: 3000, 드림쿰다
+[32m       GET[0m ( 6) id:   63 price:  9660, delivery: 3000, 뷰티마을
+[32m       GET[0m ( 7) id:   63 price:  9750, delivery: 3000, YK STORE
+[32m       GET[0m ( 8) id:   63 price:  9880, delivery: 3000, 일일섭취량
+[32m       GET[0m ( 9) id:   63 price:  9900, delivery: 3000, 11번가
+[32m       GET[0m (10) id:   63 price:  9900, delivery: 3000, 잼리
+[36m  LowPrice[0m [147/190] ( 1) id:   63 price:  8990, delivery: 3000, 로아가게
+[32m       GET[0m ( 1) id:  641 price: 17880, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 2) id:  641 price: 17890, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 3) id:  641 price: 17890, delivery: 3000, K-터틀팜
+[32m       GET[0m ( 4) id:  641 price: 17900, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:  641 price: 19800, delivery:    0, GSSHOP
+[32m       GET[0m ( 6) id:  641 price: 20000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 7) id:  641 price: 20000, delivery:    0, 
+[32m       GET[0m ( 8) id:  641 price: 20000, delivery:    0, 그린스토어공식몰
+[32m       GET[0m ( 9) id:  641 price: 22800, delivery:    0, CJ온스타일
+[32m       GET[0m (10) id:  641 price: 23160, delivery:    0, 롯데ON
+[36m  LowPrice[0m [148/190] ( 1) id:  641 price: 17880, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 1) id:16580 price: 11900, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id:16580 price: 11900, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:16580 price: 11910, delivery: 3000, 인생샷몰
+[32m       GET[0m ( 4) id:16580 price: 11910, delivery: 3000, MJCO
+[32m       GET[0m ( 5) id:16580 price: 12600, delivery: 3000, mirplaza..
+[32m       GET[0m ( 6) id:16580 price: 13000, delivery: 3000, 디카라이프 주식회사
+[32m       GET[0m ( 7) id:16580 price: 13400, delivery: 2500, 멸치쇼핑
+[32m       GET[0m ( 8) id:16580 price: 13400, delivery: 2500, 주식회사 아나이스
+[32m       GET[0m ( 9) id:16580 price: 13460, delivery: 3000, 11번가
+[32m       GET[0m (10) id:16580 price: 13700, delivery: 3000, 건강해U.
+[36m  LowPrice[0m [149/190] ( 1) id:16580 price: 11900, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:  639 price: 80960, delivery:    0, 위메프
+[32m       GET[0m ( 2) id:  639 price: 81500, delivery:    0, 더클라우드세븐
+[32m       GET[0m ( 3) id:  639 price: 81930, delivery:    0, G마켓
+[32m       GET[0m ( 4) id:  639 price: 81930, delivery:    0, 옥션
+[32m       GET[0m ( 5) id:  639 price: 89760, delivery:    0, 11번가
+[32m       GET[0m ( 6) id:  639 price:110000, delivery:    0, 뉴오리진
+[32m       GET[0m ( 7) id:  639 price:110000, delivery:    0, 
+[32m      Pass[0m no delivery, product_id:639
+[32m       GET[0m ( 1) id: 9348 price: 46110, delivery: 3000, 앤듀마켓
+[32m       GET[0m ( 2) id: 9348 price: 46120, delivery: 3000, 오키도키
+[32m       GET[0m ( 3) id: 9348 price: 46200, delivery: 3000, 월촌마트
+[32m       GET[0m ( 4) id: 9348 price: 46890, delivery: 3000, 드럭스토어몰
+[32m       GET[0m ( 5) id: 9348 price: 46920, delivery: 3000, 마켓 뉴트리
+[32m       GET[0m ( 6) id: 9348 price: 47680, delivery: 3000, 아이스윗
+[32m       GET[0m ( 7) id: 9348 price: 48000, delivery:    0, 
+[32m       GET[0m ( 8) id: 9348 price: 48000, delivery:    0, H종합몰
+[32m       GET[0m ( 9) id: 9348 price: 63800, delivery:    0, 롯데ON
+[32m       GET[0m (10) id: 9348 price: 69400, delivery: 3000, 쿠팡
+[36m  LowPrice[0m [151/190] ( 1) id: 9348 price: 46110, delivery: 3000, 앤듀마켓
+[32m       GET[0m ( 1) id: 5279 price: 44260, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id: 5279 price: 44260, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id: 5279 price: 44260, delivery: 2900, Zero스토어
+[32m       GET[0m ( 4) id: 5279 price: 44270, delivery: 3000, 행복한 직구생활
+[32m       GET[0m ( 5) id: 5279 price: 44280, delivery: 3000, 긱샵
+[32m       GET[0m ( 6) id: 5279 price: 44280, delivery: 2800, 제이엠온케어
+[32m       GET[0m ( 7) id: 5279 price: 44890, delivery: 3000, 서편마켓
+[32m       GET[0m ( 8) id: 5279 price: 44900, delivery: 3000, 판다친구
+[32m       GET[0m ( 9) id: 5279 price: 45040, delivery: 3000, 더클라우드세븐
+[32m       GET[0m (10) id: 5279 price: 45270, delivery: 3000, mirplaza..
+[36m  LowPrice[0m [152/190] ( 1) id: 5279 price: 44260, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:38004 price: 17220, delivery: 3000, marketyoo
+[32m       GET[0m ( 2) id:38004 price: 17820, delivery:    0, 롯데ON
+[32m       GET[0m ( 3) id:38004 price: 18220, delivery:    0, 위메프
+[32m       GET[0m ( 4) id:38004 price: 18310, delivery:    0, 11번가
+[32m       GET[0m ( 5) id:38004 price: 19800, delivery:    0, 폴인헬스
+[32m       GET[0m ( 6) id:38004 price: 19800, delivery:    0, 쿠팡
+[32m       GET[0m ( 7) id:38004 price: 20800, delivery:    0, 인테로
+[32m       GET[0m ( 8) id:38004 price: 20800, delivery:    0, 한양상회
+[32m       GET[0m ( 9) id:38004 price: 20800, delivery:    0, 에코 뉴트리션
+[32m       GET[0m (10) id:38004 price: 20800, delivery:    0, G마켓
+[36m  LowPrice[0m [153/190] ( 1) id:38004 price: 17220, delivery: 3000, marketyoo
+[32m       GET[0m ( 1) id:10917 price: 24660, delivery: 7000, 11번가
+[32m       GET[0m ( 2) id:10917 price: 24680, delivery: 3500, 태양팜스
+[32m       GET[0m ( 3) id:10917 price: 24690, delivery: 3500, 킴스글로벌마트
+[32m       GET[0m ( 4) id:10917 price: 25750, delivery: 3000, 맘스 상점
+[32m       GET[0m ( 5) id:10917 price: 26900, delivery: 3000, 이로븐
+[32m       GET[0m ( 6) id:10917 price: 27000, delivery: 3000, 글로벌 store
+[32m       GET[0m ( 7) id:10917 price: 27490, delivery: 3000, 바이피그
+[32m       GET[0m ( 8) id:10917 price: 27810, delivery: 2500, 롯데ON
+[32m       GET[0m ( 9) id:10917 price: 28380, delivery:    0, 코코바이몰
+[32m       GET[0m (10) id:10917 price: 28790, delivery:    0, 코앤몰
+[36m  LowPrice[0m [154/190] ( 1) id:10917 price: 24660, delivery: 7000, 11번가
+[32m       GET[0m ( 1) id:37372 price: 15880, delivery: 3000, 건강한터틀스
+[32m       GET[0m ( 2) id:37372 price: 15880, delivery: 3000, 런던house
+[32m       GET[0m ( 3) id:37372 price: 15890, delivery: 3000, 이지큐
+[32m       GET[0m ( 4) id:37372 price: 15900, delivery: 2500, 롯데ON
+[32m       GET[0m ( 5) id:37372 price: 16680, delivery: 3000, 조이백화점
+[32m       GET[0m ( 6) id:37372 price: 16700, delivery: 3000, 주식회사 헬스큐어
+[32m       GET[0m ( 7) id:37372 price: 16890, delivery: 3000, 핑까
+[32m       GET[0m ( 8) id:37372 price: 16900, delivery:    0, GMStore
+[32m       GET[0m ( 9) id:37372 price: 16900, delivery: 2500, 이마트몰
+[32m       GET[0m (10) id:37372 price: 16900, delivery:    0, 푸른건강몰
+[36m  LowPrice[0m [155/190] ( 1) id:37372 price: 15880, delivery: 3000, 건강한터틀스
+[32m       GET[0m ( 1) id: 9459 price: 30580, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 2) id: 9459 price: 30640, delivery: 2990, 뷰랩 스토어
+[32m       GET[0m ( 3) id: 9459 price: 31500, delivery: 3000, 온팜. 건강을 선물하다
+[32m       GET[0m ( 4) id: 9459 price: 40000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m ( 5) id: 9459 price: 40000, delivery:    0, 
+[32m       GET[0m ( 6) id: 9459 price: 40000, delivery:    0, 그린스토어공식몰
+[32m       GET[0m ( 7) id: 9459 price: 45600, delivery:    0, CJ온스타일
+[32m       GET[0m ( 8) id: 9459 price: 46080, delivery:    0, 11번가
+[36m  LowPrice[0m [156/190] ( 1) id: 9459 price: 30580, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 1) id:13622 price: 23900, delivery:    0, 쿠팡
+[32m       GET[0m ( 2) id:13622 price: 30900, delivery:    0, 함소아공식몰
+[32m       GET[0m ( 3) id:13622 price: 30900, delivery:    0, 
+[32m      Pass[0m no delivery, product_id:13622
+[32m       GET[0m ( 1) id: 7053 price: 34410, delivery: 2500, 옥션
+[32m       GET[0m ( 2) id: 7053 price: 34410, delivery: 2500, G마켓
+[32m       GET[0m ( 3) id: 7053 price: 34420, delivery: 2500, 11번가
+[32m       GET[0m ( 4) id: 7053 price: 35500, delivery: 2500, 주식회사 아나이스
+[32m       GET[0m ( 5) id: 7053 price: 35500, delivery: 2500, 멸치쇼핑
+[32m       GET[0m ( 6) id: 7053 price: 54600, delivery:    0, 드시모네 스토어
+[32m       GET[0m ( 7) id: 7053 price: 54600, delivery:    0, 
+[32m       GET[0m ( 8) id: 7053 price: 73320, delivery:    0, 롯데ON
+[32m       GET[0m ( 9) id: 7053 price: 78000, delivery:    0, 드시모네
+[32m       GET[0m (10) id: 7053 price:100000, delivery: 2800, 주식회사 아이지비
+[36m  LowPrice[0m [158/190] ( 1) id: 7053 price: 34410, delivery: 2500, 옥션
+[32m       GET[0m ( 1) id: 4120 price: 14990, delivery: 3000, 노드9
+[32m       GET[0m ( 2) id: 4120 price: 15000, delivery:    0, G마켓
+[32m       GET[0m ( 3) id: 4120 price: 15000, delivery:    0, 옥션
+[32m       GET[0m ( 4) id: 4120 price: 19000, delivery: 3000, 일동제약
+[32m       GET[0m ( 5) id: 4120 price: 20000, delivery: 3000, 
+[36m  LowPrice[0m [159/190] ( 1) id: 4120 price: 14990, delivery: 3000, 노드9
+[32m       GET[0m ( 1) id:19657 price: 45900, delivery: 3000, 하루앤픽
+[32m       GET[0m ( 2) id:19657 price: 46000, delivery:    0, 듀오락 유산균
+[32m       GET[0m ( 3) id:19657 price: 46000, delivery:    0, 
+[32m       GET[0m ( 4) id:19657 price: 46000, delivery:    0, 당.고.몰
+[32m       GET[0m ( 5) id:19657 price: 46000, delivery: 3000, 픽앳도어
+[32m       GET[0m ( 6) id:19657 price: 47190, delivery: 3000, G마켓
+[32m       GET[0m ( 7) id:19657 price: 47190, delivery: 3000, 옥션
+[32m       GET[0m ( 8) id:19657 price: 63700, delivery: 3000, 롯데ON
+[36m  LowPrice[0m [160/190] ( 1) id:19657 price: 45900, delivery: 3000, 하루앤픽
+[32m       GET[0m ( 1) id:  546 price: 29500, delivery: 3000, MOM-N
+[32m       GET[0m ( 2) id:  546 price: 33000, delivery: 3000, IRUDAM 이루담
+[32m       GET[0m ( 3) id:  546 price: 33000, delivery: 3000, THE 담다
+[32m       GET[0m ( 4) id:  546 price: 33000, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:  546 price: 35480, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:  546 price: 37840, delivery: 3000, 11번가
+[32m       GET[0m ( 7) id:  546 price: 41580, delivery: 3000, 에이슈
+[32m       GET[0m ( 8) id:  546 price: 50400, delivery:    0, AK몰
+[32m       GET[0m ( 9) id:  546 price: 53000, delivery:    0, 닥터프리오
+[32m       GET[0m (10) id:  546 price: 53000, delivery:    0, 닥터프리오
+[36m  LowPrice[0m [161/190] ( 1) id:  546 price: 29500, delivery: 3000, MOM-N
+[32m       GET[0m ( 1) id:  723 price: 39890, delivery:    0, 롯데ON
+[32m       GET[0m ( 2) id:  723 price: 39900, delivery:    0, 쿠팡
+[32m       GET[0m ( 3) id:  723 price: 41250, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:  723 price: 41250, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:  723 price: 46000, delivery: 3000, DW그린케어
+[32m       GET[0m ( 6) id:  723 price: 46090, delivery: 3000, 에이슈
+[32m       GET[0m ( 7) id:  723 price: 47000, delivery: 3000, 다이아옐로
+[32m       GET[0m ( 8) id:  723 price: 48720, delivery: 3000, 인터파크
+[32m       GET[0m ( 9) id:  723 price: 52170, delivery: 3000, 위메프
+[32m       GET[0m (10) id:  723 price: 52700, delivery: 3000, INNO01
+[32m      Pass[0m no delivery, product_id:723
+[32m       GET[0m ( 1) id:  328 price: 19800, delivery:    0, 뷰티베러몰
+[32m       GET[0m ( 2) id:  328 price: 19900, delivery: 3000, 뷰티헬씨스토어
+[32m       GET[0m ( 3) id:  328 price: 44910, delivery:    0, 롯데ON
+[32m       GET[0m ( 4) id:  328 price: 48230, delivery:    0, 신세계라이브쇼핑
+[32m       GET[0m ( 5) id:  328 price: 66960, delivery:    0, 홈앤쇼핑
+[32m      Pass[0m no delivery, product_id:328
+[32m       GET[0m ( 1) id: 7959 price:  9170, delivery: 3000, 또또와1
+[32m       GET[0m ( 2) id: 7959 price:  9410, delivery:    0, 롯데ON
+[32m       GET[0m ( 3) id: 7959 price:  9900, delivery:    0, HD생활건강
+[32m       GET[0m ( 4) id: 7959 price:  9900, delivery:    0, 위메프
+[32m       GET[0m ( 5) id: 7959 price:  9900, delivery:    0, 롯데홈쇼핑
+[32m       GET[0m ( 6) id: 7959 price: 11920, delivery:    0, 한미생활건강
+[32m       GET[0m ( 7) id: 7959 price: 14440, delivery:    0, G마켓
+[32m       GET[0m ( 8) id: 7959 price: 14440, delivery:    0, 옥션
+[32m       GET[0m ( 9) id: 7959 price: 14500, delivery: 3000, 웰코코 플러스
+[32m       GET[0m (10) id: 7959 price: 14900, delivery:    0, 한미생활건강
+[36m  LowPrice[0m [164/190] ( 1) id: 7959 price:  9170, delivery: 3000, 또또와1
+[32m       GET[0m ( 1) id:  273 price: 32890, delivery: 3000, 큰아방네
+[32m       GET[0m ( 2) id:  273 price: 32900, delivery:    0, 이스트샵
+[32m       GET[0m ( 3) id:  273 price: 40690, delivery:    0, 헬스유니버스
+[32m       GET[0m ( 4) id:  273 price: 40900, delivery:    0, 트릴리어네어스
+[36m  LowPrice[0m [165/190] ( 1) id:  273 price: 32890, delivery: 3000, 큰아방네
+[32m       GET[0m ( 1) id: 2604 price: 25120, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id: 2604 price: 25120, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id: 2604 price: 25130, delivery: 3000, 11번가
+[32m       GET[0m ( 4) id: 2604 price: 25890, delivery: 3000, 진리마켓-JINRI
+[32m       GET[0m ( 5) id: 2604 price: 25900, delivery: 2800, 오늘도연구소
+[32m       GET[0m ( 6) id: 2604 price: 27200, delivery: 3000, 늘품서치
+[32m       GET[0m ( 7) id: 2604 price: 28000, delivery: 3000, 잼리
+[32m       GET[0m ( 8) id: 2604 price: 28050, delivery: 3000, 곰돌스마켓
+[32m       GET[0m ( 9) id: 2604 price: 32400, delivery: 3000, 위메프
+[32m       GET[0m (10) id: 2604 price: 43500, delivery: 3000, 블루키워드
+[36m  LowPrice[0m [166/190] ( 1) id: 2604 price: 25120, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:  501 price: 37460, delivery: 3000, 빅할인365
+[32m       GET[0m ( 2) id:  501 price: 37470, delivery: 3000, 옥션
+[32m       GET[0m ( 3) id:  501 price: 37470, delivery: 3000, G마켓
+[32m       GET[0m ( 4) id:  501 price: 37810, delivery: 3000, 주식회사 어퍼
+[32m       GET[0m ( 5) id:  501 price: 37820, delivery: 3000, 늘품서치
+[32m       GET[0m ( 6) id:  501 price: 43000, delivery:    0, 뉴트리원공식스토어
+[36m  LowPrice[0m [167/190] ( 1) id:  501 price: 37460, delivery: 3000, 빅할인365
+[32m       GET[0m ( 1) id: 1991 price: 24800, delivery:    0, 뉴트리원공식스토어
+[32m       GET[0m ( 2) id: 1991 price: 26650, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id: 1991 price: 26650, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id: 1991 price: 27990, delivery: 3000, 늘품서치
+[32m      Pass[0m no delivery, product_id:1991
+[32m       GET[0m ( 1) id: 5144 price: 16000, delivery: 3000, 그린네이처팜
+[32m       GET[0m ( 2) id: 5144 price: 16000, delivery: 3200, 줄라이포레스트
+[32m       GET[0m ( 3) id: 5144 price: 16690, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 4) id: 5144 price: 16840, delivery: 3000, 원바이오팜
+[32m       GET[0m ( 5) id: 5144 price: 18000, delivery: 3500, 건강해지는지음몰
+[32m       GET[0m ( 6) id: 5144 price: 19000, delivery: 3000, 산소팜
+[32m       GET[0m ( 7) id: 5144 price: 19200, delivery: 2500, K-터틀팜
+[32m       GET[0m ( 8) id: 5144 price: 19800, delivery: 2500, GSSHOP
+[32m       GET[0m ( 9) id: 5144 price: 20000, delivery:    0, 그린스토어 공식몰
+[32m       GET[0m (10) id: 5144 price: 20000, delivery:    0, 
+[36m  LowPrice[0m [169/190] ( 1) id: 5144 price: 16000, delivery: 3000, 그린네이처팜
+[32m       GET[0m ( 1) id: 2364 price: 23000, delivery: 3000, 주식회사 어퍼
+[32m       GET[0m ( 2) id: 2364 price: 23930, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id: 2364 price: 23930, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id: 2364 price: 55000, delivery: 3000, 쿠팡
+[32m       GET[0m ( 5) id: 2364 price: 63800, delivery:    0, 종근당건강
+[32m       GET[0m ( 6) id: 2364 price: 63800, delivery:    0, 
+[32m       GET[0m ( 7) id: 2364 price: 64600, delivery:    0, 위메프
+[36m  LowPrice[0m [170/190] ( 1) id: 2364 price: 23000, delivery: 3000, 주식회사 어퍼
+[32m       GET[0m ( 1) id:  900 price: 53350, delivery:    0, G마켓
+[32m       GET[0m ( 2) id:  900 price: 53350, delivery:    0, 옥션
+[32m       GET[0m ( 3) id:  900 price: 53360, delivery: 3000, 떡까상회
+[32m       GET[0m ( 4) id:  900 price: 55800, delivery:    0, 위메프
+[32m       GET[0m ( 5) id:  900 price: 55800, delivery:    0, 티몬
+[32m       GET[0m ( 6) id:  900 price: 55800, delivery:    0, SK스토아
+[32m       GET[0m ( 7) id:  900 price: 56000, delivery:    0, GRN
+[32m       GET[0m ( 8) id:  900 price: 57600, delivery:    0, 롯데ON
+[32m       GET[0m ( 9) id:  900 price: 57600, delivery:    0, 인터파크
+[32m       GET[0m (10) id:  900 price: 58650, delivery:    0, LFmall
+[32m      Pass[0m no delivery, product_id:900
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:6124 url=https://msearch.shopping.naver.com/catalog/33737483619
+[32m       GET[0m ( 1) id: 4701 price: 27890, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id: 4701 price: 27900, delivery: 2800, G마켓
+[32m       GET[0m ( 3) id: 4701 price: 27900, delivery: 2800, 옥션
+[32m       GET[0m ( 4) id: 4701 price: 28160, delivery: 3000, 홈쇼핑앤샵
+[32m       GET[0m ( 5) id: 4701 price: 28170, delivery: 3000, 방물가게
+[32m       GET[0m ( 6) id: 4701 price: 28700, delivery: 3000, IRUDAM 이루담
+[32m       GET[0m ( 7) id: 4701 price: 28800, delivery: 3000, 곰곰이 상점
+[32m       GET[0m ( 8) id: 4701 price: 30300, delivery: 2800, 더클라우드세븐
+[32m       GET[0m ( 9) id: 4701 price: 30600, delivery: 3000, 롯데ON
+[32m       GET[0m (10) id: 4701 price: 31060, delivery:    0, 써클홀딩스
+[36m  LowPrice[0m [173/190] ( 1) id: 4701 price: 27890, delivery: 3000, 11번가
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:2952 url=https://msearch.shopping.naver.com/catalog/34541513618
+[32m       GET[0m ( 1) id:   72 price: 19770, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id:   72 price: 24020, delivery:    0, 옥션
+[32m       GET[0m ( 3) id:   72 price: 24950, delivery:    0, 태성헬스케어
+[32m       GET[0m ( 4) id:   72 price: 26360, delivery:    0, 11번가
+[32m       GET[0m ( 5) id:   72 price: 31150, delivery:    0, 인터파크
+[36m  LowPrice[0m [175/190] ( 1) id:   72 price: 19770, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:26900 price: 16540, delivery: 3000, 스토어앤우림
+[32m       GET[0m ( 2) id:26900 price: 23890, delivery: 3000, 뉴그린팜
+[36m  LowPrice[0m [176/190] ( 1) id:26900 price: 16540, delivery: 3000, 스토어앤우림
+[32m       GET[0m ( 1) id:15910 price: 33660, delivery: 3000, 뷰티리빙
+[32m       GET[0m ( 2) id:15910 price: 33670, delivery: 3500, 굿힐링팜
+[32m       GET[0m ( 3) id:15910 price: 34000, delivery: 3000, 호인
+[32m       GET[0m ( 4) id:15910 price: 34070, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:15910 price: 34070, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:15910 price: 34640, delivery: 3000, 텔로스마켓
+[32m       GET[0m ( 7) id:15910 price: 34840, delivery: 3000, 이팜사팜
+[32m       GET[0m ( 8) id:15910 price: 34880, delivery: 3000, 스토어앤우림
+[32m       GET[0m ( 9) id:15910 price: 34990, delivery: 3000, DW그린케어
+[32m       GET[0m (10) id:15910 price: 36890, delivery: 3000, 더 건강한 세상
+[36m  LowPrice[0m [177/190] ( 1) id:15910 price: 33660, delivery: 3000, 뷰티리빙
+[32m       GET[0m ( 1) id:15896 price: 29820, delivery: 3000, G마켓
+[32m       GET[0m ( 2) id:15896 price: 29830, delivery: 3000, 호인
+[32m       GET[0m ( 3) id:15896 price: 29830, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:15896 price: 29840, delivery: 3000, 그린이네 상점
+[32m       GET[0m ( 5) id:15896 price: 29960, delivery: 3000, 스토어앤우림
+[32m       GET[0m ( 6) id:15896 price: 30050, delivery: 3000, 더 건강한 세상
+[32m       GET[0m ( 7) id:15896 price: 30490, delivery: 3000, 롯데ON
+[32m       GET[0m ( 8) id:15896 price: 30870, delivery: 3000, BNC Healthcare
+[32m       GET[0m ( 9) id:15896 price: 30870, delivery: 3000, 굿마미팜
+[32m       GET[0m (10) id:15896 price: 31500, delivery: 3000, 봄웰스팜
+[36m  LowPrice[0m [178/190] ( 1) id:15896 price: 29820, delivery: 3000, G마켓
+[32m       GET[0m ( 1) id:12922 price: 10340, delivery: 2500, 종로생활건강
+[32m       GET[0m ( 2) id:12922 price: 10340, delivery: 3000, DW그린케어
+[32m       GET[0m ( 3) id:12922 price: 10380, delivery: 3000, 웰빙메디칼
+[32m       GET[0m ( 4) id:12922 price: 11090, delivery: 3000, 드럭큐브
+[32m       GET[0m ( 5) id:12922 price: 12240, delivery: 2500, OK Nutra
+[32m       GET[0m ( 6) id:12922 price: 15260, delivery: 2500, G마켓
+[32m       GET[0m ( 7) id:12922 price: 15260, delivery:    0, 옥션
+[32m       GET[0m ( 8) id:12922 price: 16280, delivery:    0, 11번가
+[32m       GET[0m ( 9) id:12922 price: 19000, delivery:    0, 아이케어유
+[32m       GET[0m (10) id:12922 price: 22170, delivery:    0, 인터파크
+[36m  LowPrice[0m [179/190] ( 1) id:12922 price: 10340, delivery: 2500, 종로생활건강
+[32m       GET[0m ( 1) id: 8184 price: 12750, delivery: 3000, 럭키스툴
+[32m       GET[0m ( 2) id: 8184 price: 12970, delivery: 3000, KR생활건강
+[32m       GET[0m ( 3) id: 8184 price: 22170, delivery: 2500, 인터파크
+[32m       GET[0m ( 4) id: 8184 price: 23510, delivery:    0, G마켓
+[32m       GET[0m ( 5) id: 8184 price: 28620, delivery:    0, 옥션
+[32m       GET[0m ( 6) id: 8184 price: 30800, delivery:    0, 11번가
+[32m       GET[0m ( 7) id: 8184 price: 31500, delivery:    0, 롯데ON
+[36m  LowPrice[0m [180/190] ( 1) id: 8184 price: 12750, delivery: 3000, 럭키스툴
+[32m       GET[0m ( 1) id: 8692 price: 46870, delivery: 3000, 11번가
+[32m       GET[0m ( 2) id: 8692 price: 46900, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 3) id: 8692 price: 46970, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 4) id: 8692 price: 46990, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id: 8692 price: 46990, delivery: 3000, G마켓
+[32m       GET[0m ( 6) id: 8692 price: 47000, delivery:    0, 더리틀스
+[32m       GET[0m ( 7) id: 8692 price: 47000, delivery:    0, 
+[32m       GET[0m ( 8) id: 8692 price: 47000, delivery:    0, 쿠팡
+[32m       GET[0m ( 9) id: 8692 price: 51600, delivery: 3000, 위메프
+[32m       GET[0m (10) id: 8692 price: 57770, delivery: 3000, 티몬
+[36m  LowPrice[0m [181/190] ( 1) id: 8692 price: 46870, delivery: 3000, 11번가
+[32m       GET[0m ( 1) id: 1022 price: 31820, delivery: 3000, 옥션
+[32m       GET[0m ( 2) id: 1022 price: 31820, delivery: 3000, G마켓
+[32m       GET[0m ( 3) id: 1022 price: 32690, delivery: 3000, 뷰티미소
+[32m       GET[0m ( 4) id: 1022 price: 32690, delivery: 3000, kj생활건강
+[32m       GET[0m ( 5) id: 1022 price: 32820, delivery: 3000, 인터파크
+[32m       GET[0m ( 6) id: 1022 price: 32990, delivery: 3000, 보담퓨어
+[32m       GET[0m ( 7) id: 1022 price: 33000, delivery: 3000, 이클마트
+[32m       GET[0m ( 8) id: 1022 price: 33440, delivery: 3000, 11번가
+[32m       GET[0m ( 9) id: 1022 price: 34000, delivery: 3000, 라온뷰티스토리
+[32m       GET[0m (10) id: 1022 price: 34360, delivery: 3000, 롯데ON
+[36m  LowPrice[0m [182/190] ( 1) id: 1022 price: 31820, delivery: 3000, 옥션
+[32m       GET[0m ( 1) id:  261 price: 82600, delivery:    0, 리포데이
+[32m       GET[0m ( 2) id:  261 price: 82600, delivery:    0, 쿠팡
+[32m      Pass[0m no delivery, product_id:261
+[32m       GET[0m ( 1) id:12585 price: 23800, delivery: 3900, 11번가
+[32m       GET[0m ( 2) id:12585 price: 24000, delivery: 3000, 원하트
+[32m       GET[0m ( 3) id:12585 price: 25480, delivery: 3000, 롯데ON
+[32m       GET[0m ( 4) id:12585 price: 34000, delivery:    0, AK몰
+[32m       GET[0m ( 5) id:12585 price: 35900, delivery: 2500, G마켓
+[36m  LowPrice[0m [184/190] ( 1) id:12585 price: 23800, delivery: 3900, 11번가
+[32m       GET[0m ( 1) id:31188 price:149930, delivery: 3000, 티몬
+[32m       GET[0m ( 2) id:31188 price:149940, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:31188 price:151950, delivery:    0, 위메프
+[32m       GET[0m ( 4) id:31188 price:152500, delivery: 3000, 옥션
+[32m       GET[0m ( 5) id:31188 price:153570, delivery: 3000, 비영헬스케어
+[32m       GET[0m ( 6) id:31188 price:153590, delivery: 3000, 소율스토리몰
+[32m       GET[0m ( 7) id:31188 price:153600, delivery: 3000, 해피스타트스토어
+[32m       GET[0m ( 8) id:31188 price:155060, delivery:    0, G마켓
+[32m       GET[0m ( 9) id:31188 price:155110, delivery: 3000, artpower
+[32m       GET[0m (10) id:31188 price:156300, delivery: 3000, 구매대행 김여사
+[36m  LowPrice[0m [185/190] ( 1) id:31188 price:149930, delivery: 3000, 티몬
+[32m       GET[0m ( 1) id:23643 price: 16070, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 2) id:23643 price: 17570, delivery: 3000, 더착한마트
+[32m       GET[0m ( 3) id:23643 price: 17580, delivery: 3000, 헤이샵 HEJOSHOP
+[32m       GET[0m ( 4) id:23643 price: 17600, delivery: 3000, 여다슈
+[32m       GET[0m ( 5) id:23643 price: 17690, delivery: 3000, 골든바닐라
+[32m       GET[0m ( 6) id:23643 price: 17900, delivery:    0, 고려은단
+[32m       GET[0m ( 7) id:23643 price: 18110, delivery: 3000, 플러스울트라 쇼핑몰
+[32m       GET[0m ( 8) id:23643 price: 18170, delivery: 3000, G마켓
+[32m       GET[0m ( 9) id:23643 price: 18240, delivery:    0, 11번가
+[32m       GET[0m (10) id:23643 price: 18670, delivery:    0, 옥션
+[36m  LowPrice[0m [186/190] ( 1) id:23643 price: 16070, delivery: 3000, 참조은DC마트
+[32m       GET[0m ( 1) id:   37 price: 64500, delivery: 3000, 어거스트줄라이
+[32m       GET[0m ( 2) id:   37 price: 64800, delivery: 2900, 위메프
+[32m       GET[0m ( 3) id:   37 price: 67090, delivery: 3000, 다사라마트
+[32m       GET[0m ( 4) id:   37 price: 67100, delivery: 3000, ki-ki
+[32m       GET[0m ( 5) id:   37 price: 67520, delivery: 3000, G마켓
+[32m       GET[0m ( 6) id:   37 price: 68310, delivery: 3000, 옥션
+[32m       GET[0m ( 7) id:   37 price: 68800, delivery: 3000, 해피스타트스토어
+[32m       GET[0m ( 8) id:   37 price: 68800, delivery: 3000, 창건마트
+[32m       GET[0m ( 9) id:   37 price: 68800, delivery: 3000, 바겐세일닷컴
+[32m       GET[0m (10) id:   37 price: 68800, delivery:    0, 쿠팡
+[36m  LowPrice[0m [187/190] ( 1) id:   37 price: 64500, delivery: 3000, 어거스트줄라이
+[32m       GET[0m ( 1) id:   11 price: 33500, delivery: 3000, 올템리테일
+[32m       GET[0m ( 2) id:   11 price: 40320, delivery: 3000, 11번가
+[32m       GET[0m ( 3) id:   11 price: 40360, delivery: 3000, 옥션
+[32m       GET[0m ( 4) id:   11 price: 40360, delivery: 3000, G마켓
+[32m       GET[0m ( 5) id:   11 price: 40370, delivery: 3000, 건승통상
+[32m       GET[0m ( 6) id:   11 price: 40380, delivery: 3000, SELLFORYOU
+[32m       GET[0m ( 7) id:   11 price: 40480, delivery: 3000, 주식회사 제이제이몰
+[32m       GET[0m ( 8) id:   11 price: 40900, delivery: 3000, 마켓 아메리
+[32m       GET[0m ( 9) id:   11 price: 41110, delivery: 3000, 인터파크
+[32m       GET[0m (10) id:   11 price: 41390, delivery: 3000, 오렌지 앨리스
+[36m  LowPrice[0m [188/190] ( 1) id:   11 price: 33500, delivery: 3000, 올템리테일
+[32m       GET[0m ( 1) id:22022 price:  6230, delivery: 3000, 위메프
+[32m       GET[0m ( 2) id:22022 price:  6270, delivery: 3000, 써클홀딩스
+[32m       GET[0m ( 3) id:22022 price:  6290, delivery: 3000, 다이아옐로
+[32m       GET[0m ( 4) id:22022 price:  6320, delivery: 3000, 템스윈공식몰
+[32m       GET[0m ( 5) id:22022 price:  6320, delivery: 3000, 옥션
+[32m       GET[0m ( 6) id:22022 price:  6360, delivery: 3000, G마켓
+[32m       GET[0m ( 7) id:22022 price:  6780, delivery: 3000, 11번가
+[32m       GET[0m ( 8) id:22022 price:  9510, delivery: 3000, 인터파크
+[32m       GET[0m ( 9) id:22022 price: 10710, delivery:    0, W쇼핑
+[32m       GET[0m (10) id:22022 price: 10710, delivery:    0, 롯데ON
+[36m  LowPrice[0m [189/190] ( 1) id:22022 price:  6230, delivery: 3000, 위메프
+[32m      Pass[0m no cheapStore.data, cheapStore={"low_price":null,"index":null,"data":null} storeList.length=0 product_id:34095 url=https://smartstore.naver.com/pwtia/products/6366829221
+[34m    [DONE][0m naver_catalog_link to product price
+Done in 692.41s.
