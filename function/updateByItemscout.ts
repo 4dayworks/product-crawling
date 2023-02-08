@@ -108,7 +108,11 @@ const getProductByItemscout = (product_id: number, product_name: string, index: 
       ).then((d) => {
         if (!d.data.data.productListResult) return [];
         return (d.data.data.productListResult as any[]).filter(
-          (p: ItemscoutType) => p.isAd === false && p.isOversea === false && !isExceptionKeyword(p.title)
+          (p: ItemscoutType) =>
+            p.isAd === false &&
+            p.isOversea === false &&
+            !isExceptionKeyword(p.title) &&
+            String(p.category).slice(0, 7) === "식품>건강식품"
         );
       });
 
