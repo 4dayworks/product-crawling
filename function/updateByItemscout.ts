@@ -224,7 +224,6 @@ export const updateByItemscout = async (size: number, page: number, is_expert_re
     const { product_id, product_name } = d[i];
     l("timestamp", "cyan", new Date().toISOString());
     await getProductByItemscout(product_id, product_name, i + 1, d.length);
-    await wrapSlept(1000);
   }
 
   l("[DONE]", "blue", "itemscout_keyword to product price");
