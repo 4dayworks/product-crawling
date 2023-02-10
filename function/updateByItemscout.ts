@@ -5,15 +5,22 @@ import {
 } from "./updateByItemscout.d";
 import axios from "axios";
 import { l } from "./console";
-import { wrapSlept } from "./wrapSlept";
-
+//식품>다이어트식품>가르시니아
 /** 제외해야할 category를 필터링 해주는 함수입니다. */
 const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
+
   //1 depth or 2depth
-  if (categoryData[0] !== "식품" || categoryData[1] !== "건강식품")
+  if (categoryData[0] !== "식품") return false;
+
+  //2depth
+  if (categoryData[1] !== "건강식품") {
+    if (categoryData[1] === "다이어트식품" && categoryData[2] === "가르시니아")
+      return true;
     return false;
-  //2 depth
+  }
+
+  //3 depth
   if (
     categoryData[2] === "환자식/영양보충식" ||
     categoryData[2] === "건강즙/과일즙" ||
@@ -282,8 +289,10 @@ export const updateByItemscout = async (
 
   for (let i = 0; i < d.length; i++) {
     const { product_id, product_name } = d[i];
-    l("timestamp", "cyan", new Date().toISOString());
-    await getProductByItemscout(product_id, product_name, i + 1, d.length);
+    // l("timestamp", "cyan", new Date().toISOString());
+    console.log(product_id);
+    if (product_id === 21066)
+      await getProductByItemscout(product_id, product_name, i + 1, d.length);
   }
 
   l("[DONE]", "blue", "itemscout_keyword to product price");
