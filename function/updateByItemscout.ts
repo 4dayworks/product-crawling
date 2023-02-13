@@ -289,7 +289,7 @@ export const updateByItemscout = async (
 
   for (let i = 0; i < d.length; i++) {
     const { product_id, product_name } = d[i];
-    // l("timestamp", "cyan", new Date().toISOString());
+    l("timestamp", "cyan", new Date().toISOString());
     console.log(product_id);
     if (product_id === 21066)
       await getProductByItemscout(product_id, product_name, i + 1, d.length);
