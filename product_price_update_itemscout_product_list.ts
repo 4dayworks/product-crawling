@@ -1,6 +1,8 @@
 import axios from "axios";
+import { AuthorizationKey } from "./function/auth";
 import { l } from "./function/console";
 import { getProductByItemscout } from "./function/updateByItemscout";
+axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const updateByItemscout = async (product_id_list: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
@@ -21,8 +23,10 @@ const updateByItemscout = async (product_id_list: number[]) => {
 
   for (let i = 0; i < list.length; i++) {
     const { product_id, product_name } = list[i];
-    l("timestamp", "cyan", new Date().toISOString());
-    if (product_id_list.includes(product_id)) await getProductByItemscout(product_id, product_name, i + 1, list.length);
+    if (product_id_list.includes(product_id)) {
+      l("timestamp", "cyan", new Date().toISOString());
+      await getProductByItemscout(product_id, product_name, i + 1, list.length);
+    }
   }
 
   l("[DONE]", "blue", "itemscout_keyword to product price");
