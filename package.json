@@ -6,6 +6,7 @@
   "scripts": {
     "update:itemscout_is_expert": "ts-node product_price_update_itemscout_is_expert_review",
     "update:itemscout_no_expert": "ts-node product_price_update_itemscout_no_expert_review",
+    "update:dev": "ts-node product_price_update_itemscout_product_list",
     "update:naver": "ts-node product_price_update_naver_catalog",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
