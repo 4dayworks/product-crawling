@@ -25,7 +25,7 @@ const exceptCategory = (category: string) => {
     return false;
   return true;
 };
-const getProductByItemscout = (product_id: number, product_name: string, index: number, max: number) =>
+export const getProductByItemscout = (product_id: number, product_name: string, index: number, max: number) =>
   new Promise(async (resolve, reject) => {
     try {
       //#region product/is_drugstore = 1 이거나 product_price/is_manual = 1이면 새로 갱신 안함.
