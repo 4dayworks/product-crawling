@@ -25,7 +25,9 @@ const exceptCategoryObj: {
   "식품>건강식품>한방재료": true,
 };
 
-/** 제외해야할 category를 필터링 해주는 함수입니다. */
+/** 제외해야할 category를 필터링 해주는 함수입니다. 
+ * 순서는 무조건 아래의 if문으로 사용해야합니다.
+*/
 const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
 
@@ -34,6 +36,8 @@ const exceptCategory = (category: string) => {
   if (acceptCategoryObj[category]) return true;
 
   if (exceptCategoryObj[category]) return false;
+
+  if(categoryData[1] !== "건강식품") return false;
 
   return true;
 };
