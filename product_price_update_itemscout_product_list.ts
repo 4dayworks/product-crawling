@@ -32,4 +32,4 @@ const updateByItemscout = async (product_id_list: number[]) => {
   l("[DONE]", "blue", "itemscout_keyword to product price");
 };
 
-updateByItemscout([309, 308, 307]);
+updateByItemscout([9]);
