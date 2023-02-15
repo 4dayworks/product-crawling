@@ -10,17 +10,16 @@ const updateByItemscout = async (product_id_list: number[]) => {
   const d1: {
     product_id: number; //34074;
     product_name: string; //'리얼메디 어린콜라겐 펩타이드 비오틴 100'
-  }[] = await axios(`https://node2.yagiyagi.kr/product/keyword?size=10000&page=0&is_expert_review=0`).then(
-    (d) => d.data.data
-  );
+  }[] = await axios(
+    `https://node2.yagiyagi.kr/product/keyword?size=30000&page=0&is_expert_review=0`
+  ).then((d) => d.data.data);
   const d2: {
     product_id: number; //34074;
     product_name: string; //'리얼메디 어린콜라겐 펩타이드 비오틴 100'
-  }[] = await axios(`https://node2.yagiyagi.kr/product/keyword?size=10000&page=0&is_expert_review=1`).then(
-    (d) => d.data.data
-  );
+  }[] = await axios(
+    `https://node2.yagiyagi.kr/product/keyword?size=30000&page=0&is_expert_review=1`
+  ).then((d) => d.data.data);
   const list = [...d1, ...d2];
-
   for (let i = 0; i < list.length; i++) {
     const { product_id, product_name } = list[i];
     if (product_id_list.includes(product_id)) {
@@ -32,4 +31,4 @@ const updateByItemscout = async (product_id_list: number[]) => {
   l("[DONE]", "blue", "itemscout_keyword to product price");
 };
 
-updateByItemscout([9]);
+updateByItemscout([11328]);
