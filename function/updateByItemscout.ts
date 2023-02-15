@@ -5,7 +5,7 @@ import {
 } from "./updateByItemscout.d";
 import axios from "axios";
 import { l } from "./console";
-//식품>다이어트식품>가르시니아
+
 
 /** 건강식품 카테고리는 아니지만, 효과는 건강식품인 카테고리 */
 const acceptCategoryObj: {
@@ -14,6 +14,11 @@ const acceptCategoryObj: {
   "식품>다이어트식품>가르시니아": true,
   "식품>다이어트식품>기타다이어트식품": true,
   "식품>다이어트식품>단백질보충제": true,
+  "식품>다이어트식품>단백질보충제>단백질파우더": true,
+  "식품>다이어트식품>식이섬유": true,
+  "식품>다이어트식품>다이어트바": true,
+  "식품>다이어트식품>콜라겐":true,
+  "식품>다이어트식품": true
 };
 
 /** 건강식품 중에서 받으면 안되는 것 */
@@ -27,6 +32,7 @@ const exceptCategoryObj: {
 
 /** 제외해야할 category를 필터링 해주는 함수입니다. 
  * 순서는 무조건 아래의 if문으로 사용해야합니다.
+ * 건강식품 카테고리가 아닌 상품에 대해서 먼저 처리해야하기 때문에 순서가 중요합니다.
 */
 const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
