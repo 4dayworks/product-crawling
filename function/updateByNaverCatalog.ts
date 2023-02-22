@@ -13,7 +13,7 @@ type StoreType = {
   price: number | null;
 };
 
-const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: number, max: number) => {
+export const getProductByNaverCatalog = (productId: number, catalogUrl: string, index: number, max: number) => {
   return new Promise(async (resolve) => {
     //#region product/is_drugstore = 1 이거나 product_price/is_manual = 1이면 새로 갱신 안함.
     try {
