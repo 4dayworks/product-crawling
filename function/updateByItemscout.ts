@@ -95,6 +95,7 @@ export const getProductByItemscout = (
         keyword: string; // '그린스토어 피로한눈엔 루테인 아스타잔틴오메가3',
         keyword_id: number | null; // 349123387,
         exception_keyword: string | null;
+        require_keyword: string | null;
       } | null = await axios(
         `https://node2.yagiyagi.kr/product/keyword/id?product_id=${product_id}`
       ).then((d) => d.data.data);
@@ -163,6 +164,11 @@ export const getProductByItemscout = (
         if (title) return title.includes(originData.exception_keyword);
         return false;
       };
+      const isRequireKeyword = (title: string) => {
+        if (!originData || !originData.require_keyword) return true;
+        if (title) return title.includes(originData.require_keyword);
+        return true;
+      }
       // p.title.includes(originData.exception_keyword) : false;
       const productListResult: ItemscoutType[] = await axios(
         `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
@@ -174,6 +180,7 @@ export const getProductByItemscout = (
             p.isAd === false &&
             p.isOversea === false &&
             !isExceptionKeyword(p.title) &&
+            isRequireKeyword(p.title) &&
             exceptCategory(p.category)
         );
       });

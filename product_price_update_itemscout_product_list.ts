@@ -2,6 +2,8 @@ import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
 import { l } from "./function/console";
 import { getProductByItemscout } from "./function/updateByItemscout";
+import { getProductByNaverCatalog } from "./function/updateByNaverCatalog";
+import { wrapSlept } from "./function/wrapSlept";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const updateByItemscout = async (product_id_list: number[]) => {
@@ -29,6 +31,22 @@ const updateByItemscout = async (product_id_list: number[]) => {
   }
 
   l("[DONE]", "blue", "itemscout_keyword to product price");
+
+  const d: {
+    product_id: number; //34074;
+    naver_catalog_link: string; //"https://msearch.shopping.naver.com/catalog/15282323215";
+  }[] = await axios(`https://node2.yagiyagi.kr/product/catalog/url?size=${100000}&page=${0}`).then((d) => d.data.data);
+
+  for (let i = 0; i < d.length; i++) {
+    const { product_id, naver_catalog_link } = d[i];
+    if(product_id_list.includes(product_id)){
+      l("timestamp", "cyan", new Date().toISOString());
+      await getProductByNaverCatalog(product_id, naver_catalog_link, i + 1, d.length);
+      await wrapSlept(3000);
+    }
+  }
+
+  l("[DONE]", "blue", "naver_catalog_link to product price");
 };
 
-updateByItemscout([11328]);
+updateByItemscout([3987]);
