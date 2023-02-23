@@ -49,4 +49,4 @@ const updateByItemscout = async (product_id_list: number[]) => {
   l("[DONE]", "blue", "naver_catalog_link to product price");
 };
 
-updateByItemscout([3987]);
+updateByItemscout([12470]);
