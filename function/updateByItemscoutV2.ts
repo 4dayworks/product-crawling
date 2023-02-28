@@ -50,6 +50,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
 
       // 리스트 없을 경우 제품명으로 다시 검색
       if (productListResult.length === 0) {
+        keyword = originData.product_name;
         const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
         keyword_id = itemscout_keyword_id;
         productListResult = await axios(
