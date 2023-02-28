@@ -1,8 +1,9 @@
-import { getAllProductIdType } from "./../product_price_update.d";
+import { getAllProductIdType, ProductCompareKeywordResponseType } from "./../product_price_update.d";
 import axios from "axios";
 import { l } from "./console";
 import { ItemscoutType, ProductTableV2 } from "./updateByItemscout";
 import { NODE_API_URL } from "./common";
+import _ from "lodash";
 
 const headers = { "Accept-Encoding": "deflate, br" };
 export const getProductByItemscoutV2 = (product: getAllProductIdType, index: number, max: number) =>
@@ -19,12 +20,6 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
         const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
         keyword_id = itemscout_keyword_id;
       }
-      // 야기DB keyword, keyword_id 업데이트
-      await axios.post(`${NODE_API_URL}/product/keyword/id`, {
-        keyword,
-        keyword_id,
-        yagi_product_id: originData.product_id,
-      });
       //#endregion
 
       //#region (3) itemscout에서 keyword_id 로 검색해서 집어넣기
@@ -68,8 +63,56 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
           );
         });
       }
+      // 기존 판매처 및 가격 삭제
+      await axios.delete(`${NODE_API_URL}/crawling/store`, { data: { product_id: originData.product_id } });
+      // 야기DB keyword, keyword_id 업데이트
+      await axios.post(`${NODE_API_URL}/product/keyword/id`, {
+        keyword,
+        keyword_id,
+        yagi_product_id: originData.product_id,
+      });
 
-      const storeList: ProductTableV2[] = await productListResult.map((p, i) => {
+      const scoreList = await axios
+        .post(`${NODE_API_URL}/product/compare/keyword`, {
+          original_keyword: keyword,
+          keyword_list: productListResult.map((i) => i.title),
+        })
+        .then((d) => {
+          const data: ProductCompareKeywordResponseType["resultList"] = d.data.data.resultList;
+
+          console.log(d.data.data);
+          return data.map((prev, i) => {
+            return { ...prev, index: i };
+          });
+        })
+        .catch((d) => {
+          console.log("error: /product/compare/keyword", d);
+          resolve(d);
+          return null;
+        });
+
+      const sortStoreList = scoreList
+        ? _.sortBy(
+            _.sortBy(
+              scoreList.filter((p) => Number(p.percent) > 30),
+              (p) => p.score
+            )
+              .reverse()
+              .slice(0, 10),
+            (p) => productListResult[p.index].price
+          ).map((i) => productListResult[i.index])
+        : [];
+      console.log(
+        "sortStoreList",
+        _.sortBy(
+          _.sortBy(scoreList, (p) => p.score)
+            .reverse()
+            .slice(0, 10),
+          (p) => productListResult[p.index].price
+        )
+      );
+
+      const storeList: ProductTableV2[] = await sortStoreList.map((p, i) => {
         return {
           index: i + 1,
           keyword,
@@ -99,10 +142,6 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
           "red",
           `[${index}/${max}] No Store(판매처) product_id:${originData.product_id}, keyword:${keyword}, keyword_id=${keyword_id}`
         );
-        await axios
-          .delete(`${NODE_API_URL}/crawling/store`, { data: { product_id: originData.product_id } })
-          .then(() => resolve(true))
-          .catch(() => resolve(true));
         return resolve(true);
       } else {
         await axios.post(`${NODE_API_URL}/v3/product/keyword/data`, {
@@ -111,13 +150,10 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
           product_id: originData.product_id,
         });
       }
-
       //#endregion
       //#region (4) product_price 최종 최저가 업데이트하기
-      const lowPriceObj =
-        productListResult && productListResult.length
-          ? productListResult.reduce((prev, value) => (prev.price <= value.price ? prev : value))
-          : null;
+      const lowPriceObj = productListResult.length > 0 ? _.minBy(productListResult, (p) => p.price) : null;
+
       const idx = index + 1;
       if (!lowPriceObj) {
         l(
@@ -132,7 +168,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
       const data = {
         product_id: originData.product_id,
         low_price: lowPriceObj.price,
-        delivery: lowPriceObj.deliveryFee ? lowPriceObj.deliveryFee : 0,
+        delivery: lowPriceObj.deliveryFee,
         store_name:
           typeof lowPriceObj.mall !== "string" && lowPriceObj.isNaverShop ? "네이버 브랜드 카탈로그" : lowPriceObj.mall,
         store_link: lowPriceObj.link,
@@ -154,6 +190,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
         .post(`${NODE_API_URL}/product/price`, data)
         .then(() => resolve(true))
         .catch(() => resolve(true));
+      resolve(true);
       //#endregion
     } catch (error) {
       l("error", "red", `[${index}/${max}] product_id:${originData.product_id.toString().padStart(5)}`);

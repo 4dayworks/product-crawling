@@ -9,3 +9,15 @@ export type getAllProductIdType = {
   require_keyword: string | null; //null;
   type: "itemscout" | "naver";
 };
+
+export type ProductCompareKeywordResponseType = {
+  resultList: {
+    score: number;
+    percent: string;
+    keyword: string;
+  }[];
+  maxScore: number;
+  minScore: number;
+  avgScore: number;
+  perfectScore: number;
+};

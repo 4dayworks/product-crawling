@@ -1,2 +1,7 @@
+const isLocalhost = true;
 const isTestDB = false;
-export const NODE_API_URL = isTestDB ? "https://node3.yagiyagi.kr" : "https://node2.yagiyagi.kr";
+export const NODE_API_URL = isLocalhost
+  ? "http://localhost:3001"
+  : isTestDB
+  ? "https://node3.yagiyagi.kr"
+  : "https://node2.yagiyagi.kr";
