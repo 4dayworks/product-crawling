@@ -1,9 +1,9 @@
-import { AuthorizationKey } from "./auth";
+import { AuthorizationKey } from "../function/auth";
 import axios from "axios";
 import cheerio from "cheerio";
 import request from "request";
-import { l } from "./console";
-import { wrapSlept } from "./wrapSlept";
+import { l } from "../function/console";
+import { wrapSlept } from "../function/wrapSlept";
 
 type StoreType = {
   product_id: number;
@@ -118,7 +118,8 @@ export const getProductByNaverCatalog = (productId: number, catalogUrl: string, 
           if (!product_id || !low_price || delivery === undefined || delivery === null || !store_name || !store_link) {
             if (!product_id) l("Pass", "green", `[${index}/${max}] no product_id, product_id:${productId}`);
             if (!low_price) l("Pass", "green", `[${index}/${max}] no low_price, product_id:${productId}`);
-            if (delivery === undefined || delivery === null) l("Pass", "green", `[${index}/${max}] no delivery, product_id:${productId}`);
+            if (delivery === undefined || delivery === null)
+              l("Pass", "green", `[${index}/${max}] no delivery, product_id:${productId}`);
             if (!store_name) l("Pass", "green", `[${index}/${max}] no store_name, product_id:${productId}`);
             if (!store_link) l("Pass", "green", `[${index}/${max}] no store_link, product_id:${productId}`);
             return resolve(true);
