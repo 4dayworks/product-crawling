@@ -99,17 +99,8 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
           "red",
           `[${index}/${max}] No Store(판매처) product_id:${originData.product_id}, keyword:${keyword}, keyword_id=${keyword_id}`
         );
-        const data = {
-          product_id: originData.product_id,
-          low_price: null,
-          delivery: null,
-          store_name: null,
-          store_link: null,
-          review_count: null,
-          type: "itemscout",
-        };
         await axios
-          .post(`${NODE_API_URL}/product/price`, data)
+          .delete(`${NODE_API_URL}/crawling/store`, { data: { product_id: originData.product_id } })
           .then(() => resolve(true))
           .catch(() => resolve(true));
         return resolve(true);

@@ -4,12 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "update:itemscout_is_expert": "ts-node product_price_update_itemscout_is_expert_review",
-    "update:itemscout_no_expert": "ts-node product_price_update_itemscout_no_expert_review",
-    "update:dev": "ts-node product_price_update_product_list",
-    "update:naver": "ts-node product_price_update_naver_catalog",
-    "update": "ts-node product_price_update",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "update:dev": "ts-node product_price_update_dev",
+    "update": "ts-node product_price_update"
   },
   "author": "",
   "license": "ISC",

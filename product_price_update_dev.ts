@@ -1,6 +1,6 @@
+import { getAllProductIdType } from "./product_price_update.d";
 import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
 import { NODE_API_URL } from "./function/common";
-import { getAllProductIdType } from "./product_price_update.d";
 import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
 import { l } from "./function/console";
@@ -17,7 +17,6 @@ const updateByItemscout = async (product_id_list?: number[]) => {
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
-
     if (product.type === "itemscout") {
       await getProductByItemscoutV2(product, i + 1, data.length);
       await wrapSlept(300);
@@ -32,4 +31,4 @@ const updateByItemscout = async (product_id_list?: number[]) => {
 
 // updateByItemscout([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateByItemscout(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateByItemscout();
+updateByItemscout([11372]);
