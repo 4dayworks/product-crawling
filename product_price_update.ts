@@ -20,7 +20,7 @@ const updateByItemscout = async (product_id_list?: number[]) => {
 
     if (product.type === "itemscout") {
       await getProductByItemscoutV2(product, i + 1, data.length);
-      await wrapSlept(300);
+      await wrapSlept(500);
     } else if (product.type === "naver" && product.naver_catalog_link) {
       await getProductByNaverCatalogV2(product.product_id, product.naver_catalog_link, i + 1, data.length);
       await wrapSlept(2000);
