@@ -1,11 +1,10 @@
-import { getAllProductIdType } from "./product_price_update.d";
-import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
-import { NODE_API_URL } from "./function/common";
 import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
+import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
+import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
 import { wrapSlept } from "./function/wrapSlept";
-import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
+import { getAllProductIdType } from "./product_price_update.d";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const updateByItemscout = async (product_id_list?: number[]) => {
@@ -17,10 +16,12 @@ const updateByItemscout = async (product_id_list?: number[]) => {
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
-    if (product.type === "itemscout") {
-      await getProductByItemscoutV2(product, i + 1, data.length);
-      await wrapSlept(2000);
-    } else if (product.type === "naver" && product.naver_catalog_link) {
+
+    // if (product.type === "itemscout") {
+    //   await getProductByItemscoutV2(product, i + 1, data.length);
+    //   await wrapSlept(300);
+    // } else
+    if (product.type === "naver" && product.naver_catalog_link) {
       await getProductByNaverCatalogV2(product.product_id, product.naver_catalog_link, i + 1, data.length);
       await wrapSlept(2000);
     }
@@ -31,4 +32,4 @@ const updateByItemscout = async (product_id_list?: number[]) => {
 
 // updateByItemscout([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateByItemscout(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateByItemscout([18765]);
+updateByItemscout();
