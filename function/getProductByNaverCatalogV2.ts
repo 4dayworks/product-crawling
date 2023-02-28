@@ -106,6 +106,10 @@ export const getProductByNaverCatalogV2 = (productId: number, catalogUrl: string
                 storeList.length
               } product_id:${productId} url=${catalogUrl}`
             );
+            await axios
+              .delete(`${NODE_API_URL}/crawling/store`, { data: { product_id: productId } })
+              .then(() => resolve(true))
+              .catch(() => resolve(true));
             return resolve(true);
           }
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
@@ -117,6 +121,10 @@ export const getProductByNaverCatalogV2 = (productId: number, catalogUrl: string
               l("Pass", "green", `[${index}/${max}] no delivery, product_id:${productId}`);
             if (!store_name) l("Pass", "green", `[${index}/${max}] no store_name, product_id:${productId}`);
             if (!store_link) l("Pass", "green", `[${index}/${max}] no store_link, product_id:${productId}`);
+            await axios
+              .delete(`${NODE_API_URL}/crawling/store`, { data: { product_id: productId } })
+              .then(() => resolve(true))
+              .catch(() => resolve(true));
             return resolve(true);
           }
           const data = {
