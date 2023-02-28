@@ -72,24 +72,26 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
         yagi_product_id: originData.product_id,
       });
 
-      const scoreList = await axios
-        .post(`${NODE_API_URL}/product/compare/keyword`, {
-          original_keyword: keyword,
-          keyword_list: productListResult.map((i) => i.title),
-        })
-        .then((d) => {
-          const data: ProductCompareKeywordResponseType["resultList"] = d.data.data.resultList;
+      const scoreList =
+        keyword && productListResult && productListResult.length
+          ? await axios
+              .post(`${NODE_API_URL}/product/compare/keyword`, {
+                original_keyword: keyword,
+                keyword_list: productListResult.map((i) => i.title),
+              })
+              .then((d) => {
+                const data: ProductCompareKeywordResponseType["resultList"] = d.data.data.resultList;
 
-          console.log(d.data.data);
-          return data.map((prev, i) => {
-            return { ...prev, index: i };
-          });
-        })
-        .catch((d) => {
-          console.log("error: /product/compare/keyword", d);
-          resolve(d);
-          return null;
-        });
+                return data.map((prev, i) => {
+                  return { ...prev, index: i };
+                });
+              })
+              .catch((d) => {
+                console.log("error: /product/compare/keyword", d);
+                resolve(d);
+                return null;
+              })
+          : [];
 
       const sortStoreList = scoreList
         ? _.sortBy(
@@ -102,15 +104,15 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
             (p) => productListResult[p.index].price
           ).map((i) => productListResult[i.index])
         : [];
-      console.log(
-        "sortStoreList",
-        _.sortBy(
-          _.sortBy(scoreList, (p) => p.score)
-            .reverse()
-            .slice(0, 10),
-          (p) => productListResult[p.index].price
-        )
-      );
+      // console.log(
+      //   "sortStoreList",
+      //   _.sortBy(
+      //     _.sortBy(scoreList, (p) => p.score)
+      //       .reverse()
+      //       .slice(0, 10),
+      //     (p) => productListResult[p.index].price
+      //   )
+      // );
 
       const storeList: ProductTableV2[] = await sortStoreList.map((p, i) => {
         return {
