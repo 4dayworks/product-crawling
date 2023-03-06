@@ -63,6 +63,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
           );
         });
       }
+
       // 기존 판매처 및 가격 삭제
       await axios.delete(`${NODE_API_URL}/crawling/store`, { data: { product_id: originData.product_id } });
       // 야기DB keyword, keyword_id 업데이트
@@ -154,7 +155,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
       }
       //#endregion
       //#region (4) product_price 최종 최저가 업데이트하기
-      const lowPriceObj = productListResult.length > 0 ? _.minBy(productListResult, (p) => p.price) : null;
+      const lowPriceObj = sortStoreList.length > 0 ? _.minBy(sortStoreList, (p) => p.price) : null;
 
       const idx = index + 1;
       if (!lowPriceObj) {
