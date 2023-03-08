@@ -7,6 +7,9 @@ import { wrapSlept } from "./function/wrapSlept";
 import { getAllProductIdType } from "./product_price_update.d";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
+const date = new Date();
+const time_type = date.getHours() < 12 ? 0 : 1;
+
 const updateByItemscout = async (product_id_list?: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let data: getAllProductIdType[] = await axios(`${NODE_API_URL}/crawling/product/all`).then((d) => d.data.data);
@@ -28,6 +31,15 @@ const updateByItemscout = async (product_id_list?: number[]) => {
     l("timestamp", "cyan", new Date().toISOString());
   }
   l("[DONE]", "blue", "complete - all product price update");
+  await wrapSlept(10000);
+  try {
+    await axios.post(`${NODE_API_URL}/product/daily_price/history`, {
+      time_type
+    });
+    l("[Insert DONE]", "blue", "complete - naver product_price write history");
+  } catch (error) {
+    l("[Insert Fail]", "red", "Failed - naver product_price write history");
+  }
 };
 
 // updateByItemscout([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
