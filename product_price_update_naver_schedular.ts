@@ -31,6 +31,15 @@ const updateByItemscout = async (product_id_list?: number[]) => {
     l("timestamp", "cyan", new Date().toISOString());
   }
   l("[DONE]", "blue", "complete - all product price update");
+  await wrapSlept(10000);
+  try {
+    await axios.post(`${NODE_API_URL}/product/daily_price/history`, {
+      time_type
+    });
+    l("[Insert DONE]", "blue", "complete - naver product_price write history");
+  } catch (error) {
+    l("[Insert Fail]", "red", "Failed - naver product_price write history");
+  }
 };
 
 // updateByItemscout([37327, 11191, 28560, 11311, 11775, 12166, 17697]);

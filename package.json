@@ -6,7 +6,8 @@
   "scripts": {
     "update:dev": "ts-node product_price_update_dev",
     "update:naver": "ts-node product_price_update_naver",
-    "update": "ts-node product_price_update"
+    "update": "ts-node product_price_update",
+    "update-schedular:naver": "ts-node product_price_update_naver_schedular"
   },
   "author": "",
   "license": "ISC",
