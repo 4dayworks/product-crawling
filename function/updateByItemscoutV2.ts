@@ -103,7 +103,9 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
               .reverse()
               .slice(0, 10),
             (p) => productListResult[p.index].price
-          ).map((i) => productListResult[i.index])
+          )
+            .map((i) => productListResult[i.index])
+            .filter((i) => i.price != 0 && i.price != null)
         : [];
       // console.log(
       //   "sortStoreList",
