@@ -31,4 +31,4 @@ const updateByItemscout = async (product_id_list?: number[]) => {
 
 // updateByItemscout([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateByItemscout(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateByItemscout([36589]);
+updateByItemscout([14]);

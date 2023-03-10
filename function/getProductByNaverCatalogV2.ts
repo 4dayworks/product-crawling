@@ -112,6 +112,16 @@ export const getProductByNaverCatalogV2 = (productId: number, catalogUrl: string
               .catch(() => resolve(true));
             return resolve(true);
           }
+          if (!cheapStore.data.price) {
+            l(
+              "Pass",
+              "green",
+              `[${index}/${max}] no cheapStore.data, cheapStore=${JSON.stringify(cheapStore)} storeList.length=${
+                storeList.length
+              } product_id:${productId} url=${catalogUrl}`
+            );
+            return resolve(true);
+          }
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
           // console.log(product_id, low_price, delivery, store_name, store_link);
           if (!product_id || !low_price || delivery === undefined || delivery === null || !store_name || !store_link) {
