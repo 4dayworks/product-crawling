@@ -8,7 +8,7 @@ import { wrapSlept } from "./function/wrapSlept";
 import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
-const updateByItemscout = async (product_id_list?: number[]) => {
+const updateByProductIdDev = async (product_id_list?: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let data: getAllProductIdType[] = await axios(`${NODE_API_URL}/crawling/product/all`).then((d) => d.data.data);
 
@@ -29,9 +29,9 @@ const updateByItemscout = async (product_id_list?: number[]) => {
   l("[DONE]", "blue", "complete - all product price update");
 };
 
-// updateByItemscout([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
-// updateByItemscout(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateByItemscout([
+// updateByProductIdDev([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
+// updateByProductIdDev(Array.from({ length: 100 }).map((a, i) => i + 1));
+updateByProductIdDev([
   697, 907, 978, 1069, 4530, 4600, 4981, 5199, 5527, 5554, 5678, 5703, 5750, 6026, 6202, 6434, 6466, 6578, 6631, 6664,
   7166, 7198, 7424, 7545, 7626, 7640, 7759, 7830, 7929, 7932, 8176, 8219, 8370, 8433, 8540, 8547, 8641, 8706, 8779,
   8785, 8948, 9127, 9171, 9220, 9454, 9475, 9630, 9813, 9816, 10000, 10221, 10245, 10279, 10298, 10346, 10380, 10546,
