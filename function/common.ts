@@ -5,3 +5,4 @@ export const NODE_API_URL = isLocalhost
   : isTestDB
   ? "https://node3.yagiyagi.kr"
   : "https://node2.yagiyagi.kr";
+export const toComma = (number: string | number) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

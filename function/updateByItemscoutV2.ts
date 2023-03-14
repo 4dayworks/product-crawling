@@ -2,11 +2,16 @@ import { getAllProductIdType, ProductCompareKeywordResponseType } from "./../pro
 import axios from "axios";
 import { l } from "./console";
 import { ItemscoutType, ProductTableV2 } from "./updateByItemscout";
-import { NODE_API_URL } from "./common";
+import { NODE_API_URL, toComma } from "./common";
 import _ from "lodash";
 
 const headers = { "Accept-Encoding": "deflate, br" };
-export const getProductByItemscoutV2 = (product: getAllProductIdType, index: number, max: number) =>
+export const getProductByItemscoutV2 = (
+  product: getAllProductIdType,
+  index: number,
+  max: number,
+  isNotification: boolean = false
+) =>
   new Promise(async (resolve, reject) => {
     const originData = product;
     try {
@@ -190,6 +195,27 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
           .toString()
           .padStart(4)}, ${data.store_name}`
       );
+
+      //#region 제품 최저가 갱신시 유저에게 알림 보내기
+      if (isNotification) {
+        const userList: string[] = await axios
+          .post(`${NODE_API_URL}/crawling/product/notification`, {
+            low_price: data.low_price,
+            product_id: data.product_id,
+          })
+          .then((d) => (d.data.data && d.data.data.length > 0 ? d.data.data.join(",") : null))
+          .catch(() => resolve(true));
+        if (userList !== null) {
+          await axios
+            .get(
+              `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=내가 관심을 보인 ${
+                originData.product_name
+              } 가격이 ${toComma(data.low_price)}원으로 내려갔어요⬇️&link=/product/${originData.product_id}`
+            )
+            .catch(() => resolve(true));
+        }
+      }
+      //#endregion
 
       await axios
         .post(`${NODE_API_URL}/product/price`, data)
