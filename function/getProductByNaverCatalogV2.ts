@@ -4,7 +4,7 @@ import cheerio from "cheerio";
 import request from "request";
 import { l } from "./console";
 import { wrapSlept } from "./wrapSlept";
-import { NODE_API_URL } from "./common";
+import { NODE_API_URL, toComma } from "./common";
 
 type StoreType = {
   product_id: number;
@@ -14,7 +14,14 @@ type StoreType = {
   price: number | null;
 };
 
-export const getProductByNaverCatalogV2 = (productId: number, catalogUrl: string, index: number, max: number) => {
+export const getProductByNaverCatalogV2 = (
+  productId: number,
+  catalogUrl: string,
+  index: number,
+  max: number,
+  product_name: string,
+  isNotification: boolean = false
+) => {
   return new Promise(async (resolve) => {
     //#region
     try {
@@ -97,6 +104,28 @@ export const getProductByNaverCatalogV2 = (productId: number, catalogUrl: string
             else if (cheapStore.low_price != null && cheapStore.low_price > price)
               cheapStore = { low_price: price, index, data };
           }
+
+          //#region 제품 최저가 갱신시 유저에게 알림 보내기
+          if (isNotification && cheapStore.low_price) {
+            const userList: string[] = await axios
+              .post(`${NODE_API_URL}/crawling/product/notification`, {
+                low_price: cheapStore.low_price,
+                product_id: productId,
+              })
+              .then((d) => (d.data.data && d.data.data.length > 0 ? d.data.data.join(",") : null))
+              .catch(() => resolve(true));
+            if (userList !== null) {
+              await axios
+                .get(
+                  `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=내가 관심을 보인 ${product_name} 가격이 ${toComma(
+                    cheapStore.low_price
+                  )}원으로 내려갔어요⬇️&link=/product/${productId}`
+                )
+                .catch(() => resolve(true));
+            }
+          }
+          //#endregion
+
           // DB Insert 최저가 데이터 넣기
           if (!cheapStore.data) {
             l(
