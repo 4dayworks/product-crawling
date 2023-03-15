@@ -5,6 +5,7 @@ import request from "request";
 import { l } from "./console";
 import { wrapSlept } from "./wrapSlept";
 import { NODE_API_URL, toComma } from "./common";
+import { getAllProductIdType } from "../product_price_update";
 
 type StoreType = {
   product_id: number;
@@ -15,14 +16,16 @@ type StoreType = {
 };
 
 export const getProductByNaverCatalogV2 = (
-  productId: number,
-  catalogUrl: string,
+  product: getAllProductIdType,
   index: number,
   max: number,
-  product_name: string,
   isNotification: boolean = false
 ) => {
   return new Promise(async (resolve) => {
+    const productId = product.product_id;
+    const catalogUrl = product.naver_catalog_link;
+    if (!catalogUrl) return resolve(true);
+    const product_name = product.product_name;
     //#region
     try {
       request(catalogUrl, async (error, response, body) => {

@@ -17,20 +17,14 @@ const updateNotification = async (product_id_list?: number[]) => {
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
   if (product_id_list) data = data.filter((p) => product_id_list.includes(p.product_id));
 
+  console.log(data);
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
     if (product.type === "itemscout") {
       await getProductByItemscoutV2(product, i + 1, data.length, true);
       await wrapSlept(2000);
     } else if (product.type === "naver" && product.naver_catalog_link) {
-      await getProductByNaverCatalogV2(
-        product.product_id,
-        product.naver_catalog_link,
-        i + 1,
-        data.length,
-        product.product_name,
-        true
-      );
+      await getProductByNaverCatalogV2(product, i + 1, data.length, true);
       await wrapSlept(2000);
     }
     l("timestamp", "cyan", new Date().toISOString());
