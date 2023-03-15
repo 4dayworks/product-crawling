@@ -22,13 +22,7 @@ const updateByProductId = async (product_id_list?: number[]) => {
     //   await wrapSlept(300);
     // } else
     if (product.type === "naver" && product.naver_catalog_link) {
-      await getProductByNaverCatalogV2(
-        product.product_id,
-        product.naver_catalog_link,
-        i + 1,
-        data.length,
-        product.product_name
-      );
+      await getProductByNaverCatalogV2(product, i + 1, data.length);
       await wrapSlept(2000);
     }
     l("timestamp", "cyan", new Date().toISOString());
