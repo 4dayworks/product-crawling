@@ -17,7 +17,6 @@ const updateNotification = async (product_id_list?: number[]) => {
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
   if (product_id_list) data = data.filter((p) => product_id_list.includes(p.product_id));
 
-  console.log(data);
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
     if (product.type === "itemscout") {
@@ -34,4 +33,4 @@ const updateNotification = async (product_id_list?: number[]) => {
 
 // updateNotification([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateNotification(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateNotification();
+updateNotification([1, 3]);

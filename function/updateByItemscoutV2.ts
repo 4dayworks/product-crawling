@@ -197,22 +197,26 @@ export const getProductByItemscoutV2 = (
       );
 
       //#region 제품 최저가 갱신시 유저에게 알림 보내기
-      if (isNotification) {
+      if (isNotification && data.low_price && data.low_price > 1000) {
         const userList: string[] = await axios
           .post(`${NODE_API_URL}/crawling/product/notification`, {
             low_price: data.low_price,
             product_id: data.product_id,
           })
-          .then((d) => (d.data.data && d.data.data.length > 0 ? d.data.data.join(",") : null))
-          .catch(() => resolve(true));
-        if (userList !== null) {
+          .then((d) =>
+            d.data.data && d.data.data.length > 0
+              ? d.data.data.map((i: { user_id: number }) => i.user_id).join(",")
+              : null
+          )
+          .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /crawling/product/notification " + e.code));
+        if (userList && userList.length > 0) {
           await axios
             .get(
               `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=내가 관심을 보인 ${
                 originData.product_name
               } 가격이 ${toComma(data.low_price)}원으로 내려갔어요⬇️&link=/product/${originData.product_id}`
             )
-            .catch(() => resolve(true));
+            .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /user/firebase/send/low_price " + e.code));
         }
       }
       //#endregion
