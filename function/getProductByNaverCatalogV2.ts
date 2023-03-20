@@ -38,7 +38,7 @@ export const getProductByNaverCatalogV2 = (
         try {
           const storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
-          const review_count = Number($(`#__next > div > div > div > div > div > div > a`).text().replace(regex, ""));
+          const review_count = Number($(`#section-review > div > div > h3`).text().replace(regex, ""));
           const dataList: {
             product_id: number;
             store_name: string;
