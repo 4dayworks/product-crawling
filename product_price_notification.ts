@@ -33,4 +33,4 @@ const updateNotification = async (product_id_list?: number[]) => {
 
 // updateNotification([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateNotification(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateNotification([1, 3]);
+updateNotification();
