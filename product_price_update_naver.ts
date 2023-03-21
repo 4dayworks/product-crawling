@@ -26,7 +26,7 @@ const updateByProductId = async (product_id_list?: number[]) => {
     //   await wrapSlept(300);
     // } else
     if (product.type === "naver" && product.naver_catalog_link) {
-      await getProductByNaverCatalogV2(product, i + 1, data.length);
+      await getProductByNaverCatalogV2(product, i + 1, data.length, true);
       await insertGraph(product);
       await wrapSlept(2000);
     }
