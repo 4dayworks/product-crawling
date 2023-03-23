@@ -1,12 +1,26 @@
 import axios from "axios";
-import { AuthorizationKey } from "./function/auth";
-import { NODE_API_URL } from "./function/common";
-import { l } from "./function/console";
-import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
-import { wrapSlept } from "./function/wrapSlept";
-import { getAllProductIdType } from "./product_price_update.d";
-import { insertGraph } from "./backup/unused_product_price_update_naver_schedular";
+import { AuthorizationKey } from "../function/auth";
+import { NODE_API_URL } from "../function/common";
+import { l } from "../function/console";
+import { getProductByNaverCatalogV2 } from "../function/getProductByNaverCatalogV2";
+import { wrapSlept } from "../function/wrapSlept";
+import { getAllProductIdType } from "../product_price_update";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
+
+export const date = new Date();
+export const time_type = date.getHours() < 12 ? 0 : 1;
+
+export const insertGraph = async (product: getAllProductIdType) => {
+  try {
+    await axios.post(`${NODE_API_URL}/product/daily_price/history`, {
+      time_type,
+      product_id: product.product_id,
+    });
+    l("[Insert DONE]", "blue", "complete - naver product_price write history");
+  } catch (error) {
+    l("[Insert Fail]", "red", "Failed - naver product_price write history");
+  }
+};
 
 const updateByProductId = async (product_id_list?: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
@@ -37,4 +51,4 @@ const updateByProductId = async (product_id_list?: number[]) => {
 
 // updateByProductId([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateByProductId(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateByProductId();
+updateByProductId([35748]);
