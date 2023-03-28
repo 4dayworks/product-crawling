@@ -8,8 +8,7 @@
     "update:holyzone": "ts-node product_price_holyzone",
     "update:dev": "ts-node product_price_update_dev",
     "update:naver": "ts-node product_price_update_naver",
-    "update": "ts-node product_price_update",
-    "update-schedular:naver": "ts-node product_price_update_naver_schedular"
+    "update": "ts-node product_price_update"
   },
   "author": "",
   "license": "ISC",

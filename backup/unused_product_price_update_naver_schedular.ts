@@ -7,20 +7,16 @@ import { wrapSlept } from "../function/wrapSlept";
 import { getAllProductIdType } from "../product_price_update";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
-export const date = new Date();
-export const time_type = date.getHours() < 12 ? 0 : 1;
-
-export const insertGraph = async (product: getAllProductIdType) => {
-  try {
-    await axios.post(`${NODE_API_URL}/product/daily_price/history`, {
-      time_type,
-      product_id: product.product_id,
-    });
-    l("[Insert DONE]", "blue", "complete - naver product_price write history");
-  } catch (error) {
-    l("[Insert Fail]", "red", "Failed - naver product_price write history");
-  }
-};
+// export const insertGraph = async (product: getAllProductIdType) => {
+//   try {
+//     await axios.post(`${NODE_API_URL}/v2/product/daily_price/history`, {
+//       product_id: product.product_id,
+//     });
+//     l("[Insert DONE]", "blue", "complete - naver product_price write history");
+//   } catch (error) {
+//     l("[Insert Fail]", "red", "Failed - naver product_price write history");
+//   }
+// };
 
 const updateByProductId = async (product_id_list?: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
@@ -41,7 +37,7 @@ const updateByProductId = async (product_id_list?: number[]) => {
     // } else
     if (product.type === "naver" && product.naver_catalog_link) {
       await getProductByNaverCatalogV2(product, i + 1, data.length, true);
-      await insertGraph(product);
+      // await insertGraph(product);
       await wrapSlept(2000);
     }
     l("timestamp", "cyan", new Date().toISOString());
