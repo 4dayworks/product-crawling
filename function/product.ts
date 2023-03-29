@@ -28,3 +28,5 @@ export const setLastMonthLowPrice = async (product: getAllProductIdType) => {
 export const shuffle = (array: getAllProductIdType[]) => {
   array.sort(() => Math.random() - 0.5);
 };
+
+export const exceptionCompanyListAtNaver = ["템스윈공식몰"];
