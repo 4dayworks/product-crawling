@@ -23,10 +23,10 @@ const updateByProductId = async (product_id_list?: number[]) => {
     const product = data[i];
 
     if (product.type === "itemscout") {
-      await getProductByItemscoutV2(product, i + 1, data.length);
+      await getProductByItemscoutV2(product, i + 1, data.length, true);
       await wrapSlept(500);
     } else if (product.type === "naver" && product.naver_catalog_link) {
-      await getProductByNaverCatalogV2(product, i + 1, data.length);
+      await getProductByNaverCatalogV2(product, i + 1, data.length, true);
       await wrapSlept(2000);
     }
     await setGraph(product);
