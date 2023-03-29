@@ -5,7 +5,7 @@ import { l } from "./function/console";
 import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
 import { wrapSlept } from "./function/wrapSlept";
 import { getAllProductIdType } from "./product_price_update.d";
-import { setGraph, setLastMonthLowPrice } from "./function/product";
+import { setGraph, setLastMonthLowPrice, shuffle } from "./function/product";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
@@ -35,15 +35,12 @@ const updateByProductId = async (product_id_list?: number[]) => {
       return [];
     });
   data = data.filter((p) => !exceptionList.includes(p.product_id));
+  shuffle(data);
   //#endregion
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
 
-    // if (product.type === "itemscout") {
-    //   await getProductByItemscoutV2(product, i + 1, data.length);
-    //   await wrapSlept(300);
-    // } else
     if (product.type === "naver" && product.naver_catalog_link) {
       await getProductByNaverCatalogV2(product, i + 1, data.length, true);
       await wrapSlept(2000);

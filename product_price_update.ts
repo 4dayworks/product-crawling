@@ -6,7 +6,7 @@ import { AuthorizationKey } from "./function/auth";
 import { l } from "./function/console";
 import { wrapSlept } from "./function/wrapSlept";
 import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
-import { setGraph, setLastMonthLowPrice } from "./function/product";
+import { setGraph, setLastMonthLowPrice, shuffle } from "./function/product";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const updateByProductId = async (product_id_list?: number[]) => {
@@ -19,6 +19,24 @@ const updateByProductId = async (product_id_list?: number[]) => {
   if (product_id_list)
     data = data.filter((p) => product_id_list.includes(p.product_id));
 
+  //#region (2) 성지가격있는 제품아이디 모두 제외시키기
+  const exceptionList: number[] = await axios(
+    `${NODE_API_URL}/crawling/product/holyzone/all`
+  )
+    .then((d) => {
+      const data: { product_id: number; product_name: string }[] = d.data.data;
+      return data.map((p) => p.product_id);
+    })
+    .catch((e) => {
+      l(
+        "Noti Err",
+        "red",
+        "성지존 알림 오류 /crawling/product/holyzone/all" + e.code
+      );
+      return [];
+    });
+  data = data.filter((p) => !exceptionList.includes(p.product_id));
+  shuffle(data);
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
 
