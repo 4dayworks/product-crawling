@@ -24,3 +24,7 @@ export const setLastMonthLowPrice = async (product: getAllProductIdType) => {
     l("[Update Fail]", "red", "Failed - low price of month was written");
   }
 };
+
+export const shuffle = (array: getAllProductIdType[]) => {
+  array.sort(() => Math.random() - 0.5);
+};
