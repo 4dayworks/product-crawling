@@ -9,6 +9,7 @@
     "update:dev": "ts-node product_price_update_dev",
     "update:naver": "ts-node product_price_update_naver",
     "update:itemscout": "ts-node product_price_update_itemscout",
+    "update-notification:itemscout": "ts-node product_price_update_itemscout_subscription",
     "update": "ts-node product_price_update"
   },
   "author": "",

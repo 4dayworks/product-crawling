@@ -30,3 +30,15 @@ export const shuffle = (array: getAllProductIdType[]) => {
 };
 
 export const exceptionCompanyListAtNaver = ["템스윈공식몰"];
+
+export const getNotificationItemscoutList = () => {
+  return axios
+    .get(`${NODE_API_URL}/crawling/product/notification/itemscout`)
+    .then((res) =>
+      res.data.data.map((item: { product_id: string }) => item.product_id)
+    )
+    .catch((error) => {
+      l("[Notification Itemscout error]", "yellow");
+      return [];
+    });
+};
