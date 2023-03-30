@@ -54,4 +54,4 @@ const updateByProductId = async (product_id_list?: number[]) => {
 
 // updateByProductId([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateByProductId(Array.from({ length: 100 }).map((a, i) => i + 1));
-updateByProductId([153]);
+updateByProductId();
