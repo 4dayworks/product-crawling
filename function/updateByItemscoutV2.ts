@@ -10,7 +10,6 @@ export const getProductByItemscoutV2 = (
   product: getAllProductIdType,
   index: number,
   max: number,
-  isNotification: boolean = false
 ) =>
   new Promise(async (resolve, reject) => {
     const originData = product;
@@ -197,7 +196,7 @@ export const getProductByItemscoutV2 = (
       );
 
       //#region 제품 최저가 갱신시 유저에게 알림 보내기
-      if (isNotification && data.low_price && data.low_price > 1000) {
+      if (data.low_price && data.low_price > 1000) {
         const userList: string[] = await axios
           .post(`${NODE_API_URL}/crawling/product/notification`, {
             low_price: data.low_price,
