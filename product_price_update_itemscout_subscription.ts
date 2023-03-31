@@ -47,7 +47,7 @@ const updateByProductId = async (product_id_list?: number[]) => {
     const product = data[i];
 
     if (product.type === "itemscout") {
-      await getProductByItemscoutV2(product, i + 1, data.length, true);
+      await getProductByItemscoutV2(product, i + 1, data.length);
       await wrapSlept(500);
       await setGraph(product);
       await setLastMonthLowPrice(product);

@@ -20,7 +20,6 @@ export const getProductByNaverCatalogV2 = (
   product: getAllProductIdType,
   index: number,
   max: number,
-  isNotification: boolean = false
 ) => {
   return new Promise(async (resolve) => {
     const productId = product.product_id;
@@ -138,7 +137,6 @@ export const getProductByNaverCatalogV2 = (
 
           //#region 제품 최저가 갱신시 유저에게 알림 보내기
           if (
-            isNotification &&
             cheapStore.low_price &&
             cheapStore.low_price > 1000
           ) {
