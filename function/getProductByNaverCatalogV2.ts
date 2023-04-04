@@ -19,7 +19,7 @@ type StoreType = {
 export const getProductByNaverCatalogV2 = (
   product: getAllProductIdType,
   index: number,
-  max: number,
+  max: number
 ) => {
   return new Promise(async (resolve) => {
     const productId = product.product_id;
@@ -58,8 +58,8 @@ export const getProductByNaverCatalogV2 = (
             ).text();
 
             // 회사 블랙리스트
-            if (!exceptionCompanyListAtNaver.indexOf(store_name)) {
-              l("[블랙리스트 회사] PASS", "magenta");
+            if (exceptionCompanyListAtNaver.indexOf(store_name) !== -1) {
+              l("[블랙리스트 회사] PASS", "magenta", store_name);
               return;
             }
 
@@ -136,10 +136,7 @@ export const getProductByNaverCatalogV2 = (
           }
 
           //#region 제품 최저가 갱신시 유저에게 알림 보내기
-          if (
-            cheapStore.low_price &&
-            cheapStore.low_price > 1000
-          ) {
+          if (cheapStore.low_price && cheapStore.low_price > 1000) {
             const userList: string[] = await axios
               .post(`${NODE_API_URL}/crawling/product/notification`, {
                 low_price: cheapStore.low_price,
