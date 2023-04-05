@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllProductIdType } from "../product_price_update";
+import { getAllProductIdType } from "../product_price_update.d";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
 
@@ -34,9 +34,7 @@ export const exceptionCompanyListAtNaver = ["템스윈공식몰", "위메프"];
 export const getNotificationItemscoutList = () => {
   return axios
     .get(`${NODE_API_URL}/crawling/product/notification/itemscout`)
-    .then((res) =>
-      res.data.data.map((item: { product_id: string }) => item.product_id)
-    )
+    .then((res) => res.data.data.map((item: { product_id: string }) => item.product_id))
     .catch((error) => {
       l("[Notification Itemscout error]", "yellow");
       return [];
