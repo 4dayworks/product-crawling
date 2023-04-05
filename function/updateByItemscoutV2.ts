@@ -6,11 +6,7 @@ import { NODE_API_URL, toComma } from "./common";
 import _ from "lodash";
 
 const headers = { "Accept-Encoding": "deflate, br" };
-export const getProductByItemscoutV2 = (
-  product: getAllProductIdType,
-  index: number,
-  max: number,
-) =>
+export const getProductByItemscoutV2 = (product: getAllProductIdType, index: number, max: number) =>
   new Promise(async (resolve, reject) => {
     const originData = product;
     try {
@@ -40,7 +36,7 @@ export const getProductByItemscoutV2 = (
         return (d.data.data.productListResult as any[]).filter(
           (p: ItemscoutType) =>
             p.isAd === false &&
-            p.isOversea === false &&
+            (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
             !isExceptionKeyword(p.title, originData.exception_keyword) &&
             isRequireKeyword(p.title, originData.require_keyword) &&
             exceptCategory(p.category)
@@ -60,7 +56,7 @@ export const getProductByItemscoutV2 = (
           return (d.data.data.productListResult as any[]).filter(
             (p: ItemscoutType) =>
               p.isAd === false &&
-              p.isOversea === false &&
+              (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
               !isExceptionKeyword(p.title, originData.exception_keyword) &&
               isRequireKeyword(p.title, originData.require_keyword) &&
               exceptCategory(p.category)

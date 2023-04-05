@@ -8,6 +8,7 @@ export type getAllProductIdType = {
   product_name: string; //'유한m 엽산플러스';
   require_keyword: string | null; //null;
   type: "itemscout" | "naver";
+  is_drugstore: 0 | 4 | null;
 };
 
 export type ProductCompareKeywordResponseType = {
