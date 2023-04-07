@@ -33,6 +33,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
         { headers }
       ).then((d) => {
         if (!d.data.data.productListResult) return [];
+
         return (d.data.data.productListResult as any[]).filter(
           (p: ItemscoutType) =>
             p.isAd === false &&
@@ -107,16 +108,6 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
             .map((i) => productListResult[i.index])
             .filter((i) => i.price != 0 && i.price != null)
         : [];
-      // console.log(
-      //   "sortStoreList",
-      //   _.sortBy(
-      //     _.sortBy(scoreList, (p) => p.score)
-      //       .reverse()
-      //       .slice(0, 10),
-      //     (p) => productListResult[p.index].price
-      //   )
-      // );
-
       const storeList: ProductTableV2[] = await sortStoreList.map((p, i) => {
         return {
           index: i + 1,
@@ -240,6 +231,7 @@ const acceptCategoryObj: {
   "식품>다이어트식품>식이섬유": true,
   "식품>다이어트식품>다이어트바": true,
   "식품>다이어트식품>콜라겐": true,
+  "식품>다이어트식품>히알루론산": true,
   "식품>다이어트식품": true,
 };
 
