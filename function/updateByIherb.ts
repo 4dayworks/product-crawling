@@ -4,7 +4,7 @@ import request from "request";
 import { l } from "./console";
 import { productURLDataType } from "../iherb_update";
 
-export const getProductData = (urlData: productURLDataType): Promise<IherbType> => {
+export const getProductData = (urlData: productURLDataType): Promise<IherbType | null> => {
   return new Promise(async (resolve, reject) => {
     await request(urlData.product_url, headers, async (error, _, body) => {
       if (error) {
@@ -48,7 +48,7 @@ export const getProductData = (urlData: productURLDataType): Promise<IherbType> 
       // # 아이허브 배송비 이벤트 여부
       const isDeliveryEvent = $(".free-shipping-text").text().trim().slice(0, 18) === "₩40,000 이상 주문 시 무료"; //4만원 이상 주문시 무료배송 맞는지여부
       // # 아이허브 배송비 이벤트 체크 및 배송료 계산
-      let delivery = null;
+      let delivery: number | null = null;
       if (price && isDeliveryEvent && Number(price) > 40000) delivery = 0; //제품이 4만원이상일 경우 배송비 무료
       // # 아이허브 제품 설명 가져오기
       const descList: { title: string; desc: string }[] = [];
@@ -175,11 +175,14 @@ export const getProductData = (urlData: productURLDataType): Promise<IherbType> 
         list_url: urlData.list_url,
         product_url: urlData.product_url,
       };
-      // node2.yagiyagi.kr
+      if (iherbProductName === null) {
+        l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.");
+        return resolve(null);
+      }
       await axios
-        .post(`http://localhost:3001/crawling/product/iherb`, data)
+        .post(`https://node2.yagiyagi.kr/crawling/product/iherb`, data)
         // console.log(urlData.product_url, data)
-        .catch((d) => l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다."));
+        .catch((d) => l("ERR Data", "red", "iherb 데이터 중 일부가 누락되었습니다."));
 
       return resolve(data);
     });
