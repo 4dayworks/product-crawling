@@ -26,19 +26,22 @@ const updateIherb = async (product_id_list?: number[]) => {
         "green",
         `next page !, start_at: ${new Date().toISOString()}, page-url: ${maxPage.list_url}?p=${page}`
       );
-
-      for (let i = 0; i <= productURLList.length; i++) {
+      for (let i = 0; i < productURLList.length; i++) {
+        if (page === 1 && i < 46) continue;
         const product = productURLList[i];
+        const start_at = new Date();
         l(
           `[${i + 1}/${productURLList.length}]`,
           "cyan",
           `product_id: ${product.product_url.slice(
             product.product_url.lastIndexOf("/") + 1,
             product.product_url.length
-          )}, start_at: ${new Date().toISOString()}`
+          )}, start_at: ${start_at.toISOString()}`
         );
         await getProductData(product);
-        await wrapSlept(3000);
+        const end_at = new Date();
+        const wait_time = start_at.getTime() + 5000 - end_at.getTime();
+        if (wait_time > 0) await wrapSlept(wait_time);
       }
     }
   }
