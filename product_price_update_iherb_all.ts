@@ -1,22 +1,21 @@
 import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
-import { wrapSlept } from "./function/wrapSlept";
 import { l } from "./function/console";
-import { getBrandURLList } from "./function/iherb/brandList";
 import { getMaxPageList } from "./function/iherb/getMaxPageList";
-import { getProductPriceData } from "./function/updateByIherb";
 import { getProductListData } from "./function/iherb/getProductListData";
+import { getProductPriceData } from "./function/updateByIherb";
+import { wrapSlept } from "./function/wrapSlept";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
-// 판매처 집어넣고 최저가 반환하는 함수 -> 네이버/아이템스카우트 크롤링때 사용
-// const updateIherbByproductUrl =async () => {
-//   await getProductData({
-//     list_url: "https://kr.iherb.com/c/21st-century-health-care?p=3",
-//     product_url: "https://kr.iherb.com/pr/21st-century-wellify-men-s-50-multivitamin-multimineral-65-tablets/83157",
-//     brand: "21st Century (21st 센추리)",
+// // 판매처 집어넣고 최저가 반환하는 함수 -> 네이버/아이템스카우트 크롤링때 사용
+// const updateIherbByproductUrl = async () => {
+//   await getProductPriceData({
+//     list_url: "",
+//     product_url: "https://kr.iherb.com/pr/nature-s-way-probiotic-pearls-immune-regularity-immunity-30-softgels/10551",
+//     brand: "",
 //   });
-// }
+// };
 
 // # 제품의 가격을 가져옵니다. 2600개 기준 약 48분 소요.
 // # 제품의 상세정보 예) 랭킹, 상품정보, 주의사항 등은 가져올 수 없습니다.
@@ -68,5 +67,5 @@ const priceUpdateIherb = async (brandURLList: string[]) => {
 };
 
 // # (1) 브랜드 리스트 가져오기
-const brandURLList = getBrandURLList["active"];
-priceUpdateIherb(brandURLList);
+// const brandURLList = getBrandURLList["active"];
+// priceUpdateIherb(brandURLList);

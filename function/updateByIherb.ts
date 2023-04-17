@@ -95,6 +95,7 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
       // list_url: urlData.list_url,
       // product_url: res1.originProduct.url,
     };
+
     // console.log("isInCartDiscount:", res3?.special?.isInCartDiscount);
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)

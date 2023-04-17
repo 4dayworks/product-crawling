@@ -1,13 +1,21 @@
 import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
-import { wrapSlept } from "./function/wrapSlept";
 import { l } from "./function/console";
-import { getBrandURLList } from "./function/iherb/brandList";
 import { getMaxPageList } from "./function/iherb/getMaxPageList";
-import { getProductListData } from "./function/iherb/getProductListData";
 import { getProductDescData } from "./function/iherb/getProductDescData";
+import { getProductListData } from "./function/iherb/getProductListData";
+import { wrapSlept } from "./function/wrapSlept";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
+
+// 판매처 집어넣고 최저가 반환하는 함수 -> 네이버/아이템스카우트 크롤링때 사용
+const updateIherbByproductUrl = async () => {
+  await getProductDescData({
+    list_url: "",
+    product_url: "https://kr.iherb.com/pr/nature-s-way-probiotic-pearls-immune-regularity-immunity-30-softgels/10551",
+    brand: "",
+  });
+};
 
 // # 제품의 상세정보를 가져옵니다. 예) 랭킹, 상품정보, 주의사항 등
 // # 제품의 가격정보를 가져오려면 product_price_update_iherb.ts를 사용하세요.
@@ -60,5 +68,7 @@ const brandAddIherb = async (brandURLList: string[]) => {
 };
 
 // # (1) 브랜드 리스트 가져오기
-const brandURLList = getBrandURLList["active"];
-brandAddIherb(brandURLList);
+// const brandURLList = getBrandURLList["active"];
+// brandAddIherb(brandURLList);
+
+updateIherbByproductUrl();
