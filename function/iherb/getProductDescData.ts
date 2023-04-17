@@ -53,7 +53,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
         const isDeliveryEvent = $(".free-shipping-text").text().trim().slice(0, 18) === "₩40,000 이상 주문 시 무료"; //4만원 이상 주문시 무료배송 맞는지여부
 
         // # 아이허브 배송비 이벤트 체크 및 배송료 계산
-        let delivery: number | null = null;
+        let delivery: number | null = 5000;
         if (price && isDeliveryEvent && Number(price) > 40000) delivery = 0; //제품이 4만원이상일 경우 배송비 무료
 
         // # 아이허브 제품 설명 가져오기
@@ -140,7 +140,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
               .trim() || null;
 
-          if (title?.includes("*")) return;
+          if (!title || title.includes("*") || title.length > 20) return;
           if (amount && title) ingredientAmount += title + " : " + amount + "\n";
           ingredientRaw += title + " : " + amount + " , " + percent + "\n";
         });
