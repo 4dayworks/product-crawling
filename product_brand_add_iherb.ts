@@ -17,7 +17,7 @@ const brandAddIherb = async (brandURLList: string[]) => {
   // # (2) 브랜드 별로 반복 //default: brandIndex = 0
   for (let brandIndex = 0; brandIndex < brandURLList.length; brandIndex++) {
     l(
-      `[${brandIndex + 1}/${brandURLList.length + 1}]`,
+      `[${brandIndex + 1}/${brandURLList.length}]`,
       "blue",
       `next brand !, start_at: ${new Date().toISOString()}, brand-url: ${brandURLList[brandIndex]}`
     );
@@ -51,7 +51,7 @@ const brandAddIherb = async (brandURLList: string[]) => {
         );
         await getProductDescData(product);
         const end_at = new Date();
-        const wait_time = start_at.getTime() + 200 - end_at.getTime();
+        const wait_time = start_at.getTime() + 1200 - end_at.getTime();
         if (wait_time > 0) await wrapSlept(wait_time);
       }
     }

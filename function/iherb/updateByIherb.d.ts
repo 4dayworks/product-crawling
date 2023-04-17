@@ -1,6 +1,37 @@
-export type IherbProductPriceType = {
+export type IherbProductPriceType1 = {
   recommendedProducts: ProductDetailType[]; //2개씩 오는듯
   originProduct: ProductDetailType;
+};
+export type IherbProductPriceType2 = {
+  id: number; //115008;
+  special: {
+    discountPercentage: number; //20;
+    discountPrice: number; //11152;
+    quantityLimit: number; //0;
+    isInCartDiscount: boolean; //false;
+  } | null;
+  trial: null;
+  clearance: null;
+  volume: null;
+  combo: null;
+  autoApplyPromo: null;
+  subscription: {
+    discountPercentage: number; //5;
+    firstTimeSubscriberPercent: number; //0.05;
+    recurringOrderPercent: number; //0.05;
+    discountedPrice: Object;
+    defaultFrequencyId: string; //"297691e6-75f6-4ae0-9e65-1fbcaada72d9";
+    isFirstTimeSubscriber: true;
+    activeSubscriptionId: null;
+    nextDeliveryDate: null;
+    activeSubscriptionUrl: null;
+    frequencies: any[];
+    content: Object;
+    pricePerUnit: string; //"₩42/개";
+    salePrice: Object;
+    displayType: number; //0;
+    defaultSelectionIsEnabled: false;
+  } | null;
 };
 export type ErrorType = {
   errorMessage: "Product does not exist or is inactive. productId: 43826";
@@ -63,7 +94,6 @@ export type IherbType = {
   iherb_product_brand: string | null;
   iherb_product_image: string | null;
   is_stock: string;
-  is_super_sale: string;
   discount_price: string | null;
   is_delivery_event: string;
   rank: string;
