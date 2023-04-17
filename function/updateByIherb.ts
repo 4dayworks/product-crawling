@@ -73,7 +73,7 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
       discount_price: res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || null,
 
       delivery_price:
-        (res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || 0) > 40000 ? "0" : null, //가격이 4만원넘으면 무료배송
+        (res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || 0) > 40000 ? 0 : 5000, //가격이 4만원넘으면 무료배송
 
       rating: res1?.originProduct.rating,
       review_count: res1?.originProduct.ratingCount,
