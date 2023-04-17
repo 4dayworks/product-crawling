@@ -1,6 +1,12 @@
 import axios from "axios";
 import { l } from "./console";
-import { IherbProductPriceType, IherbType, ProductType, productURLDataType } from "./iherb/updateByIherb";
+import {
+  IherbProductPriceType1,
+  IherbProductPriceType2,
+  IherbType,
+  ProductType,
+  productURLDataType,
+} from "./iherb/updateByIherb";
 import { headers } from "./iherb/headers";
 
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
@@ -19,43 +25,58 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
         headers()
       )
       .then((d) => {
-        if (d.data.errorType === undefined) return d.data as IherbProductPriceType;
+        if (d.data.errorType === undefined) return d.data as IherbProductPriceType1;
+        l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(1)");
+        return null;
+      })
+      .catch(() => null);
+    // # 데이터 요청 3
+    const res3 = await axios
+      .get(`https://catalog.app.iherb.com/product/${iherbProductId}/discounts?_=1681707804820`, headers())
+      .then((d) => {
+        if (d.data.errorType === undefined) return d.data as IherbProductPriceType2;
         l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(3)");
         return null;
       })
-      .catch((e) => (l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(4)" + e), null));
+      .catch(() => null);
     // # 데이터 요청 2
     const res2 = await axios
       .get(`https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}`, headers())
       .then(async (d) => {
         if (d.data.errorType === undefined) return d.data as ProductType;
-        l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(5) ");
+        l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(4) ");
         return null;
       })
-      .catch((e) => (l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(6)" + e), null));
+      .catch(() => null);
 
     // # 더이상 안팔면 판매처 삭제필요함 가격/판매처 데이터 지우고 is_stock 0로 표시
-    if (res1 === null || res2 === null) {
+    if ((res1 === null && res2 === null) || res2 === null) {
       const data = { iherb_product_id: iherbProductId };
       await axios.delete("http://localhost:3001/crawling/product/iherb", { data });
+      l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(5) ");
       return resolve(null);
     }
+    // console.log({ res1, res3 });
 
     const data = {
       iherb_product_id: iherbProductId,
       is_stock: res2.isAvailableToPurchase ? "1" : "0",
-      is_super_sale: res1.originProduct.discountType === 7 ? "1" : "0",
 
-      origin_price: res1.originProduct.listPrice.replace(/[^0-9]/gi, ""),
-      discount_percent: res1.originProduct.salesDiscountPercentage,
+      origin_price:
+        res1?.originProduct.listPrice.replace(/[^0-9]/gi, "") ||
+        (res3 && res3.special
+          ? (res3.special.discountPrice * 100) / (100 - res3.special.discountPercentage)
+          : undefined), //res1데이터 없으면 res3이용해서 할인율,할인가 역산해서 원가 계산함.
+      discount_percent: res1?.originProduct.salesDiscountPercentage || res3?.special?.discountPercentage || 0,
 
-      discount_type: res1.originProduct.discountType,
-      discount_price: res1.originProduct.discountedPriceAmount,
+      discount_type: res1?.originProduct.discountType || null,
+      discount_price: res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || null,
 
-      delivery_price: res1.originProduct.discountedPriceAmount > 40000 ? "0" : null, //가격이 4만원넘으면 무료배송
+      delivery_price:
+        (res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || 0) > 40000 ? "0" : null, //가격이 4만원넘으면 무료배송
 
-      rating: res1.originProduct.rating,
-      review_count: res1.originProduct.ratingCount,
+      rating: res1?.originProduct.rating,
+      review_count: res1?.originProduct.ratingCount,
 
       // 안 가져오는 정보들
       // iherb_product_name: res1.originProduct.name,
@@ -74,6 +95,7 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
       // list_url: urlData.list_url,
       // product_url: res1.originProduct.url,
     };
+    // console.log("isInCartDiscount:", res3?.special?.isInCartDiscount);
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)
     await axios.patch(`http://localhost:3001/crawling/product/iherb/price`, data);

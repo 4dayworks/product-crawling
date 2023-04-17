@@ -18,14 +18,14 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 //   });
 // }
 
-// # 제품의 가격을 가져옵니다.
+// # 제품의 가격을 가져옵니다. 2600개 기준 약 48분 소요.
 // # 제품의 상세정보 예) 랭킹, 상품정보, 주의사항 등은 가져올 수 없습니다.
 // # 제품의 상세정보를 가져오려면 product_brand_add_iherb.ts를 사용하세요.
 const priceUpdateIherb = async (brandURLList: string[]) => {
   // # (2) 브랜드 별로 반복 //default: brandIndex = 0
   for (let brandIndex = 0; brandIndex < brandURLList.length; brandIndex++) {
     l(
-      `[${brandIndex + 1}/${brandURLList.length + 1}]`,
+      `[${brandIndex + 1}/${brandURLList.length}]`,
       "blue",
       `next brand !, start_at: ${new Date().toISOString()}, brand-url: ${brandURLList[brandIndex]}`
     );

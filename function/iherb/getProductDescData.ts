@@ -19,6 +19,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           urlData.product_url.lastIndexOf("/") + 1,
           urlData.product_url.length
         );
+
         // # 아이허브 의 제품이미지
         const iherbProductImage = $("img#iherb-product-image").attr("src") || null;
         // # 아이허브 의 제품이름
@@ -31,8 +32,8 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
         // # 아이허브 품절 여부 가져오기
         const isStock = $(".text-primary").text().trim() === "재고있음"; //품절인지 아닌지 -> true면 재고있음
 
-        // # 아이허브 슈퍼할인 여부 가져오기
-        const isSuperSale = $(".flag-Special > bdi").text().includes("슈퍼 세일!");
+        // # 아이허브 슈퍼할인 여부 가져오기 -> 매일 못가져오므로 삭제
+        // const isSuperSale = $(".flag-Special > bdi").text().includes("슈퍼 세일!");
         // # 아이허브 가격
         const price =
           $("div.price-container > b").html()?.trim().replace(/[₩,]/gi, "") ||
@@ -157,7 +158,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           iherb_product_brand: urlData.brand,
           iherb_product_image: iherbProductImage,
           is_stock: isStock ? "1" : "0",
-          is_super_sale: isSuperSale ? "1" : "0",
+          // is_super_sale: isSuperSale ? "1" : "0",
           discount_price: price,
           rank: rankListString,
           is_delivery_event: isDeliveryEvent ? "1" : "0",
@@ -181,7 +182,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           return resolve(null);
         }
         if (iherbProductName === null) {
-          l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.");
+          l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다. iherbProductName = null");
           return resolve(null);
         }
         await axios
