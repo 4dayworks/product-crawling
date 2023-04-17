@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "update:iherb": "ts-node iherb_update",
+    "update:iherb-price": "ts-node product_price_update_iherb",
+    "update:iherb-brand": "ts-node product_brand_add_iherb",
     "update:naver": "ts-node product_price_update_naver",
     "update:itemscout": "ts-node product_price_update_itemscout",
     "update-notification:itemscout": "ts-node product_price_update_itemscout_subscription",

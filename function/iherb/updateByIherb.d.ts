@@ -50,3 +50,34 @@ export type ProductType = {
   brandUrl: string; //"https://kr.iherb.com/c/biogaia";
   primaryImageIndex: number; //12;
 };
+
+export type productURLDataType = {
+  list_url: string;
+  product_url: string;
+  brand: string;
+};
+
+export type IherbType = {
+  iherb_product_id: string;
+  iherb_product_name: string | null;
+  iherb_product_brand: string | null;
+  iherb_product_image: string | null;
+  is_stock: string;
+  is_super_sale: string;
+  discount_price: string | null;
+  is_delivery_event: string;
+  rank: string;
+  delivery_price: number | null;
+  description: string;
+  description_use: string | null;
+  description_other_ingredient: string | null;
+  description_warn: string | null;
+  ingredient_amount: string;
+  ingredient_raw: string;
+  ingredient_count: string;
+  rating: string | null;
+  review_count: string | null;
+  review_url: string | null;
+  list_url: string;
+  product_url: string;
+};
