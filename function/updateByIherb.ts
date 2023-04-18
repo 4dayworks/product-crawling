@@ -58,7 +58,6 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
       l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(5) ");
       return resolve(null);
     }
-    // console.log({ res1, res3 });
 
     const data = {
       iherb_product_id: iherbProductId,
@@ -72,7 +71,11 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
       discount_percent: res1?.originProduct.salesDiscountPercentage || res3?.special?.discountPercentage || 0,
 
       discount_type: res1?.originProduct.discountType || null,
-      discount_price: res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || null,
+      discount_price:
+        res1?.originProduct.discountedPriceAmount ||
+        res3?.special?.discountPrice ||
+        res3?.subscription?.discountedPrice?.value ||
+        null,
 
       delivery_price:
         (res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || 0) > 40000 ? 0 : 5000, //가격이 4만원넘으면 무료배송
@@ -97,8 +100,6 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
       // list_url: urlData.list_url,
       // product_url: res1.originProduct.url,
     };
-
-    // console.log("isInCartDiscount:", res3?.special?.isInCartDiscount);
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)
     await axios.patch(`${NODE_API_URL}/crawling/product/iherb/price`, data);
