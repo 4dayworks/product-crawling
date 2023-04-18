@@ -42,10 +42,12 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
 
         // # 아이허브 랭킹 가져오기
         const rankList: string[] = [];
+        const rankStrList: string[] = []; //func_content
         $(".best-selling-rank > div").each((i, e) => {
           const textList = $(e).find("strong").text().trim().split(" in");
           const rank = textList[0].replace(/[^0-9]/gi, "");
           const category = textList[1].replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9]/gi, "");
+          rankStrList.push(category);
           rankList.push(rank + "위 : " + category);
         });
         const rankListString = rankList.join("\n");
@@ -89,6 +91,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
         let ingredientRaw = ""; //영양정보전체
         let ingredientCount = ""; //1회제공량, 용기당 제공횟수 저장됨
         let ingredientAmount = ""; //영양정보 함유량만
+        const ingredientList: string[] = [];
         $(`table > tbody > tr`).each((i, e) => {
           if (i === 0) return;
           const div = $(e);
@@ -115,31 +118,55 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           }
           if (text.includes("서빙 당")) return;
 
+          const titleTemp = div.find("td:nth-child(1) > strong").html() || div.find("td:nth-child(1)").html() || "";
           const title =
-            (div.find("td:nth-child(1) > strong").html() || div.find("td:nth-child(1)").html() || "")
+            titleTemp
+              .slice(0, titleTemp.indexOf("(") === -1 ? titleTemp.length : titleTemp.indexOf("("))
+              .slice(0, titleTemp.indexOf("<br>") === -1 ? titleTemp.length : titleTemp.indexOf("<br>"))
+              .replace(/<p>/g, "")
+              .replace(/<span>/g, "")
+              .replace(/:/g, "")
+              .replace(/<\/span>/g, "")
+              .replace(/<br>/g, "")
+              .replace(/†/g, "")
               .replace(/ /g, "")
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
               .trim() || null;
 
-          let amount =
+          const amount =
             div
               .find("td:nth-child(2)")
               .text()
+              .replace(/†/g, "")
+              .replace(/<br>/g, "")
               .replace(/ /g, "")
+              .replace(/,/g, "")
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
               .trim() || null;
 
-          if (title === "칼로리" && amount) amount = amount.replace("명", "cal");
           const percent =
             div
               .find("td:nth-child(3)")
               .text()
               .replace(/ /g, "")
+              .replace(/<br>/g, "")
+              .replace(/†/g, "")
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
               .trim() || null;
 
-          if (!title || title === "<br>" || title.includes("*") || title.length > 30) return;
-          if (amount && title) ingredientAmount += title + " : " + amount + "\n";
+          if (
+            !title ||
+            title === "<br>" ||
+            title === "&nbsp;" ||
+            title.includes("*") ||
+            title.includes("제공량") ||
+            title.length > 30
+          )
+            return;
+          if (amount && title) {
+            ingredientList.push(title);
+            ingredientAmount += title + " : " + amount + "\n";
+          }
           ingredientRaw += title + " : " + amount + " , " + percent + "\n";
         });
 
@@ -173,6 +200,8 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           review_url: reviewUrl,
           list_url: urlData.list_url,
           product_url: urlData.product_url,
+          primary_ingredients: ingredientList.slice(0, 10).join(", "),
+          func_content: null, //rankStrList.slice(0, 10).join(", "),
         };
 
         if (reviewCount === "https://kr") {

@@ -110,4 +110,6 @@ export type IherbType = {
   review_url: string | null;
   list_url: string;
   product_url: string;
+  primary_ingredients: string;
+  func_content: string | null;
 };
