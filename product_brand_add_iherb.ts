@@ -48,7 +48,7 @@ const brandAddIherb = async (
       await wrapSlept(1000);
       /*END******************************************************************************* */
       // # (4) 각 제품별로 제품 상세에 들어가 상세 정보 페이지 크롤링 //default: i = 0
-      for (let i = 1; i < productURLList.length; i++) {
+      for (let i = 0; i < productURLList.length; i++) {
         // if (brandIndex == 4 && page == 3) continue;
         // if (brandIndex == 4 && page == 7 && i < 18) continue;
         /*START***************************************************************************** */

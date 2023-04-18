@@ -123,14 +123,32 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
             titleTemp
               .slice(0, titleTemp.indexOf("(") === -1 ? titleTemp.length : titleTemp.indexOf("("))
               .slice(0, titleTemp.indexOf("<br>") === -1 ? titleTemp.length : titleTemp.indexOf("<br>"))
+              .replace(/\([^)]+\)/gi, "") // 괄호삭제
+              .replace(/ /g, "")
               .replace(/<p>/g, "")
+              .replace(/<\/p>/g, "")
               .replace(/<span>/g, "")
               .replace(/:/g, "")
+              .replace(/'/g, "")
               .replace(/<\/span>/g, "")
+              .replace(/&nbsp;/g, "")
+              .replace(/\^/g, "")
               .replace(/<br>/g, "")
+              .replace("(HT042)", "")
+              .replace('<spanstyle="colorrgb', "")
+              .replace("<strong></strong>", "")
               .replace(/†/g, "")
-              .replace(/ /g, "")
-              .replace(/\([^)]+\)/gi, "") // 괄호삭제
+              .replace(/\)/g, "")
+              .replace(/\(/g, "")
+              .replace("1스쿱", "")
+              .replace("2스쿱", "")
+              .replace("<sup>®</sup>", " ")
+              .replace("2캡슐당함유성분", "")
+              .replace("3/1", "")
+              .replace("401", "")
+              .replace("9", "")
+              .replace("6-", "")
+              .replace("6", "")
               .trim() || null;
 
           const amount =
