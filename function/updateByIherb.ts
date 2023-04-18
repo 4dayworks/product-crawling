@@ -8,6 +8,7 @@ import {
   productURLDataType,
 } from "./iherb/updateByIherb";
 import { headers } from "./iherb/headers";
+import { NODE_API_URL } from "./common";
 
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
 // # (2)제품의 상세 데이터는 getProductDescData를 통해 가져옴(페이지 크롤링)
@@ -52,6 +53,7 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
     // # 더이상 안팔면 판매처 삭제필요함 가격/판매처 데이터 지우고 is_stock 0로 표시
     if ((res1 === null && res2 === null) || res2 === null) {
       const data = { iherb_product_id: iherbProductId };
+      //localhost 로만 실행이 가능함. (크롤링 봇 주기적으로 막아서 크롬켜서 px3쿠키 업데이트해줘야함)
       await axios.delete("http://localhost:3001/crawling/product/iherb", { data });
       l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(5) ");
       return resolve(null);
@@ -99,7 +101,7 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
     // console.log("isInCartDiscount:", res3?.special?.isInCartDiscount);
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)
-    await axios.patch(`http://localhost:3001/crawling/product/iherb/price`, data);
+    await axios.patch(`${NODE_API_URL}/crawling/product/iherb/price`, data);
     resolve(null);
   });
 };
