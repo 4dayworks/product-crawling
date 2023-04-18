@@ -69,5 +69,4 @@ const priceUpdateIherb = async (brandURLList: string[]) => {
 };
 
 // # (1) 브랜드 리스트 가져오기
-const brandURLList = getBrandURLList["active"];
-priceUpdateIherb(brandURLList);
+priceUpdateIherb(getBrandURLList["active"]);

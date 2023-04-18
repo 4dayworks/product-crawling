@@ -73,5 +73,4 @@ const brandAddIherb = async (
 
 // # (1) 브랜드 리스트 가져오기
 // Query `select JSON_OBJECT("product_url",product_url,"brand",iherb_product_brand ,"list_url",list_url)  from product_iherb pi2 where yagi_product_id is null`
-const brandURLList = getBrandURLList["active"];
-brandAddIherb(brandURLList);
+brandAddIherb(getBrandURLList["active"]);

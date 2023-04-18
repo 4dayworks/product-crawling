@@ -19,7 +19,7 @@ export type IherbProductPriceType2 = {
     discountPercentage: number; //5;
     firstTimeSubscriberPercent: number; //0.05;
     recurringOrderPercent: number; //0.05;
-    discountedPrice: Object;
+    discountedPrice: { value: number; formatted: string };
     defaultFrequencyId: string; //"297691e6-75f6-4ae0-9e65-1fbcaada72d9";
     isFirstTimeSubscriber: true;
     activeSubscriptionId: null;
