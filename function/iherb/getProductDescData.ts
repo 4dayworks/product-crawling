@@ -210,7 +210,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           description_use: descriptionUse,
           description_other_ingredient: descriptionOtherIngredient,
           description_warn: descriptionWarn,
-          ingredient_amount: ingredientAmount,
+          ingredient_amount: ingredientAmount.slice(0, ingredientAmount.length - 1),
           ingredient_raw: ingredientRaw,
           ingredient_count: ingredientCount,
           rating: rating,
