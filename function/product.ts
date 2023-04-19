@@ -5,7 +5,6 @@ import { l } from "./console";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
-    console.log("product_id", product.product_id);
     await axios.post(`${NODE_API_URL}/v2/product/daily_price/history`, {
       product_id: product.product_id,
     });
