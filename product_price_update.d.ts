@@ -14,6 +14,8 @@ export type getAllProductIdType = {
   iherb_product_id: string | null;
   iherb_list_url: string | null;
   iherb_product_url: string | null;
+  iherb_brand: string | null;
+  iherb_product_image: string | null;
 };
 
 export type ProductCompareKeywordResponseType = {

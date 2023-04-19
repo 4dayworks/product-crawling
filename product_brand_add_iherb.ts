@@ -27,7 +27,7 @@ const brandAddIherb = async (
     "아이허브는 크롤링 봇을 주기적으로 막기떄문에 localhost에서만 실행이 가능합니다. localhost:3001이 켜져있는지도 확인!"
   );
   // # (2) 브랜드 별로 반복 //default: brandIndex = 0
-  for (let brandIndex = 0; brandIndex < brandURLList.length; brandIndex++) {
+  for (let brandIndex = 6; brandIndex < brandURLList.length; brandIndex++) {
     /*START***************************************************************************** */
     const maxPage = await getMaxPageList(brandURLList[brandIndex]);
 
@@ -45,12 +45,12 @@ const brandAddIherb = async (
       const text = `next page !, start_at: ${new Date().toISOString()}, page-url: ${maxPage.list_url}?p=${page}`;
       l(`[${page}/${maxPage.maxPage}]`, "green", text);
 
-      await wrapSlept(1000);
+      if (brandIndex == 6 && page < 4) continue;
       /*END******************************************************************************* */
       // # (4) 각 제품별로 제품 상세에 들어가 상세 정보 페이지 크롤링 //default: i = 0
       for (let i = 0; i < productURLList.length; i++) {
         // if (brandIndex == 4 && page == 3) continue;
-        // if (brandIndex == 4 && page == 7 && i < 18) continue;
+        // if (brandIndex == 0 && page == 1 && i < 2) continue;
         /*START***************************************************************************** */
         const product = productURLList[i];
         await getProductDescData(product);

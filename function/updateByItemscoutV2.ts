@@ -1,14 +1,21 @@
-import { getAllProductIdType, ProductCompareKeywordResponseType } from "./../product_price_update.d";
 import axios from "axios";
+import _ from "lodash";
+import { IherbPriceType } from "../product_price_update_itemscout";
+import { getAllProductIdType, ProductCompareKeywordResponseType } from "./../product_price_update.d";
+import { NODE_API_URL, toComma } from "./common";
 import { l } from "./console";
 import { ItemscoutType, ProductTableV2 } from "./updateByItemscout";
-import { NODE_API_URL, toComma } from "./common";
-import _ from "lodash";
 
 const headers = { "Accept-Encoding": "deflate, br" };
-export const getProductByItemscoutV2 = (product: getAllProductIdType, index: number, max: number) =>
+export const getProductByItemscoutV2 = (
+  product: getAllProductIdType,
+  index: number,
+  max: number,
+  iherbPriceData: IherbPriceType | null
+) =>
   new Promise(async (resolve, reject) => {
     const originData = product;
+
     try {
       //#region (2) 키워드 가져오기 & 있는지 확인하고 야기 DB에 반영하기
       // GET /product/keyword/id
@@ -17,7 +24,10 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
       //  (2-1). keyword가 있고 keyword_id가 없으면 해당 키워드로 검색하고 keyword_id update하기
       const url = `https://api.itemscout.io/api/keyword`;
       if (!keyword_id) {
-        const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
+        const itemscout_keyword_id = await axios
+          .post(url, { keyword }, { headers })
+          .then((d) => d.data.data)
+          .catch(() => null);
         keyword_id = itemscout_keyword_id;
       }
       //#endregion
@@ -31,18 +41,20 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
       let productListResult: ItemscoutType[] = await axios(
         `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
         { headers }
-      ).then((d) => {
-        if (!d.data.data.productListResult) return [];
+      )
+        .then((d) => {
+          if (!d.data.data.productListResult) return [];
 
-        return (d.data.data.productListResult as any[]).filter(
-          (p: ItemscoutType) =>
-            p.isAd === false &&
-            (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
-            !isExceptionKeyword(p.title, originData.exception_keyword) &&
-            isRequireKeyword(p.title, originData.require_keyword) &&
-            exceptCategory(p.category)
-        );
-      });
+          return (d.data.data.productListResult as any[]).filter(
+            (p: ItemscoutType) =>
+              p.isAd === false &&
+              (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
+              !isExceptionKeyword(p.title, originData.exception_keyword) &&
+              isRequireKeyword(p.title, originData.require_keyword) &&
+              exceptCategory(p.category)
+          );
+        })
+        .catch(() => []);
 
       // 리스트 없을 경우 제품명으로 다시 검색
       if (productListResult.length === 0) {
@@ -52,19 +64,20 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
         productListResult = await axios(
           `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
           { headers }
-        ).then((d) => {
-          if (!d.data.data.productListResult) return [];
-          return (d.data.data.productListResult as any[]).filter(
-            (p: ItemscoutType) =>
-              p.isAd === false &&
-              (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
-              !isExceptionKeyword(p.title, originData.exception_keyword) &&
-              isRequireKeyword(p.title, originData.require_keyword) &&
-              exceptCategory(p.category)
-          );
-        });
+        )
+          .then((d) => {
+            if (!d.data.data.productListResult) return [];
+            return (d.data.data.productListResult as any[]).filter(
+              (p: ItemscoutType) =>
+                p.isAd === false &&
+                (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
+                !isExceptionKeyword(p.title, originData.exception_keyword) &&
+                isRequireKeyword(p.title, originData.require_keyword) &&
+                exceptCategory(p.category)
+            );
+          })
+          .catch(() => []);
       }
-
       // 기존 판매처 및 가격 삭제
       await axios.delete(`${NODE_API_URL}/crawling/store`, { data: { product_id: originData.product_id } });
       // 야기DB keyword, keyword_id 업데이트
@@ -138,10 +151,66 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType, index: num
           "red",
           `[${index}/${max}] No Store(판매처) product_id:${originData.product_id}, keyword:${keyword}, keyword_id=${keyword_id}`
         );
+        if (iherbPriceData) {
+          l("Add", "blue", "Iherb Store add");
+          const iherbStore: ProductTableV2 = {
+            index: 20,
+            keyword: originData.product_name,
+            keyword_id,
+            itemscout_product_name: product.product_name,
+            itemscout_product_image: iherbPriceData.iherb_product_image || "",
+            itemscout_product_id: product.product_id,
+            price: iherbPriceData.discount_price || 0,
+            store_link: iherbPriceData.product_url || "",
+            store_name: "iherb",
+            category: "",
+            is_naver_shop: 0,
+            mall: "iherb",
+            itemscout_mall_img: null,
+            review_count: iherbPriceData.review_count ? iherbPriceData.review_count : 0,
+            review_score: iherbPriceData.rating ? iherbPriceData.rating : 0,
+            delivery: String(iherbPriceData.delivery_price),
+            pc_product_url: iherbPriceData.product_url || undefined,
+            mobile_product_url: undefined,
+            is_oversea: 1,
+          };
+
+          await axios.post(`${NODE_API_URL}/v3/product/keyword/data`, {
+            data: [iherbStore],
+            keyword_id,
+            product_id: originData.product_id,
+          });
+        }
+
         return resolve(true);
       } else {
+        const iherbStore: ProductTableV2 | null = iherbPriceData
+          ? {
+              index: 20,
+              keyword: originData.product_name,
+              keyword_id,
+              itemscout_product_name: product.product_name,
+              itemscout_product_image: iherbPriceData.iherb_product_image || "",
+              itemscout_product_id: product.product_id,
+              price: iherbPriceData.discount_price || 0,
+              store_link: iherbPriceData.product_url || "",
+              store_name: "iherb",
+              category: "",
+              is_naver_shop: 0,
+              mall: "iherb",
+              itemscout_mall_img: null,
+              review_count: iherbPriceData.review_count ? iherbPriceData.review_count : 0,
+              review_score: iherbPriceData.rating ? iherbPriceData.rating : 0,
+              delivery: String(iherbPriceData.delivery_price),
+              pc_product_url: iherbPriceData.product_url || undefined,
+              mobile_product_url: undefined,
+              is_oversea: 1,
+            }
+          : null;
+
+        const storeListWithIherb: ProductTableV2[] = iherbStore ? [...storeList, iherbStore] : storeList;
         await axios.post(`${NODE_API_URL}/v3/product/keyword/data`, {
-          data: storeList,
+          data: storeListWithIherb,
           keyword_id,
           product_id: originData.product_id,
         });

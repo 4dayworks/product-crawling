@@ -13,7 +13,19 @@ import { NODE_API_URL } from "./common";
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
 // # (2)제품의 상세 데이터는 getProductDescData를 통해 가져옴(페이지 크롤링)
 // (2)는 iherb 데이터를 크롤링 봇으로 판단해 IP 막으므로 수동체크 반드시 필요. -> 주기적으로 돌리는 자동화 불가능
-export const getProductPriceData = (urlData: productURLDataType): Promise<IherbType | null> => {
+export const getProductPriceData = (
+  urlData: productURLDataType
+): Promise<{
+  iherb_product_id: string;
+  is_stock: string;
+  origin_price: string | number | undefined;
+  discount_percent: number;
+  discount_type: number | null;
+  discount_price: number | null;
+  delivery_price: number;
+  rating: number | undefined;
+  review_count: number | undefined;
+} | null> => {
   return new Promise(async (resolve, reject) => {
     const iherbProductId = urlData.product_url.slice(
       urlData.product_url.lastIndexOf("/") + 1,
@@ -103,6 +115,6 @@ export const getProductPriceData = (urlData: productURLDataType): Promise<IherbT
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)
     await axios.patch(`${NODE_API_URL}/crawling/product/iherb/price`, data);
-    resolve(null);
+    resolve(data);
   });
 };
