@@ -159,6 +159,7 @@ export const getProductByItemscoutV2 = (
             .map((i) => productListResult[i.index])
             .filter((i) => i.price != 0 && i.price != null)
         : [];
+
       const storeList: ProductTableV2[] = await sortStoreList.map((p, i) => {
         return {
           index: i + 1,
