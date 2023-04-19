@@ -190,7 +190,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
             return;
           if (amount && title) {
             ingredientList.push(title);
-            ingredientAmount += title + " : " + amount + "\n";
+            if (title.length < 10) ingredientAmount += title + " : " + amount + "\n";
           }
           ingredientRaw += title + " : " + amount + " , " + percent + "\n";
         });
