@@ -138,6 +138,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace(/™/g, "")
               .replace(/\'/g, "")
               .replace(/\"/g, "")
+              .replace("비타민B-", "비타민B")
               .replace("(HT042)", "")
               .replace('<spanstyle="colorrgb', "")
               .replace("<strong></strong>", "")
