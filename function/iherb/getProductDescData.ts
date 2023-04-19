@@ -135,6 +135,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace(/\^/g, "")
               .replace(/<br>/g, "")
               .replace(/®/g, "")
+              .replace(/™/g, "")
               .replace(/\'/g, "")
               .replace(/\"/g, "")
               .replace("(HT042)", "")
