@@ -1,12 +1,11 @@
-// http://localhost:3001/recommend/category?type=shop_review_count&gender=all&age=all&size=10참고
-
-type ChipType = {title: '건강기능식품'; color: 'green_outline'} |
-{title: '일반의약품'; color: 'blue_outline'} |
-{title: '식품'; color: 'yellow_outline'} | 
-{title: '온라인'; color: 'green'} | 
-{title: '약국전용'; color: 'blue'} | 
-{title: '해외직구'; color: 'purple'} | 
-{title: '회수판매중지이력'; color: 'red'};
+type ChipType =
+  | { title: "건강기능식품"; color: "green_outline" }
+  | { title: "일반의약품"; color: "blue_outline" }
+  | { title: "식품"; color: "yellow_outline" }
+  | { title: "온라인"; color: "green" }
+  | { title: "약국전용"; color: "blue" }
+  | { title: "해외직구"; color: "purple" }
+  | { title: "회수판매중지이력"; color: "red" };
 
 type ProductType = {
   category: string;
@@ -20,8 +19,8 @@ type ProductType = {
   expert_avg: number | null; //4.2;
   customer_review_count: number | null; //1245; //야기야기 소비자 리뷰 + 쇼핑몰 리뷰 합산
   order_price: number | null; //20000; //최저가 또는 약국 전용 제품일 경우는 판매가(정가)
-	low_price: number | null; //최저가
-	regular_price: number | null; //약국 전용 - 판매가(정가)
+  low_price: number | null; //최저가
+  regular_price: number | null; //약국 전용 - 판매가(정가)
   discount: number | null; //15면 할인률 15%
   chipList: ChipType[]; // 모든 뱃지
   food_type: number | null;
@@ -29,10 +28,10 @@ type ProductType = {
 };
 
 type ResponType = {
-    [category: string]: {
-      productList: ProductType[];
-      isMore: boolean; // true면 더보기 버튼 있음
-    };
+  [category: string]: {
+    productList: ProductType[];
+    isMore: boolean; // true면 더보기 버튼 있음
+  };
 };
 
 const obj: ResponType = {
@@ -141,8 +140,7 @@ const obj: ResponType = {
         company_name: "유한양행",
         expert_avg: 4.2,
         customer_review_count: 65456,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34074_ELENA+(1).jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34074_ELENA+(1).jpg",
         discount: 1,
         average_price: 24255,
         low_price: 23940,
@@ -957,8 +955,7 @@ const obj: ResponType = {
         food_type: 0,
         rank_id: 10,
         product_id: 34090,
-        product_name:
-          "트리플러스 우먼 멀티비타민+미네랄+오메가-3(EPA 및 DHA 함유유지)",
+        product_name: "트리플러스 우먼 멀티비타민+미네랄+오메가-3(EPA 및 DHA 함유유지)",
         company_name: "세노비스",
         expert_avg: 2,
         customer_review_count: 22971,
@@ -1598,8 +1595,7 @@ const obj: ResponType = {
         company_name: "오쏘몰",
         expert_avg: 3.5,
         customer_review_count: 28058,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
         discount: 2,
         average_price: 84749,
         low_price: 83080,
@@ -1902,8 +1898,7 @@ const obj: ResponType = {
         company_name: "솔가",
         expert_avg: 3,
         customer_review_count: 3339,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34107_SOLGAR-B-COMPLEX_100.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34107_SOLGAR-B-COMPLEX_100.jpg",
         discount: 7,
         average_price: 23769,
         low_price: 22090,
@@ -4252,8 +4247,7 @@ const obj: ResponType = {
         company_name: "그린스토어",
         expert_avg: 4,
         customer_review_count: 1560,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43246_.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43246_.jpg",
         discount: 12,
         average_price: 38695,
         low_price: 34180,
@@ -5713,8 +5707,7 @@ const obj: ResponType = {
         company_name: "오쏘몰",
         expert_avg: 3.5,
         customer_review_count: 28058,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
         discount: 2,
         average_price: 84749,
         low_price: 83080,
@@ -5851,8 +5844,7 @@ const obj: ResponType = {
         company_name: "유유제약",
         expert_avg: 3.5,
         customer_review_count: 1150,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34097_MO-AND-GOOD.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34097_MO-AND-GOOD.jpg",
         discount: 8,
         average_price: 84723,
         low_price: 77580,
@@ -6865,8 +6857,7 @@ const obj: ResponType = {
         company_name: "오쏘몰",
         expert_avg: 3.5,
         customer_review_count: 28058,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
         discount: 2,
         average_price: 84749,
         low_price: 83080,
@@ -8579,8 +8570,7 @@ const obj: ResponType = {
         company_name: "오쏘몰",
         expert_avg: 3.5,
         customer_review_count: 28058,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
         discount: 2,
         average_price: 84749,
         low_price: 83080,
@@ -8598,8 +8588,7 @@ const obj: ResponType = {
         food_type: 0,
         rank_id: 5,
         product_id: 34090,
-        product_name:
-          "트리플러스 우먼 멀티비타민+미네랄+오메가-3(EPA 및 DHA 함유유지)",
+        product_name: "트리플러스 우먼 멀티비타민+미네랄+오메가-3(EPA 및 DHA 함유유지)",
         company_name: "세노비스",
         expert_avg: 2,
         customer_review_count: 22971,
@@ -9451,8 +9440,7 @@ const obj: ResponType = {
         company_name: "유한양행",
         expert_avg: 4.2,
         customer_review_count: 65456,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34074_ELENA+(1).jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34074_ELENA+(1).jpg",
         discount: 1,
         average_price: 24255,
         low_price: 23940,
@@ -9635,8 +9623,7 @@ const obj: ResponType = {
         company_name: "그린스토어",
         expert_avg: 0,
         customer_review_count: 3104,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/41711_.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/41711_.jpg",
         discount: 4,
         average_price: 20393,
         low_price: 19480,
@@ -11303,8 +11290,7 @@ const obj: ResponType = {
         company_name: "주식회사 노바렉스",
         expert_avg: 0,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/482_%ED%82%A4%26%EC%A7%80.png",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/482_%ED%82%A4%26%EC%A7%80.png",
         discount: null,
         average_price: null,
         low_price: null,
@@ -13071,8 +13057,7 @@ const obj2: ResponType = {
         company_name: "MIA",
         expert_avg: 4.666666666666667,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34079_L4B-FLORA.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34079_L4B-FLORA.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -13237,8 +13222,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34105_RT-DREAM-LIQUID.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34105_RT-DREAM-LIQUID.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -14269,8 +14253,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34108_GP-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34108_GP-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -14366,8 +14349,7 @@ const obj2: ResponType = {
         company_name: "마더스팜",
         expert_avg: 4.666666666666667,
         customer_review_count: 0,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34072_IMMUNE-_-PLUS.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34072_IMMUNE-_-PLUS.jpg",
         discount: 9,
         average_price: 37049,
         low_price: 33600,
@@ -14389,8 +14371,7 @@ const obj2: ResponType = {
         company_name: "MIA",
         expert_avg: 4.666666666666667,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -14670,8 +14651,7 @@ const obj2: ResponType = {
         company_name: "MIA",
         expert_avg: 4.666666666666667,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -14716,8 +14696,7 @@ const obj2: ResponType = {
         company_name: "뉴트리파마",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -14905,8 +14884,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34108_GP-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34108_GP-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -14951,8 +14929,7 @@ const obj2: ResponType = {
         company_name: "조아제약",
         expert_avg: 4.5,
         customer_review_count: 28,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43076_ORAL-SPRAY-PROPOLIS.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43076_ORAL-SPRAY-PROPOLIS.jpg",
         discount: 14,
         average_price: 14722,
         low_price: 12700,
@@ -15140,8 +15117,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/36805_M-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/36805_M-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -15163,8 +15139,7 @@ const obj2: ResponType = {
         company_name: "제이앤에이치바이오",
         expert_avg: 4.6,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -15375,8 +15350,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/36805_M-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/36805_M-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -15398,8 +15372,7 @@ const obj2: ResponType = {
         company_name: "제이앤에이치바이오",
         expert_avg: 4.6,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -15656,8 +15629,7 @@ const obj2: ResponType = {
         company_name: "뉴트리파마",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -16149,8 +16121,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34126_E-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34126_E-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -16223,8 +16194,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34156_J-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34156_J-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -16407,8 +16377,7 @@ const obj2: ResponType = {
         company_name: "닥터화인",
         expert_avg: 4,
         customer_review_count: 49,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/328_%EA%B4%80%EC%A0%88FINE.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/328_%EA%B4%80%EC%A0%88FINE.jpg",
         discount: 12,
         average_price: 22400,
         low_price: 19800,
@@ -16665,8 +16634,7 @@ const obj2: ResponType = {
         company_name: "에스앤팜",
         expert_avg: 4,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/35517_%EB%8D%94-%EC%B9%B8.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/35517_%EB%8D%94-%EC%B9%B8.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -16808,8 +16776,7 @@ const obj2: ResponType = {
         company_name: "뉴트리파마",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -16928,8 +16895,7 @@ const obj2: ResponType = {
         company_name: "제이에스홀딩스팜",
         expert_avg: 5,
         customer_review_count: 0,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
         discount: 0,
         average_price: 40000,
         low_price: 40000,
@@ -17043,8 +17009,7 @@ const obj2: ResponType = {
         company_name: "뉴트리파마",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -17112,8 +17077,7 @@ const obj2: ResponType = {
         company_name: "그린스토어",
         expert_avg: 4,
         customer_review_count: 1560,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43246_.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43246_.jpg",
         discount: 12,
         average_price: 38695,
         low_price: 34180,
@@ -17255,8 +17219,7 @@ const obj2: ResponType = {
         company_name: "뉴트리파마",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34142_METAMIX-B.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34142_METAMIX-B.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -17324,8 +17287,7 @@ const obj2: ResponType = {
         company_name: "뉴트리파마",
         expert_avg: 4,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34143_META-CORTI-UP.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34143_META-CORTI-UP.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -18075,8 +18037,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 3.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43213_AL-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43213_AL-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -18757,8 +18718,7 @@ const obj2: ResponType = {
         company_name: "오쏘몰",
         expert_avg: 3.5,
         customer_review_count: 28058,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
         discount: 2,
         average_price: 84749,
         low_price: 83080,
@@ -18780,8 +18740,7 @@ const obj2: ResponType = {
         company_name: "유유제약",
         expert_avg: 3.5,
         customer_review_count: 1150,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34097_MO-AND-GOOD.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34097_MO-AND-GOOD.jpg",
         discount: 8,
         average_price: 84723,
         low_price: 77580,
@@ -18854,8 +18813,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34082_A-DREAM-STEP2.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34082_A-DREAM-STEP2.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -18877,8 +18835,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.25,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34069_A-DREAM-STEP1.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34069_A-DREAM-STEP1.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -19435,8 +19392,7 @@ const obj2: ResponType = {
         food_type: 0,
         rank_id: 8,
         product_id: 619,
-        product_name:
-          "일양약품 넘버원 쏘팔메토 정제 - 남자는전립선 남자는지구력",
+        product_name: "일양약품 넘버원 쏘팔메토 정제 - 남자는전립선 남자는지구력",
         company_name: "한미양행",
         expert_avg: 0,
         customer_review_count: 0,
@@ -19560,8 +19516,7 @@ const obj2: ResponType = {
         company_name: "MIA",
         expert_avg: 4.666666666666667,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -19864,8 +19819,7 @@ const obj2: ResponType = {
         company_name: "오쏘몰",
         expert_avg: 3.5,
         customer_review_count: 28058,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/40666_ORTHOMOL-IMMUN.jpg",
         discount: 2,
         average_price: 84749,
         low_price: 83080,
@@ -20145,8 +20099,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34105_RT-DREAM-LIQUID.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34105_RT-DREAM-LIQUID.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -20334,8 +20287,7 @@ const obj2: ResponType = {
         company_name: "MIA",
         expert_avg: 4.666666666666667,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34079_L4B-FLORA.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34079_L4B-FLORA.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -20781,8 +20733,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34105_RT-DREAM-LIQUID.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34105_RT-DREAM-LIQUID.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -20850,8 +20801,7 @@ const obj2: ResponType = {
         company_name: "파마시아",
         expert_avg: 4.666666666666667,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image_bulk/34089_GINKGO-CIRCUL.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image_bulk/34089_GINKGO-CIRCUL.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -21062,8 +21012,7 @@ const obj2: ResponType = {
         company_name: "제이에스홀딩스팜",
         expert_avg: 5,
         customer_review_count: 0,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
         discount: 0,
         average_price: 40000,
         low_price: 40000,
@@ -21251,8 +21200,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/36805_M-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/36805_M-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -21274,8 +21222,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.75,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34156_J-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34156_J-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -21320,8 +21267,7 @@ const obj2: ResponType = {
         company_name: "제이앤에이치바이오",
         expert_avg: 4.6,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -22191,8 +22137,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34108_GP-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34108_GP-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -22237,8 +22182,7 @@ const obj2: ResponType = {
         company_name: "조아제약",
         expert_avg: 4.5,
         customer_review_count: 28,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43076_ORAL-SPRAY-PROPOLIS.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43076_ORAL-SPRAY-PROPOLIS.jpg",
         discount: 14,
         average_price: 14722,
         low_price: 12700,
@@ -23578,8 +23522,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34082_A-DREAM-STEP2.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34082_A-DREAM-STEP2.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -23601,8 +23544,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4.25,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34069_A-DREAM-STEP1.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34069_A-DREAM-STEP1.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -24025,8 +23967,7 @@ const obj2: ResponType = {
         company_name: "MIA",
         expert_avg: 4.666666666666667,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34144_KINDER-BALANCE.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -24306,8 +24247,7 @@ const obj2: ResponType = {
         company_name: "뉴트리파마",
         expert_avg: 4.5,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34127_COQ10-META-GOLD.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -24375,8 +24315,7 @@ const obj2: ResponType = {
         company_name: "그린스토어",
         expert_avg: 4,
         customer_review_count: 1560,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43246_.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/43246_.jpg",
         discount: 12,
         average_price: 38695,
         low_price: 34180,
@@ -24495,8 +24434,7 @@ const obj2: ResponType = {
         company_name: "제이앤에이치바이오",
         expert_avg: 4.6,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34115_BIO-MINERAL.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -24896,8 +24834,7 @@ const obj2: ResponType = {
         company_name: "제이에스홀딩스팜",
         expert_avg: 5,
         customer_review_count: 0,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
         discount: 0,
         average_price: 40000,
         low_price: 40000,
@@ -24942,8 +24879,7 @@ const obj2: ResponType = {
         company_name: "MIA",
         expert_avg: 4.5,
         customer_review_count: 0,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/42904_LGS-FIBER.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/42904_LGS-FIBER.jpg",
         discount: 0,
         average_price: 100000,
         low_price: 100000,
@@ -25343,8 +25279,7 @@ const obj2: ResponType = {
         company_name: "엔큐엔에이",
         expert_avg: 4,
         customer_review_count: null,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34126_E-DREAM.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34126_E-DREAM.jpg",
         discount: null,
         average_price: null,
         low_price: null,
@@ -25435,8 +25370,7 @@ const obj2: ResponType = {
         company_name: "그린스토어",
         expert_avg: 4,
         customer_review_count: 0,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/7186_%EC%9C%84%EC%97%94.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/7186_%EC%9C%84%EC%97%94.jpg",
         discount: 13,
         average_price: 14795,
         low_price: 12900,
@@ -25578,8 +25512,7 @@ const obj2: ResponType = {
         company_name: "제이에스홀딩스팜",
         expert_avg: 5,
         customer_review_count: 0,
-        product_image:
-          "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
+        product_image: "https://4dayworks.s3.ap-northeast-2.amazonaws.com/product_image/34413_COMOTEN-PLUS-F.jpg",
         discount: 0,
         average_price: 40000,
         low_price: 40000,
@@ -25799,7 +25732,7 @@ const obj2: ResponType = {
       },
     ],
     isMore: true,
-  }
+  },
 };
 
 const temp_array: number[] = [];
@@ -25807,14 +25740,14 @@ const mapObj = new Map();
 
 for (const item in obj) {
   const productList = obj[item].productList;
-  for (const value of productList ){
+  for (const value of productList) {
     temp_array.push(value.product_id);
   }
 }
 
 for (const item in obj2) {
   const productList = obj2[item].productList;
-  for (const value of productList ){
+  for (const value of productList) {
     temp_array.push(value.product_id);
   }
 }
@@ -25822,7 +25755,6 @@ for (const item in obj2) {
 const arrMap = temp_array.reduce((map, obj) => {
   map.set(obj, obj);
   return map;
-}, new Map);
+}, new Map());
 
-console.dir(arrMap, {maxArrayLength: null});
-
+console.dir(arrMap, { maxArrayLength: null });
