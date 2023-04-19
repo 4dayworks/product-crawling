@@ -16,9 +16,9 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 //  크롤링 봇으로 판단해 IP를 차단하므로 수동체크가 반드시 필요합니다. -> 주기적으로 돌리는 자동화 불가능, 오류 확인을 위해 localhost로 돌리는 것을 권장함
 
 const skipProdjct = {
-  brandIndex: 7, //default : 0
-  pageIndex: 8 - 1, //default : 2 - 1
-  productIndex: 0, //default : 0
+  brandIndex: 8 - 1, //default : 1 - 1
+  pageIndex: 25, //default : 1
+  productIndex: 26 - 1, //default : 1 - 1
 };
 const brandAddIherb = async (
   brandURLList: string[],
@@ -67,7 +67,7 @@ const brandAddIherb = async (
         l(`[${i + 1}/${productURLList.length}]`, "cyan", text);
 
         const end_at = new Date();
-        const wait_time = start_at.getTime() + 3000 - end_at.getTime();
+        const wait_time = start_at.getTime() + 1200 - end_at.getTime();
         if (wait_time > 0) await wrapSlept(wait_time);
         /*END******************************************************************************* */
       }
