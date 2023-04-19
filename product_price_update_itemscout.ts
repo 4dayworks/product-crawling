@@ -6,12 +6,13 @@ import { wrapSlept } from "./function/wrapSlept";
 import { getAllProductIdType } from "./product_price_update.d";
 import { setGraph, setLastMonthLowPrice, shuffle } from "./function/product";
 import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
+import { getProductPriceData } from "./function/updateByIherb";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const updateByProductId = async (product_id_list?: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
-  let data: getAllProductIdType[] = await axios(`${NODE_API_URL}/crawling/product/all`).then((d) => d.data.data);
+  let data: getAllProductIdType[] = await axios(`${NODE_API_URL}/v2/crawling/product/all`).then((d) => d.data.data);
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
   if (product_id_list) data = data.filter((p) => product_id_list.includes(p.product_id));
 
@@ -32,7 +33,24 @@ const updateByProductId = async (product_id_list?: number[]) => {
     const product = data[i];
 
     if (product.type === "itemscout") {
-      await getProductByItemscoutV2(product, i + 1, data.length);
+      const res =
+        product.iherb_list_url && product.iherb_product_url && product.iherb_brand
+          ? await getProductPriceData({
+              list_url: product.iherb_list_url,
+              product_url: product.iherb_product_url,
+              brand: product.iherb_brand,
+            })
+          : null;
+      const iherbPriceData: IherbPriceType | null = res
+        ? {
+            ...res,
+            list_url: product.iherb_list_url,
+            product_url: product.iherb_product_url,
+            brand: product.iherb_brand,
+            iherb_product_image: product.iherb_product_image,
+          }
+        : null;
+      await getProductByItemscoutV2(product, i + 1, data.length, iherbPriceData);
       await wrapSlept(500);
       await setGraph(product);
       await setLastMonthLowPrice(product);
@@ -42,6 +60,21 @@ const updateByProductId = async (product_id_list?: number[]) => {
   l("[DONE]", "blue", "complete - all product price update");
 };
 
+export type IherbPriceType = {
+  iherb_product_id: string;
+  is_stock: string;
+  origin_price: string | number | undefined;
+  discount_percent: number;
+  discount_type: number | null;
+  discount_price: number | null;
+  delivery_price: number;
+  rating: number | undefined;
+  review_count: number | undefined;
+  list_url: string | null;
+  product_url: string | null;
+  brand: string | null;
+  iherb_product_image: string | null;
+};
 // updateByProductId([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateByProductId(Array.from({ length: 100 }).map((a, i) => i + 1));
 // select product_id  from product p where is_drugstore  = 4;
