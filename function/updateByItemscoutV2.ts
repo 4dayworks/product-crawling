@@ -42,17 +42,57 @@ export const getProductByItemscoutV2 = (
         `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
         { headers }
       )
-        .then((d) => {
-          if (!d.data.data.productListResult) return [];
+        .then(async (d) => {
+          let list: any[] = d.data.data.productListResult;
+          if (!list) return [];
 
-          return (d.data.data.productListResult as any[]).filter(
+          list = list.filter(
             (p: ItemscoutType) =>
               p.isAd === false &&
-              (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
-              !isExceptionKeyword(p.title, originData.exception_keyword) &&
-              isRequireKeyword(p.title, originData.require_keyword) &&
-              exceptCategory(p.category)
+              (((p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
+                !isExceptionKeyword(p.title, originData.exception_keyword) &&
+                isRequireKeyword(p.title, originData.require_keyword) &&
+                exceptCategory(p.category)) ||
+                (iherbPriceData && p.mall != "iherb"))
           );
+
+          if (iherbPriceData) {
+            const iherbStore: ItemscoutType = {
+              title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
+              image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
+              productId: 0, // 85455382789,
+              price: iherbPriceData.discount_price || 0, // 25900,
+              category: "", // "식품>건강식품>영양제>기타건강보조식품",
+              reviewCount: iherbPriceData.review_count || 0, // 19,
+              reviewScore: iherbPriceData.rating || 0, //5,
+              chnlSeq: undefined,
+              mallPids: [],
+              isException: false,
+              categoryStack: [],
+              shop: "iherb",
+              isList: false,
+              link: iherbPriceData.product_url || "",
+              mallPid: "",
+              multiShops: 0,
+              volume: 0,
+              openDate: "",
+              purchaseCnt: 0,
+              keepCnt: 0,
+              mallGrade: "iherb",
+              deliveryFee: String(iherbPriceData.delivery_price || 0),
+              chnlSeqs: [],
+              mall: "iherb",
+              mallImg: null,
+              isOversea: true,
+              isNaverShop: false,
+              isAd: false,
+              pcProductUrl: iherbPriceData.product_url || undefined,
+              mobileProductUrl: iherbPriceData.product_url || undefined,
+            };
+            l("Sub", "blue", "add - iherb store");
+            list.unshift(iherbStore);
+          }
+          return list;
         })
         .catch(() => []);
 
@@ -87,48 +127,10 @@ export const getProductByItemscoutV2 = (
         yagi_product_id: originData.product_id,
       });
 
-      // if (iherbPriceData) {
-      //   const iherbStore: ItemscoutType = {
-      //     title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
-      //     image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
-      //     productId: product.product_id, // 85455382789,
-      //     price: iherbPriceData.discount_price || 0, // 25900,
-      //     category: "", // "식품>건강식품>영양제>기타건강보조식품",
-      //     reviewCount: iherbPriceData.review_count || 0, // 19,
-      //     reviewScore: iherbPriceData.rating || 0, //5,
-
-      //     chnlSeq: undefined,
-      //     mallPids: [],
-      //     isException: false,
-      //     categoryStack: [],
-      //     shop: "iherb",
-      //     isList: false,
-      //     link: iherbPriceData.product_url || "",
-      //     mallPid: "",
-      //     multiShops: 0,
-      //     volume: 0,
-      //     openDate: "",
-      //     purchaseCnt: 0,
-      //     keepCnt: 0,
-      //     mallGrade: "iherb",
-      //     deliveryFee: String(iherbPriceData.delivery_price || 0),
-      //     chnlSeqs: [],
-      //     mall: "iherb",
-      //     mallImg: null,
-      //     isOversea: true,
-      //     isNaverShop: false,
-      //     isAd: false,
-      //     pcProductUrl: iherbPriceData.product_url || undefined,
-      //     mobileProductUrl: iherbPriceData.product_url || undefined,
-      //   };
-      //   l("Sub", "blue", "add - iherb store");
-      //   productListResult.push(iherbStore);
-      // }
-
       const scoreList =
         keyword && productListResult && productListResult.length
           ? await axios
-              .post(`${NODE_API_URL}/product/compare/keyword`, {
+              .post(`${NODE_API_URL}/product/compare/keyword${iherbPriceData ? "/oversea" : ""}`, {
                 original_keyword: keyword,
                 keyword_list: productListResult.map((i) => i.title),
               })

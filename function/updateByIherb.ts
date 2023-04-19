@@ -69,6 +69,7 @@ export const getProductPriceData = (
       is_stock: res2.isAvailableToPurchase ? "1" : "0",
 
       origin_price:
+        res1?.originProduct.discountedPriceAmount ||
         res1?.originProduct.listPrice.replace(/[^0-9]/gi, "") ||
         (res3 && res3.special
           ? (res3.special.discountPrice * 100) / (100 - res3.special.discountPercentage)
@@ -87,23 +88,6 @@ export const getProductPriceData = (
 
       rating: res1?.originProduct.rating,
       review_count: res1?.originProduct.ratingCount,
-
-      // 안 가져오는 정보들
-      // iherb_product_name: res1.originProduct.name,
-      // iherb_product_brand: urlData.brand,
-      // iherb_product_image: iherbProductImage,
-      // rank: rankListString,
-      // is_delivery_event: isDeliveryEvent ? "1" : "0",
-      // description: description,
-      // description_use: descriptionUse,
-      // description_other_ingredient: descriptionOtherIngredient,
-      // description_warn: descriptionWarn,
-      // ingredient_amount: ingredientAmount,
-      // ingredient_raw: ingredientRaw,
-      // ingredient_count: ingredientCount,
-      // review_url: res1.originProduct.reviewUrl,
-      // list_url: urlData.list_url,
-      // product_url: res1.originProduct.url,
     };
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)

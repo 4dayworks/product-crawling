@@ -10,35 +10,23 @@ export const headers = () => {
     // "_px3=0cdf5fc065a6e959a0cbb42e44a516a4e462199f044061553770734544d6f6a3:kJcVtBFJr8RAhs2248ci9i4XJBkIbxemJ8YlIwfwEHigu/mUGL5xYNM4Sz582SvPTYqFK/2IiMr7wnn0dws6ww==:1000:e2Nv91FaeJuOSZ5HNjYiaRdxyWHrDu4ey2NpYOWJ8/FFvkI5n1T0l+/0MlOYEWIjJeyMFOQReaUyLCl5C6suc46LuTcUO0YN6eoY6+fVHAjL0sK4gnZKrDPLh5wqkuAr6c1JEeEYQWvYFjHBQwxGYTkk744a7ra+zKbOSM2ecckCO0qpD3YIS5+9r996U6QkS0AIOIQjhYVm8OFf++M2tQ==",
     // "_px3=2a139608450c7b01eb77903f965af9c8dbabc22aa2431e1a913330c60263762e:m1Gtp72mvitoagtECRLImHGIMCoCSNkPws3KuhBZkZ/QK5oJ0z0w8H+MZUW54BMOd0XxS3l+1yWGzxGyRe7ltg==:1000:suC+c1XNt8WxIogsmyU60y8qrhGqMGwSbYY8cztO7r46l4XkYGS5UJ3nDL9ssygIQioafh7jxCuMja83uigKmZvobViJL6DKHkN4flf/i1DPY7e7ztUqpBzLY4Za0ytkwivMPAMeAp3/KsuCXr6EgVqAYdgBS4ZajZc5VxW4x79d7FEvsajxWsVKO9cEzYhFfM9iFybkHDpjs6aGQyA+oQ==",
     // "_px3=ad5ac22bba5f0da83d535609e907b3e0a278fcd93344e18d9ccec14ee8583c1b:pnIuzxRkRueBaKqajKAkz7bQpxihPSW1q9r9Eyr6Pf8qZjb1d/9WTb9JA8oysVbPh4dYHl6QHif5F6aUCiPZ1w==:1000:mXWqO05HP+QPa+AoHjSXiIzwTlw94QEJLsazqDd061USvdQZDrk4pnHMzCu3LfMHoVrKLhOpuhIsYrM3gOxdN+tZavJE5sI6of6+aAK9tV0rWIP+2t+ub2WJDSmLPBYNBCsCKZn8JNJvdwlPBbxjUxUw+y+J/TJ6lLft1A7oW7dqPn5FEyVl8F9CPc10FeN2eYwSuCJZcSMEkk5WUR5C0A==",
-    "_px3=a06be0b5522ec96400c08c51b2238df0dfb3c6299662c365916c909f4256b54c:jmzMzKgz7TdXA98u1H1nQl+tQsUBZNQhOdK/tWRtftWATm472TOwwruidzaKwREO7xY1gOdNsuUp1XsOFTfV9A==:1000:UXOLMpnTdAzAZ8plawpfu0waibbWEgf/rv7W/SQstoZn/JFmFmaOR4t8vgZb3nGbj7C3DgatkZuw7YuFEvLDPBB0IQsB5j2nAFF96D6wyImM2tHoj1/JPmG9Zkn5EzjqPh0yeEOesS2ewFxAUrkntS3keQjSbVIY2fuVauZDxUfUWiyEldA/tI5Hh+d7rNxvV4BC0PJ6uwAYBg+FiUvadQ==",
+    // "_px3=a06be0b5522ec96400c08c51b2238df0dfb3c6299662c365916c909f4256b54c:jmzMzKgz7TdXA98u1H1nQl+tQsUBZNQhOdK/tWRtftWATm472TOwwruidzaKwREO7xY1gOdNsuUp1XsOFTfV9A==:1000:UXOLMpnTdAzAZ8plawpfu0waibbWEgf/rv7W/SQstoZn/JFmFmaOR4t8vgZb3nGbj7C3DgatkZuw7YuFEvLDPBB0IQsB5j2nAFF96D6wyImM2tHoj1/JPmG9Zkn5EzjqPh0yeEOesS2ewFxAUrkntS3keQjSbVIY2fuVauZDxUfUWiyEldA/tI5Hh+d7rNxvV4BC0PJ6uwAYBg+FiUvadQ==",
+    // "_px3=898eebc7ddf480600cf73fded31c221e9c039e4b28a554a6b43b4ac017c6c7b2:Nrdawae6NvspMs3u8i8jMdDM/Mmu9R+6J5RRyohRJTXLFqbzGu5FYEfTSRDJDKcHdIY9YOJIkS7s4evvNmPbGw==:1000:fWylTnC1hdurSZxDJqqCl87qBnURHoF2jUjNOF9F/oGQTZ1UH0MQTikFLh1nnktjfuUZfgQKEjBK1SZoiu0o4zynhddPr4RSjlJJ1zkgQj30yNxdn8a5P1sQwJiQJrXSOongMqhS/vHRlVVD4xEFcQG6IOeypLN0xSHYCHENrC1Cgnp7FZss1koPAOc6e/kM/qt04EamKj0X1a2uA3a3gg==",
+    // "_px3=03b4bcf4a66e3a346ca767309425d0768fd4d386a9e89ddea65319daac2aecb1:BQVEDSdzng6b74umxwy676K/TMMgZ8kYoXYz7xkJZa1h1yM7J8gIU2rHs/zuoisxysVAuklhnlg5/h12laAXBQ==:1000:oQb2HrwSW0Wfn7JwjbtXjVn0tiOWtscH/CTi0XJMElSAoJC0u3ZT+qiRtNfCdQm0RnQrXN4syiHXfpMAMS8CcOLwCSFDlKLNIQ0jKHx3eyvm2v49Sg3h+QYNPxW4dBdtQBJoTDwqkQyO8MkUEqwnEvI2bzCWIVpmbQkYCv8PYSnEfjy0E+4UEAaSEF8tqIL2HO1rEwl0t5sjnEluqDaHsg==",
+    // "_px3=aed95b51c6dd0073179d58c2073fdd43e2230e47ad2b38537adc34b4f2d2659d:tkfRBkoObuIkU+2qLypNnuvRQ+bLzDUCXVlSgZBCdDZ5oyWVG+WPSbRiO+FqO6pucU5v+qr7z1gxa9EMe4dDNA==:1000:qROBjQnT4OhIyQp5O+A/N7JOSx+oTLEPh/u+CFMU51RvaBCKGqvLeZ0PL47SOGq2wtttulN1J9zFg6kMyTLDWn48e9Xz6WBOcppQ2BvWuk4uviod/QYgsESbZpDBGAWQ8R5gTyAxOQaeCYoKRy/WePJx6O/jQOrQ/PM1Pak6HZgUgAfa0dN9uTIKcEHdPzqGDfNrq9hx+6NH6Kztq35CCw==",
+    "_px3=604a9b3f0b959873169304251ba6ded401e8941cdb822c7c1b9c6a8f72d6338b:PkBDbS9bskwbJKlgDXL5fn/cH7DbnxzusrKmGEQ413E/ZVk0o59mJRBbNejGkQf68RmwPUzY7RE7+WYiMyBxNQ==:1000:Q7wtAFhO6Y8Tz40imJ6zLhLtD9k7ssV+BhU+OMWDbXQ9skqUhAyvofhKw52NbnS5XFbGm52h7OvC+ZeX3OsoSlybh+javtuOpCKJP+ZRKSK+gh8QvGB9spxKyFlYNW69OPK7mIFKvpFyu213QG3xcVtfvd6hdUJs2Ccv/GQ2QTgMN34kexDNkvEw5Gwv829vIYcWHc9HMUZKDdLThrGmdA==",
+    // undefined,
   ];
-
-  // const header = {
-  //   Date: "Wed, 19 Apr 2023 03:38:12 GMT",
-  //   "Content-Type": "text/html; charset=utf-8",
-  //   "Transfer-Encoding": "chunked",
-  //   "CF-Ray": "7ba21cfacbe8a7db-ICN",
-  //   "Cache-Control": "s-maxage=1800,public",
-  //   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  //   "CF-Cache-Status": "MISS",
-  //   BuildNumber: "2576",
-  //   DataCenter: "production/catalog/seoul",
-  //   "X-Client-Id": "page-product",
-  //   "X-Request-Id": "584576cb8da78328523722b7db0b1c21",
-  //   Server: "cloudflare",
-  // };
 
   const cookie = cookieList[i % cookieList.length];
   i++;
   return {
     headers: {
       Accept: "*/*",
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+      "upgrade-insecure-requests": 1,
+      "User-Agent": `Mozilla/5.0 ${i}`,
       "Accept-Encoding": "deflate, br",
-      "cache-control": "no-cache",
       Cookie: cookie,
-      // ...header,
     },
   };
 };
