@@ -59,8 +59,7 @@ export const getProductPriceData = (
     // # 더이상 안팔면 판매처 삭제필요함 가격/판매처 데이터 지우고 is_stock 0로 표시
     if ((res1 === null && res2 === null) || res2 === null) {
       const data = { iherb_product_id: iherbProductId };
-      //localhost 로만 실행이 가능함. (크롤링 봇 주기적으로 막아서 크롬켜서 px3쿠키 업데이트해줘야함)
-      await axios.delete("http://localhost:3001/crawling/product/iherb", { data });
+      await axios.delete(`${NODE_API_URL}/crawling/product/iherb`, { data });
       l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(5) ");
       return resolve(null);
     }
