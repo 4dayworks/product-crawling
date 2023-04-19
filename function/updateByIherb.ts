@@ -1,14 +1,8 @@
 import axios from "axios";
-import { l } from "./console";
-import {
-  IherbProductPriceType1,
-  IherbProductPriceType2,
-  IherbType,
-  ProductType,
-  productURLDataType,
-} from "./iherb/updateByIherb";
-import { headers } from "./iherb/headers";
 import { NODE_API_URL } from "./common";
+import { l } from "./console";
+import { headers } from "./iherb/headers";
+import { IherbProductPriceType1, IherbProductPriceType2, ProductType, productURLDataType } from "./iherb/updateByIherb";
 
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
 // # (2)제품의 상세 데이터는 getProductDescData를 통해 가져옴(페이지 크롤링)

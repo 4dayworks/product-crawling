@@ -11,7 +11,7 @@ export const getProductByItemscoutV2 = (
   product: getAllProductIdType,
   index: number,
   max: number,
-  iherbPriceData: IherbPriceType | null
+  iherbPriceData?: IherbPriceType | null
 ) =>
   new Promise(async (resolve, reject) => {
     const originData = product;
@@ -87,6 +87,44 @@ export const getProductByItemscoutV2 = (
         yagi_product_id: originData.product_id,
       });
 
+      if (iherbPriceData) {
+        const iherbStore: ItemscoutType = {
+          title: product.product_name, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
+          image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
+          productId: product.product_id, // 85455382789,
+          price: iherbPriceData.discount_price || 0, // 25900,
+          category: "", // "식품>건강식품>영양제>기타건강보조식품",
+          reviewCount: iherbPriceData.review_count || 0, // 19,
+          reviewScore: iherbPriceData.rating || 0, //5,
+
+          chnlSeq: undefined,
+          mallPids: [],
+          isException: false,
+          categoryStack: [],
+          shop: "iherb",
+          isList: false,
+          link: iherbPriceData.product_url || "",
+          mallPid: "",
+          multiShops: 0,
+          volume: 0,
+          openDate: "",
+          purchaseCnt: 0,
+          keepCnt: 0,
+          mallGrade: "iherb",
+          deliveryFee: String(iherbPriceData.delivery_price || 0),
+          chnlSeqs: [],
+          mall: "iherb",
+          mallImg: null,
+          isOversea: true,
+          isNaverShop: false,
+          isAd: false,
+          pcProductUrl: iherbPriceData.product_url || undefined,
+          mobileProductUrl: iherbPriceData.product_url || undefined,
+        };
+        l("Sub", "blue", "add - iherb store");
+        productListResult.push(iherbStore);
+      }
+
       const scoreList =
         keyword && productListResult && productListResult.length
           ? await axios
@@ -151,66 +189,10 @@ export const getProductByItemscoutV2 = (
           "red",
           `[${index}/${max}] No Store(판매처) product_id:${originData.product_id}, keyword:${keyword}, keyword_id=${keyword_id}`
         );
-        if (iherbPriceData) {
-          l("Add", "blue", "Iherb Store add");
-          const iherbStore: ProductTableV2 = {
-            index: 20,
-            keyword: originData.product_name,
-            keyword_id,
-            itemscout_product_name: product.product_name,
-            itemscout_product_image: iherbPriceData.iherb_product_image || "",
-            itemscout_product_id: product.product_id,
-            price: iherbPriceData.discount_price || 0,
-            store_link: iherbPriceData.product_url || "",
-            store_name: "iherb",
-            category: "",
-            is_naver_shop: 0,
-            mall: "iherb",
-            itemscout_mall_img: null,
-            review_count: iherbPriceData.review_count ? iherbPriceData.review_count : 0,
-            review_score: iherbPriceData.rating ? iherbPriceData.rating : 0,
-            delivery: String(iherbPriceData.delivery_price),
-            pc_product_url: iherbPriceData.product_url || undefined,
-            mobile_product_url: undefined,
-            is_oversea: 1,
-          };
-
-          await axios.post(`${NODE_API_URL}/v3/product/keyword/data`, {
-            data: [iherbStore],
-            keyword_id,
-            product_id: originData.product_id,
-          });
-        }
-
         return resolve(true);
       } else {
-        const iherbStore: ProductTableV2 | null = iherbPriceData
-          ? {
-              index: 20,
-              keyword: originData.product_name,
-              keyword_id,
-              itemscout_product_name: product.product_name,
-              itemscout_product_image: iherbPriceData.iherb_product_image || "",
-              itemscout_product_id: product.product_id,
-              price: iherbPriceData.discount_price || 0,
-              store_link: iherbPriceData.product_url || "",
-              store_name: "iherb",
-              category: "",
-              is_naver_shop: 0,
-              mall: "iherb",
-              itemscout_mall_img: null,
-              review_count: iherbPriceData.review_count ? iherbPriceData.review_count : 0,
-              review_score: iherbPriceData.rating ? iherbPriceData.rating : 0,
-              delivery: String(iherbPriceData.delivery_price),
-              pc_product_url: iherbPriceData.product_url || undefined,
-              mobile_product_url: undefined,
-              is_oversea: 1,
-            }
-          : null;
-
-        const storeListWithIherb: ProductTableV2[] = iherbStore ? [...storeList, iherbStore] : storeList;
         await axios.post(`${NODE_API_URL}/v3/product/keyword/data`, {
-          data: storeListWithIherb,
+          data: storeList,
           keyword_id,
           product_id: originData.product_id,
         });

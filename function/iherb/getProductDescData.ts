@@ -236,6 +236,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           return resolve(null);
         }
         if (iherbProductName === null) {
+          console.log($("body").html());
           l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다. iherbProductName = null");
           return resolve(null);
         }
