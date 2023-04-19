@@ -118,7 +118,8 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           }
           if (text.includes("서빙 당")) return;
 
-          const titleTemp = div.find("td:nth-child(1) > strong").html() || div.find("td:nth-child(1)").html() || "";
+          const titleTemp =
+            div.find("td:nth-child(1) > strong").html() || text || div.find("td:nth-child(1)").html() || "";
           const title =
             titleTemp
               .slice(0, titleTemp.indexOf("(") === -1 ? titleTemp.length : titleTemp.indexOf("("))
@@ -127,23 +128,16 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace(/ /g, "")
               .replace(/<p>/g, "")
               .replace(/<\/p>/g, "")
-              .replace(/<spanstyle=colorrgb/g, "")
               .replace(/<span>/g, "")
-              .replace(/:/g, "")
-              .replace(/'/g, "")
               .replace(/<\/span>/g, "")
               .replace(/&nbsp;/g, "")
               .replace(/&amp;/g, "")
-              .replace(/\^/g, "")
               .replace(/<br>/g, "")
-              .replace(/®/g, "")
-              .replace(/™/g, "")
-              .replace(/\'/g, "")
-              .replace(/\"/g, "")
               .replace("비타민B-12", "비타민B12")
               .replace("비타민B-", "비타민B")
               .replace("Vitamin", "비타민")
               .replace("(HT042)", "")
+              .replace(/<spanstyle=colorrgb/g, "")
               .replace(/<spanstyle="colorrgb/g, "")
               .replace("<strong></strong>", "")
               .replace(/†/g, "")
@@ -158,6 +152,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace("9", "")
               .replace("6-", "")
               .replace("6", "")
+              .replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9]/gi, "")
               .trim() || null;
 
           const amount =
@@ -190,9 +185,9 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
             title.length > 30
           )
             return;
-          if (amount && title) {
+          if (amount && title && title.length < 10) {
             ingredientList.push(title);
-            if (title.length < 10) ingredientAmount += title + " : " + amount + "\n";
+            ingredientAmount += title + " : " + amount + "\n";
           }
           ingredientRaw += title + " : " + amount + " , " + percent + "\n";
         });
