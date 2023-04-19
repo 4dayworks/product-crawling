@@ -15,20 +15,23 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 // # 크롤링 봇 차단 될 수 있음.
 //  크롤링 봇으로 판단해 IP를 차단하므로 수동체크가 반드시 필요합니다. -> 주기적으로 돌리는 자동화 불가능, 오류 확인을 위해 localhost로 돌리는 것을 권장함
 
+const skipProdjct = {
+  brandIndex: 7, //default : 0
+  pageIndex: 8 - 1, //default : 2 - 1
+  productIndex: 0, //default : 0
+};
 const brandAddIherb = async (
   brandURLList: string[],
   testList?: { product_url: string; brand: string; list_url: string }[]
 ) => {
   if (testList) return onTest(testList);
 
-  l(
-    "(주의)",
-    "yellow",
-    "아이허브는 크롤링 봇을 주기적으로 막기떄문에 localhost에서만 실행이 가능합니다. localhost:3001이 켜져있는지도 확인!"
-  );
+  l("(주의)", "yellow", "아이허브는 크롤링 봇을 주기적으로 막기떄문에 localhost에서만 실행이 가능합니다.");
   // # (2) 브랜드 별로 반복 //default: brandIndex = 0
-  for (let brandIndex = 6; brandIndex < brandURLList.length; brandIndex++) {
+  for (let brandIndex = 0; brandIndex < brandURLList.length; brandIndex++) {
     /*START***************************************************************************** */
+    // # skip option
+    if (brandIndex < skipProdjct.brandIndex) continue;
     const maxPage = await getMaxPageList(brandURLList[brandIndex]);
 
     const text = `next brand !, start_at: ${new Date().toISOString()}, brand-url: ${brandURLList[brandIndex]}`;
@@ -40,6 +43,8 @@ const brandAddIherb = async (
     // # (3) 브랜드 페이지 안에 있는 각 페이지별로 반복 //default: page = 1
     for (let page = 1; page <= maxPage.maxPage; page++) {
       /*START***************************************************************************** */
+      // # skip option
+      if (brandIndex == skipProdjct.brandIndex && page < skipProdjct.pageIndex) continue;
       const productURLList = await getProductListData(`${maxPage.list_url}?p=${page}`);
 
       const text = `next page !, start_at: ${new Date().toISOString()}, page-url: ${maxPage.list_url}?p=${page}`;
@@ -48,9 +53,10 @@ const brandAddIherb = async (
       /*END******************************************************************************* */
       // # (4) 각 제품별로 제품 상세에 들어가 상세 정보 페이지 크롤링 //default: i = 0
       for (let i = 0; i < productURLList.length; i++) {
-        if (brandIndex == 6 && page < 2) continue;
-        // if (brandIndex == 4 && page == 6 && i < 6) continue;
         /*START***************************************************************************** */
+        // # skip option
+        if (brandIndex == skipProdjct.brandIndex && page == skipProdjct.pageIndex && i < skipProdjct.productIndex)
+          continue;
         const product = productURLList[i];
         await getProductDescData(product);
 

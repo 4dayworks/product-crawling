@@ -87,43 +87,43 @@ export const getProductByItemscoutV2 = (
         yagi_product_id: originData.product_id,
       });
 
-      if (iherbPriceData) {
-        const iherbStore: ItemscoutType = {
-          title: product.product_name, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
-          image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
-          productId: product.product_id, // 85455382789,
-          price: iherbPriceData.discount_price || 0, // 25900,
-          category: "", // "식품>건강식품>영양제>기타건강보조식품",
-          reviewCount: iherbPriceData.review_count || 0, // 19,
-          reviewScore: iherbPriceData.rating || 0, //5,
+      // if (iherbPriceData) {
+      //   const iherbStore: ItemscoutType = {
+      //     title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
+      //     image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
+      //     productId: product.product_id, // 85455382789,
+      //     price: iherbPriceData.discount_price || 0, // 25900,
+      //     category: "", // "식품>건강식품>영양제>기타건강보조식품",
+      //     reviewCount: iherbPriceData.review_count || 0, // 19,
+      //     reviewScore: iherbPriceData.rating || 0, //5,
 
-          chnlSeq: undefined,
-          mallPids: [],
-          isException: false,
-          categoryStack: [],
-          shop: "iherb",
-          isList: false,
-          link: iherbPriceData.product_url || "",
-          mallPid: "",
-          multiShops: 0,
-          volume: 0,
-          openDate: "",
-          purchaseCnt: 0,
-          keepCnt: 0,
-          mallGrade: "iherb",
-          deliveryFee: String(iherbPriceData.delivery_price || 0),
-          chnlSeqs: [],
-          mall: "iherb",
-          mallImg: null,
-          isOversea: true,
-          isNaverShop: false,
-          isAd: false,
-          pcProductUrl: iherbPriceData.product_url || undefined,
-          mobileProductUrl: iherbPriceData.product_url || undefined,
-        };
-        l("Sub", "blue", "add - iherb store");
-        productListResult.push(iherbStore);
-      }
+      //     chnlSeq: undefined,
+      //     mallPids: [],
+      //     isException: false,
+      //     categoryStack: [],
+      //     shop: "iherb",
+      //     isList: false,
+      //     link: iherbPriceData.product_url || "",
+      //     mallPid: "",
+      //     multiShops: 0,
+      //     volume: 0,
+      //     openDate: "",
+      //     purchaseCnt: 0,
+      //     keepCnt: 0,
+      //     mallGrade: "iherb",
+      //     deliveryFee: String(iherbPriceData.delivery_price || 0),
+      //     chnlSeqs: [],
+      //     mall: "iherb",
+      //     mallImg: null,
+      //     isOversea: true,
+      //     isNaverShop: false,
+      //     isAd: false,
+      //     pcProductUrl: iherbPriceData.product_url || undefined,
+      //     mobileProductUrl: iherbPriceData.product_url || undefined,
+      //   };
+      //   l("Sub", "blue", "add - iherb store");
+      //   productListResult.push(iherbStore);
+      // }
 
       const scoreList =
         keyword && productListResult && productListResult.length
