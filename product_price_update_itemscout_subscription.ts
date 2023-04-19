@@ -6,12 +6,14 @@ import { wrapSlept } from "./function/wrapSlept";
 import { getNotificationItemscoutList, setGraph, setLastMonthLowPrice, shuffle } from "./function/product";
 import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
 import { getAllProductIdType } from "./product_price_update.d";
+import { getProductPriceData } from "./function/updateByIherb";
+import { IherbPriceType } from "./product_price_update_itemscout";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const updateByProductId = async (product_id_list?: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
-  let data: getAllProductIdType[] = await axios(`${NODE_API_URL}/crawling/product/all`).then((d) => d.data.data);
+  let data: getAllProductIdType[] = await axios(`${NODE_API_URL}/crawling/product/all/noti`).then((d) => d.data.data);
 
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
   if (product_id_list) data = data.filter((p) => product_id_list.includes(p.product_id));
@@ -33,10 +35,28 @@ const updateByProductId = async (product_id_list?: number[]) => {
     const product = data[i];
 
     if (product.type === "itemscout") {
-      await getProductByItemscoutV2(product, i + 1, data.length);
-      await wrapSlept(500);
+      const res =
+        product.iherb_list_url && product.iherb_product_url && product.iherb_brand
+          ? await getProductPriceData({
+              list_url: product.iherb_list_url,
+              product_url: product.iherb_product_url,
+              brand: product.iherb_brand,
+            })
+          : null;
+      const iherbPriceData: IherbPriceType | null = res
+        ? {
+            ...res,
+            list_url: product.iherb_list_url,
+            product_url: product.iherb_product_url,
+            brand: product.iherb_brand,
+            iherb_product_image: product.iherb_product_image,
+          }
+        : null;
+
+      await getProductByItemscoutV2(product, i + 1, data.length, iherbPriceData);
       await setGraph(product);
       await setLastMonthLowPrice(product);
+      await wrapSlept(500);
       l("timestamp", "cyan", new Date().toISOString());
     }
   }
