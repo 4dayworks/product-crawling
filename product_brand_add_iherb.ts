@@ -38,7 +38,7 @@ const brandAddIherb = async (
     /*END******************************************************************************* */
     if (maxPage.maxPage === null) return;
     // # (3) 브랜드 페이지 안에 있는 각 페이지별로 반복 //default: page = 1
-    for (let page = 4; page <= maxPage.maxPage; page++) {
+    for (let page = 1; page <= maxPage.maxPage; page++) {
       /*START***************************************************************************** */
       const productURLList = await getProductListData(`${maxPage.list_url}?p=${page}`);
 
