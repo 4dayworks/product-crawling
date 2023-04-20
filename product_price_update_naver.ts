@@ -12,7 +12,7 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 const updateByProductId = async (product_id_list?: number[]) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let data: getAllProductIdType[] = await axios(
-    `${NODE_API_URL}/crawling/product/all`
+    `${NODE_API_URL}/v2/crawling/product/all`
   ).then((d) => d.data.data);
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
   if (product_id_list)
