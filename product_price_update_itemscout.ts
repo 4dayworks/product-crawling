@@ -80,4 +80,4 @@ export type IherbPriceType = {
 // updateByProductId(Array.from({ length: 100 }).map((a, i) => i + 1));
 // select product_id  from product p where is_drugstore  = 4;
 // 60250 치약임
-updateByProductId();
+updateByProductId([60825]);
