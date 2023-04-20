@@ -64,7 +64,6 @@ export const getProductPriceData = (
       return resolve(null);
     }
 
-    console.log({ res2, url: `https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}` });
     const data = {
       iherb_product_id: iherbProductId,
       is_stock: res2.isAvailableToPurchase ? "1" : "0",
