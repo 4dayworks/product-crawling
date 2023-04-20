@@ -56,7 +56,7 @@ export const getProductByItemscoutV2 = (
                 (iherbPriceData && p.mall != "iherb"))
           );
 
-          if (iherbPriceData) {
+          if (iherbPriceData && iherbPriceData.is_stock === "1") {
             const iherbStore: ItemscoutType = {
               title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
               image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
