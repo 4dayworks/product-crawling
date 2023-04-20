@@ -222,7 +222,10 @@ export const getProductByItemscoutV2 = (
         store_name:
           typeof lowPriceObj.mall !== "string" && lowPriceObj.isNaverShop ? "네이버 브랜드 카탈로그" : lowPriceObj.mall,
         store_link: lowPriceObj.link,
-        review_count: lowPriceObj.reviewCount,
+        review_count:
+          product.is_drugstore === 4 && iherbPriceData && iherbPriceData.review_count
+            ? iherbPriceData.review_count
+            : lowPriceObj.reviewCount,
         type: "itemscout",
       };
 
