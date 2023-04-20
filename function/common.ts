@@ -1,4 +1,4 @@
-const isLocalhost = false; ///
+const isLocalhost = true; ///
 const isTestDB = false;
 export const NODE_API_URL = isLocalhost
   ? "http://localhost:3001"
