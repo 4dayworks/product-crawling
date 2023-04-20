@@ -14,11 +14,13 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 // # 제품의 가격정보를 가져오려면 product_price_update_iherb.ts를 사용하세요.
 // # 크롤링 봇 차단 될 수 있음.
 //  크롤링 봇으로 판단해 IP를 차단하므로 수동체크가 반드시 필요합니다. -> 주기적으로 돌리는 자동화 불가능, 오류 확인을 위해 localhost로 돌리는 것을 권장함
+// # 브랜드 추가시 아래쿼리를 통해서 50개를 선별하고 nodejs/src/class/Crawling/productList.ts 에 추가해야 product에 반영됩니다. (현재 TOP 50개만 product/product_show에 들어가게 해놓음.)
+// select * from F_DAYWORKS_backup.product_iherb pi2 where iherb_product_brand = "Nature's Way (네이처스 웨이)" order by review_count+0 desc limit 50
 
 const skipProdjct = {
-  brandIndex: 3 - 1, //default : 1 - 1
-  pageIndex: 1, //default : 1
-  productIndex: 5 - 1, //default : 1 - 1
+  brandIndex: 1 - 1, //default : 1 - 1
+  pageIndex: 9, //default : 1
+  productIndex: 19 - 1, //default : 1 - 1
 };
 const brandAddIherb = async (
   brandURLList: string[],

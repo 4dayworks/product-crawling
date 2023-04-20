@@ -1,16 +1,16 @@
 export const getBrandURLList = {
   active: [
     // 현재 크롤링하는 브랜드
-    "https://kr.iherb.com/c/bluebonnet-nutrition",
-    "https://kr.iherb.com/c/thorne",
-    "https://kr.iherb.com/c/21st-century-health-care",
-    "https://kr.iherb.com/c/lake-avenue-nutrition",
-    "https://kr.iherb.com/c/natural-factors",
-    "https://kr.iherb.com/c/nature-s-bounty",
+    // "https://kr.iherb.com/c/bluebonnet-nutrition",
+    // "https://kr.iherb.com/c/thorne",
+    // "https://kr.iherb.com/c/21st-century-health-care",
+    // "https://kr.iherb.com/c/lake-avenue-nutrition",
+    // "https://kr.iherb.com/c/natural-factors",
+    // "https://kr.iherb.com/c/nature-s-bounty",
     "https://kr.iherb.com/c/nature-s-way",
-    "https://kr.iherb.com/c/now-foods",
-    "https://kr.iherb.com/c/solgar",
-    "https://kr.iherb.com/c/garden-of-life",
+    // "https://kr.iherb.com/c/now-foods",
+    // "https://kr.iherb.com/c/solgar",
+    // "https://kr.iherb.com/c/garden-of-life",
   ],
   disable: [
     "https://kr.iherb.com/c/21st-century-health-care",
