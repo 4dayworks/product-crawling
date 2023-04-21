@@ -49,11 +49,11 @@ export const getProductByItemscoutV2 = (
           list = list.filter(
             (p: ItemscoutType) =>
               p.isAd === false &&
-              (((p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
-                !isExceptionKeyword(p.title, originData.exception_keyword) &&
-                isRequireKeyword(p.title, originData.require_keyword) &&
-                exceptCategory(p.category)) ||
-                (iherbPriceData && p.mall != "iherb"))
+              (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
+              !isExceptionKeyword(p.title, originData.exception_keyword) &&
+              isRequireKeyword(p.title, originData.require_keyword) &&
+              exceptCategory(p.category) &&
+              (iherbPriceData ? p.mall != "iherb" : true)
           );
 
           if (iherbPriceData && iherbPriceData.is_stock === "1") {
