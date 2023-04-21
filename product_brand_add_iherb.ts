@@ -19,8 +19,8 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const skipProdjct = {
   brandIndex: 1 - 1, //default : 1 - 1
-  pageIndex: 9, //default : 1
-  productIndex: 19 - 1, //default : 1 - 1
+  pageIndex: 1, //default : 1
+  productIndex: 1 - 1, //default : 1 - 1
 };
 const brandAddIherb = async (
   brandURLList: string[],

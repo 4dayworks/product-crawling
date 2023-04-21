@@ -76,11 +76,8 @@ export type IherbPriceType = {
   brand: string | null;
   iherb_product_image: string | null;
 };
-// updateByProductId([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
 // updateByProductId(Array.from({ length: 100 }).map((a, i) => i + 1));
 // select product_id  from product p where is_drugstore  = 4;
-// 60250 치약임
-
 const iherbProductList = [
   60035, 60233, 60234, 60302, 60394, 60419, 60515, 60593, 60615, 60630, 60636, 60637, 60639, 60649, 60659, 60661, 60663,
   60707, 60759, 60762, 60765, 60767, 60768, 60781, 60782, 60783, 60784, 60785, 60786, 60794, 60797, 60799, 60801, 60805,

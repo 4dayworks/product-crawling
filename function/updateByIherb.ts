@@ -29,7 +29,7 @@ export const getProductPriceData = (
     const res1 = await axios
       .get(
         `https://catalog.app.iherb.com/recommendations/freqpurchasedtogether?productId=${iherbProductId}&pageSize=2&page=1&_=1681620224467`,
-        headers()
+        headers(true)
       )
       .then((d) => {
         if (d.data.errorType === undefined) return d.data as IherbProductPriceType1;
@@ -39,7 +39,7 @@ export const getProductPriceData = (
       .catch(() => null);
     // # 데이터 요청 3
     const res3 = await axios
-      .get(`https://catalog.app.iherb.com/product/${iherbProductId}/discounts?_=1681707804820`, headers())
+      .get(`https://catalog.app.iherb.com/product/${iherbProductId}/discounts?_=1681707804820`, headers(true))
       .then((d) => {
         if (d.data.errorType === undefined) return d.data as IherbProductPriceType2;
         l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(3)");
@@ -48,7 +48,7 @@ export const getProductPriceData = (
       .catch(() => null);
     // # 데이터 요청 2
     const res2 = await axios
-      .get(`https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}`, headers())
+      .get(`https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}`, headers(true))
       .then(async (d) => {
         if (d.data.errorType === undefined) return d.data as ProductType;
         l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(4) ");
