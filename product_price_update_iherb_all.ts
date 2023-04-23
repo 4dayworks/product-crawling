@@ -53,7 +53,7 @@ const priceUpdateIherb = async (brandURLList: string[]) => {
         await getProductPriceData(product);
 
         const start_at = new Date();
-        const text = `product_id: ${product.product_url
+        const text = `iherb_product_id: ${product.product_url
           .slice(product.product_url.lastIndexOf("/") + 1, product.product_url.length)
           .padStart(6, " ")}, start_at: ${start_at.toISOString()}`;
         l(`[${i + 1}/${productURLList.length}]`, "cyan", text);
