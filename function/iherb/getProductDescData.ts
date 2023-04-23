@@ -116,43 +116,52 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               return;
             }
           }
-          if (text.includes("서빙 당")) return;
+          if (text.includes("서빙 당") || text.includes("캡슐") || text.includes("스쿱")) return;
 
           const titleTemp =
-            div.find("td:nth-child(1) > strong").html() || text || div.find("td:nth-child(1)").html() || "";
+            div.find("td:nth-child(1) > strong").html() ||
+            div.find("td:nth-child(1) > p").html() ||
+            div.find("td:nth-child(1)").html() ||
+            "";
+
+          console.log("div1", div.find("td:nth-child(1) > strong").html());
+          console.log("div2", div.find("td:nth-child(1)").html());
+
           const title =
             titleTemp
-              .slice(0, titleTemp.indexOf("(") === -1 ? titleTemp.length : titleTemp.indexOf("("))
+              // .slice(0, titleTemp.indexOf("(") === -1 ? titleTemp.length : titleTemp.indexOf("("))
               .slice(0, titleTemp.indexOf("<br>") === -1 ? titleTemp.length : titleTemp.indexOf("<br>"))
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
-              .replace(/ /g, "")
-              .replace(/<p>/g, "")
-              .replace(/<\/p>/g, "")
-              .replace(/<span>/g, "")
-              .replace(/<\/span>/g, "")
-              .replace(/&nbsp;/g, "")
-              .replace(/&amp;/g, "")
-              .replace(/<br>/g, "")
-              .replace("비타민B-12", "비타민B12")
-              .replace("비타민B-", "비타민B")
-              .replace("Vitamin", "비타민")
-              .replace("(HT042)", "")
-              .replace(/<spanstyle=colorrgb/g, "")
-              .replace(/<spanstyle="colorrgb/g, "")
-              .replace("<strong></strong>", "")
-              .replace(/†/g, "")
-              .replace(/\)/g, "")
-              .replace(/\(/g, "")
-              .replace("1스쿱", "")
-              .replace("2스쿱", "")
-              .replace("<sup>®</sup>", " ")
-              .replace("2캡슐당함유성분", "")
-              .replace("3/1", "")
-              .replace("401", "")
-              .replace("9", "")
-              .replace("6-", "")
-              .replace("6", "")
+              // .replace(/<p>/g, "")
+              // .replace(/<\/p>/g, "")
+              // .replace(/<span>/g, "")
+              // .replace(/<\/span>/g, "")
+              // .replace(/&nbsp;/g, "")
+              // .replace(/&amp;/g, "")
+              // .replace(/<br>/g, "")
+              // .replace("비타민B-12", "비타민B12")
+              // .replace("비타민B-", "비타민B")
+              // .replace("Vitamin", "비타민")
+              // .replace("(HT042)", "")
+              // .replace(/<spanstyle=colorrgb/g, "")
+              // .replace(/<spanstyle="colorrgb/g, "")
+              // .replace("<strong></strong>", "")
+              // .replace(/†/g, "")
+              // .replace(/\)/g, "")
+              // .replace(/\(/g, "")
+              // .replace("1스쿱", "")
+              // .replace("2스쿱", "")
+              // .replace("<sup>®</sup>", " ")
+              // .replace("2캡슐당함유성분", "")
+              // .replace("3/1", "")
+              // .replace("401", "")
+              // .replace("9", "")
+              // .replace("6-", "")
+              // .replace("6", "")
               .replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9]/gi, "")
+              .replace(/sup/g, "")
+              .replace(/span/g, "")
+              .replace(/nbsp/g, "")
               .trim() || null;
 
           const amount =
@@ -176,16 +185,9 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
               .trim() || null;
 
-          if (
-            !title ||
-            title === "<br>" ||
-            title === "&nbsp;" ||
-            title.includes("*") ||
-            title.includes("제공량") ||
-            title.length > 30
-          )
-            return;
-          if (amount && title && title.length < 10) {
+          if (!title || title.length > 30) return;
+          if (amount && title && title.length < 12) {
+            console.log("result:", title, ",amount:", amount);
             ingredientList.push(title);
             ingredientAmount += title + " : " + amount + "\n";
           }
@@ -225,6 +227,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           primary_ingredients: ingredientList.slice(0, 10).join(", "),
           func_content: null, //rankStrList.slice(0, 10).join(", "),
         };
+        // console.log(data);
 
         if (reviewCount === "https://kr") {
           l("ERR Data", "red", "iherb.reviewCount 데이터가 잘못되었습니다.");
@@ -235,7 +238,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           return resolve(null);
         }
         await axios
-          .post(`${NODE_API_URL}/crawling/product/iherb`, data)
+          .post(`${NODE_API_URL}/crawling/product/iherb/init`, data)
           .catch((d) => l("ERR Data", "red", "iherb 데이터 중 일부가 누락되었습니다."));
         return resolve(data);
       });
