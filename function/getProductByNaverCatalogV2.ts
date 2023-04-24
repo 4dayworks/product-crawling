@@ -51,7 +51,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
 
             // 회사 블랙리스트
             if (exceptionCompanyListAtNaver.indexOf(store_name) !== -1) {
-              l("[블랙리스트 회사] PASS", "magenta", store_name);
+              l("[블랙리스트 회사] PASS (naver)", "magenta", store_name);
               return;
             }
 
@@ -61,6 +61,12 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
               `#section-price > ul > li:nth-child(${idx}) > div > div > div > span > span > em`
             ).text();
             const price = priceStr ? Number(priceStr.replace(regex, "")) : 0;
+
+            // 100원 이하 배제
+            if (price <= 100) {
+              l("[100원이하] 가격PASS (naver)", "magenta", store_name);
+              return;
+            }
 
             //판매처 배송비
             const deliveryStr = $(

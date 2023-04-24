@@ -28,7 +28,7 @@ export const shuffle = (array: getAllProductIdType[]) => {
   array.sort(() => Math.random() - 0.5);
 };
 
-export const exceptionCompanyListAtNaver = ["템스윈공식몰", "위메프", "여노마뚜"];
+export const exceptionCompanyListAtNaver = ["템스윈공식몰", "위메프", "여노마뚜", "라온팜"];
 
 export const getNotificationItemscoutList = () => {
   return axios
