@@ -122,7 +122,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
           }
 
           //#region 제품 최저가 갱신시 유저에게 알림 보내기
-          if (cheapStore.low_price && cheapStore.low_price > 1000) {
+          if (cheapStore.low_price && cheapStore.low_price > 100) {
             const userList: string[] = await axios
               .post(`${NODE_API_URL}/crawling/product/notification`, {
                 low_price: cheapStore.low_price,
