@@ -123,23 +123,27 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
 
           //#region 제품 최저가 갱신시 유저에게 알림 보내기
           if (cheapStore.low_price && cheapStore.low_price > 100) {
-            const userList: string[] = await axios
+            const notiList = await axios
               .post(`${NODE_API_URL}/crawling/product/notification`, {
                 low_price: cheapStore.low_price,
                 product_id: productId,
               })
               .then((d) =>
                 d.data.data && d.data.data.length > 0
-                  ? d.data.data.map((i: { user_id: number }) => i.user_id).join(",")
+                  ? (d.data.data as { user_id: number; is_lowest: 0 | 1; low_price: number }[])
                   : null
               )
               .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /crawling/product/notification " + e.code));
-            if (userList && userList.length > 0) {
+
+            const userList = notiList ? notiList.map((i) => i.user_id).join(",") : null;
+            if (notiList && userList && userList.length > 0) {
               await axios
                 .get(
                   `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=내가 관심을 보인 ${product_name} 가격이 ${toComma(
-                    cheapStore.low_price
-                  )}원으로 내려갔어요⬇️&link=/product/${productId}`
+                    notiList[0].low_price
+                  )}원에서 ${toComma(cheapStore.low_price)}원으로 내려갔어요⬇️&link=/product/${productId} ${
+                    notiList[0].is_lowest === 1 ? `(⚡역대최저가)` : ""
+                  }`
                 )
                 .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /user/firebase/send/low_price " + e.code));
             }
