@@ -118,51 +118,30 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           }
           if (text.includes("서빙 당") || text.includes("캡슐") || text.includes("스쿱")) return;
 
-          const titleTemp =
+          let titleTemp: string | null =
             div.find("td:nth-child(1) > strong").html() ||
             div.find("td:nth-child(1) > p").html() ||
             div.find("td:nth-child(1)").html() ||
             "";
 
-          console.log("div1", div.find("td:nth-child(1) > strong").html());
-          console.log("div2", div.find("td:nth-child(1)").html());
-
-          const title =
+          titleTemp = getGroupIngredient(
             titleTemp
-              // .slice(0, titleTemp.indexOf("(") === -1 ? titleTemp.length : titleTemp.indexOf("("))
               .slice(0, titleTemp.indexOf("<br>") === -1 ? titleTemp.length : titleTemp.indexOf("<br>"))
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
-              // .replace(/<p>/g, "")
-              // .replace(/<\/p>/g, "")
-              // .replace(/<span>/g, "")
-              // .replace(/<\/span>/g, "")
-              // .replace(/&nbsp;/g, "")
-              // .replace(/&amp;/g, "")
-              // .replace(/<br>/g, "")
-              // .replace("비타민B-12", "비타민B12")
-              // .replace("비타민B-", "비타민B")
-              // .replace("Vitamin", "비타민")
-              // .replace("(HT042)", "")
-              // .replace(/<spanstyle=colorrgb/g, "")
-              // .replace(/<spanstyle="colorrgb/g, "")
-              // .replace("<strong></strong>", "")
-              // .replace(/†/g, "")
-              // .replace(/\)/g, "")
-              // .replace(/\(/g, "")
-              // .replace("1스쿱", "")
-              // .replace("2스쿱", "")
-              // .replace("<sup>®</sup>", " ")
-              // .replace("2캡슐당함유성분", "")
-              // .replace("3/1", "")
-              // .replace("401", "")
-              // .replace("9", "")
-              // .replace("6-", "")
-              // .replace("6", "")
               .replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9]/gi, "")
               .replace(/sup/g, "")
               .replace(/span/g, "")
               .replace(/nbsp/g, "")
-              .trim() || null;
+              .trim() || null
+          );
+
+          // 기준단어 먼저 로직
+          // "표준화된","표준화","표준", "고유", 첫자 "총","첨가" 문자제거
+          // 첫자 l은 대문자L로 바꾸기
+          // 첫문자숫자,"kg","lb","1회","함유","어린이"는 포함되면 성분삭제"
+
+          const title = titleTemp ? titleTemp.replace("") : null;
+          // asd
 
           const amount =
             div
@@ -188,6 +167,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           if (!title || title.length > 30) return;
           if (amount && title && title.length < 12) {
             console.log("result:", title, ",amount:", amount);
+            // asd
             ingredientList.push(title);
             ingredientAmount += title + " : " + amount + "\n";
           }
@@ -247,4 +227,324 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
       return resolve(null);
     }
   });
+};
+
+const getGroupIngredient = (ingredient: string | null) => {
+  if (!ingredient) return null;
+  if (ingredient.includes("베타") && ingredient.includes("글루칸")) return "베타글루칸";
+
+  if (ingredient.includes("순수고급이온성마그네슘")) return "순수고급이온화마그네슘";
+  if (ingredient.includes("Ashwagandha")) return "아시와간다";
+  if (ingredient.includes("Astaxanthin")) return "아스타잔틴";
+  if (ingredient.includes("Cholesterol")) return "콜레스테롤";
+  if (ingredient.includes("CoenzymeB12")) return "코엔자임B12";
+  if (ingredient.includes("CoenzymeQ10")) return "코엔자임Q10";
+  if (ingredient.includes("CynatineHNS")) return "시나틴HNS";
+  if (ingredient.includes("Eleuthero뿌리")) return "엘레테로뿌리";
+  if (ingredient.includes("EnzymeBlend")) return "효소 혼합물";
+  if (ingredient.includes("FloraGLO금잔화")) return "플로라글로골드플레임";
+  if (ingredient.includes("FloraGLO루테인")) return "플로라글루틴";
+  if (ingredient.includes("LIsoleucine")) return "L이소류신";
+  if (ingredient.includes("LMethionine")) return "L메티오닌";
+  if (ingredient.includes("LTryptophan")) return "L트립토판";
+  if (ingredient.includes("ProteaseIII")) return "프로테아제III";
+  if (ingredient.includes("Resveratrol")) return "레스베라트롤";
+  if (ingredient.includes("Rhodiola추출물")) return "로디올라추출물";
+  if (ingredient.includes("RutinPowder")) return "루틴파우더";
+  if (ingredient.includes("SawPalmetto")) return "쏘팔메토";
+  if (ingredient.includes("Sunphenon녹차")) return "선페논논차";
+  if (ingredient.includes("구리클로로필린나트륨")) return "구리클로로핀나트륨";
+  if (ingredient.includes("악마의발톱뿌리추출물")) return "악마의발톱뿌리추출물";
+  if (ingredient.includes("알리신을방출하는마늘")) return "알리신마늘";
+  if (ingredient.includes("칼슘식물전체에서추출")) return "칼슘";
+  if (ingredient.includes("피리독살5포스페이트")) return "피리독살포스페이트";
+  if (ingredient.includes("허브면역력강화혼합물")) return "허브면역력강화혼합물";
+  if (ingredient.includes("환원형코엔자임Q10")) return "환원형코엔자임Q10";
+  if (ingredient.includes("AmlaPowder")) return "암라파우더";
+  if (ingredient.includes("DevilsClaw")) return "악마의발톱";
+  if (ingredient.includes("Isoleucine")) return "이소류신";
+  if (ingredient.includes("LCarnitine")) return "L카르니틴";
+  if (ingredient.includes("LGlutamine")) return "L글루타민";
+  if (ingredient.includes("LHistidine")) return "L히스티딘";
+  if (ingredient.includes("LThreonine")) return "L트레오닌";
+  if (ingredient.includes("Methionine")) return "메티오닌";
+  if (ingredient.includes("Molybdenum")) return "몰리브덴";
+  if (ingredient.includes("OreganoOil")) return "오레가노오일";
+  if (ingredient.includes("ProteaseIl")) return "프로테아제II";
+  if (ingredient.includes("Pycnogenol")) return "피크노제놀";
+  if (ingredient.includes("Reishi버섯분말")) return "레이시버섯분말";
+  if (ingredient.includes("Reliefiber")) return "릴리프이버";
+  if (ingredient.includes("Rhodiola분말")) return "로디올라분말";
+  if (ingredient.includes("Rhodiolife")) return "로디올라이프";
+  if (ingredient.includes("Riboflavin")) return "리보플라빈";
+  if (ingredient.includes("RoyalJelly")) return "로얄젤리";
+  if (ingredient.includes("Schisandra")) return "시산드라";
+  if (ingredient.includes("Tryptophan")) return "트립토판";
+  if (ingredient.includes("VitaminB12")) return "비타민B12";
+  if (ingredient.includes("감마아미노뷰티릭산")) return "감마아미노부티르산";
+  if (ingredient.includes("구리클로로핀나트륨")) return "구리클로로핀나트륨";
+  if (ingredient.includes("글루코사민설페이트")) return "글루코사민설페이트";
+  if (ingredient.includes("루테인카로티노이드")) return "루테인카로티노이드";
+  if (ingredient.includes("밀크씨슬씨앗추출물")) return "밀크시슬씨앗추출물";
+  if (ingredient.includes("산안정성프로테아제")) return "산안정성프로테아제";
+  if (ingredient.includes("아미노산혼합물성분")) return "아미노산혼합물";
+  if (ingredient.includes("유기농면역력혼합물")) return "유기농면역력혼합물";
+  if (ingredient.includes("캐모마일추출물41")) return "카모마일";
+  if (ingredient.includes("포스파티딜이노시톨")) return "포스파티딜이노시톨";
+  if (ingredient.includes("AquaminTG")) return "아쿠아민TG";
+  if (ingredient.includes("Berberine")) return "베르베린";
+  if (ingredient.includes("Boswellin")) return "보스웰린";
+  if (ingredient.includes("Bromelain")) return "브로멜라인";
+  if (ingredient.includes("Cellulase")) return "셀룰라아제";
+  if (ingredient.includes("Chamomile")) return "카모마일";
+  if (ingredient.includes("Chlorella")) return "클로렐라";
+  if (ingredient.includes("DHA중성지방형태")) return "오메가3중성지방";
+  if (ingredient.includes("Histidine")) return "히스티딘";
+  if (ingredient.includes("LArginine")) return "L아르기닌";
+  if (ingredient.includes("LCysteine")) return "L시스테인";
+  if (ingredient.includes("LTyrosine")) return "L티로신";
+  if (ingredient.includes("Magnesium")) return "마그네슘";
+  if (ingredient.includes("Manganese")) return "망간";
+  if (ingredient.includes("MSMPowder")) return "MSM분말";
+  if (ingredient.includes("Potassium")) return "칼륨";
+  if (ingredient.includes("PreforPro")) return "PreforPro";
+  if (ingredient.includes("ProteaseI")) return "프로테아제I";
+  if (ingredient.includes("Quercetin")) return "퀘르세틴";
+  if (ingredient.includes("Spirulina")) return "스피룰리나";
+  if (ingredient.includes("Threonine")) return "트레오닌";
+  if (ingredient.includes("Ubiquinol")) return "유비퀴놀";
+  if (ingredient.includes("VitaminB2")) return "비타민B2";
+  if (ingredient.includes("VitaminB6")) return "비타민B6";
+  if (ingredient.includes("VitaminD3")) return "비타민D3";
+  if (ingredient.includes("VitaminK1")) return "비타민K1";
+  if (ingredient.includes("VitaminK2")) return "비타민K2";
+  if (ingredient.includes("메틸설포닐메테인")) return "메틸설포닐메탄";
+  if (ingredient.includes("무가공CoQ10")) return "무가공큐엔자임큐텐";
+  if (ingredient.includes("미분화l글루타민")) return "미분화L글루타민";
+  if (ingredient.includes("베타인에이치씨엘")) return "베타인염산염";
+  if (ingredient.includes("블랙코호시추출물")) return "블랙코호시추출물";
+  if (ingredient.includes("블루리치블루베리")) return "블루리치블루베리";
+  if (ingredient.includes("빌베리열매추출물")) return "빌베리열매추출물";
+  if (ingredient.includes("오메가오일혼합물")) return "오메가오일혼합물";
+  if (ingredient.includes("프로테아제III")) return "프로테아제III";
+  if (ingredient.includes("프로테오세스펩톤")) return "프로테오세스펩톤";
+  if (ingredient.includes("피리독살5인산염")) return "피리독살인산염";
+  if (ingredient.includes("피쉬오일제공성분")) return "피쉬오일";
+  if (ingredient.includes("헤스페리딘추출물")) return "헤스페리딘추출물";
+  if (ingredient.includes("Allulose")) return "알룰로스";
+  if (ingredient.includes("AloeVera")) return "알로에베라";
+  if (ingredient.includes("Arginine")) return "아르기닌";
+  if (ingredient.includes("Celadrin")) return "셀라드린";
+  if (ingredient.includes("Chloride")) return "염화물";
+  if (ingredient.includes("Chromium")) return "크롬";
+  if (ingredient.includes("Cysteine")) return "시스테인";
+  if (ingredient.includes("Diastase")) return "디아스타제";
+  if (ingredient.includes("ForsLean")) return "포슬린";
+  if (ingredient.includes("Inositol")) return "이노시톨";
+  if (ingredient.includes("L시스테인HCI")) return "L시스테인염산염";
+  if (ingredient.includes("LAlanine")) return "L알라닌";
+  if (ingredient.includes("LLeucine")) return "L류신";
+  if (ingredient.includes("LProline")) return "L프롤린";
+  if (ingredient.includes("Lycopene")) return "리코펜";
+  if (ingredient.includes("Lysozyme")) return "리소자임";
+  if (ingredient.includes("Megasorb")) return "메가소브";
+  if (ingredient.includes("PauDArco")) return "파우다르코";
+  if (ingredient.includes("Rosemary")) return "로즈메리";
+  if (ingredient.includes("Selenium")) return "셀레늄";
+  if (ingredient.includes("Thiamine")) return "티아민";
+  if (ingredient.includes("Tyrosine")) return "티로신";
+  if (ingredient.includes("Vanadium")) return "바나듐";
+  if (ingredient.includes("VitaminA")) return "비타민A";
+  if (ingredient.includes("VitaminC")) return "비타민C";
+  if (ingredient.includes("VitaminD")) return "비타민D";
+  if (ingredient.includes("VitaminE")) return "비타민E";
+  if (ingredient.includes("VitaminK")) return "비타민K";
+  if (ingredient.includes("가수분해콜라겐")) return "가수분해콜라겐";
+  if (ingredient.includes("글루코사민황산")) return "글루코사민황산염";
+  if (ingredient.includes("레몬밤잎추출물")) return "레몬밤잎추출물";
+  if (ingredient.includes("리놀레익애씨드")) return "리놀레산";
+  if (ingredient.includes("밀크씨슬추출물")) return "밀크시슬추출물";
+  if (ingredient.includes("밀크티슬추출물")) return "밀크시슬추출물";
+  if (ingredient.includes("발레리안추출물")) return "발레리안추출물";
+  if (ingredient.includes("부틸프탈라이드")) return "부틸프탈라이드";
+  if (ingredient.includes("산사나무추출물")) return "산사나무추출물";
+  if (ingredient.includes("산사나무추출물")) return "산사나무추출물";
+  if (ingredient.includes("생강뿌리추출물")) return "생강뿌리추출물";
+  if (ingredient.includes("소팔메토추출물")) return "소팔메토추출물";
+  if (ingredient.includes("쏘팔메토추출물")) return "쏘팔메토추출물";
+  if (ingredient.includes("아연L카르노신")) return "아연L카르노신";
+  if (ingredient.includes("영지버섯추출물")) return "영지버섯추출물";
+  if (ingredient.includes("코엔자임Q10")) return "코엔자임Q10";
+  if (ingredient.includes("크랜베리농축물")) return "크랜베리농축물";
+  if (ingredient.includes("판크레아틴효소")) return "판크레아틴효소";
+  if (ingredient.includes("프로테아제펩톤")) return "프로테아제펩톤";
+  if (ingredient.includes("프로테아제II")) return "프로테아제II";
+  if (ingredient.includes("프로테오스펩톤")) return "프로테오스펩톤";
+  if (ingredient.includes("피쉬오일농축물")) return "피쉬오일농축물";
+  if (ingredient.includes("Alanine")) return "알라닌";
+  if (ingredient.includes("Amylase")) return "아밀라아제";
+  if (ingredient.includes("Aquamin")) return "아쿠아민";
+  if (ingredient.includes("Calcium")) return "칼슘";
+  if (ingredient.includes("Choline")) return "콜린";
+  if (ingredient.includes("d감마토코페롤")) return "D감마토코페롤";
+  if (ingredient.includes("Fortify")) return "포티파이";
+  if (ingredient.includes("Glycine")) return "글리신";
+  if (ingredient.includes("Lactase")) return "락타아제";
+  if (ingredient.includes("Leucine")) return "류신";
+  if (ingredient.includes("LLysine")) return "L라이신";
+  if (ingredient.includes("Llysine")) return "리신";
+  if (ingredient.includes("LSerine")) return "L세린";
+  if (ingredient.includes("LValine")) return "L발린";
+  if (ingredient.includes("Magtein")) return "마그테인";
+  if (ingredient.includes("Proline")) return "프롤린";
+  if (ingredient.includes("Protein")) return "단백질";
+  if (ingredient.includes("Silicon")) return "실리콘";
+  if (ingredient.includes("Soursop")) return "사르솝";
+  if (ingredient.includes("Sterols")) return "스테롤스";
+  if (ingredient.includes("Thiamin")) return "티아민";
+  if (ingredient.includes("Tonalin")) return "토날린";
+  if (ingredient.includes("Xylitol")) return "자일리톨";
+  if (ingredient.includes("감마리놀렌산")) return "감마리놀레산";
+  if (ingredient.includes("과라나추출물")) return "과라나추출물";
+  if (ingredient.includes("구아이페네신")) return "구아이페네신";
+  if (ingredient.includes("나토키나아제")) return "나토키나아제";
+  if (ingredient.includes("달맞이꽃오일")) return "달맞이꽃오일";
+  if (ingredient.includes("로즈힙추출물")) return "로즈힙추출물";
+  if (ingredient.includes("루테인추출물")) return "루테인추출물";
+  if (ingredient.includes("마늘오일농축")) return "마늘오일농축";
+  if (ingredient.includes("면역글로불린")) return "면역글로블린";
+  if (ingredient.includes("미오이노시톨")) return "미오이노시톨";
+  if (ingredient.includes("민들레추출물")) return "민들레추출물";
+  if (ingredient.includes("버드나무껍질")) return "버드나무껍질추출물";
+  if (ingredient.includes("베타인염산염")) return "베타인염산염";
+  if (ingredient.includes("베타인HCI")) return "베타인염산염";
+  if (ingredient.includes("베타인HCl")) return "베타인염산염";
+  if (ingredient.includes("베테인HCI")) return "베테인염산염";
+  if (ingredient.includes("블레스드씨슬")) return "블레스트씨슬";
+  if (ingredient.includes("빌베리추출물")) return "빌베리추출물";
+  if (ingredient.includes("소팔메토가루")) return "소팔메토가루";
+  if (ingredient.includes("시계꽃추출물")) return "시계꽃추출물";
+  if (ingredient.includes("시너지혼합물")) return "시너지혼합물";
+  if (ingredient.includes("아이브라이트")) return "아이브라이트추출물";
+  if (ingredient.includes("옐로우재스민")) return "옐로우재스민";
+  if (ingredient.includes("오미자추출물")) return "오미자추출물";
+  if (ingredient.includes("이노시톨분말")) return "이노시톨분말";
+  if (ingredient.includes("칼슘탄산칼슘")) return "칼슘탄산칼슘";
+  if (ingredient.includes("커큐미노이드")) return "커큐미노이드";
+  if (ingredient.includes("토마토추출물")) return "토마토추출물";
+  if (ingredient.includes("트리뷸러스테")) return "트리블러스테레스트리스";
+  if (ingredient.includes("프로테아제I")) return "프로테아제I";
+  if (ingredient.includes("BioPQQ")) return "바이오PQQ";
+  if (ingredient.includes("Biotin")) return "비오틴";
+  if (ingredient.includes("Copper")) return "구리";
+  if (ingredient.includes("EPADHA")) return "오메가3";
+  if (ingredient.includes("EpiCor")) return "에피코르";
+  if (ingredient.includes("Folate")) return "엽산";
+  if (ingredient.includes("Ginger")) return "생강";
+  if (ingredient.includes("Iodine")) return "요오드";
+  if (ingredient.includes("Lutein")) return "루테인";
+  if (ingredient.includes("Lysine")) return "리신";
+  if (ingredient.includes("MCTOil")) return "MCTOil";
+  if (ingredient.includes("Niacin")) return "나이아신";
+  if (ingredient.includes("Papain")) return "파파인";
+  if (ingredient.includes("RoseOx")) return "로즈옥스";
+  if (ingredient.includes("Serine")) return "세린";
+  if (ingredient.includes("Sodium")) return "나트륨";
+  if (ingredient.includes("Valine")) return "발린";
+  if (ingredient.includes("가시오갈피")) return "가시오갈피";
+  if (ingredient.includes("가용성섬유")) return "가용성섬유";
+  if (ingredient.includes("글루코만난")) return "글루코만난";
+  if (ingredient.includes("글루코사민")) return "글루코사민";
+  if (ingredient.includes("글루타치온")) return "글루타치온";
+  if (ingredient.includes("글루타티온")) return "글루타치온";
+  if (ingredient.includes("낫또추출물")) return "낫또추출물";
+  if (ingredient.includes("루틴추출물")) return "루틴추출물";
+  if (ingredient.includes("루틴파우더")) return "루틴분말";
+  if (ingredient.includes("리놀레익산")) return "리놀레산";
+  if (ingredient.includes("리보플라빈")) return "리보플라빈";
+  if (ingredient.includes("마늘추출물")) return "마늘추출물";
+  if (ingredient.includes("민들레뿌리")) return "민들레뿌리";
+  if (ingredient.includes("브로메라인")) return "브로멜라인";
+  if (ingredient.includes("비타민B6")) return "비타민B6";
+  if (ingredient.includes("비타민D2")) return "비타민D2";
+  if (ingredient.includes("비타민D3")) return "비타민D3";
+  if (ingredient.includes("비타민K1")) return "비타민K1";
+  if (ingredient.includes("비타민K2")) return "비타민K2";
+  if (ingredient.includes("산사나무잎")) return "산사나무잎";
+  if (ingredient.includes("생강추출물")) return "생강추출물";
+  if (ingredient.includes("악마의발톱")) return "악마의발톱";
+  if (ingredient.includes("일페카쿠안")) return "일페카쿠안";
+  if (ingredient.includes("채소혼합물")) return "과채혼합물";
+  if (ingredient.includes("판크레아틴")) return "판크레아틴";
+  if (ingredient.includes("프로테아제")) return "프로테아제";
+  if (ingredient.includes("프로폴리스")) return "프로폴리스추출물";
+  if (ingredient.includes("호밀꽃가루")) return "호밀꽃가루추출물";
+  if (ingredient.includes("Boron")) return "붕소";
+  if (ingredient.includes("CoQ10")) return "코엔자임Q10";
+  if (ingredient.includes("L이소루신")) return "L이소류신";
+  if (ingredient.includes("MCT오일")) return "엠시티 영화관";
+  if (ingredient.includes("Olive")) return "올리브";
+  if (ingredient.includes("Potas")) return "포타스";
+  if (ingredient.includes("VitB6")) return "비타민B6";
+  if (ingredient.includes("감초뿌리")) return "감초뿌리추출물";
+  if (ingredient.includes("계피껍질")) return "계피껍질";
+  if (ingredient.includes("고투콜라")) return "고투콜라추출물";
+  if (ingredient.includes("글루탐산")) return "글루탐산";
+  if (ingredient.includes("락타아제")) return "락타아제";
+  if (ingredient.includes("로열젤리")) return "로얄젤리";
+  if (ingredient.includes("루틴분말")) return "루틴분말";
+  if (ingredient.includes("리놀렌산")) return "리놀레산";
+  if (ingredient.includes("리파아제")) return "리파아제";
+  if (ingredient.includes("마그네슘")) return "마그네슘";
+  if (ingredient.includes("마스네슘")) return "마그네슘";
+  if (ingredient.includes("마크네슘")) return "마그네슘";
+  if (ingredient.includes("망가니즈")) return "망간";
+  if (ingredient.includes("베르베린")) return "베르베린";
+  if (ingredient.includes("보스웰산")) return "보스웰산";
+  if (ingredient.includes("비타민c")) return "비타민C";
+  if (ingredient.includes("비타민D")) return "비타민D";
+  if (ingredient.includes("비타민E")) return "비타민E";
+  if (ingredient.includes("비타민K")) return "비타민K";
+  if (ingredient.includes("생강분말")) return "생강분말";
+  if (ingredient.includes("생강뿌리")) return "생강뿌리";
+  if (ingredient.includes("생강오일")) return "생강오일";
+  if (ingredient.includes("소팔메토")) return "소팔메토추출물";
+  if (ingredient.includes("실리마린")) return "실리마린";
+  if (ingredient.includes("오메가3")) return "오메가3";
+  if (ingredient.includes("오메가3")) return "오메가3";
+  if (ingredient.includes("오메가6")) return "오메가6";
+  if (ingredient.includes("오메가9")) return "오메가9";
+  if (ingredient.includes("이노시톨")) return "이노시톨";
+  if (ingredient.includes("카모마일")) return "카모마일";
+  if (ingredient.includes("폴리페놀")) return "폴리페놀";
+  if (ingredient.includes("홉추출물")) return "홉추출물";
+  if (ingredient.includes("GABA")) return "가바";
+  if (ingredient.includes("Iron")) return "철";
+  if (ingredient.includes("Kelp")) return "다시마";
+  if (ingredient.includes("Maca")) return "마카";
+  if (ingredient.includes("Vit디")) return "비타민D";
+  if (ingredient.includes("Zinc")) return "아연";
+  if (ingredient.includes("가엽수")) return "가엽수추출물";
+  if (ingredient.includes("금잔화")) return "금잔화꽃추출물";
+  if (ingredient.includes("레몬밤")) return "레몬밤";
+  if (ingredient.includes("루테인")) return "루테인";
+  if (ingredient.includes("멀베리")) return "멀베리추출물";
+  if (ingredient.includes("면역력")) return "면역력증진혼합물";
+  if (ingredient.includes("민들레")) return "민들레";
+  if (ingredient.includes("빌베리")) return "빌베리농축물";
+  if (ingredient.includes("크로뮴")) return "크로뮴";
+  if (ingredient.includes("톱야자")) return "톱야자";
+  if (ingredient.includes("파파인")) return "파파인";
+  if (ingredient.includes("할미꽃")) return "할미꽃추출물";
+  if (ingredient.includes("DHA")) return "오메가3";
+  if (ingredient.includes("EPA")) return "오메가3";
+  if (ingredient.includes("PGX")) return "PGX";
+  if (ingredient.includes("PQQ")) return "PQQ";
+  if (ingredient.includes("감초")) return "감초추출물";
+  if (ingredient.includes("루틴")) return "루틴";
+  if (ingredient.includes("마늘")) return "마늘";
+  if (ingredient.includes("생강")) return "생강추출물";
+  if (ingredient.includes("아연")) return "아연";
+  if (ingredient.includes("토근")) return "토근";
+  return ingredient;
 };
