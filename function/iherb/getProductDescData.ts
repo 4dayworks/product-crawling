@@ -47,6 +47,8 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           const textList = $(e).find("strong").text().trim().split(" in");
           const rank = textList[0].replace(/[^0-9]/gi, "");
           const category = textList[1].replace(/[^ㄱ-ㅎ가-힣a-zA-Z0-9]/gi, "");
+          //치약같은 특정 카테고리 배제
+          if (getExpceptionRankCategory(category)) return resolve(null);
           rankStrList.push(category);
           rankList.push(rank + "위 : " + category);
         });
@@ -144,6 +146,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace(/<br>/g, "")
               .replace(/ /g, "")
               .replace(/,/g, "")
+              .replace(/¹/g, "")
               .replace(/\([^)]+\)/gi, "") // 괄호삭제
               .trim() || null;
 
@@ -473,6 +476,7 @@ const getGroupIngredient = (ingredient: string | null) => {
   if (ingredient.includes("프로테아제")) return "프로테아제";
   if (ingredient.includes("프로폴리스")) return "프로폴리스추출물";
   if (ingredient.includes("호밀꽃가루")) return "호밀꽃가루추출물";
+  if (ingredient.includes("하이알루론산")) return "히알루론산";
   if (ingredient.includes("Boron")) return "붕소";
   if (ingredient.includes("CoQ10")) return "코엔자임Q10";
   if (ingredient.includes("L이소루신")) return "L이소류신";
@@ -530,8 +534,8 @@ const getGroupIngredient = (ingredient: string | null) => {
   if (ingredient.includes("톱야자")) return "톱야자";
   if (ingredient.includes("파파인")) return "파파인";
   if (ingredient.includes("할미꽃")) return "할미꽃추출물";
-  if (ingredient.includes("DHA")) return "오메가3";
-  if (ingredient.includes("EPA")) return "오메가3";
+  if (ingredient.includes("DHA")) return "오메가3-DHA";
+  if (ingredient.includes("EPA")) return "오메가3-EPA";
   if (ingredient.includes("PGX")) return "PGX";
   if (ingredient.includes("PQQ")) return "PQQ";
   if (ingredient.includes("감초")) return "감초추출물";
@@ -649,4 +653,120 @@ const getGroupIngredient = (ingredient: string | null) => {
     return "";
   // 정규식처리
   return ingredient;
+};
+
+const getExpceptionRankCategory = (rank: string) => {
+  return [
+    "식료품",
+    "베이킹재료",
+    "아몬드가루",
+    "바디케어",
+    "바디마사지오일",
+    "피마자",
+    "따뜻한시리얼",
+    "귀리오트밀",
+    "시리얼아침식사",
+    "세럼",
+    "트리트먼트세럼",
+    "치약",
+    "미백용치약",
+    "무불소치약",
+    "구강케어",
+    "헤어두피케어",
+    "생활용품",
+    "페이스오일",
+    "아보카도마사지오일",
+    "클로브오일",
+    "균형",
+    "휴식",
+    "단일오일",
+    "라벤더오일",
+    "페퍼민트오일",
+    "에너지증진기분향상",
+    "시더우드오일",
+    "정화클렌징",
+    "바질오일",
+    "베르가못오일",
+    "시나몬카시아오일",
+    "클라리세이지오일",
+    "시트로넬라오일",
+    "제라늄오일",
+    "유칼립투스오일",
+    "자스민오일",
+    "로맨스",
+    "레몬오일",
+    "라임오일",
+    "주니퍼베리오일",
+    "생강오일",
+    "균형오일블렌드",
+    "휴식블렌드",
+    "혼합오일",
+    "자몽오일",
+    "몰약오일",
+    "에너지증진기분향상오일블렌드",
+    "장미오일",
+    "로맨스오일블렌드",
+    "로즈메리오일",
+    "넛맥오일",
+    "솔잎오일",
+    "오렌지오일",
+    "오레가노오일아로마테라피",
+    "정화클렌징오일블렌드",
+    "파촐리오일",
+    "네롤리오일",
+    "마조람오일",
+    "일랑일랑오일",
+    "명상",
+    "티트리오일",
+    "세이지오일",
+    "로션",
+    "크릴오일",
+    "구강청결제",
+    "초콜릿음료",
+    "캐스터오일",
+    "팝콘",
+    "스낵",
+    "샌달우드오일",
+    "클리너",
+    "마누카꿀뷰티",
+    "페이스워시클렌저",
+    "클렌징토너스크럽",
+    "라이스뷰티",
+    "각질관리스크럽",
+    "토너",
+    "유아동용치약젤",
+    "치발기구강케어",
+    "캐슈넛",
+    "위식도역류증상완화제",
+    "꿀벌꽃가루",
+    "루이보스티",
+    "목련나무껍질",
+    "아르간오일",
+    "페퍼민트티",
+    "쉐이빙크림",
+    "면도제모",
+    "골든베리",
+    "오일세럼",
+    "헤어스타일링",
+    "디퓨저액세서리",
+    "반려동물비타민미네랄",
+    "반려동물보충제",
+    "반려동물",
+    "반려동물오메가오일",
+    "반려동물허브제품",
+    "에센셜오일스프레이",
+    "파우더세팅스프레이",
+    "수염관리",
+    "면도수염관리",
+    "남성용그루밍",
+    "반려동물벼룩진드기제거제",
+    "반려동물건강제품",
+    "여드름잡티",
+    "안면보호마스크",
+    "개인위생용품",
+    "성분별뷰티제품",
+    "뷰티",
+    "페이스마스크팩필링",
+    "님",
+  ].includes(rank);
 };
