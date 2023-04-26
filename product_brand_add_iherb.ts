@@ -18,9 +18,9 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 // select * from F_DAYWORKS_backup.product_iherb pi2 where iherb_product_brand = "Nature's Way (네이처스 웨이)" order by review_count+0 desc limit 50
 
 const skipProdjct = {
-  brandIndex: 10 - 1, //default : 1 - 1
-  pageIndex: 3, //default : 1
-  productIndex: 20 - 1, //default : 1 - 1
+  brandIndex: 1 - 1, //default : 1 - 1
+  pageIndex: 1, //default : 1
+  productIndex: 1 - 1, //default : 1 - 1
 };
 const brandAddIherb = async (
   brandURLList: string[],
