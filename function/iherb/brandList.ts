@@ -11,6 +11,10 @@ export const getBrandURLList = {
     "https://kr.iherb.com/c/now-foods",
     "https://kr.iherb.com/c/solgar",
     "https://kr.iherb.com/c/garden-of-life",
+    "https://kr.iherb.com/c/allmax",
+    "https://kr.iherb.com/c/california-gold-nutrition",
+    "https://kr.iherb.com/c/natrol",
+    "https://kr.iherb.com/c/solaray",
   ],
   disable: [
     "https://kr.iherb.com/c/21st-century-health-care",

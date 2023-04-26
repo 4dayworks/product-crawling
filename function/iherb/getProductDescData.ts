@@ -162,7 +162,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
 
           if (!title || title.length > 30) return;
           if (amount && title && title.length < 12) {
-            console.log("result:", title, ",amount:", amount);
+            // console.log("result:", title, ",amount:", amount);
             // asd
             ingredientList.push(title);
             ingredientAmount += title + " : " + amount + "\n";
