@@ -134,14 +134,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
               .replace(/nbsp/g, "")
               .trim() || null
           );
-
-          // 기준단어 먼저 로직
-          // "표준화된","표준화","표준", "고유", 첫자 "총","첨가" 문자제거
-          // 첫자 l은 대문자L로 바꾸기
-          // 첫문자숫자,"kg","lb","1회","함유","어린이"는 포함되면 성분삭제"
-
-          const title = titleTemp ? titleTemp.replace("") : null;
-          // asd
+          const title = titleTemp;
 
           const amount =
             div
@@ -234,6 +227,7 @@ const getGroupIngredient = (ingredient: string | null) => {
   if (ingredient.includes("베타") && ingredient.includes("글루칸")) return "베타글루칸";
 
   if (ingredient.includes("순수고급이온성마그네슘")) return "순수고급이온화마그네슘";
+  if (ingredient.includes("칼슘d글루카레이트")) return "칼슘D글루카레이트";
   if (ingredient.includes("Ashwagandha")) return "아시와간다";
   if (ingredient.includes("Astaxanthin")) return "아스타잔틴";
   if (ingredient.includes("Cholesterol")) return "콜레스테롤";
@@ -241,7 +235,7 @@ const getGroupIngredient = (ingredient: string | null) => {
   if (ingredient.includes("CoenzymeQ10")) return "코엔자임Q10";
   if (ingredient.includes("CynatineHNS")) return "시나틴HNS";
   if (ingredient.includes("Eleuthero뿌리")) return "엘레테로뿌리";
-  if (ingredient.includes("EnzymeBlend")) return "효소 혼합물";
+  if (ingredient.includes("EnzymeBlend")) return "효소혼합물";
   if (ingredient.includes("FloraGLO금잔화")) return "플로라글로골드플레임";
   if (ingredient.includes("FloraGLO루테인")) return "플로라글루틴";
   if (ingredient.includes("LIsoleucine")) return "L이소류신";
@@ -546,5 +540,113 @@ const getGroupIngredient = (ingredient: string | null) => {
   if (ingredient.includes("생강")) return "생강추출물";
   if (ingredient.includes("아연")) return "아연";
   if (ingredient.includes("토근")) return "토근";
+  // 정규식처리
+  ingredient = ingredient
+    .replace(/표준화된/g, "")
+    .replace(/표준화/g, "")
+    .replace(/표준/g, "")
+    .replace(/고유/g, "")
+    .replace(/첨가/g, "")
+    .replace(/(^총)/, "")
+    .replace(/(^l)/, "L");
+  // 기준단어 먼저 로직
+  // "표준화된","표준화","표준", "고유", 첫자 "총","첨가" 문자제거
+  // 첫자 l은 대문자L로 바꾸기
+  // 첫문자숫자,"kg","lb","1회","함유","어린이","유아"는 포함되면 성분삭제"
+  if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].includes(ingredient[0])) return "";
+  if (ingredient.includes("kg")) return "";
+  if (ingredient.includes("lb")) return "";
+  if (ingredient.includes("1회")) return "";
+  if (ingredient.includes("함유")) return "";
+  if (ingredient.includes("어린이")) return "";
+  if (ingredient.includes("유아")) return "";
+  // 불필요한 성분 삭제
+  if (
+    [
+      "고도불포화지방",
+      "블렌드",
+      "섬유소혼합물",
+      "진정혼합물",
+      "혼합물",
+      "규격",
+      "극소량의미네랄농축물",
+      "기타성분",
+      "기타지방산",
+      "깨끗함",
+      "낮은GI",
+      "다당류",
+      "단일불포화지방",
+      "당류",
+      "도달범위",
+      "독점블렌드",
+      "독특한블렌드",
+      "면역계지원혼합물",
+      "물용량",
+      "보호조직반응혼합물",
+      "본질적인",
+      "부산",
+      "불포화지방",
+      "뷰티블렌드",
+      "상승적인혼합물",
+      "색상",
+      "설탕",
+      "설탕알코올",
+      "설탕알콜",
+      "섬유소",
+      "섬유소소화혼합물",
+      "성인및12세이상어린이",
+      "수증기모드",
+      "오메가369오일혼합물",
+      "오메가3피쉬오일",
+      "오메가3피쉬오일농축물",
+      "오메가7지방산",
+      "유효성분",
+      "잡지",
+      "전압",
+      "전원",
+      "정격출력",
+      "주석",
+      "지방산및스테롤",
+      "지방소화효소",
+      "지방에서칼로리",
+      "지방의칼로리",
+      "지방칼로리",
+      "지중해식식습관",
+      "지중해식식습관연어",
+      "당류",
+      "오메가57및8지방산",
+      "오메가5지방산",
+      "오메가7지방산",
+      "지방",
+      "칼로리",
+      "탄수화물",
+      "칼로리",
+      "크기",
+      "트랜스지방",
+      "특징",
+      "포화지방",
+      "필수",
+      "활성효소",
+      "B12",
+      "Calories",
+      "DrQuercetin",
+      "II형가수분해콜라겐",
+      "Invertase",
+      "IP6",
+      "LA",
+      "nbsp",
+      "nbspnbsp",
+      "SAMe",
+      "SAME",
+      "TotalCarb",
+      "TotalFat",
+      "TotalSugars",
+      "TransFat",
+      "아에신20으로",
+      "UCII닭연골",
+    ].includes(ingredient)
+  )
+    return "";
+  // 정규식처리
   return ingredient;
 };
