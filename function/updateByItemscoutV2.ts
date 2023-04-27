@@ -240,6 +240,10 @@ export const getProductByItemscoutV2 = (
       );
 
       //#region 제품 최저가 갱신시 유저에게 알림 보내기
+      console.log("par:", {
+        low_price: data.low_price,
+        product_id: data.product_id,
+      });
       if (data.low_price && data.low_price > 100) {
         const notiList = await axios
           .post(`${NODE_API_URL}/crawling/product/notification`, {
