@@ -194,11 +194,13 @@ export const getProductByItemscoutV2 = (
         );
         return resolve(true);
       } else {
-        await axios.post(`${NODE_API_URL}/v3/product/keyword/data`, {
-          data: storeList,
-          keyword_id,
-          product_id: originData.product_id,
-        });
+        await axios
+          .post(`${NODE_API_URL}/v3/product/keyword/data`, {
+            data: storeList,
+            keyword_id,
+            product_id: originData.product_id,
+          })
+          .catch(() => {});
       }
       //#endregion
       //#region (4) product_price 최종 최저가 업데이트하기
