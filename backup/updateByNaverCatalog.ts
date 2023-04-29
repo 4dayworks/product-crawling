@@ -146,12 +146,12 @@ export const getProductByNaverCatalog = (productId: number, catalogUrl: string, 
             .then(() => resolve(true))
             .catch(() => resolve(true));
         } catch (error) {
-          l("error 1", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}`);
+          l("error 3", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}`);
           resolve(true);
         }
       });
     } catch {
-      l("error 2", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}`);
+      l("error 4", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}`);
       resolve(true);
     }
   });
