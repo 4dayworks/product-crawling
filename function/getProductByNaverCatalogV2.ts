@@ -3,8 +3,8 @@ import cheerio from "cheerio";
 import request from "request";
 import { getAllProductIdType } from "../product_price_update.d";
 import { NODE_API_URL, toComma } from "./common";
-import { l } from "./console";
 import { exceptionCompanyListAtNaver } from "./product";
+import { l } from "./console";
 
 type StoreType = {
   product_id: number;
@@ -120,7 +120,6 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
             else if (cheapStore.low_price != null && cheapStore.low_price > price)
               cheapStore = { low_price: price, index, data };
           }
-
           //#region 제품 최저가 갱신시 유저에게 알림 보내기
           if (cheapStore.low_price && cheapStore.low_price > 100) {
             const notiList = await axios
@@ -137,19 +136,20 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
 
             const userList = notiList ? notiList.map((i) => i.user_id).join(",") : null;
             if (notiList && userList && userList.length > 0) {
+              const prevPriceList = notiList.filter((i) => i);
+              const prevPrice = prevPriceList.length > 0 ? prevPriceList[0].low_price : null;
+              const prevPriceText = prevPrice ? `${toComma(prevPrice)}원에서 ` : "";
+              const nextPrice = toComma(cheapStore.low_price);
+              const subText = notiList[0].is_lowest === 1 ? ` (⚡역대최저가)` : "";
+              const message = `내가 관심을 보인 ${product_name} 가격이 ${prevPriceText}${nextPrice}원으로 내려갔어요⬇️${subText}`;
               await axios
                 .get(
-                  `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=내가 관심을 보인 ${product_name} 가격이 ${toComma(
-                    notiList[0].low_price
-                  )}원에서 ${toComma(cheapStore.low_price)}원으로 내려갔어요⬇️&link=/product/${productId} ${
-                    notiList[0].is_lowest === 1 ? `(⚡역대최저가)` : ""
-                  }`
+                  `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=${message}&link=/product/${productId}`
                 )
                 .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /user/firebase/send/low_price " + e.code));
             }
           }
           //#endregion
-
           // DB Insert 최저가 데이터 넣기
           if (!cheapStore.data) {
             l(
@@ -178,7 +178,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
             return resolve(true);
           }
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
-          // console.log(product_id, low_price, delivery, store_name, store_link);
+
           if (!product_id || !low_price || delivery === undefined || delivery === null || !store_name || !store_link) {
             if (!product_id) l("Pass", "green", `[${index}/${max}] no product_id, product_id:${productId}`);
             if (!low_price) l("Pass", "green", `[${index}/${max}] no low_price, product_id:${productId}`);
@@ -216,7 +216,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
             .then(() => resolve(true))
             .catch(() => resolve(true));
         } catch (error) {
-          l("error 1", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}`);
+          l("error 1", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}` + { error });
           resolve(true);
         }
       });

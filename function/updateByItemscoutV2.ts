@@ -260,17 +260,17 @@ export const getProductByItemscoutV2 = (
           .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /crawling/product/notification " + e.code));
 
         const userList = notiList ? notiList.map((i) => i.user_id).join(",") : null;
-
+        console.log(userList);
         if (notiList && userList && userList.length > 0) {
+          const prevPriceList = notiList.filter((i) => i);
+          const prevPrice = prevPriceList.length > 0 ? prevPriceList[0].low_price : null;
+          const prevPriceText = prevPrice ? `${toComma(prevPrice)}원에서 ` : "";
+          const nextPrice = toComma(data.low_price);
+          const subText = notiList[0].is_lowest === 1 ? ` (⚡역대최저가)` : "";
+          const message = `내가 관심을 보인 ${originData.product_name} 가격이 ${prevPriceText}${nextPrice}원으로 내려갔어요⬇️${subText}`;
           await axios
             .get(
-              `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=내가 관심을 보인 ${
-                originData.product_name
-              } 가격이 ${toComma(notiList[0].low_price)}원에서 ${toComma(
-                data.low_price
-              )}원으로 내려갔어요⬇️&link=/product/${originData.product_id} ${
-                notiList[0].is_lowest === 1 ? `(⚡역대최저가)` : ""
-              }`
+              `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=${message}&link=/product/${originData.product_id}`
             )
             .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /user/firebase/send/low_price " + e.code));
         }
