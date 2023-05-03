@@ -1,20 +1,28 @@
 export const getBrandURLList = {
   active: [
-    // 현재 크롤링하는 브랜드
-    "https://kr.iherb.com/c/bluebonnet-nutrition",
-    "https://kr.iherb.com/c/thorne",
-    "https://kr.iherb.com/c/21st-century-health-care",
-    "https://kr.iherb.com/c/lake-avenue-nutrition",
-    "https://kr.iherb.com/c/natural-factors",
-    "https://kr.iherb.com/c/nature-s-bounty",
-    "https://kr.iherb.com/c/nature-s-way",
-    "https://kr.iherb.com/c/now-foods",
-    "https://kr.iherb.com/c/solgar",
-    "https://kr.iherb.com/c/garden-of-life",
-    "https://kr.iherb.com/c/allmax",
-    "https://kr.iherb.com/c/california-gold-nutrition",
-    "https://kr.iherb.com/c/natrol",
-    "https://kr.iherb.com/c/solaray",
+    // 현재 크롤링 완료된 브랜드
+    // "https://kr.iherb.com/c/bluebonnet-nutrition",
+    // "https://kr.iherb.com/c/thorne",
+    // "https://kr.iherb.com/c/21st-century-health-care",
+    // "https://kr.iherb.com/c/lake-avenue-nutrition",
+    // "https://kr.iherb.com/c/natural-factors",
+    // "https://kr.iherb.com/c/nature-s-bounty",
+    // "https://kr.iherb.com/c/nature-s-way",
+    // "https://kr.iherb.com/c/now-foods",
+    // "https://kr.iherb.com/c/solgar",
+    // "https://kr.iherb.com/c/garden-of-life",
+    // "https://kr.iherb.com/c/allmax",
+    // "https://kr.iherb.com/c/california-gold-nutrition",
+    // "https://kr.iherb.com/c/natrol",
+    // "https://kr.iherb.com/c/solaray",
+    // +추가된 브랜드(2022/05/03)
+    "https://kr.iherb.com/c/source-naturals", //소스 내추럴스
+    "https://kr.iherb.com/c/life-extension", //라이프 익스텐션
+    "https://kr.iherb.com/c/gummiking", //거미킹
+    "https://kr.iherb.com/c/childlife-essentials", //차일드라이프 에센셜
+    "https://kr.iherb.com/c/naturesplus", //네이처스플러스
+    "https://kr.iherb.com/c/evlution-nutrition", //이보루션 뉴트리션
+    "https://kr.iherb.com/c/sports-research", //스포츠 리서치
   ],
   disable: [
     "https://kr.iherb.com/c/21st-century-health-care",
