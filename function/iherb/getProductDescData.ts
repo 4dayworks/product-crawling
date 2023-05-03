@@ -5,6 +5,7 @@ import { l } from "../console";
 import { headers } from "./headers";
 import { productURLDataType, IherbType } from "./updateByIherb";
 import { NODE_API_URL } from "../common";
+import { uniq } from "lodash";
 export const getProductDescData = (urlData: productURLDataType): Promise<IherbType | null> => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -198,8 +199,8 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           review_url: reviewUrl,
           list_url: urlData.list_url,
           product_url: urlData.product_url,
-          primary_ingredients: ingredientList.slice(0, 10).join(", "),
-          func_content: rankStrList.slice(0, 10).join(", "),
+          primary_ingredients: uniq(ingredientList).slice(0, 10).join(", "),
+          func_content: uniq(rankStrList).slice(0, 10).join(", "),
         };
         // console.log(data);
 
