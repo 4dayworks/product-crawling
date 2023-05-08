@@ -16,13 +16,13 @@ export const getBrandURLList = {
     // "https://kr.iherb.com/c/natrol",
     // "https://kr.iherb.com/c/solaray",
     // +추가된 브랜드(2022/05/03)
-    "https://kr.iherb.com/c/source-naturals", //소스 내추럴스
-    "https://kr.iherb.com/c/life-extension", //라이프 익스텐션
-    "https://kr.iherb.com/c/gummiking", //거미킹
-    "https://kr.iherb.com/c/childlife-essentials", //차일드라이프 에센셜
-    "https://kr.iherb.com/c/naturesplus", //네이처스플러스
-    "https://kr.iherb.com/c/evlution-nutrition", //이보루션 뉴트리션
-    "https://kr.iherb.com/c/sports-research", //스포츠 리서치
+    // "https://kr.iherb.com/c/source-naturals", //소스 내추럴스
+    // "https://kr.iherb.com/c/life-extension", //라이프 익스텐션
+    // "https://kr.iherb.com/c/gummiking", //거미킹
+    // "https://kr.iherb.com/c/childlife-essentials", //차일드라이프 에센셜
+    // "https://kr.iherb.com/c/naturesplus", //네이처스플러스
+    // "https://kr.iherb.com/c/evlution-nutrition", //이보루션 뉴트리션
+    // "https://kr.iherb.com/c/sports-research", //스포츠 리서치
   ],
   disable: [
     "https://kr.iherb.com/c/21st-century-health-care",
