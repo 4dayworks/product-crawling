@@ -140,4 +140,4 @@ const iherbProductList = [
   63235, 63238, 63249, 63290, 63293, 63389, 63423, 63521,
 ];
 
-updateByProductId([57846]);
+updateByProductId();
