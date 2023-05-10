@@ -28,12 +28,22 @@ export const shuffle = (array: getAllProductIdType[]) => {
   array.sort(() => Math.random() - 0.5);
 };
 
-export const exceptionCompanyListAtNaver = ["템스윈공식몰", "위메프", "여노마뚜", "라온팜", "정품 H컴퍼니몰"];
+export const exceptionCompanyListAtNaver = [
+  "템스윈공식몰",
+  "위메프",
+  "여노마뚜",
+  "라온팜",
+  "정품 H컴퍼니몰",
+  "YSK홀딩스",
+  "위니딧",
+];
 
 export const getNotificationItemscoutList = () => {
   return axios
     .get(`${NODE_API_URL}/crawling/product/notification/itemscout`)
-    .then((res) => res.data.data.map((item: { product_id: string }) => item.product_id))
+    .then((res) =>
+      res.data.data.map((item: { product_id: string }) => item.product_id)
+    )
     .catch((error) => {
       l("[Notification Itemscout error]", "yellow");
       return [];
