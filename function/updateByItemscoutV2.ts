@@ -50,15 +50,11 @@ export const getProductByItemscoutV2 = (
         .then(async (d) => {
           let list: any[] = d.data.data.productListResult;
           if (!list) return [];
-
-          list = list.filter(
-            (p: ItemscoutType) =>
-              p.isAd === false &&
-              (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
-              !isExceptionKeyword(p.title, originData.exception_keyword) &&
-              isRequireKeyword(p.title, originData.require_keyword) &&
-              exceptCategory(p.category) &&
-              (iherbPriceData ? p.mall != "iherb" : true)
+          list = filterArray(
+            d.data.data.productListResult,
+            product,
+            originData,
+            iherbPriceData
           );
 
           if (iherbPriceData && iherbPriceData.is_stock === "1") {
@@ -114,13 +110,11 @@ export const getProductByItemscoutV2 = (
         )
           .then((d) => {
             if (!d.data.data.productListResult) return [];
-            return (d.data.data.productListResult as any[]).filter(
-              (p: ItemscoutType) =>
-                p.isAd === false &&
-                (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
-                !isExceptionKeyword(p.title, originData.exception_keyword) &&
-                isRequireKeyword(p.title, originData.require_keyword) &&
-                exceptCategory(p.category)
+            return filterArray(
+              d.data.data.productListResult,
+              product,
+              originData,
+              iherbPriceData
             );
           })
           .catch(() => []);
@@ -389,4 +383,24 @@ const isRequireKeyword = (title: string, require_keyword: string | null) => {
   if (!require_keyword) return true;
   if (title) return title.includes(require_keyword);
   return true;
+};
+
+const filterArray = (
+  array: any[],
+  product: getAllProductIdType,
+  originData: getAllProductIdType,
+  iherbPriceData?: IherbPriceType | null
+) => {
+  return _.uniqBy(
+    array as any[],
+    (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`
+  ).filter(
+    (p: ItemscoutType) =>
+      p.isAd === false &&
+      (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
+      !isExceptionKeyword(p.title, originData.exception_keyword) &&
+      isRequireKeyword(p.title, originData.require_keyword) &&
+      exceptCategory(p.category) &&
+      (iherbPriceData ? p.mall != "iherb" : true)
+  );
 };
