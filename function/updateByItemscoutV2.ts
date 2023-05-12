@@ -347,6 +347,7 @@ const acceptCategoryObj: {
   "식품>다이어트식품>콜라겐": true,
   "식품>다이어트식품>히알루론산": true,
   "식품>다이어트식품": true,
+  "생활/건강>반려동물>강아지 건강/관리용품>영양제": true
 };
 
 /** 건강식품 중에서 받으면 안되는 것 */
@@ -364,8 +365,8 @@ const exceptCategoryObj: {
  */
 const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
-  if (categoryData[0] !== "식품") return false;
   if (acceptCategoryObj[category]) return true;
+  if (categoryData[0] !== "식품") return false;
   if (exceptCategoryObj[category]) return false;
   if (categoryData[1] !== "건강식품") return false;
   return true;
