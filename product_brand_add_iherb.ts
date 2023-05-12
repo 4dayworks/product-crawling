@@ -10,6 +10,11 @@ import onTest from "./function/iherb/onTest";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
+/**
+ * 해외 브랜드 추가시 product_id 제외해야할 것
+ * 57847
+ */
+
 // # 제품의 상세정보를 가져옵니다. 예) 랭킹, 상품정보, 주의사항 등
 // # 제품의 가격정보를 가져오려면 product_price_update_iherb.ts를 사용하세요.
 // # 크롤링 봇 차단 될 수 있음.
