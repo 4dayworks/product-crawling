@@ -5,6 +5,7 @@ import { getAllProductIdType } from "../product_price_update.d";
 import { NODE_API_URL, toComma } from "./common";
 import { exceptionCompanyListAtNaver } from "./product";
 import { l } from "./console";
+import { ItemscoutCoupangStoreType } from "./coupang/getCoupangStoreData";
 
 type StoreType = {
   product_id: number;
@@ -14,7 +15,12 @@ type StoreType = {
   price: number | null;
 };
 
-export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: number, max: number) => {
+export const getProductByNaverCatalogV2 = (
+  product: getAllProductIdType,
+  index: number,
+  max: number,
+  coupangStoreList: ItemscoutCoupangStoreType[]
+) => {
   return new Promise(async (resolve) => {
     const productId = product.product_id;
     const catalogUrl = product.naver_catalog_link;
@@ -40,6 +46,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
             store_index: number;
             price: number;
             delivery: number;
+            product_name: string | null;
           }[] = [];
           $("#section-price > ul > li").each((i: number) => {
             // 판매처이름
@@ -84,7 +91,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
             });
             l(
               "GET",
-              "green",
+              "blue",
               `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
                 .toString()
                 .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
@@ -97,9 +104,27 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
               store_index: idx,
               price,
               delivery,
+              product_name: null,
             });
           });
-          await axios.post(`${NODE_API_URL}/product/catalog/id`, {
+
+          // 쿠팡 판매처 추가
+          if (coupangStoreList.length) {
+            coupangStoreList.map((c, i) => {
+              if (!c.rocketType) return;
+              dataList.push({
+                product_id: productId,
+                store_name: c.rocketType,
+                store_link: c.link,
+                store_index: 100 + i,
+                price: c.price,
+                delivery: 0,
+                product_name: c.title,
+              });
+              l("Sub", "blue", `add - coupang store ${c.rocketType}`);
+            });
+          }
+          await axios.post(`${NODE_API_URL}/v2/product/catalog/id`, {
             data: dataList,
             product_id: productId,
           });
@@ -206,7 +231,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType, index: 
           const idx = cheapStore.index != null ? cheapStore.index + 1 : 0;
           l(
             "LowPrice",
-            "cyan",
+            "green",
             `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${low_price
               .toString()
               .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`

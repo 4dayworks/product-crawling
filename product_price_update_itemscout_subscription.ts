@@ -8,6 +8,7 @@ import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
 import { getAllProductIdType } from "./product_price_update.d";
 import { getProductPriceData } from "./function/updateByIherb";
 import { IherbPriceType } from "./product_price_update_itemscout";
+import { getCoupangStoreData } from "./function/coupang/getCoupangStoreData";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
@@ -34,6 +35,8 @@ const updateByProductId = async (product_id_list?: number[]) => {
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
 
+    const coupangStoreList = await getCoupangStoreData(product);
+
     if (product.type === "itemscout") {
       const res =
         product.iherb_list_url && product.iherb_product_url && product.iherb_brand
@@ -53,11 +56,11 @@ const updateByProductId = async (product_id_list?: number[]) => {
           }
         : null;
 
-      await getProductByItemscoutV2(product, i + 1, data.length, iherbPriceData);
+      await getProductByItemscoutV2(product, i + 1, data.length, iherbPriceData, coupangStoreList);
       await setGraph(product);
       await setLastMonthLowPrice(product);
       await wrapSlept(500);
-      l("timestamp", "cyan", new Date().toISOString());
+      l("timestamp", "blue", new Date().toISOString());
     }
   }
   l("[DONE]", "blue", "complete - all product price update");

@@ -1,20 +1,19 @@
 import axios from "axios";
 import _ from "lodash";
 import { IherbPriceType } from "../product_price_update_itemscout";
-import {
-  getAllProductIdType,
-  ProductCompareKeywordResponseType,
-} from "./../product_price_update.d";
+import { getAllProductIdType, ProductCompareKeywordResponseType } from "./../product_price_update.d";
 import { NODE_API_URL, toComma } from "./common";
 import { l } from "./console";
 import { ItemscoutType, ProductTableV2 } from "./updateByItemscout";
+import { ItemscoutCoupangStoreType } from "./coupang/getCoupangStoreData";
 
 const headers = { "Accept-Encoding": "deflate, br" };
 export const getProductByItemscoutV2 = (
   product: getAllProductIdType,
   index: number,
   max: number,
-  iherbPriceData?: IherbPriceType | null
+  iherbPriceData: IherbPriceType | null,
+  coupangStoreList: ItemscoutCoupangStoreType[]
 ) =>
   new Promise(async (resolve, reject) => {
     const originData = product;
@@ -23,9 +22,7 @@ export const getProductByItemscoutV2 = (
       //#region (2) 키워드 가져오기 & 있는지 확인하고 야기 DB에 반영하기
       // GET /product/keyword/id
       let keyword_id = originData.keyword_id ? originData.keyword_id : null;
-      let keyword = originData.keyword
-        ? originData.keyword
-        : originData.product_name;
+      let keyword = originData.keyword ? originData.keyword : originData.product_name;
       //  (2-1). keyword가 있고 keyword_id가 없으면 해당 키워드로 검색하고 keyword_id update하기
       const url = `https://api.itemscout.io/api/keyword`;
       if (!keyword_id) {
@@ -39,7 +36,7 @@ export const getProductByItemscoutV2 = (
 
       //#region (3) itemscout에서 keyword_id 로 검색해서 집어넣기
       if (!keyword_id) {
-        l("Err", "red", `No keywrod_id product_id:${originData.product_id}`);
+        l("Err", "red", `No keyword_id product_id:${originData.product_id}`);
         return resolve(true);
       }
       // POST /product/keyword/data
@@ -50,13 +47,9 @@ export const getProductByItemscoutV2 = (
         .then(async (d) => {
           let list: any[] = d.data.data.productListResult;
           if (!list) return [];
-          list = filterArray(
-            d.data.data.productListResult,
-            product,
-            originData,
-            iherbPriceData
-          );
+          list = filterArray(d.data.data.productListResult, product, originData, iherbPriceData);
 
+          // 아이허브 판매처 추가
           if (iherbPriceData && iherbPriceData.is_stock === "1") {
             const iherbStore: ItemscoutType = {
               title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
@@ -93,6 +86,7 @@ export const getProductByItemscoutV2 = (
             l("Sub", "blue", "add - iherb store");
             list.unshift(iherbStore);
           }
+
           return list;
         })
         .catch(() => []);
@@ -100,9 +94,7 @@ export const getProductByItemscoutV2 = (
       // 리스트 없을 경우 제품명으로 다시 검색
       if (productListResult.length === 0) {
         keyword = originData.product_name;
-        const itemscout_keyword_id = await axios
-          .post(url, { keyword }, { headers })
-          .then((d) => d.data.data);
+        const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
         keyword_id = itemscout_keyword_id;
         productListResult = await axios(
           `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
@@ -110,12 +102,9 @@ export const getProductByItemscoutV2 = (
         )
           .then((d) => {
             if (!d.data.data.productListResult) return [];
-            return filterArray(
-              d.data.data.productListResult,
-              product,
-              originData,
-              iherbPriceData
-            );
+            const list = filterArray(d.data.data.productListResult, product, originData, iherbPriceData);
+
+            return list;
           })
           .catch(() => []);
       }
@@ -133,25 +122,19 @@ export const getProductByItemscoutV2 = (
       const scoreList =
         keyword && productListResult && productListResult.length
           ? await axios
-              .post(
-                `${NODE_API_URL}/product/compare/keyword${
-                  iherbPriceData ? "/oversea" : ""
-                }`,
-                {
-                  original_keyword: keyword,
-                  keyword_list: productListResult.map((i) => i.title),
-                }
-              )
+              .post(`${NODE_API_URL}/product/compare/keyword${iherbPriceData ? "/oversea" : ""}`, {
+                original_keyword: keyword,
+                keyword_list: productListResult.map((i) => i.title),
+              })
               .then((d) => {
-                const data: ProductCompareKeywordResponseType["resultList"] =
-                  d.data.data.resultList;
+                const data: ProductCompareKeywordResponseType["resultList"] = d.data.data.resultList;
 
                 return data.map((prev, i) => {
                   return { ...prev, index: i };
                 });
               })
               .catch((d) => {
-                console.log("error: /product/compare/keyword", d);
+                console.error("error: /product/compare/keyword", d);
                 resolve(d);
                 return null;
               })
@@ -170,6 +153,8 @@ export const getProductByItemscoutV2 = (
             .map((i) => productListResult[i.index])
             .filter((i) => i.price != 0 && i.price != null)
         : [];
+
+      // 쿠팡 판매처 추가
 
       const storeList: ProductTableV2[] = await sortStoreList.map((p, i) => {
         return {
@@ -191,11 +176,50 @@ export const getProductByItemscoutV2 = (
           delivery: p.deliveryFee,
           pc_product_url: p.pcProductUrl,
           mobile_product_url: p.mobileProductUrl,
-          is_oversea:
-            p.isOversea === false ? 0 : p.isOversea === true ? 1 : null,
+          is_oversea: p.isOversea === false ? 0 : p.isOversea === true ? 1 : null,
         };
       });
 
+      coupangStoreList.map((c, i) => {
+        if (!c.rocketType) return;
+        const store: ProductTableV2 = {
+          index: storeList.length + i + 1,
+          keyword,
+          keyword_id,
+          itemscout_product_name: c.title,
+          itemscout_product_image: c.image,
+          itemscout_product_id: Number(c.productId + i),
+          price: c.price,
+          store_link: c.link,
+          store_name: c.rocketType,
+          category: "",
+          is_naver_shop: 0,
+          mall: c.rocketType,
+          itemscout_mall_img: null,
+          review_count: c.reviewCount,
+          review_score: c.reviewScore,
+          delivery: "",
+          pc_product_url: c.link,
+          mobile_product_url: c.link,
+          is_oversea: c.rocketType === "로켓직구" ? 1 : 0,
+        };
+        l("Sub", "blue", `add - coupang store ${c.rocketType}`);
+        storeList.unshift(store);
+      });
+
+      // asd
+      // console.log(
+      //   storeList.map((i) => {
+      //     return {
+      //       a: i.itemscout_product_name,
+      //       b: i.mall,
+      //       c: i.price,
+      //       d: i.itemscout_product_id,
+      //       e: i.index,
+      //       f: i.store_link,
+      //     };
+      //   })
+      // );
       if (storeList.length === 0) {
         l(
           "Pass",
@@ -214,19 +238,14 @@ export const getProductByItemscoutV2 = (
       }
       //#endregion
       //#region (4) product_price 최종 최저가 업데이트하기
-      const lowPriceObj =
-        sortStoreList.length > 0
-          ? _.minBy(sortStoreList, (p) => p.price)
-          : null;
+      const lowPriceObj = sortStoreList.length > 0 ? _.minBy(sortStoreList, (p) => p.price) : null;
 
       const idx = index + 1;
       if (!lowPriceObj) {
         l(
           "LowPrice",
-          "blue",
-          `[${index}/${max}] (${idx
-            .toString()
-            .padStart(2)}) id:${originData.product_id
+          "green",
+          `[${index}/${max}] (${idx.toString().padStart(2)}) id:${originData.product_id
             .toString()
             .padStart(5)} price: NO Price, delivery: No Delivery, No Store`
         );
@@ -237,14 +256,10 @@ export const getProductByItemscoutV2 = (
         low_price: lowPriceObj.price,
         delivery: lowPriceObj.deliveryFee,
         store_name:
-          typeof lowPriceObj.mall !== "string" && lowPriceObj.isNaverShop
-            ? "네이버 브랜드 카탈로그"
-            : lowPriceObj.mall,
+          typeof lowPriceObj.mall !== "string" && lowPriceObj.isNaverShop ? "네이버 브랜드 카탈로그" : lowPriceObj.mall,
         store_link: lowPriceObj.link,
         review_count:
-          product.is_drugstore === 4 &&
-          iherbPriceData &&
-          iherbPriceData.review_count
+          product.is_drugstore === 4 && iherbPriceData && iherbPriceData.review_count
             ? iherbPriceData.review_count
             : lowPriceObj.reviewCount,
         type: "itemscout",
@@ -252,16 +267,12 @@ export const getProductByItemscoutV2 = (
 
       l(
         "LowPrice",
-        "blue",
-        `[${index}/${max}] (${idx
+        "green",
+        `[${index}/${max}] (${idx.toString().padStart(2)}) id:${originData.product_id
           .toString()
-          .padStart(2)}) id:${originData.product_id
+          .padStart(5)} price:${data.low_price.toString().padStart(6)}, delivery: ${data.delivery
           .toString()
-          .padStart(5)} price:${data.low_price
-          .toString()
-          .padStart(6)}, delivery: ${data.delivery.toString().padStart(4)}, ${
-          data.store_name
-        }`
+          .padStart(4)}, ${data.store_name}`
       );
 
       //#region 제품 최저가 갱신시 유저에게 알림 보내기
@@ -280,21 +291,12 @@ export const getProductByItemscoutV2 = (
                 }[])
               : null
           )
-          .catch((e) =>
-            l(
-              "Noti Err",
-              "red",
-              "최저가 알림 오류 /crawling/product/notification " + e.code
-            )
-          );
+          .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /crawling/product/notification " + e.code));
 
-        const userList = notiList
-          ? notiList.map((i) => i.user_id).join(",")
-          : null;
+        const userList = notiList ? notiList.map((i) => i.user_id).join(",") : null;
         if (notiList && userList && userList.length > 0) {
           const prevPriceList = notiList.filter((i) => i);
-          const prevPrice =
-            prevPriceList.length > 0 ? prevPriceList[0].low_price : null;
+          const prevPrice = prevPriceList.length > 0 ? prevPriceList[0].low_price : null;
           const prevPriceText = prevPrice ? `${toComma(prevPrice)}원에서 ` : "";
           const nextPrice = toComma(data.low_price);
           const subText = notiList[0].is_lowest === 1 ? ` (⚡역대최저가)` : "";
@@ -303,13 +305,7 @@ export const getProductByItemscoutV2 = (
             .get(
               `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=${message}&link=/product/${originData.product_id}`
             )
-            .catch((e) =>
-              l(
-                "Noti Err",
-                "red",
-                "최저가 알림 오류 /user/firebase/send/low_price " + e.code
-              )
-            );
+            .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /user/firebase/send/low_price " + e.code));
         }
       }
       //#endregion
@@ -321,14 +317,8 @@ export const getProductByItemscoutV2 = (
       resolve(true);
       //#endregion
     } catch (error) {
-      l(
-        "error",
-        "red",
-        `[${index}/${max}] product_id:${originData.product_id
-          .toString()
-          .padStart(5)}`
-      );
-      console.log(error);
+      l("error", "red", `[${index}/${max}] product_id:${originData.product_id.toString().padStart(5)}`);
+      console.error(error);
       resolve(true);
     }
   });
@@ -347,7 +337,7 @@ const acceptCategoryObj: {
   "식품>다이어트식품>콜라겐": true,
   "식품>다이어트식품>히알루론산": true,
   "식품>다이어트식품": true,
-  "생활/건강>반려동물>강아지 건강/관리용품>영양제": true
+  "생활/건강>반려동물>강아지 건강/관리용품>영양제": true,
 };
 
 /** 건강식품 중에서 받으면 안되는 것 */
@@ -372,10 +362,7 @@ const exceptCategory = (category: string) => {
   return true;
 };
 
-const isExceptionKeyword = (
-  title: string,
-  exception_keyword: string | null
-) => {
+const isExceptionKeyword = (title: string, exception_keyword: string | null) => {
   if (!exception_keyword) return false;
   if (title) return title.includes(exception_keyword);
   return false;
@@ -392,10 +379,7 @@ const filterArray = (
   originData: getAllProductIdType,
   iherbPriceData?: IherbPriceType | null
 ) => {
-  return _.uniqBy(
-    array as any[],
-    (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`
-  ).filter(
+  return _.uniqBy(array as any[], (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`).filter(
     (p: ItemscoutType) =>
       p.isAd === false &&
       (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
