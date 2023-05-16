@@ -28,20 +28,8 @@ export const shuffle = (array: getAllProductIdType[]) => {
   array.sort(() => Math.random() - 0.5);
 };
 
-export const exceptionCompanyListAtNaver = [
-  "템스윈공식몰",
-  "위메프",
-  "여노마뚜",
-  "라온팜",
-  "정품 H컴퍼니몰",
-  "YSK홀딩스",
-  "위니딧",
-  "라 ON",
-  "프리모리빙",
-  "오굿데이",
-  "힐스 마켓",
-  "식물영양소",
-];
+export const exceptionCompanyListAtNaver = () =>
+  axios.get(`${NODE_API_URL}/crawling/blacklist`).then((res) => res.data.data);
 
 export const getNotificationItemscoutList = () => {
   return axios

@@ -24,6 +24,7 @@ export const getProductByNaverCatalogV2 = (
   return new Promise(async (resolve) => {
     const productId = product.product_id;
     const catalogUrl = product.naver_catalog_link;
+    const blacklist = await exceptionCompanyListAtNaver();
     if (!catalogUrl) return resolve(true);
     const product_name = product.product_name;
     //#region
@@ -57,7 +58,7 @@ export const getProductByNaverCatalogV2 = (
             ).text();
 
             // 회사 블랙리스트
-            if (exceptionCompanyListAtNaver.indexOf(store_name) !== -1) {
+            if (blacklist.indexOf(store_name) !== -1) {
               l("[블랙리스트 회사] PASS (naver)", "magenta", store_name);
               return;
             }
@@ -94,7 +95,9 @@ export const getProductByNaverCatalogV2 = (
               "blue",
               `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
                 .toString()
-                .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
+                .padStart(5)} price:${price.toString().padStart(6)}, delivery: ${delivery
+                .toString()
+                .padStart(4)}, ${store_name}`
             );
 
             dataList.push({
@@ -154,7 +157,11 @@ export const getProductByNaverCatalogV2 = (
               })
               .then((d) =>
                 d.data.data && d.data.data.length > 0
-                  ? (d.data.data as { user_id: number; is_lowest: 0 | 1; low_price: number }[])
+                  ? (d.data.data as {
+                      user_id: number;
+                      is_lowest: 0 | 1;
+                      low_price: number;
+                    }[])
                   : null
               )
               .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /crawling/product/notification " + e.code));
@@ -234,7 +241,9 @@ export const getProductByNaverCatalogV2 = (
             "green",
             `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${low_price
               .toString()
-              .padStart(6)}, delivery: ${delivery.toString().padStart(4)}, ${store_name}`
+              .padStart(5)} price:${low_price.toString().padStart(6)}, delivery: ${delivery
+              .toString()
+              .padStart(4)}, ${store_name}`
           );
           await axios
             .post(`${NODE_API_URL}/product/price`, data)
