@@ -73,7 +73,7 @@ const updateByProductId = async (product_id_list?: number[]) => {
 };
 
 // updateByProductId([37327, 11191, 28560, 11311, 11775, 12166, 17697]);
-updateByProductId([67081, 12782, 1]);
+updateByProductId();
 
 export { getAllProductIdType };
 // product_id = 67081
