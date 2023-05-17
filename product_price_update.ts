@@ -89,7 +89,12 @@ const updateByProductId = async (product_id_list?: number[]) => {
       await setLastMonthLowPrice(product);
       await wrapSlept(2000);
     }
-    l("timestamp", "blue", new Date().toISOString());
+    l(
+      "timestamp",
+      "blue",
+      `${String(product.product_id).padStart(6, " ")} ` +
+        new Date().toISOString()
+    );
   }
   l("[DONE]", "blue", "complete - all product price update");
 };
