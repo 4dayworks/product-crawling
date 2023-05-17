@@ -80,19 +80,19 @@
 //   l("[DONE]", "blue", "complete - all product price update");
 // };
 
-// export type IherbPriceType = {
-//   iherb_product_id: string;
-//   is_stock: string;
-//   origin_price: string | number | undefined;
-//   discount_percent: number;
-//   discount_type: number | null;
-//   discount_price: number | null;
-//   delivery_price: number;
-//   rating: number | undefined;
-//   review_count: number | undefined;
-//   list_url: string | null;
-//   product_url: string | null;
-//   brand: string | null;
-//   iherb_product_image: string | null;
-// };
+export type IherbPriceType = {
+  iherb_product_id: string;
+  is_stock: string;
+  origin_price: string | number | undefined;
+  discount_percent: number;
+  discount_type: number | null;
+  discount_price: number | null;
+  delivery_price: number;
+  rating: number | undefined;
+  review_count: number | undefined;
+  list_url: string | null;
+  product_url: string | null;
+  brand: string | null;
+  iherb_product_image: string | null;
+};
 // updateByProductId();
