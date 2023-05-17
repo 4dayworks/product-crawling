@@ -6,8 +6,11 @@
   "scripts": {
     "update:iherb-price": "ts-node product_price_update_iherb_all",
     "update:iherb-brand": "ts-node product_brand_add_iherb",
-    "update:naver": "ts-node product_price_update_naver",
-    "update:itemscout": "ts-node product_price_update_itemscout",
+    "update:naver0": "ts-node ./scheduler/product_price_update_naver0",
+    "update:naver1": "ts-node ./scheduler/product_price_update_naver1",
+    "update:naver2": "ts-node ./scheduler/product_price_update_naver2",
+    "update:itemscout0": "ts-node ./scheduler/product_price_update_itemscout0",
+    "update:itemscout1": "ts-node ./scheduler/product_price_update_itemscout1",
     "update-notification:itemscout": "ts-node product_price_update_itemscout_subscription",
     "update": "ts-node product_price_update"
   },

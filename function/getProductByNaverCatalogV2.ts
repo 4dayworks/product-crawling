@@ -1,7 +1,7 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import request from "request";
-import { getAllProductIdType } from "../product_price_update.d";
+import { getAllProductIdType } from "./product_price_update";
 import { NODE_API_URL, toComma } from "./common";
 import { exceptionCompanyListAtNaver } from "./product";
 import { l } from "./console";
@@ -39,7 +39,9 @@ export const getProductByNaverCatalogV2 = (
         try {
           const storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
-          const review_count = Number($(`#section-review > div > div > h3`).text().replace(regex, ""));
+          const review_count = Number(
+            $(`#section-review > div > div > h3`).text().replace(regex, "")
+          );
           const dataList: {
             product_id: number;
             store_name: string;
@@ -80,9 +82,13 @@ export const getProductByNaverCatalogV2 = (
             const deliveryStr = $(
               `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)> span:nth-child(2)`
             ).text();
-            const delivery = deliveryStr ? Number(deliveryStr.replace(regex, "")) : 0;
+            const delivery = deliveryStr
+              ? Number(deliveryStr.replace(regex, ""))
+              : 0;
             // 판매처링크
-            const store_link = $(`#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`).attr("href");
+            const store_link = $(
+              `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`
+            ).attr("href");
             storeList.push({
               product_id: productId,
               store_name,
@@ -93,9 +99,13 @@ export const getProductByNaverCatalogV2 = (
             l(
               "GET",
               "blue",
-              `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
+              `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId
                 .toString()
-                .padStart(5)} price:${price.toString().padStart(6)}, delivery: ${delivery
+                .padStart(5)} price:${price
+                .toString()
+                .padStart(5)} price:${price
+                .toString()
+                .padStart(6)}, delivery: ${delivery
                 .toString()
                 .padStart(4)}, ${store_name}`
             );
@@ -144,8 +154,12 @@ export const getProductByNaverCatalogV2 = (
           for (let index = 0; index < storeList.length; index++) {
             const data = storeList[index];
             const price = data.price ? data.price : 0;
-            if (cheapStore.index === null) cheapStore = { low_price: price, index, data };
-            else if (cheapStore.low_price != null && cheapStore.low_price > price)
+            if (cheapStore.index === null)
+              cheapStore = { low_price: price, index, data };
+            else if (
+              cheapStore.low_price != null &&
+              cheapStore.low_price > price
+            )
               cheapStore = { low_price: price, index, data };
           }
           //#region 제품 최저가 갱신시 유저에게 알림 보내기
@@ -164,21 +178,39 @@ export const getProductByNaverCatalogV2 = (
                     }[])
                   : null
               )
-              .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /crawling/product/notification " + e.code));
+              .catch((e) =>
+                l(
+                  "Noti Err",
+                  "red",
+                  "최저가 알림 오류 /crawling/product/notification " + e.code
+                )
+              );
 
-            const userList = notiList ? notiList.map((i) => i.user_id).join(",") : null;
+            const userList = notiList
+              ? notiList.map((i) => i.user_id).join(",")
+              : null;
             if (notiList && userList && userList.length > 0) {
               const prevPriceList = notiList.filter((i) => i);
-              const prevPrice = prevPriceList.length > 0 ? prevPriceList[0].low_price : null;
-              const prevPriceText = prevPrice ? `${toComma(prevPrice)}원에서 ` : "";
+              const prevPrice =
+                prevPriceList.length > 0 ? prevPriceList[0].low_price : null;
+              const prevPriceText = prevPrice
+                ? `${toComma(prevPrice)}원에서 `
+                : "";
               const nextPrice = toComma(cheapStore.low_price);
-              const subText = notiList[0].is_lowest === 1 ? ` (⚡역대최저가)` : "";
+              const subText =
+                notiList[0].is_lowest === 1 ? ` (⚡역대최저가)` : "";
               const message = `내가 관심을 보인 ${product_name} 가격이 ${prevPriceText}${nextPrice}원으로 내려갔어요⬇️${subText}`;
               await axios
                 .get(
                   `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=${message}&link=/product/${productId}`
                 )
-                .catch((e) => l("Noti Err", "red", "최저가 알림 오류 /user/firebase/send/low_price " + e.code));
+                .catch((e) =>
+                  l(
+                    "Noti Err",
+                    "red",
+                    "최저가 알림 오류 /user/firebase/send/low_price " + e.code
+                  )
+                );
             }
           }
           //#endregion
@@ -187,7 +219,9 @@ export const getProductByNaverCatalogV2 = (
             l(
               "Pass",
               "green",
-              `[${index}/${max}] no cheapStore.data, cheapStore=${JSON.stringify(cheapStore)} storeList.length=${
+              `[${index}/${max}] no cheapStore.data, cheapStore=${JSON.stringify(
+                cheapStore
+              )} storeList.length=${
                 storeList.length
               } product_id:${productId} url=${catalogUrl}`
             );
@@ -203,21 +237,60 @@ export const getProductByNaverCatalogV2 = (
             l(
               "Pass",
               "green",
-              `[${index}/${max}] no cheapStore.data, cheapStore=${JSON.stringify(cheapStore)} storeList.length=${
+              `[${index}/${max}] no cheapStore.data, cheapStore=${JSON.stringify(
+                cheapStore
+              )} storeList.length=${
                 storeList.length
               } product_id:${productId} url=${catalogUrl}`
             );
             return resolve(true);
           }
-          const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
+          const {
+            product_id,
+            price: low_price,
+            delivery,
+            store_name,
+            store_link,
+          } = cheapStore.data;
 
-          if (!product_id || !low_price || delivery === undefined || delivery === null || !store_name || !store_link) {
-            if (!product_id) l("Pass", "green", `[${index}/${max}] no product_id, product_id:${productId}`);
-            if (!low_price) l("Pass", "green", `[${index}/${max}] no low_price, product_id:${productId}`);
+          if (
+            !product_id ||
+            !low_price ||
+            delivery === undefined ||
+            delivery === null ||
+            !store_name ||
+            !store_link
+          ) {
+            if (!product_id)
+              l(
+                "Pass",
+                "green",
+                `[${index}/${max}] no product_id, product_id:${productId}`
+              );
+            if (!low_price)
+              l(
+                "Pass",
+                "green",
+                `[${index}/${max}] no low_price, product_id:${productId}`
+              );
             if (delivery === undefined || delivery === null)
-              l("Pass", "green", `[${index}/${max}] no delivery, product_id:${productId}`);
-            if (!store_name) l("Pass", "green", `[${index}/${max}] no store_name, product_id:${productId}`);
-            if (!store_link) l("Pass", "green", `[${index}/${max}] no store_link, product_id:${productId}`);
+              l(
+                "Pass",
+                "green",
+                `[${index}/${max}] no delivery, product_id:${productId}`
+              );
+            if (!store_name)
+              l(
+                "Pass",
+                "green",
+                `[${index}/${max}] no store_name, product_id:${productId}`
+              );
+            if (!store_link)
+              l(
+                "Pass",
+                "green",
+                `[${index}/${max}] no store_link, product_id:${productId}`
+              );
             await axios
               .delete(`${NODE_API_URL}/crawling/store`, {
                 data: { product_id: productId },
@@ -239,9 +312,13 @@ export const getProductByNaverCatalogV2 = (
           l(
             "LowPrice",
             "green",
-            `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${low_price
+            `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId
               .toString()
-              .padStart(5)} price:${low_price.toString().padStart(6)}, delivery: ${delivery
+              .padStart(5)} price:${low_price
+              .toString()
+              .padStart(5)} price:${low_price
+              .toString()
+              .padStart(6)}, delivery: ${delivery
               .toString()
               .padStart(4)}, ${store_name}`
           );
@@ -250,12 +327,21 @@ export const getProductByNaverCatalogV2 = (
             .then(() => resolve(true))
             .catch(() => resolve(true));
         } catch (error) {
-          l("error 1", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}` + { error });
+          l(
+            "error 1",
+            "red",
+            `[${index}/${max}] product_id:${productId.toString().padStart(5)}` +
+              { error }
+          );
           resolve(true);
         }
       });
     } catch {
-      l("error 2", "red", `[${index}/${max}] product_id:${productId.toString().padStart(5)}`);
+      l(
+        "error 2",
+        "red",
+        `[${index}/${max}] product_id:${productId.toString().padStart(5)}`
+      );
       resolve(true);
     }
   });
