@@ -1,4 +1,4 @@
-import { getAllProductIdType } from "../product_price_update.d";
+import { getAllProductIdType } from "../function/product_price_update";
 import { getProductByNaverCatalogV2 } from "../function/getProductByNaverCatalogV2";
 import { NODE_API_URL } from "../function/common";
 import axios from "axios";

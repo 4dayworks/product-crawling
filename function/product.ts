@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllProductIdType } from "../product_price_update.d";
+import { getAllProductIdType } from "./product_price_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
 
