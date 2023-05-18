@@ -51,6 +51,12 @@ export const updateByProductIdByNaver = async ({
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
+    l(
+      "[START]timestamp",
+      "green",
+      `${String(product.product_id).padStart(6, " ")} ` +
+        new Date().toISOString()
+    );
     const coupangStoreList = await getCoupangStoreData(product);
 
     if (product.type === "naver" && product.naver_catalog_link) {
@@ -65,7 +71,7 @@ export const updateByProductIdByNaver = async ({
       await setLastMonthLowPrice(product);
     }
     l(
-      "timestamp",
+      "[END]timestamp",
       "blue",
       `${String(product.product_id).padStart(6, " ")} ` +
         new Date().toISOString()
