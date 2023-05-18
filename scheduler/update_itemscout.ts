@@ -51,6 +51,12 @@ export const updateByProductIdByItemscout = async ({
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
+    l(
+      "[START]timestamp",
+      "green",
+      `${String(product.product_id).padStart(6, " ")} ` +
+        new Date().toISOString()
+    );
     const coupangStoreList = await getCoupangStoreData(product);
 
     if (product.type === "itemscout") {
@@ -84,13 +90,13 @@ export const updateByProductIdByItemscout = async ({
       await setGraph(product);
       await setLastMonthLowPrice(product);
       await wrapSlept(500);
-      l(
-        "timestamp",
-        "blue",
-        `${String(product.product_id).padStart(6, " ")} ` +
-          new Date().toISOString()
-      );
     }
+    l(
+      "[END]timestamp",
+      "blue",
+      `${String(product.product_id).padStart(6, " ")} ` +
+        new Date().toISOString()
+    );
   }
   l("[DONE]", "blue", "complete - all product price update");
 };
