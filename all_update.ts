@@ -48,7 +48,7 @@ export const updateByProductId = async ({
       return [];
     });
   data = data.filter((p) => !exceptionList.includes(p.product_id));
-  shuffle(data);
+  data = shuffle(data);
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
