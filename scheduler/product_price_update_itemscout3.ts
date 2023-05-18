@@ -4,4 +4,4 @@ import { updateByProductIdByItemscout } from "./update_itemscout";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
-updateByProductIdByItemscout({ page: 1, size: 3000 });
+updateByProductIdByItemscout({ page: 3, size: 3000 });
