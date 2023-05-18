@@ -8,8 +8,12 @@
     "update:iherb-brand": "ts-node product_brand_add_iherb",
     "update:naver0": "ts-node ./scheduler/product_price_update_naver0",
     "update:naver1": "ts-node ./scheduler/product_price_update_naver1",
+    "update:naver2": "ts-node ./scheduler/product_price_update_naver2",
+    "update:naver3": "ts-node ./scheduler/product_price_update_naver3",
     "update:itemscout0": "ts-node ./scheduler/product_price_update_itemscout0",
     "update:itemscout1": "ts-node ./scheduler/product_price_update_itemscout1",
+    "update:itemscout2": "ts-node ./scheduler/product_price_update_itemscout2",
+    "update:itemscout3": "ts-node ./scheduler/product_price_update_itemscout3",
     "update-notification:itemscout": "ts-node product_price_update_itemscout_subscription",
     "update": "ts-node product_price_update"
   },
