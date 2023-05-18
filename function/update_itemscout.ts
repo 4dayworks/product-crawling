@@ -1,0 +1,118 @@
+import axios from "axios";
+import { AuthorizationKey } from "./auth";
+import { NODE_API_URL } from "./common";
+import { l } from "./console";
+import { wrapSlept } from "./wrapSlept";
+import { getAllProductIdType } from "../product_price_update";
+import { setGraph, setLastMonthLowPrice, shuffle } from "./product";
+import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
+import { getProductPriceData } from "./updateByIherb";
+import { getCoupangStoreData } from "./coupang/getCoupangStoreData";
+
+axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
+
+type updateByProductIdType = {
+  page: number;
+  size: number;
+  product_id_list?: number[];
+};
+
+export const updateByProductIdByItemscout = async ({
+  page = 0,
+  size = 100000,
+  product_id_list,
+}: updateByProductIdType) => {
+  // (1) 키워드 가져올 제품아이디 전체 가져오기
+  let data: getAllProductIdType[] = await axios(
+    `${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`
+  ).then((d) => d.data.data);
+  // 특정 제품만 가져오기 (없으면 전체 제품 대상)
+  if (product_id_list)
+    data = data.filter((p) => product_id_list.includes(p.product_id));
+
+  //#region (2) 성지가격있는 제품아이디 모두 제외시키기
+  const exceptionList: number[] = await axios(
+    `${NODE_API_URL}/crawling/product/holyzone/all`
+  )
+    .then((d) => {
+      const data: { product_id: number; product_name: string }[] = d.data.data;
+      return data.map((p) => p.product_id);
+    })
+    .catch((e) => {
+      l(
+        "Noti Err",
+        "red",
+        "성지존 알림 오류 /crawling/product/holyzone/all" + e.code
+      );
+      return [];
+    });
+  data = data.filter((p) => !exceptionList.includes(p.product_id));
+  shuffle(data);
+
+  for (let i = 0; i < data.length; i++) {
+    const product = data[i];
+    l(
+      "[START]timestamp",
+      "green",
+      `${String(product.product_id).padStart(6, " ")} ` +
+        new Date().toISOString()
+    );
+    const coupangStoreList = await getCoupangStoreData(product);
+
+    if (product.type === "itemscout") {
+      const res =
+        product.iherb_list_url &&
+        product.iherb_product_url &&
+        product.iherb_brand
+          ? await getProductPriceData({
+              list_url: product.iherb_list_url,
+              product_url: product.iherb_product_url,
+              brand: product.iherb_brand,
+            })
+          : null;
+      const iherbPriceData: IherbPriceType | null = res
+        ? {
+            ...res,
+            list_url: product.iherb_list_url,
+            product_url: product.iherb_product_url,
+            brand: product.iherb_brand,
+            iherb_product_image: product.iherb_product_image,
+          }
+        : null;
+
+      await getProductByItemscoutV2(
+        product,
+        i + 1,
+        data.length,
+        iherbPriceData,
+        coupangStoreList
+      );
+      await setGraph(product);
+      await setLastMonthLowPrice(product);
+      await wrapSlept(500);
+    }
+    l(
+      "[END]timestamp",
+      "blue",
+      `${String(product.product_id).padStart(6, " ")} ` +
+        new Date().toISOString()
+    );
+  }
+  l("[DONE]", "blue", "complete - all product price update");
+};
+
+export type IherbPriceType = {
+  iherb_product_id: string;
+  is_stock: string;
+  origin_price: string | number | undefined;
+  discount_percent: number;
+  discount_type: number | null;
+  discount_price: number | null;
+  delivery_price: number;
+  rating: number | undefined;
+  review_count: number | undefined;
+  list_url: string | null;
+  product_url: string | null;
+  brand: string | null;
+  iherb_product_image: string | null;
+};

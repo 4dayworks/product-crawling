@@ -1,23 +1,23 @@
 import axios from "axios";
-import { AuthorizationKey } from "../function/auth";
-import { NODE_API_URL } from "../function/common";
-import { l } from "../function/console";
-import { wrapSlept } from "../function/wrapSlept";
-import { getAllProductIdType } from "../product_price_update";
-import { setGraph, setLastMonthLowPrice, shuffle } from "../function/product";
-import { getProductByItemscoutV2 } from "../function/updateByItemscoutV2";
-import { getProductPriceData } from "../function/updateByIherb";
-import { getCoupangStoreData } from "../function/coupang/getCoupangStoreData";
-
-axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
+import { getAllProductIdType } from "./product_price_update";
+import { NODE_API_URL } from "./function/common";
+import { l } from "./function/console";
+import { shuffle } from "lodash";
+import { getCoupangStoreData } from "./function/coupang/getCoupangStoreData";
+import { getProductPriceData } from "./function/updateByIherb";
+import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
+import { setGraph, setLastMonthLowPrice } from "./function/product";
+import { wrapSlept } from "./function/wrapSlept";
+import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
+import { IherbPriceType } from "./backup/product_price_update_itemscout";
 
 type updateByProductIdType = {
-  page: number;
-  size: number;
+  page?: number;
+  size?: number;
   product_id_list?: number[];
 };
 
-export const updateByProductIdByItemscout = async ({
+export const updateByProductId = async ({
   page = 0,
   size = 100000,
   product_id_list,
@@ -26,6 +26,7 @@ export const updateByProductIdByItemscout = async ({
   let data: getAllProductIdType[] = await axios(
     `${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`
   ).then((d) => d.data.data);
+
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
   if (product_id_list)
     data = data.filter((p) => product_id_list.includes(p.product_id));
@@ -51,12 +52,7 @@ export const updateByProductIdByItemscout = async ({
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
-    l(
-      "[START]timestamp",
-      "green",
-      `${String(product.product_id).padStart(6, " ")} ` +
-        new Date().toISOString()
-    );
+
     const coupangStoreList = await getCoupangStoreData(product);
 
     if (product.type === "itemscout") {
@@ -90,29 +86,23 @@ export const updateByProductIdByItemscout = async ({
       await setGraph(product);
       await setLastMonthLowPrice(product);
       await wrapSlept(500);
+    } else if (product.type === "naver" && product.naver_catalog_link) {
+      await getProductByNaverCatalogV2(
+        product,
+        i + 1,
+        data.length,
+        coupangStoreList
+      );
+      await setGraph(product);
+      await setLastMonthLowPrice(product);
+      await wrapSlept(2000);
     }
     l(
-      "[END]timestamp",
+      "timestamp",
       "blue",
       `${String(product.product_id).padStart(6, " ")} ` +
         new Date().toISOString()
     );
   }
   l("[DONE]", "blue", "complete - all product price update");
-};
-
-export type IherbPriceType = {
-  iherb_product_id: string;
-  is_stock: string;
-  origin_price: string | number | undefined;
-  discount_percent: number;
-  discount_type: number | null;
-  discount_price: number | null;
-  delivery_price: number;
-  rating: number | undefined;
-  review_count: number | undefined;
-  list_url: string | null;
-  product_url: string | null;
-  brand: string | null;
-  iherb_product_image: string | null;
 };
