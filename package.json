@@ -7,10 +7,10 @@
     "update:iherb-price": "ts-node product_price_update_iherb_all",
     "update:iherb-brand": "ts-node product_brand_add_iherb",
     "update-notification:itemscout": "ts-node product_price_update_itemscout_subscription",
-    "update": "ts-node ./scheduler/product_price_update",
-    "update1": "ts-node ./scheduler/product_price_update1",
-    "update2": "ts-node ./scheduler/product_price_update2",
-    "update3": "ts-node ./scheduler/product_price_update3"
+    "update:naver": "ts-node ./scheduler/naver/product_price_naver",
+    "update:itemscout": "ts-node ./scheduler/itemscout/product_price_itemscout",
+    "update:itemscout2": "ts-node ./scheduler/itemscout/product_price_itemscout2",
+    "update:itemscout3": "ts-node ./scheduler/itemscout/product_price_itemscout3"
   },
   "author": "",
   "license": "ISC",
