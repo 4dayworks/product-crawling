@@ -8,7 +8,7 @@ import { ItemscoutType, ProductTableV2 } from "./updateByItemscout";
 import { minBy, sortBy } from "lodash";
 import { l } from "./console";
 
-export const updateEntireProductByItemscout = ({
+export const setAllProductByItemscout = ({
   originData,
   keyword,
   keyword_id,

@@ -4,12 +4,14 @@ import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
 import {
   getAllDataByItemscout,
+  getAllDataByNaver,
   setGraph,
   setLastMonthLowPrice,
 } from "./function/product";
-import { updateEntireProductByItemscout } from "./function/updateEntireProductByItemscout";
+import { setAllProductByItemscout } from "./function/setAllProductByItemscout";
 import { wrapSlept } from "./function/wrapSlept";
 import { getAllProductIdType } from "./product_price_update";
+import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
 type updateByProductIdType = {
   page?: number;
   size?: number;
@@ -54,7 +56,7 @@ export const updateByProductId = async ({
 
     if (product.type === "itemscout") {
       const allData = await getAllDataByItemscout(product);
-      await updateEntireProductByItemscout({
+      await setAllProductByItemscout({
         ...allData,
         index: i + 1,
         max: data.length,
@@ -63,19 +65,18 @@ export const updateByProductId = async ({
       await setGraph(product);
       await setLastMonthLowPrice(product);
       await wrapSlept(500);
+    } else if (product.type === "naver" && product.naver_catalog_link) {
+      const allData = await getAllDataByNaver(product);
+      // await getProductByNaverCatalogV2(
+      //   product,
+      //   i + 1,
+      //   data.length,
+      //   coupangStoreList
+      // );
+      await setGraph(product);
+      await setLastMonthLowPrice(product);
+      await wrapSlept(2000);
     }
-    // else if (product.type === "naver" && product.naver_catalog_link) {
-    //   const coupangStoreList = await getCoupangStoreData(product);
-    //   await getProductByNaverCatalogV2(
-    //     product,
-    //     i + 1,
-    //     data.length,
-    //     coupangStoreList
-    //   );
-    //   await setGraph(product);
-    //   await setLastMonthLowPrice(product);
-    //   await wrapSlept(2000);
-    // }
     l(
       "timestamp",
       "blue",
