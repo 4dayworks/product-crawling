@@ -5,6 +5,7 @@ import { l } from "./console";
 import { getCoupangStoreData } from "./coupang/getCoupangStoreData";
 import { getProductPriceData } from "./updateByIherb";
 import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
+import { getProductByNaverCatalogV2 } from "./getProductByNaverCatalogV2";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -60,4 +61,13 @@ export const getAllDataByItemscout = async (product: getAllProductIdType) => {
     keyword: itemscoutData.keyword,
     keyword_id: itemscoutData.keyword_id,
   };
+};
+
+export const getAllDataByNaver = async (product: getAllProductIdType) => {
+  const [] = await Promise.all([
+    getCoupangStoreData(product),
+    getProductByNaverCatalogV2(product),
+  ]);
+
+  return {};
 };
