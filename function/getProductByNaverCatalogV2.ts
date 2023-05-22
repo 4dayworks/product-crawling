@@ -1,11 +1,8 @@
-import axios from "axios";
 import cheerio from "cheerio";
 import request from "request";
-import { getAllProductIdType } from "./product_price_update";
-import { NODE_API_URL, toComma } from "./common";
-import { exceptionCompanyListAtNaver } from "./product";
 import { l } from "./console";
-import { ItemscoutCoupangStoreType } from "./coupang/getCoupangStoreData";
+import { exceptionCompanyListAtNaver } from "./product";
+import { getAllProductIdType } from "./product_price_update";
 
 type StoreType = {
   product_id: number;
@@ -15,7 +12,7 @@ type StoreType = {
   price: number | null;
 };
 
-export type NaverStoreListType = {
+export type DataListType = {
   product_id: number;
   store_name: string;
   store_link: string | null;
@@ -29,30 +26,30 @@ export const getProductByNaverCatalogV2 = (
   product: getAllProductIdType,
   index: number,
   max: number,
-  coupangStoreList: ItemscoutCoupangStoreType[]
 ) => {
   return new Promise<{
-    naverStoreList: NaverStoreListType[];
-    review_count: number | null;
+    naverStoreList: StoreType[];
+    dataList: DataListType[];
+    reviewCount: number | null;
   }>(async (resolve) => {
     const productId = product.product_id;
     const catalogUrl = product.naver_catalog_link;
     const blacklist = await exceptionCompanyListAtNaver();
-    if (!catalogUrl) return resolve({ naverStoreList: [], review_count: null });
+    if (!catalogUrl) return resolve({ dataList: [], naverStoreList: [], reviewCount: null });
     // const product_name = product.product_name;
     //#region
     try {
       request(catalogUrl, async (error, response, body) => {
         if (error) {
           l("error request", "red", error);
-          resolve({ naverStoreList: [], review_count: null });
+          resolve({dataList: [], naverStoreList: [], reviewCount: null });
           throw error;
         }
         let $ = cheerio.load(body);
         try {
           const storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
-          const review_count = Number(
+          const reviewCount = Number(
             $(`#section-review > div > div > h3`).text().replace(regex, "")
           );
           const dataList: {
@@ -134,28 +131,7 @@ export const getProductByNaverCatalogV2 = (
             });
           });
 
-          return resolve({ naverStoreList: dataList, review_count });
-
-          // 쿠팡 판매처 추가
-          if (coupangStoreList.length) {
-            coupangStoreList.map((c, i) => {
-              if (!c.rocketType) return;
-              dataList.push({
-                product_id: productId,
-                store_name: c.rocketType,
-                store_link: c.link,
-                store_index: 100 + i,
-                price: c.price,
-                delivery: 0,
-                product_name: c.title,
-              });
-              l("Sub", "blue", `add - coupang store ${c.rocketType}`);
-            });
-          }
-          await axios.post(`${NODE_API_URL}/v2/product/catalog/id`, {
-            data: dataList,
-            product_id: productId,
-          });
+          return resolve({ dataList, naverStoreList: storeList, reviewCount });
         } catch (error) {
           l(
             "error 1",
@@ -163,7 +139,7 @@ export const getProductByNaverCatalogV2 = (
             `[${index}/${max}] product_id:${productId.toString().padStart(5)}` +
               { error }
           );
-          resolve({ naverStoreList: [], review_count: null });
+          resolve({ dataList: [], naverStoreList: [], reviewCount: null });
         }
       });
     } catch {
@@ -172,7 +148,7 @@ export const getProductByNaverCatalogV2 = (
         "red",
         `[${index}/${max}] product_id:${productId.toString().padStart(5)}`
       );
-      resolve({ naverStoreList: [], review_count: null });
+      resolve({dataList: [], naverStoreList: [], reviewCount: null });
     }
   });
 };

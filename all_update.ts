@@ -9,9 +9,9 @@ import {
   setLastMonthLowPrice,
 } from "./function/product";
 import { setAllProductByItemscout } from "./function/setAllProductByItemscout";
+import { setAllProductByNaver } from "./function/setAllProductByNaver";
 import { wrapSlept } from "./function/wrapSlept";
 import { getAllProductIdType } from "./product_price_update";
-import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
 type updateByProductIdType = {
   page?: number;
   size?: number;
@@ -66,13 +66,8 @@ export const updateByProductId = async ({
       await setLastMonthLowPrice(product);
       await wrapSlept(500);
     } else if (product.type === "naver" && product.naver_catalog_link) {
-      const allData = await getAllDataByNaver(product);
-      // await getProductByNaverCatalogV2(
-      //   product,
-      //   i + 1,
-      //   data.length,
-      //   coupangStoreList
-      // );
+      const allData = await getAllDataByNaver(product, i+1, data.length);
+      await setAllProductByNaver({...allData, index: i+1, max: data.length, originData: product});
       await setGraph(product);
       await setLastMonthLowPrice(product);
       await wrapSlept(2000);

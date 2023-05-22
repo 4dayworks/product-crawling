@@ -63,11 +63,20 @@ export const getAllDataByItemscout = async (product: getAllProductIdType) => {
   };
 };
 
-export const getAllDataByNaver = async (product: getAllProductIdType) => {
-  const [] = await Promise.all([
+export const getAllDataByNaver = async (
+  product: getAllProductIdType,
+  index: number,
+  max: number
+) => {
+  const [coupangStoreList, naverStoreData] = await Promise.all([
     getCoupangStoreData(product),
-    getProductByNaverCatalogV2(product),
+    getProductByNaverCatalogV2(product, index, max),
   ]);
 
-  return {};
+  return {
+    coupangStoreList,
+    naverStoreList: naverStoreData.naverStoreList,
+    reviewCount: naverStoreData.reviewCount,
+    dataList: naverStoreData.dataList,
+  };
 };
