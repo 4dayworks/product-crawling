@@ -1,16 +1,15 @@
 import axios from "axios";
-import { getAllProductIdType } from "./product_price_update";
+import { shuffle } from "lodash";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import { shuffle } from "lodash";
-import { getCoupangStoreData } from "./function/coupang/getCoupangStoreData";
-import { getProductPriceData } from "./function/updateByIherb";
-import { getProductByItemscoutV2 } from "./function/updateByItemscoutV2";
-import { setGraph, setLastMonthLowPrice } from "./function/product";
+import {
+  getAllDataByItemscout,
+  setGraph,
+  setLastMonthLowPrice,
+} from "./function/product";
+import { updateEntireProductByItemscout } from "./function/updateEntireProductByItemscout";
 import { wrapSlept } from "./function/wrapSlept";
-import { getProductByNaverCatalogV2 } from "./function/getProductByNaverCatalogV2";
-import { IherbPriceType } from "./backup/product_price_update_itemscout";
-
+import { getAllProductIdType } from "./product_price_update";
 type updateByProductIdType = {
   page?: number;
   size?: number;
@@ -53,50 +52,30 @@ export const updateByProductId = async ({
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
 
-    const coupangStoreList = await getCoupangStoreData(product);
-
     if (product.type === "itemscout") {
-      const res =
-        product.iherb_list_url &&
-        product.iherb_product_url &&
-        product.iherb_brand
-          ? await getProductPriceData({
-              list_url: product.iherb_list_url,
-              product_url: product.iherb_product_url,
-              brand: product.iherb_brand,
-            })
-          : null;
-      const iherbPriceData: IherbPriceType | null = res
-        ? {
-            ...res,
-            list_url: product.iherb_list_url,
-            product_url: product.iherb_product_url,
-            brand: product.iherb_brand,
-            iherb_product_image: product.iherb_product_image,
-          }
-        : null;
-
-      await getProductByItemscoutV2(
-        product,
-        i + 1,
-        data.length,
-        iherbPriceData,
-        coupangStoreList
-      );
+      const allData = await getAllDataByItemscout(product);
+      await updateEntireProductByItemscout({
+        ...allData,
+        index: i + 1,
+        max: data.length,
+        originData: product,
+      });
       await setGraph(product);
       await setLastMonthLowPrice(product);
       await wrapSlept(500);
-    } else if (product.type === "naver" && product.naver_catalog_link) {
-      await getProductByNaverCatalogV2(
-        product,
-        i + 1,
-        data.length,
-        coupangStoreList
-      );
-      await setGraph(product);
-      await setLastMonthLowPrice(product);
-      await wrapSlept(2000);
     }
+    // else if (product.type === "naver" && product.naver_catalog_link) {
+    //   const coupangStoreList = await getCoupangStoreData(product);
+    //   await getProductByNaverCatalogV2(
+    //     product,
+    //     i + 1,
+    //     data.length,
+    //     coupangStoreList
+    //   );
+    //   await setGraph(product);
+    //   await setLastMonthLowPrice(product);
+    //   await wrapSlept(2000);
+    // }
     l(
       "timestamp",
       "blue",

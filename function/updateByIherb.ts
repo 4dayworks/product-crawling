@@ -1,61 +1,67 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { headers } from "./iherb/headers";
-import { IherbProductPriceType1, IherbProductPriceType2, ProductType, productURLDataType } from "./iherb/updateByIherb";
+import { headers as iherbHeaders } from "./iherb/headers";
+import {
+  IherbProductPriceType1,
+  IherbProductPriceType2,
+  ProductType,
+} from "./iherb/updateByIherb";
+import { getAllProductIdType } from "./product_price_update";
+import { ItemscoutType } from "./updateByItemscout";
+import { IherbPriceType } from "./update_itemscout";
 
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
 // # (2)제품의 상세 데이터는 getProductDescData를 통해 가져옴(페이지 크롤링)
 // (2)는 iherb 데이터를 크롤링 봇으로 판단해 IP 막으므로 수동체크 반드시 필요. -> 주기적으로 돌리는 자동화 불가능
+const headers = { "Accept-Encoding": "deflate, br" };
 export const getProductPriceData = (
-  urlData: productURLDataType
-): Promise<{
-  iherb_product_id: string;
-  is_stock: string;
-  origin_price: string | number | undefined;
-  discount_percent: number;
-  discount_type: number | null;
-  discount_price: number | null;
-  delivery_price: number;
-  rating: number | undefined;
-  review_count: number | undefined;
-} | null> => {
+  product: getAllProductIdType
+  // urlData: productURLDataType
+): Promise<ItemscoutType | null> => {
   return new Promise(async (resolve, reject) => {
+    const urlData =
+      product.iherb_list_url && product.iherb_product_url && product.iherb_brand
+        ? {
+            list_url: product.iherb_list_url,
+            product_url: product.iherb_product_url,
+            brand: product.iherb_brand,
+          }
+        : null;
+    if (!urlData) return resolve(urlData);
+
     const iherbProductId = urlData.product_url.slice(
       urlData.product_url.lastIndexOf("/") + 1,
       urlData.product_url.length
     );
-    // # 데이터 요청 1
-    const res1 = await axios
-      .get(
-        `https://catalog.app.iherb.com/recommendations/freqpurchasedtogether?productId=${iherbProductId}&pageSize=2&page=1&_=1681620224467`,
-        headers(true)
-      )
-      .then((d) => {
-        if (d.data.errorType === undefined) return d.data as IherbProductPriceType1;
-        l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(1)");
-        return null;
-      })
-      .catch(() => null);
-    // # 데이터 요청 3
-    const res3 = await axios
-      .get(`https://catalog.app.iherb.com/product/${iherbProductId}/discounts?_=1681707804820`, headers(true))
-      .then((d) => {
-        if (d.data.errorType === undefined) return d.data as IherbProductPriceType2;
-        l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(3)");
-        return null;
-      })
-      .catch(() => null);
-    // # 데이터 요청 2
-    const res2 = await axios
-      .get(`https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}`, headers(true))
-      .then(async (d) => {
-        if (d.data.errorType === undefined) return d.data as ProductType;
-        l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(4) ");
-        return null;
-      })
-      .catch(() => null);
 
+    // Make all requests concurrently
+    const [res1, res2, res3] = await axios
+      .all([
+        axios.get(
+          `https://catalog.app.iherb.com/recommendations/freqpurchasedtogether?productId=${iherbProductId}&pageSize=2&page=1&_=1681620224467`,
+          iherbHeaders(true)
+        ),
+        axios.get(
+          `https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}`,
+          iherbHeaders(true)
+        ),
+        axios.get(
+          `https://catalog.app.iherb.com/product/${iherbProductId}/discounts?_=1681707804820`,
+          iherbHeaders(true)
+        ),
+      ])
+      .then(
+        axios.spread(
+          (r1, r2, r3) =>
+            [
+              handleResponse(r1, "iherb 데이터를 가져올 수 없습니다.(1)"),
+              handleResponse(r2, "iherb 데이터를 가져올 수 없습니다.(4)"),
+              handleResponse(r3, "iherb 데이터를 가져올 수 없습니다.(3)"),
+            ] as [IherbProductPriceType1, ProductType, IherbProductPriceType2]
+        )
+      )
+      .catch(() => [null, null, null]);
     // # 더이상 안팔면 판매처 삭제필요함 가격/판매처 데이터 지우고 is_stock 0로 표시
     if ((res1 === null && res2 === null) || res2 === null) {
       const data = { iherb_product_id: iherbProductId };
@@ -72,9 +78,13 @@ export const getProductPriceData = (
         res1?.originProduct.discountedPriceAmount ||
         res1?.originProduct.listPrice.replace(/[^0-9]/gi, "") ||
         (res3 && res3.special
-          ? (res3.special.discountPrice * 100) / (100 - res3.special.discountPercentage)
+          ? (res3.special.discountPrice * 100) /
+            (100 - res3.special.discountPercentage)
           : undefined), //res1데이터 없으면 res3이용해서 할인율,할인가 역산해서 원가 계산함.
-      discount_percent: res1?.originProduct.salesDiscountPercentage || res3?.special?.discountPercentage || 0,
+      discount_percent:
+        res1?.originProduct.salesDiscountPercentage ||
+        res3?.special?.discountPercentage ||
+        0,
 
       discount_type: res1?.originProduct.discountType || null,
       discount_price:
@@ -84,7 +94,11 @@ export const getProductPriceData = (
         null,
 
       delivery_price:
-        (res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || 0) > 40000 ? 0 : 5000, //가격이 4만원넘으면 무료배송
+        (res1?.originProduct.discountedPriceAmount ||
+          res3?.special?.discountPrice ||
+          0) > 40000
+          ? 0
+          : 5000, //가격이 4만원넘으면 무료배송
 
       rating: res1?.originProduct.rating,
       review_count: res1?.originProduct.ratingCount,
@@ -92,6 +106,72 @@ export const getProductPriceData = (
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)
     await axios.patch(`${NODE_API_URL}/crawling/product/iherb/price`, data);
-    resolve(data);
+    const iherbPriceData: IherbPriceType | null = data
+      ? {
+          ...data,
+          list_url: product.iherb_list_url,
+          product_url: product.iherb_product_url,
+          brand: product.iherb_brand,
+          iherb_product_image: product.iherb_product_image,
+        }
+      : null;
+    if (iherbPriceData === null) return resolve(null);
+
+    const originData = product;
+
+    let keyword = originData.keyword
+      ? originData.keyword
+      : originData.product_name;
+
+    if (iherbPriceData && iherbPriceData.is_stock === "1") {
+      const iherbStore: ItemscoutType = {
+        title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
+        image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
+        productId: 0, // 85455382789,
+        price: iherbPriceData.discount_price || 0, // 25900,
+        category: "", // "식품>건강식품>영양제>기타건강보조식품",
+        reviewCount: iherbPriceData.review_count || 0, // 19,
+        reviewScore: iherbPriceData.rating || 0, //5,
+        chnlSeq: undefined,
+        mallPids: [],
+        isException: false,
+        categoryStack: [],
+        shop: "iherb",
+        isList: false,
+        link: iherbPriceData.product_url || "",
+        mallPid: "",
+        multiShops: 0,
+        volume: 0,
+        openDate: "",
+        purchaseCnt: 0,
+        keepCnt: 0,
+        mallGrade: "iherb",
+        deliveryFee: String(iherbPriceData.delivery_price || 0),
+        chnlSeqs: [],
+        mall: "iherb",
+        mallImg: null,
+        isOversea: true,
+        isNaverShop: false,
+        isAd: false,
+        pcProductUrl: iherbPriceData.product_url || undefined,
+        mobileProductUrl: iherbPriceData.product_url || undefined,
+      };
+      return resolve(iherbStore);
+    }
+
+    resolve(null);
   });
 };
+
+// Handle response and error
+function handleResponse(
+  response: AxiosResponse<any, any>,
+  errorMessage: string
+) {
+  if (response && response.data.errorType === undefined) {
+    return response.data;
+  } else {
+    l("ERR Data", "red", errorMessage);
+    return null;
+  }
+}
