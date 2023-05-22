@@ -1,9 +1,9 @@
 import axios from "axios";
 import { NODE_API_URL, toComma } from "./common";
 import { l } from "./console";
-import { NaverStoreListType } from "./getProductByNaverCatalogV2";
 import { ItemscoutType } from "./updateByItemscout";
 import { getAllProductIdType } from "./product_price_update";
+import { DataListType } from "./getProductByNaverCatalogV2";
 type StoreType = {
   product_id: number;
   store_name: string | null;
@@ -14,16 +14,18 @@ type StoreType = {
 
 export const setAllProductByNaver = ({
   originData,
-  coupang_store_list,
-  naver_list,
-  review_count,
+  coupangStoreList,
+  naverStoreList,
+  dataList,
+  reviewCount,
   index,
   max,
 }: {
   originData: getAllProductIdType;
-  coupang_store_list: ItemscoutType[];
-  naver_list: StoreType[];
-  review_count: number | null;
+  coupangStoreList: ItemscoutType[];
+  naverStoreList: StoreType[];
+  dataList: DataListType[];
+  reviewCount: number | null;
   index: number;
   max: number;
 }) => {
@@ -40,8 +42,26 @@ export const setAllProductByNaver = ({
     };
     const productId = originData.product_id;
     const product_name = originData.product_name;
-    const storeList = naver_list;
+    const storeList = naverStoreList;
     const catalogUrl = originData.naver_catalog_link;
+
+    // 쿠팡 판매처 추가
+    if (coupangStoreList.length) {
+      coupangStoreList.forEach((c, i) => {
+        if (!c.mallGrade) return;
+        dataList.push({
+          product_id: productId,
+          store_name: c.mallGrade, //원래는 로켓타입을 썼었지만, 아이템스카우트 타입 호환성 때문에 mallGrade 사용
+          store_link: c.link,
+          store_index: 100 + i,
+          price: c.price,
+          delivery: 0,
+          product_name: c.title,
+        });
+        l("Sub", "blue", `add - coupang store ${c.mallGrade}`);
+      });
+    }
+
     try {
       await axios.post(`${NODE_API_URL}/v2/product/catalog/id`, {
         data: dataList,
@@ -195,8 +215,8 @@ export const setAllProductByNaver = ({
         delivery,
         store_name,
         store_link,
-        review_count,
         type: "naver",
+        review_count: reviewCount,
       };
       const idx = cheapStore.index != null ? cheapStore.index + 1 : 0;
       l(
