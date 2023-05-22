@@ -2,6 +2,9 @@ import axios from "axios";
 import { getAllProductIdType } from "./product_price_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
+import { getCoupangStoreData } from "./coupang/getCoupangStoreData";
+import { getProductPriceData } from "./updateByIherb";
+import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -41,4 +44,20 @@ export const getNotificationItemscoutList = () => {
       l("[Notification Itemscout error]", "yellow");
       return [];
     });
+};
+/** 아이템스카우트 스크래핑 할 때 오든 판매처 정보 가지고 오기 */
+export const getAllDataByItemscout = async (product: getAllProductIdType) => {
+  const [coupangStoreList, iherbStoreData, itemscoutData] = await Promise.all([
+    getCoupangStoreData(product),
+    getProductPriceData(product),
+    getProductByItemscoutV2(product),
+  ]);
+
+  return {
+    coupang_list: coupangStoreList,
+    iherb_data: iherbStoreData,
+    itemscout_list: itemscoutData.productListResult,
+    keyword: itemscoutData.keyword,
+    keyword_id: itemscoutData.keyword_id,
+  };
 };
