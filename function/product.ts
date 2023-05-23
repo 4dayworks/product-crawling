@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
 import { getCoupangStoreData } from "./coupang/getCoupangStoreData";
@@ -89,6 +89,7 @@ export const setStoreList = async (product: getAllProductIdType, storeList: Stor
     product,
     store_list: storeList,
   };
+
   const data: boolean = await axios
     .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
     .then((res) => {
@@ -96,8 +97,9 @@ export const setStoreList = async (product: getAllProductIdType, storeList: Stor
       return res.data.data;
     })
     .catch((err) => {
-      console.log(err);
-      return false;
+      const errorData = err as AxiosError;
+      console.log("Error Status: ", errorData.status, "Error Code: ", errorData.code);
+      return null;
     });
   return data;
 };
