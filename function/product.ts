@@ -6,6 +6,7 @@ import { getCoupangStoreData } from "./coupang/getCoupangStoreData";
 import { getProductPriceData } from "./updateByIherb";
 import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
 import { getProductByNaverCatalogV2 } from "./getProductByNaverCatalogV2";
+import { StoreType } from "./updateByItemscout";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -63,94 +64,56 @@ export const getHolyZoneId = (): Promise<number[]> =>
     });
 
 export const getStoreList = async (product: getAllProductIdType) => {
-  if (product.type === "itemscout") {
-  }
+  try {
+    const crawlingType = product.type;
+    if (crawlingType === "itemscout") {
+      const [coupangStoreList, iherbStoreData, itemscoutStoreList] =
+        await Promise.all([
+          getCoupangStoreData(product),
+          getProductPriceData(product),
+          getProductByItemscoutV2(product),
+        ]);
+      if (iherbStoreData)
+        return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
+      return [...coupangStoreList, ...itemscoutStoreList];
+    }
 
-  if (product.type === "naver") {
+    if (crawlingType === "naver") {
+      const [coupangStoreList, naverStoreList] = await Promise.all([
+        getCoupangStoreData(product),
+        getProductByNaverCatalogV2(product),
+      ]);
+      return [...coupangStoreList, ...naverStoreList];
+    }
+    return [];
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 };
-/** 제품 최저가 갱신시 유저에게 알림 보내기 */
-// export const setNotification = async () => {
-//   if (data.low_price && data.low_price > 100) {
-//     const notiList = await axios
-//       .post(`${NODE_API_URL}/crawling/product/notification`, {
-//         low_price: data.low_price,
-//         product_id: data.product_id,
-//       })
-//       .then((d) =>
-//         d.data.data && d.data.data.length > 0
-//           ? (d.data.data as {
-//               user_id: number;
-//               is_lowest: 0 | 1;
-//               low_price: number;
-//             }[])
-//           : null
-//       )
-//       .catch((e) =>
-//         l(
-//           "Noti Err",
-//           "red",
-//           "최저가 알림 오류 /crawling/product/notification " + e.code
-//         )
-//       );
 
-//     const userList = notiList ? notiList.map((i) => i.user_id).join(",") : null;
-//     if (notiList && userList && userList.length > 0) {
-//       const prevPriceList = notiList.filter((i) => i);
-//       const prevPrice =
-//         prevPriceList.length > 0 ? prevPriceList[0].low_price : null;
-//       const prevPriceText = prevPrice ? `${toComma(prevPrice)}원에서 ` : "";
-//       const nextPrice = toComma(data.low_price);
-//       const subText = notiList[0].is_lowest === 1 ? ` (⚡역대최저가)` : "";
-//       const message = `내가 관심을 보인 ${originData.product_name} 가격이 ${prevPriceText}${nextPrice}원으로 내려갔어요⬇️${subText}`;
-//       await axios
-//         .get(
-//           `${NODE_API_URL}/user/firebase/send/low_price?user_list=${userList}&title=야기야기&message=${message}&link=/product/${originData.product_id}`
-//         )
-//         .catch((e) =>
-//           l(
-//             "Noti Err",
-//             "red",
-//             "최저가 알림 오류 /user/firebase/send/low_price " + e.code
-//           )
-//         );
-//     }
-//   }
-// };
-
-export const setLowPrice = async () => {};
-
-/** 아이템스카우트 스크래핑 할 때 모든 판매처 정보 가지고 오기 */
-export const getAllDataByItemscout = async (product: getAllProductIdType) => {
-  const [coupangStoreList, iherbStoreData, itemscoutData] = await Promise.all([
-    getCoupangStoreData(product),
-    getProductPriceData(product),
-    getProductByItemscoutV2(product),
-  ]);
-
-  return {
-    coupang_list: coupangStoreList,
-    iherb_data: iherbStoreData,
-    itemscout_list: itemscoutData.productListResult,
-    keyword: itemscoutData.keyword,
-    keyword_id: itemscoutData.keyword_id,
-  };
-};
-/** 네이버 스크래핑 할 때 모든 판매처 정보 가지고 오기 */
-export const getAllDataByNaver = async (
+export const setStoreList = async (
   product: getAllProductIdType,
-  index: number,
-  max: number
+  storeList: StoreType[]
 ) => {
-  const [coupangStoreList, naverStoreData] = await Promise.all([
-    getCoupangStoreData(product),
-    getProductByNaverCatalogV2(product, index, max),
-  ]);
-
-  return {
-    coupangStoreList,
-    naverStoreList: naverStoreData.naverStoreList,
-    reviewCount: naverStoreData.reviewCount,
-    dataList: naverStoreData.dataList,
+  const dataToSend = {
+    product,
+    store_list: storeList,
   };
+  const data: boolean = await axios
+    .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
+    .then((res) => {
+      if (res.data.message)
+        l(
+          `PASS MESSAGE product_id: ${product.product_id}`,
+          "green",
+          res.data.message
+        );
+      return res.data.data;
+    })
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
+  return data;
 };

@@ -4,7 +4,7 @@ import { l } from "../console";
 import { NODE_API_URL } from "../common";
 import { AuthorizationKey } from "../auth";
 import { wrapSlept } from "../wrapSlept";
-import { ItemscoutType } from "../updateByItemscout";
+import { ItemscoutType, StoreType } from "../updateByItemscout";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 export const getCoupangStoreData = async ({
@@ -26,6 +26,8 @@ getAllProductIdType) => {
   // 4. 필터링된 판매처 함수에서 반환하기
 
   // 1. 키워드/키워드id DB에서 가져오기
+  console.time("시작");
+
   const {
     coupang_itemscout_keyword_id,
     coupang_itemscout_keyword,
@@ -93,52 +95,12 @@ getAllProductIdType) => {
   }
 
   // 3. 아이템스카우트에서 판매처가져와서 필터링하기, tag, exception_list, require_list 활용
-  let storeList: ItemscoutType[] = [];
-  await axios
+  let coupangStoreList: ItemscoutCoupangStoreType[] = await axios
     .get(
       `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=coupang`,
       { headers }
     )
-    .then((d) => {
-      const coupangList = d.data.data
-        .productListResult as ItemscoutCoupangStoreType[];
-      coupangList.forEach((c, i) => {
-        if (!c.rocketType) return;
-        const data: ItemscoutType = {
-          title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
-          image: c?.image ?? "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
-          productId: Number(c.productId) + i, // 85455382789,
-          price: c?.price ?? 0, // 25900,
-          category: "", // "식품>건강식품>영양제>기타건강보조식품",
-          reviewCount: c?.reviewCount ?? 0, // 19,
-          reviewScore: c?.reviewScore ?? 0, //5,
-          chnlSeq: undefined,
-          mallPids: [],
-          isException: false,
-          categoryStack: [],
-          shop: c.rocketType,
-          isList: false,
-          link: c?.link ?? "",
-          mallPid: "",
-          multiShops: 0,
-          volume: 0,
-          openDate: "",
-          purchaseCnt: 0,
-          keepCnt: 0,
-          mallGrade: c.rocketType,
-          deliveryFee: "",
-          chnlSeqs: [],
-          mall: c.rocketType,
-          mallImg: null,
-          isOversea: c.rocketType === "로켓직구" ? true : false,
-          isNaverShop: false,
-          isAd: false,
-          pcProductUrl: c?.link ?? "",
-          mobileProductUrl: c?.link ?? "",
-        };
-        storeList.push(data);
-      });
-    })
+    .then((d) => d.data.data.productListResult)
     .catch(() => []);
 
   // 3-1. exception_list, require_list, rocketType(coupang_allow_tag) 로 필터링하기
@@ -153,20 +115,43 @@ getAllProductIdType) => {
     ? coupang_allow_tag.split(",").map((k) => k.trim())
     : [];
 
-  storeList = storeList
+  coupangStoreList = coupangStoreList
     .filter(
       (s) =>
         require_list.map((r) => s.title.includes(r)).filter((b) => b === false)
           .length === 0 &&
         exception_list.map((r) => s.title.includes(r)).filter((b) => b === true)
           .length === 0 &&
-        s.mallGrade && // rocketType
-        allow_tag.includes(s.mallGrade) && //rocketType
+        s.rocketType &&
+        allow_tag.includes(s.rocketType) &&
         !s.isAd
     )
     .slice(0, 2);
 
   // 4. 필터링된 판매처 함수에서 반환하기
+  const storeList: StoreType[] = [];
+  coupangStoreList.forEach((c, i) => {
+    if (!c.rocketType) return;
+    const data: StoreType = {
+      itemscout_keyword: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
+      store_product_image: c?.image ?? "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
+      store_price: c?.price ?? 0, // 25900,
+      store_category: "", // "식품>건강식품>영양제>기타건강보조식품",
+      store_review_count: c?.reviewCount ?? 0, // 19,
+      store_review_score: c?.reviewScore ?? 0, //5,
+      store_link: c?.link ?? "",
+      store_delivery: 0,
+      store_is_oversea: c.rocketType === "로켓직구" ? true : false,
+      store_is_navershop: false,
+      store_name: c.rocketType,
+      store_product_name: c.title,
+      itemscout_keyword_id: Number(keyword_id),
+      yagi_product_id: product_id,
+    };
+    storeList.push(data);
+  });
+  console.timeEnd("시작");
+
   return storeList;
 };
 
