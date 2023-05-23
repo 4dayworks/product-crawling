@@ -96,9 +96,8 @@ export const setStoreList = async (product: getAllProductIdType, storeList: Stor
       if (res.data.message) l(`PASS MESSAGE product_id: ${product.product_id}`, "green", res.data.message);
       return res.data.data;
     })
-    .catch((err) => {
-      const errorData = err as AxiosError;
-      console.log("Error Status: ", errorData.status, "Error Code: ", errorData.code);
+    .catch(() => {
+      l("Err ", "red", `setStoreList ${NODE_API_URL}/v2/crawling/store` + JSON.stringify(dataToSend));
       return null;
     });
   return data;
