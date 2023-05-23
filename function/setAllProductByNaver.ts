@@ -2,7 +2,10 @@ import axios from "axios";
 import { NODE_API_URL, toComma } from "./common";
 import { l } from "./console";
 import { ItemscoutType } from "./updateByItemscout";
-import { getAllProductIdType } from "./product_price_update";
+import {
+  ProductCompareKeywordResponseType,
+  getAllProductIdType,
+} from "./product_price_update";
 import { DataListType } from "./getProductByNaverCatalogV2";
 type StoreType = {
   product_id: number;
@@ -12,23 +15,22 @@ type StoreType = {
   price: number | null;
 };
 
-export const setAllProductByNaver = ({
+export const setAllProductByNaver = ([
+  { coupangStoreList, naverStoreList, dataList, reviewCount },
   originData,
-  coupangStoreList,
-  naverStoreList,
-  dataList,
-  reviewCount,
   index,
   max,
-}: {
-  originData: getAllProductIdType;
-  coupangStoreList: ItemscoutType[];
-  naverStoreList: StoreType[];
-  dataList: DataListType[];
-  reviewCount: number | null;
-  index: number;
-  max: number;
-}) => {
+]: [
+  allData: {
+    coupangStoreList: ItemscoutType[];
+    naverStoreList: StoreType[];
+    dataList: DataListType[];
+    reviewCount: number | null;
+  },
+  originData: getAllProductIdType,
+  index: number,
+  max: number
+]) => {
   return new Promise(async (resolve, reject) => {
     // 최저가 가져오기
     let cheapStore: {
@@ -63,6 +65,24 @@ export const setAllProductByNaver = ({
     }
 
     try {
+      // const scoreList = await axios
+      //   .post(`${NODE_API_URL}/v2/product/compare/keyword`, {
+      //     original_keyword: originData.product_name,
+      //     keyword_list: dataList.map((i) => i.product_name),
+      //   })
+      //   .then((d) => {
+      //     const data: ProductCompareKeywordResponseType["resultList"] =
+      //       d.data.data.resultList;
+      //     return data.map((prev, i) => {
+      //       return { ...prev, index: i };
+      //     });
+      //   })
+      //   .catch((d) => {
+      //     console.error("error: /product/compare/keyword", d);
+      //     resolve(d);
+      //     return null;
+      //   });
+
       await axios.post(`${NODE_API_URL}/v2/product/catalog/id`, {
         data: dataList,
         product_id: productId,

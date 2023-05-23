@@ -8,25 +8,23 @@ import { ItemscoutType, ProductTableV2 } from "./updateByItemscout";
 import { minBy, sortBy } from "lodash";
 import { l } from "./console";
 
-export const setAllProductByItemscout = ({
+export const setAllProductByItemscout = ([
+  { keyword, keyword_id, itemscout_list, coupang_list, iherb_data },
   originData,
-  keyword,
-  keyword_id,
-  itemscout_list,
-  coupang_list,
-  iherb_data,
   index,
   max,
-}: {
-  originData: getAllProductIdType;
-  keyword: string;
-  keyword_id: number | null;
-  itemscout_list: ItemscoutType[];
-  coupang_list: ItemscoutType[];
-  iherb_data: ItemscoutType | null;
-  index: number;
-  max: number;
-}) => {
+]: [
+  allData: {
+    itemscout_list: ItemscoutType[];
+    coupang_list: ItemscoutType[];
+    iherb_data: ItemscoutType | null;
+    keyword: string;
+    keyword_id: number | null;
+  },
+  originData: getAllProductIdType,
+  index: number,
+  max: number
+]) => {
   return new Promise(async (resolve, reject) => {
     try {
       // 기존 판매처 및 가격 삭제

@@ -36,7 +36,17 @@ getAllProductIdType) => {
     .get(
       `${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`
     )
-    .then((d) => d.data.data);
+    .then((d) => d.data.data)
+    .catch((error) => {
+      console.log(error);
+      return {
+        coupang_itemscout_keyword_id: null,
+        coupang_itemscout_keyword: null,
+        coupang_require_keyword_list: null,
+        coupang_exception_keyword_list: null,
+        coupang_allow_tag: null,
+      };
+    });
 
   // 2. 키워드id 없을경우 itemscout 에서 keyword_id 가져오기
   let keyword_id = coupang_itemscout_keyword_id;
@@ -67,11 +77,13 @@ getAllProductIdType) => {
     keyword_id = itemscout_keyword_id;
 
     // 2-1. 야기야기 DB에 키워드 저장
-    await axios.post(`${NODE_API_URL}/crawling/product/coupang/keyword`, {
-      product_id,
-      keyword_id: itemscout_keyword_id,
-      keyword,
-    });
+    await axios
+      .post(`${NODE_API_URL}/crawling/product/coupang/keyword`, {
+        product_id,
+        keyword_id: itemscout_keyword_id,
+        keyword,
+      })
+      .catch((error) => console.log(error));
   }
 
   // 에러처리
