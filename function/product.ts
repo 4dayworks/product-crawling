@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { getAllProductIdType } from "./product_price_update";
 import { NODE_API_URL, toComma } from "./common";
 import { l } from "./console";
@@ -112,7 +112,13 @@ export const setStoreList = async (
       return res.data.data;
     })
     .catch((err) => {
-      console.log(err);
+      const errorData = err as AxiosError;
+      console.log(
+        "Error Status: ",
+        errorData.status,
+        "Error Code: ",
+        errorData.code
+      );
       return false;
     });
   return data;
