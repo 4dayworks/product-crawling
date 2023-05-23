@@ -1,17 +1,14 @@
 import axios from "axios";
-import { set, shuffle } from "lodash";
+import { shuffle } from "lodash";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
 import {
   getHolyZoneId,
-  getAllDataByItemscout,
-  getAllDataByNaver,
+  getStoreList,
   setGraph,
   setLastMonthLowPrice,
-  getStoreList,
+  setStoreList,
 } from "./function/product";
-import { setAllProductByItemscout } from "./function/setAllProductByItemscout";
-import { setAllProductByNaver } from "./function/setAllProductByNaver";
 import { wrapSlept } from "./function/wrapSlept";
 import { getAllProductIdType } from "./product_price_update";
 type updateByProductIdType = {
@@ -41,31 +38,30 @@ export const updateByProductId = async ({
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
+    const max = data.length;
+    l(
+      `START [${i + 1}/${max}] product_id: ${String(
+        product.product_id
+      ).padStart(6, " ")}`,
+      "blue",
+      ""
+    );
+    const storeList = await getStoreList(product);
+    const result = await setStoreList(product, storeList);
 
-    // let storeList = getStoreList(product);
-    // storeList = storeListFiltered(stroeList)
-    // awiat setStoreList(storeList)
-    // await sendApppush()
-    // awiat setGraph
-    // await set
-    // await set
-    // await wwarpSlept(product.type === '' ? 10 : 20)
+    if (!result) {
+      l(
+        `setStoreList result: false [${i}/${max}] product_id: ${String(
+          product.product_id
+        ).padStart(6, " ")}`,
+        "red"
+      );
+      return;
+    }
 
-    let storeList = getStoreList(product);
-
-    // if (product.type === "itemscout") {
-    //   const allData = await getAllDataByItemscout(product);
-    //   await setAllProductByItemscout([allData, product, i + 1, data.length]);
-    //   await setGraph(product);
-    //   await setLastMonthLowPrice(product);
-    //   await wrapSlept(500);
-    // } else if (product.type === "naver" && product.naver_catalog_link) {
-    //   const allData = await getAllDataByNaver(product, i + 1, data.length);
-    //   await setAllProductByNaver([allData, product, i + 1, data.length]);
-    //   await setGraph(product);
-    //   await setLastMonthLowPrice(product);
-    //   await wrapSlept(2000);
-    // }
+    await setGraph(product);
+    await setLastMonthLowPrice(product);
+    await wrapSlept(product.type === "itemscout" ? 500 : 2000);
 
     l(
       "timestamp",

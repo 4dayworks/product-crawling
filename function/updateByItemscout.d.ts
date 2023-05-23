@@ -4,7 +4,7 @@ export interface StoreType {
   itemscout_keyword: string | null; // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름";
   store_product_name: string; // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름";
   store_product_image: string; // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg";
-  store_name: number; // 25900;
+  store_name: string; // 25900;
   store_price: number; // 25900;
   store_category: string; // "식품>건강식품>영양제>기타건강보조식품";
   store_review_count: number | null; // 19;

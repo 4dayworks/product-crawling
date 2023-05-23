@@ -8,7 +8,7 @@ import {
   ProductType,
 } from "./iherb/updateByIherb";
 import { getAllProductIdType } from "./product_price_update";
-import { ItemscoutType } from "./updateByItemscout";
+import { StoreType } from "./updateByItemscout";
 import { IherbPriceType } from "./update_itemscout";
 
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
@@ -18,7 +18,7 @@ const headers = { "Accept-Encoding": "deflate, br" };
 export const getProductPriceData = (
   product: getAllProductIdType
   // urlData: productURLDataType
-): Promise<ItemscoutType | null> => {
+): Promise<StoreType | null> => {
   return new Promise(async (resolve, reject) => {
     const urlData =
       product.iherb_list_url && product.iherb_product_url && product.iherb_brand
@@ -124,37 +124,21 @@ export const getProductPriceData = (
       : originData.product_name;
 
     if (iherbPriceData && iherbPriceData.is_stock === "1") {
-      const iherbStore: ItemscoutType = {
-        title: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
-        image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
-        productId: 0, // 85455382789,
-        price: iherbPriceData.discount_price || 0, // 25900,
-        category: "", // "식품>건강식품>영양제>기타건강보조식품",
-        reviewCount: iherbPriceData.review_count || 0, // 19,
-        reviewScore: iherbPriceData.rating || 0, //5,
-        chnlSeq: undefined,
-        mallPids: [],
-        isException: false,
-        categoryStack: [],
-        shop: "iherb",
-        isList: false,
-        link: iherbPriceData.product_url || "",
-        mallPid: "",
-        multiShops: 0,
-        volume: 0,
-        openDate: "",
-        purchaseCnt: 0,
-        keepCnt: 0,
-        mallGrade: "iherb",
-        deliveryFee: String(iherbPriceData.delivery_price || 0),
-        chnlSeqs: [],
-        mall: "iherb",
-        mallImg: null,
-        isOversea: true,
-        isNaverShop: false,
-        isAd: false,
-        pcProductUrl: iherbPriceData.product_url || undefined,
-        mobileProductUrl: iherbPriceData.product_url || undefined,
+      const iherbStore: StoreType = {
+        itemscout_keyword: keyword, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
+        store_product_image: iherbPriceData.iherb_product_image || "", // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg",
+        store_price: iherbPriceData.discount_price || 0, // 25900,
+        store_review_count: iherbPriceData.review_count || 0, // 19,
+        store_review_score: iherbPriceData.rating || 0, //5,
+        store_name: "iherb",
+        store_link: iherbPriceData.product_url || "",
+        store_delivery: iherbPriceData.delivery_price || 0,
+        store_is_oversea: true,
+        store_is_navershop: false,
+        itemscout_keyword_id: null,
+        store_product_name: keyword,
+        store_category: "",
+        yagi_product_id: product.product_id,
       };
       return resolve(iherbStore);
     }

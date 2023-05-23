@@ -3,14 +3,7 @@ import request from "request";
 import { l } from "./console";
 import { exceptionCompanyListAtNaver } from "./product";
 import { getAllProductIdType } from "./product_price_update";
-
-type StoreType = {
-  product_id: number;
-  store_name: string | null;
-  store_link?: string | null;
-  delivery: number | null;
-  price: number | null;
-};
+import { StoreType } from "./updateByItemscout";
 
 export type DataListType = {
   product_id: number;
@@ -22,27 +15,19 @@ export type DataListType = {
   product_name: string | null;
 };
 
-export const getProductByNaverCatalogV2 = (
-  product: getAllProductIdType,
-  index: number,
-  max: number,
-) => {
-  return new Promise<{
-    naverStoreList: StoreType[];
-    dataList: DataListType[];
-    reviewCount: number | null;
-  }>(async (resolve) => {
+export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
+  return new Promise<StoreType[]>(async (resolve) => {
     const productId = product.product_id;
     const catalogUrl = product.naver_catalog_link;
     const blacklist = await exceptionCompanyListAtNaver();
-    if (!catalogUrl) return resolve({ dataList: [], naverStoreList: [], reviewCount: null });
+    if (!catalogUrl) return resolve([]);
     // const product_name = product.product_name;
     //#region
     try {
       request(catalogUrl, async (error, response, body) => {
         if (error) {
           l("error request", "red", error);
-          resolve({dataList: [], naverStoreList: [], reviewCount: null });
+          resolve([]);
           throw error;
         }
         let $ = cheerio.load(body);
@@ -52,15 +37,7 @@ export const getProductByNaverCatalogV2 = (
           const reviewCount = Number(
             $(`#section-review > div > div > h3`).text().replace(regex, "")
           );
-          const dataList: {
-            product_id: number;
-            store_name: string;
-            store_link: string | null;
-            store_index: number;
-            price: number;
-            delivery: number;
-            product_name: string | null;
-          }[] = [];
+
           $("#section-price > ul > li").each((i: number) => {
             // 판매처이름
             const idx = i + 1;
@@ -99,17 +76,11 @@ export const getProductByNaverCatalogV2 = (
             const store_link = $(
               `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`
             ).attr("href");
-            storeList.push({
-              product_id: productId,
-              store_name,
-              store_link,
-              price,
-              delivery,
-            });
+
             l(
               "GET",
               "blue",
-              `[${index}/${max}] (${idx.toString().padStart(2)}) id:${productId
+              `(${idx.toString().padStart(2)}) id:${productId
                 .toString()
                 .padStart(5)} price:${price
                 .toString()
@@ -120,35 +91,37 @@ export const getProductByNaverCatalogV2 = (
                 .padStart(4)}, ${store_name}`
             );
 
-            dataList.push({
-              product_id: productId,
+            storeList.push({
+              yagi_product_id: productId,
               store_name,
-              store_link: store_link ? store_link : null,
-              store_index: idx,
-              price,
-              delivery,
-              product_name: null,
+              store_link: store_link ?? "",
+              store_price: price,
+              itemscout_keyword_id: null,
+              itemscout_keyword: null,
+              store_product_name: product.product_name,
+              store_is_oversea: false,
+              store_is_navershop: true,
+              store_delivery: delivery,
+              store_product_image: "",
+              store_category: "",
+              store_review_count: reviewCount,
+              store_review_score: null,
             });
           });
 
-          return resolve({ dataList, naverStoreList: storeList, reviewCount });
+          return resolve(storeList);
         } catch (error) {
           l(
             "error 1",
             "red",
-            `[${index}/${max}] product_id:${productId.toString().padStart(5)}` +
-              { error }
+            `product_id:${productId.toString().padStart(5)}` + { error }
           );
-          resolve({ dataList: [], naverStoreList: [], reviewCount: null });
+          resolve([]);
         }
       });
     } catch {
-      l(
-        "error 2",
-        "red",
-        `[${index}/${max}] product_id:${productId.toString().padStart(5)}`
-      );
-      resolve({dataList: [], naverStoreList: [], reviewCount: null });
+      l("error 2", "red", `product_id:${productId.toString().padStart(5)}`);
+      resolve([]);
     }
   });
 };
