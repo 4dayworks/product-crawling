@@ -11,11 +11,14 @@ export const getTargetUrlByNaverUrl = async (url: string) => {
     ? await axios
         .get(url, {
           headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
             "Accept-Encoding": "json", // gzip 압축 비활성화
           },
         })
-        .then((res) => {
+        .then(async (res) => {
           const body = res.data as string;
+
           if (body.includes("function skipBridgePage() {")) {
             const skipBridgePageFunc = body.slice(
               body.indexOf("function skipBridgePage() {"),
