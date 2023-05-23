@@ -10,7 +10,7 @@ import {
   setStoreList,
 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
-import { getAllProductIdType } from "./product_price_update";
+import { getAllProductIdType } from "./function/product_price_update";
 type updateByProductIdType = {
   page?: number;
   size?: number;
