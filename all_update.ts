@@ -1,12 +1,14 @@
 import axios from "axios";
-import { shuffle } from "lodash";
+import { set, shuffle } from "lodash";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
 import {
+  getHolyZoneId,
   getAllDataByItemscout,
   getAllDataByNaver,
   setGraph,
   setLastMonthLowPrice,
+  getStoreList,
 } from "./function/product";
 import { setAllProductByItemscout } from "./function/setAllProductByItemscout";
 import { setAllProductByNaver } from "./function/setAllProductByNaver";
@@ -33,45 +35,38 @@ export const updateByProductId = async ({
     data = data.filter((p) => product_id_list.includes(p.product_id));
 
   //#region (2) 성지가격있는 제품아이디 모두 제외시키기
-  const exceptionList: number[] = await axios(
-    `${NODE_API_URL}/crawling/product/holyzone/all`
-  )
-    .then((d) => {
-      const data: { product_id: number; product_name: string }[] = d.data.data;
-      return data.map((p) => p.product_id);
-    })
-    .catch((e) => {
-      l(
-        "Noti Err",
-        "red",
-        "성지존 알림 오류 /crawling/product/holyzone/all" + e.code
-      );
-      return [];
-    });
+  const exceptionList = await getHolyZoneId();
   data = data.filter((p) => !exceptionList.includes(p.product_id));
   data = shuffle(data);
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
 
-    if (product.type === "itemscout") {
-      const allData = await getAllDataByItemscout(product);
-      await setAllProductByItemscout({
-        ...allData,
-        index: i + 1,
-        max: data.length,
-        originData: product,
-      });
-      await setGraph(product);
-      await setLastMonthLowPrice(product);
-      await wrapSlept(500);
-    } else if (product.type === "naver" && product.naver_catalog_link) {
-      const allData = await getAllDataByNaver(product, i+1, data.length);
-      await setAllProductByNaver({...allData, index: i+1, max: data.length, originData: product});
-      await setGraph(product);
-      await setLastMonthLowPrice(product);
-      await wrapSlept(2000);
-    }
+    // let storeList = getStoreList(product);
+    // storeList = storeListFiltered(stroeList)
+    // awiat setStoreList(storeList)
+    // await sendApppush()
+    // awiat setGraph
+    // await set
+    // await set
+    // await wwarpSlept(product.type === '' ? 10 : 20)
+
+    let storeList = getStoreList(product);
+
+    // if (product.type === "itemscout") {
+    //   const allData = await getAllDataByItemscout(product);
+    //   await setAllProductByItemscout([allData, product, i + 1, data.length]);
+    //   await setGraph(product);
+    //   await setLastMonthLowPrice(product);
+    //   await wrapSlept(500);
+    // } else if (product.type === "naver" && product.naver_catalog_link) {
+    //   const allData = await getAllDataByNaver(product, i + 1, data.length);
+    //   await setAllProductByNaver([allData, product, i + 1, data.length]);
+    //   await setGraph(product);
+    //   await setLastMonthLowPrice(product);
+    //   await wrapSlept(2000);
+    // }
+
     l(
       "timestamp",
       "blue",

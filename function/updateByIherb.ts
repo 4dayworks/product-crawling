@@ -28,7 +28,7 @@ export const getProductPriceData = (
             brand: product.iherb_brand,
           }
         : null;
-    if (!urlData) return resolve(urlData);
+    if (!urlData) return resolve(null);
 
     const iherbProductId = urlData.product_url.slice(
       urlData.product_url.lastIndexOf("/") + 1,
