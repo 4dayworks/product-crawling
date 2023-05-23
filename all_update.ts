@@ -33,12 +33,13 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
     const storeList = await getStoreList(product);
     const result = await setStoreList(product, storeList);
 
-    if (!result) {
+    if (result === null) {
       l(
         `setStoreList result: false [${i + 1}/${max}] product_id: ${String(product.product_id).padStart(6, " ")}`,
-        "red"
+        "red",
+        ""
       );
-      return;
+      continue;
     }
 
     await setGraph(product);
