@@ -1,10 +1,10 @@
 import axios, { AxiosError } from "axios";
-import { getAllProductIdType } from "../../product_price_update";
 import { l } from "../console";
 import { NODE_API_URL } from "../common";
 import { AuthorizationKey } from "../auth";
 import { wrapSlept } from "../wrapSlept";
 import { ItemscoutType, StoreType } from "../updateByItemscout";
+import { getAllProductIdType } from "../product_price_update";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 export const getCoupangStoreData = async ({
@@ -35,9 +35,7 @@ getAllProductIdType) => {
     coupang_exception_keyword_list,
     coupang_allow_tag,
   }: CoupangDataType = await axios
-    .get(
-      `${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`
-    )
+    .get(`${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`)
     .then((d) => d.data.data)
     .catch((error) => {
       console.log(error);
@@ -52,9 +50,7 @@ getAllProductIdType) => {
 
   // 2. 키워드id 없을경우 itemscout 에서 keyword_id 가져오기
   let keyword_id = coupang_itemscout_keyword_id;
-  const keyword = coupang_itemscout_keyword
-    ? coupang_itemscout_keyword
-    : product_name;
+  const keyword = coupang_itemscout_keyword ? coupang_itemscout_keyword : product_name;
   if (!coupang_itemscout_keyword_id) {
     const url = `https://api.itemscout.io/api/keyword`;
     const itemscout_keyword_id = await axios
@@ -62,11 +58,7 @@ getAllProductIdType) => {
       .then((d) => d.data.data)
       .catch(async (error: AxiosError) => {
         if (error.response?.status === 429) {
-          l(
-            "현재 요청을 많이 하여 5분간 기다리겠습니다.",
-            "yellow",
-            new Date().toISOString()
-          );
+          l("현재 요청을 많이 하여 5분간 기다리겠습니다.", "yellow", new Date().toISOString());
           await wrapSlept(1000 * 60 * 5);
           const itemscout_keyword_id = await axios
             .post(url, { keyword }, { headers })
@@ -96,10 +88,7 @@ getAllProductIdType) => {
 
   // 3. 아이템스카우트에서 판매처가져와서 필터링하기, tag, exception_list, require_list 활용
   let coupangStoreList: ItemscoutCoupangStoreType[] = await axios
-    .get(
-      `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=coupang`,
-      { headers }
-    )
+    .get(`https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=coupang`, { headers })
     .then((d) => d.data.data.productListResult)
     .catch(() => []);
 
@@ -108,20 +97,14 @@ getAllProductIdType) => {
   const exception_list = coupang_exception_keyword_list
     ? coupang_exception_keyword_list.split(",").map((k) => k.trim())
     : [];
-  const require_list = coupang_require_keyword_list
-    ? coupang_require_keyword_list.split(",").map((k) => k.trim())
-    : [];
-  const allow_tag = coupang_allow_tag
-    ? coupang_allow_tag.split(",").map((k) => k.trim())
-    : [];
+  const require_list = coupang_require_keyword_list ? coupang_require_keyword_list.split(",").map((k) => k.trim()) : [];
+  const allow_tag = coupang_allow_tag ? coupang_allow_tag.split(",").map((k) => k.trim()) : [];
 
   coupangStoreList = coupangStoreList
     .filter(
       (s) =>
-        require_list.map((r) => s.title.includes(r)).filter((b) => b === false)
-          .length === 0 &&
-        exception_list.map((r) => s.title.includes(r)).filter((b) => b === true)
-          .length === 0 &&
+        require_list.map((r) => s.title.includes(r)).filter((b) => b === false).length === 0 &&
+        exception_list.map((r) => s.title.includes(r)).filter((b) => b === true).length === 0 &&
         s.rocketType &&
         allow_tag.includes(s.rocketType) &&
         !s.isAd
