@@ -14,6 +14,8 @@ export const getTargetUrlByNaverUrl = async (url: string) => {
             "User-Agent":
               "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
             "Accept-Encoding": "json", // gzip 압축 비활성화
+            Cookie:
+              "NA_CO=ct%3Dli082mww%7Cci%3Dd7898ecf37685d80a8b483989e733281d9994bca%7Ctr%3Dslsl%7Chk%3Dfa4cae9bd84f201ac4cf3558fe0330c58e1a6e62%7Ctrx%3Dundefined; wcs_bt=s_605016619769874256:1684843102; NNB=YFP3MPGM6FSWI; nx_ssl=2; page_uid=ibykldp0J1sssvwftWRsssssssd-174995",
           },
         })
         .then(async (res) => {

@@ -3,8 +3,6 @@ import { l } from "./console";
 import { filterArray } from "./itemscout";
 import { getAllProductIdType } from "./product_price_update";
 import { ItemscoutType, StoreType } from "./updateByItemscout";
-import { getTargetUrlByNaverUrl } from "./getTargetUrlByNaverUrl";
-import { wrapSlept } from "./wrapSlept";
 
 const headers = { "Accept-Encoding": "deflate, br" };
 export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
@@ -63,10 +61,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
           .catch(() => []);
       }
       const storeList: StoreType[] = [];
-      for (let i = 0; i < productListResult.length; i++) {
-        const item = productListResult[i];
-        const link = await getTargetUrlByNaverUrl(item.link);
-        if (!link) continue;
+      productListResult.forEach((item) => {
         const data: StoreType = {
           yagi_product_id: product.product_id, // 85455382789;
           itemscout_keyword_id: keyword_id,
@@ -78,13 +73,13 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
           store_category: item.category, // "식품>건강식품>영양제>기타건강보조식품";
           store_review_count: item.reviewCount, // 19;
           store_review_score: item.reviewCount, //5;
-          store_link: link,
+          store_link: item.link,
           store_is_oversea: item.isOversea,
           store_is_navershop: item.isNaverShop,
           store_delivery: Number(item.deliveryFee),
         };
         storeList.push(data);
-      }
+      });
 
       return resolve(storeList);
     } catch (error) {
