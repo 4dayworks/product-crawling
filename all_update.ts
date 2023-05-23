@@ -55,9 +55,9 @@ export const updateByProductId = async ({
         `setStoreList result: false [${i + 1}/${max}] product_id: ${String(
           product.product_id
         ).padStart(6, " ")}`,
-        "red"
+        "red",
+        ""
       );
-      return;
     }
 
     await setGraph(product);
