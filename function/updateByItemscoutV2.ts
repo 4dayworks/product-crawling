@@ -4,6 +4,7 @@ import { filterArray } from "./itemscout";
 import { getAllProductIdType } from "./product_price_update";
 import { ItemscoutType, StoreType } from "./updateByItemscout";
 import { getTargetUrlByNaverUrl } from "./getTargetUrlByNaverUrl";
+import { wrapSlept } from "./wrapSlept";
 
 const headers = { "Accept-Encoding": "deflate, br" };
 export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
@@ -62,9 +63,10 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
           .catch(() => []);
       }
       const storeList: StoreType[] = [];
-      productListResult.forEach(async (item) => {
+      for (let i = 0; i < productListResult.length; i++) {
+        const item = productListResult[i];
         const link = await getTargetUrlByNaverUrl(item.link);
-        if (!link) return;
+        if (!link) continue;
         const data: StoreType = {
           yagi_product_id: product.product_id, // 85455382789;
           itemscout_keyword_id: keyword_id,
@@ -82,7 +84,7 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
           store_delivery: Number(item.deliveryFee),
         };
         storeList.push(data);
-      });
+      }
 
       return resolve(storeList);
     } catch (error) {
