@@ -1,12 +1,12 @@
 import axios from "axios";
-import { NODE_API_URL, toComma } from "./common";
-import { l } from "./console";
-import { ItemscoutType } from "./updateByItemscout";
+import { NODE_API_URL, toComma } from "../function/common";
+import { l } from "../function/console";
+import { ItemscoutType } from "../function/updateByItemscout";
 import {
   ProductCompareKeywordResponseType,
   getAllProductIdType,
-} from "./product_price_update";
-import { DataListType } from "./getProductByNaverCatalogV2";
+} from "../function/product_price_update";
+import { DataListType } from "../function/getProductByNaverCatalogV2";
 type StoreType = {
   product_id: number;
   store_name: string | null;

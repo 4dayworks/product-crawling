@@ -63,7 +63,7 @@ export const updateByProductId = async ({
     await setGraph(product);
     await setLastMonthLowPrice(product);
     await wrapSlept(product.type === "itemscout" ? 500 : 2000);
-    console.timeEnd(`${product.product_id} 끝`);
+    console.timeEnd(`${product.product_id} 작업 시간`);
     l(
       "timestamp",
       "blue",
