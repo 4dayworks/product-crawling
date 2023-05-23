@@ -38,6 +38,7 @@ export const updateByProductId = async ({
 
   for (let i = 0; i < data.length; i++) {
     const product = data[i];
+    console.time(`${product.product_id} 작업 시간`);
     const max = data.length;
     l(
       `START [${i + 1}/${max}] product_id: ${String(
@@ -51,7 +52,7 @@ export const updateByProductId = async ({
 
     if (!result) {
       l(
-        `setStoreList result: false [${i}/${max}] product_id: ${String(
+        `setStoreList result: false [${i + 1}/${max}] product_id: ${String(
           product.product_id
         ).padStart(6, " ")}`,
         "red"
@@ -62,7 +63,7 @@ export const updateByProductId = async ({
     await setGraph(product);
     await setLastMonthLowPrice(product);
     await wrapSlept(product.type === "itemscout" ? 500 : 2000);
-
+    console.timeEnd(`${product.product_id} 끝`);
     l(
       "timestamp",
       "blue",
