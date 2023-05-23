@@ -1,12 +1,12 @@
 import axios from "axios";
-import { getAllProductIdType } from "./product_price_update";
-import { NODE_API_URL, toComma } from "./common";
+import { NODE_API_URL } from "./common";
 import { l } from "./console";
 import { getCoupangStoreData } from "./coupang/getCoupangStoreData";
-import { getProductPriceData } from "./updateByIherb";
-import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
 import { getProductByNaverCatalogV2 } from "./getProductByNaverCatalogV2";
+import { getAllProductIdType } from "./product_price_update";
+import { getProductPriceData } from "./updateByIherb";
 import { StoreType } from "./updateByItemscout";
+import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -39,9 +39,7 @@ export const exceptionCompanyListAtNaver = () =>
 export const getNotificationItemscoutList = () => {
   return axios
     .get(`${NODE_API_URL}/crawling/product/notification/itemscout`)
-    .then((res) =>
-      res.data.data.map((item: { product_id: string }) => item.product_id)
-    )
+    .then((res) => res.data.data.map((item: { product_id: string }) => item.product_id))
     .catch((error) => {
       l("[Notification Itemscout error]", "yellow");
       return [];
@@ -55,11 +53,7 @@ export const getHolyZoneId = (): Promise<number[]> =>
       return data.map((p) => p.product_id);
     })
     .catch((e) => {
-      l(
-        "Noti Err",
-        "red",
-        "성지존 알림 오류 /crawling/product/holyzone/all" + e.code
-      );
+      l("Noti Err", "red", "성지존 알림 오류 /crawling/product/holyzone/all" + e.code);
       return [];
     });
 
@@ -67,14 +61,12 @@ export const getStoreList = async (product: getAllProductIdType) => {
   try {
     const crawlingType = product.type;
     if (crawlingType === "itemscout") {
-      const [coupangStoreList, iherbStoreData, itemscoutStoreList] =
-        await Promise.all([
-          getCoupangStoreData(product),
-          getProductPriceData(product),
-          getProductByItemscoutV2(product),
-        ]);
-      if (iherbStoreData)
-        return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
+      const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
+        getCoupangStoreData(product),
+        getProductPriceData(product),
+        getProductByItemscoutV2(product),
+      ]);
+      if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
       return [...coupangStoreList, ...itemscoutStoreList];
     }
 
@@ -92,10 +84,7 @@ export const getStoreList = async (product: getAllProductIdType) => {
   }
 };
 
-export const setStoreList = async (
-  product: getAllProductIdType,
-  storeList: StoreType[]
-) => {
+export const setStoreList = async (product: getAllProductIdType, storeList: StoreType[]) => {
   const dataToSend = {
     product,
     store_list: storeList,
@@ -103,12 +92,7 @@ export const setStoreList = async (
   const data: boolean = await axios
     .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
     .then((res) => {
-      if (res.data.message)
-        l(
-          `PASS MESSAGE product_id: ${product.product_id}`,
-          "green",
-          res.data.message
-        );
+      if (res.data.message) l(`PASS MESSAGE product_id: ${product.product_id}`, "green", res.data.message);
       return res.data.data;
     })
     .catch((err) => {
