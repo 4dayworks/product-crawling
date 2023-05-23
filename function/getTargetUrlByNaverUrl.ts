@@ -33,7 +33,7 @@ export const getTargetUrlByNaverUrl = async (url: string) => {
           }
         })
         .catch((error) => {
-          console.error("getTargetUrlByNaverUrl GET 요청 실패:", error);
+          console.error("getTargetUrlByNaverUrl GET 요청 실패:");
           return null;
         })
     : url;
