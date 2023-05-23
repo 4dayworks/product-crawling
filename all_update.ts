@@ -50,7 +50,7 @@ export const updateByProductId = async ({
     const storeList = await getStoreList(product);
     const result = await setStoreList(product, storeList);
 
-    if (!result) {
+    if (result === null) {
       l(
         `setStoreList result: false [${i + 1}/${max}] product_id: ${String(
           product.product_id
@@ -58,6 +58,7 @@ export const updateByProductId = async ({
         "red",
         ""
       );
+      continue;
     }
 
     await setGraph(product);
