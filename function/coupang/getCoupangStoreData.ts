@@ -26,7 +26,6 @@ getAllProductIdType) => {
   // 4. 필터링된 판매처 함수에서 반환하기
 
   // 1. 키워드/키워드id DB에서 가져오기
-  console.time("시작");
 
   const {
     coupang_itemscout_keyword_id,
@@ -49,7 +48,6 @@ getAllProductIdType) => {
         coupang_allow_tag: null,
       };
     });
-
   // 2. 키워드id 없을경우 itemscout 에서 keyword_id 가져오기
   let keyword_id = coupang_itemscout_keyword_id;
   const keyword = coupang_itemscout_keyword
@@ -115,18 +113,16 @@ getAllProductIdType) => {
     ? coupang_allow_tag.split(",").map((k) => k.trim())
     : [];
 
-  coupangStoreList = coupangStoreList
-    .filter(
-      (s) =>
-        require_list.map((r) => s.title.includes(r)).filter((b) => b === false)
-          .length === 0 &&
-        exception_list.map((r) => s.title.includes(r)).filter((b) => b === true)
-          .length === 0 &&
-        s.rocketType &&
-        allow_tag.includes(s.rocketType) &&
-        !s.isAd
-    )
-    .slice(0, 2);
+  coupangStoreList = coupangStoreList.filter(
+    (s) =>
+      require_list.map((r) => s.title.includes(r)).filter((b) => b === false)
+        .length === 0 &&
+      exception_list.map((r) => s.title.includes(r)).filter((b) => b === true)
+        .length === 0 &&
+      s.rocketType &&
+      allow_tag.includes(s.rocketType) &&
+      !s.isAd
+  );
 
   // 4. 필터링된 판매처 함수에서 반환하기
   const storeList: StoreType[] = [];
@@ -150,7 +146,6 @@ getAllProductIdType) => {
     };
     storeList.push(data);
   });
-  console.timeEnd("시작");
 
   return storeList;
 };
