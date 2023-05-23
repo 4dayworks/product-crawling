@@ -1,10 +1,10 @@
 import axios, { AxiosError } from "axios";
-import { getAllProductIdType } from "../../product_price_update";
 import { l } from "../console";
 import { NODE_API_URL } from "../common";
 import { AuthorizationKey } from "../auth";
 import { wrapSlept } from "../wrapSlept";
 import { ItemscoutType, StoreType } from "../updateByItemscout";
+import { getAllProductIdType } from "../product_price_update";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 export const getCoupangStoreData = async ({
