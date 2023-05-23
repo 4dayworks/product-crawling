@@ -1,5 +1,4 @@
-import { IherbPriceType } from ".././update_itemscout";
-import { ItemscoutType } from ".././updateByItemscout";
+import { IherbPriceType, ItemscoutType } from ".././updateByItemscout";
 import { uniqBy } from "lodash";
 import { getAllProductIdType } from "../product_price_update";
 

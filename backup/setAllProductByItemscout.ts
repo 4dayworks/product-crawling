@@ -1,12 +1,12 @@
 import axios from "axios";
-import { NODE_API_URL, toComma } from "./common";
+import { NODE_API_URL, toComma } from "../function/common";
 import {
   ProductCompareKeywordResponseType,
   getAllProductIdType,
-} from "./product_price_update";
-import { ItemscoutType, ProductTableV2 } from "./updateByItemscout";
+} from "../function/product_price_update";
+import { ItemscoutType, ProductTableV2 } from "../function/updateByItemscout";
 import { minBy, sortBy } from "lodash";
-import { l } from "./console";
+import { l } from "../function/console";
 
 export const setAllProductByItemscout = ([
   { keyword, keyword_id, itemscout_list, coupang_list, iherb_data },

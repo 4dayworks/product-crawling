@@ -9,7 +9,7 @@ import {
 } from "./iherb/updateByIherb";
 import { getAllProductIdType } from "./product_price_update";
 import { StoreType } from "./updateByItemscout";
-import { IherbPriceType } from "./update_itemscout";
+import { IherbPriceType } from "./updateByItemscout";
 
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
 // # (2)제품의 상세 데이터는 getProductDescData를 통해 가져옴(페이지 크롤링)
