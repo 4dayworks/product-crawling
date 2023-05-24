@@ -36,8 +36,20 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   naverList = shuffle(naverList);
 
   for (let i = 0; i < Math.max(itemscoutList.length, naverList.length); 0) {
-    if (itemscoutList.length > i) await setData(itemscoutList[i], i++, itemscoutList.length + naverList.length);
-    if (naverList.length > i) await setData(naverList[i], i++, itemscoutList.length + naverList.length);
+    if (itemscoutList.length > i) {
+      const result = await setData(itemscoutList[i], i++, itemscoutList.length + naverList.length);
+      if (!result) {
+        wrapSlept(5000);
+        continue;
+      }
+    }
+    if (naverList.length > i) {
+      const result = await setData(naverList[i], i++, itemscoutList.length + naverList.length);
+      if (!result) {
+        wrapSlept(5000);
+        continue;
+      }
+    }
   }
   l("[DONE]", "blue", "complete - all product price update");
 };
@@ -55,8 +67,10 @@ const setData = async (product: getAllProductIdType, i: number, max: number) => 
   const result = await setStoreList(product, storeList);
   // -- main logic --
 
-  if (result === null) l("Err", "red", `${s} setStoreList result: null`);
-  else {
+  if (result === null) {
+    l("Err", "red", `${s} setStoreList result: null`);
+    return false;
+  } else {
     await setGraph(product);
     await setLastMonthLowPrice(product);
 
@@ -72,5 +86,6 @@ const setData = async (product: getAllProductIdType, i: number, max: number) => 
         executeTime / 1000
       ).toFixed(2)}s\n`
     );
+    return true;
   }
 };
