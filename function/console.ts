@@ -1,6 +1,6 @@
 export const l = (
   header: string,
-  color: "red" | "green" | "yellow" | "blue" | "magenta" | "cyan",
+  color: "red" | "green" | "yellow" | "blue" | "magenta" | "cyan" | "white",
   message?: string
 ) => {
   switch (color) {

@@ -13,7 +13,7 @@ export const setGraph = async (product: getAllProductIdType) => {
     await axios.post(`${NODE_API_URL}/v2/product/daily_price/history`, {
       product_id: product.product_id,
     });
-    l("Sub", "blue", "complete - product_price write history");
+    // l("Sub", "blue", "complete - product_price write history");
   } catch (error) {
     l("Sub Err", "red", "failed - product_price write history");
   }
@@ -24,7 +24,7 @@ export const setLastMonthLowPrice = async (product: getAllProductIdType) => {
     await axios.patch(`${NODE_API_URL}/product/price/low_price`, {
       product_id: product.product_id,
     });
-    l("Sub", "blue", "complete - low price of month was written");
+    // l("Sub", "blue", "complete - low price of month was written");
   } catch (error) {
     l("Sub Err", "red", "failed - low price of month was written");
   }
@@ -93,12 +93,11 @@ export const setStoreList = async (product: getAllProductIdType, storeList: Stor
   const data: boolean = await axios
     .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
     .then((res) => {
-      if (res.data.message) l(`PASS MESSAGE product_id: ${product.product_id}`, "green", res.data.message);
+      if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
       return res.data.data;
     })
-    .catch((err) => {
-      const errorData = err as AxiosError;
-      console.log("Error Status: ", errorData.status, "Error Code: ", errorData.code);
+    .catch(() => {
+      l("Err ", "red", `setStoreList ${NODE_API_URL}/v2/crawling/store` + JSON.stringify(dataToSend));
       return null;
     });
   return data;
