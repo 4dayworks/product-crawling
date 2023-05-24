@@ -49,7 +49,7 @@ const setData = async (product: getAllProductIdType, i: number, max: number) => 
 
   console.time(`      TIME      id:${productStr} 작업 시간`);
 
-  l(`START`, color, `${s} type:${product.type}`);
+  l(`[${i + 1}/${max}]`, color, `id:${productStr} type:${product.type}`);
   const storeList = await getStoreList(product);
   const result = await setStoreList(product, storeList);
 
