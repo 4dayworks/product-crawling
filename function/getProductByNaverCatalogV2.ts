@@ -21,16 +21,19 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
     const catalogUrl = product.naver_catalog_link;
     const blacklist = await exceptionCompanyListAtNaver();
     if (!catalogUrl) return resolve([]);
+
     // const product_name = product.product_name;
     //#region
     try {
       request(catalogUrl, async (error, response, body) => {
+        let maxPrintLog = 0;
         if (error) {
           l("error request", "red", error);
           resolve([]);
           throw error;
         }
         let $ = cheerio.load(body);
+
         try {
           const storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
@@ -71,15 +74,16 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
             // 판매처링크
             const store_link = $(`#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`).attr("href");
 
-            l(
-              "GET",
-              "blue",
-              `(${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
-                .toString()
-                .padStart(5)} price:${price.toString().padStart(6)}, delivery: ${delivery
-                .toString()
-                .padStart(4)}, ${store_name}`
-            );
+            if (maxPrintLog++ < 3)
+              l(
+                "GET",
+                "white",
+                `(${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
+                  .toString()
+                  .padStart(5)} price:${price.toString().padStart(6)}, delivery: ${delivery
+                  .toString()
+                  .padStart(4)}, ${store_name}`
+              );
 
             storeList.push({
               yagi_product_id: productId,
