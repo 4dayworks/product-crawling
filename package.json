@@ -7,7 +7,8 @@
     "update:iherb-price": "ts-node product_price_update_iherb_all",
     "update:iherb-brand": "ts-node product_brand_add_iherb",
     "update-notification:itemscout": "ts-node product_price_update_itemscout_subscription",
-    "update": "ts-node ./product_price_update"
+    "update": "ts-node ./product_price_update",
+    "update:always": "ts-node ./product_price_update && npm run update:always"
   },
   "author": "",
   "license": "ISC",
