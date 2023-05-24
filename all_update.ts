@@ -24,6 +24,9 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   // const exceptionList = await getHolyZoneId();
   // data = data.filter((p) => !exceptionList.includes(p.product_id));
 
+  // 배열 섞기
+  if (!product_id_list) list = shuffle(list);
+
   //#region itemscout / naver type에 따라서 번갈아가며 한번씩 배열에 넣기
   const grouped = groupBy(list, "type");
   const combinedList: getAllProductIdType[] = [];
@@ -39,9 +42,6 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   }
   list = combinedList;
   //#endregion
-
-  // 배열 섞기
-  if (!product_id_list) list = shuffle(list);
 
   for (let i = 0; i < list.length; i++) {
     if (list.length > i) {
