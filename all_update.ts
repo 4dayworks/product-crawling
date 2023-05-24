@@ -39,14 +39,14 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
     if (itemscoutList.length > i) {
       const result = await setData(itemscoutList[i], i++, itemscoutList.length + naverList.length);
       if (!result) {
-        wrapSlept(5000);
+        wrapSlept(20000);
         continue;
       }
     }
     if (naverList.length > i) {
       const result = await setData(naverList[i], i++, itemscoutList.length + naverList.length);
       if (!result) {
-        wrapSlept(5000);
+        wrapSlept(20000);
         continue;
       }
     }
