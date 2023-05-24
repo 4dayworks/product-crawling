@@ -93,7 +93,7 @@ export const setStoreList = async (product: getAllProductIdType, storeList: Stor
   const data: boolean = await axios
     .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
     .then((res) => {
-      if (res.data.message) l(`PASS MESSAGE product_id: ${product.product_id}`, "green", res.data.message);
+      if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
       return res.data.data;
     })
     .catch(() => {
