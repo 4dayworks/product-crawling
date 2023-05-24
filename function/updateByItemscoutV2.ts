@@ -73,11 +73,12 @@ export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
           store_category: item.category, // "식품>건강식품>영양제>기타건강보조식품";
           store_review_count: item.reviewCount, // 19;
           store_review_score: item.reviewCount, //5;
-          store_link: item.link,
+          store_link: item.mobileProductUrl || item.pcProductUrl || item.link,
           store_is_oversea: item.isOversea,
           store_is_navershop: item.isNaverShop,
           store_delivery: Number(item.deliveryFee),
         };
+
         storeList.push(data);
       });
 
