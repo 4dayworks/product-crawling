@@ -47,18 +47,30 @@ const setData = async (product: getAllProductIdType, i: number, max: number) => 
   const productStr = String(product.product_id).padStart(5, " ");
   const s = `[${i + 1}/${max}]id:${productStr}`;
 
-  console.time(`      TIME      id:${productStr} 작업 시간`);
-
+  const startTime = new Date().getTime();
   l(`[${i + 1}/${max}]`, color, `id:${productStr} type:${product.type}`);
+
+  // -- main logic --
   const storeList = await getStoreList(product);
   const result = await setStoreList(product, storeList);
+  // -- main logic --
 
   if (result === null) l("Err", "red", `${s} setStoreList result: null`);
   else {
     await setGraph(product);
     await setLastMonthLowPrice(product);
-    await wrapSlept(product.type === "itemscout" ? 500 : 2000);
-    console.timeEnd(`      TIME      id:${productStr} 작업 시간`);
-    l(`timestamp`, "blue", `${s} end_at: ${new Date().toISOString()}\n`);
+
+    const executeTime = new Date().getTime() - startTime;
+    const waitTime = (product.type === "itemscout" ? 500 : 2000) - executeTime;
+    await wrapSlept(waitTime < 0 ? 0 : waitTime);
+
+    const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
+    l(
+      "TIME",
+      "blue",
+      `id:${productStr} 종료 시간: ${endTime}s, end_at: ${new Date().toUTCString()}, 작업 시간:${(
+        executeTime / 1000
+      ).toFixed(2)}s\n`
+    );
   }
 };
