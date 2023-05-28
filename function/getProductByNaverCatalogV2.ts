@@ -19,7 +19,7 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
   return new Promise<StoreType[]>(async (resolve) => {
     const productId = product.product_id;
     const catalogUrl = product.naver_catalog_link;
-    const blacklist = await exceptionCompanyListAtNaver();
+    const blacklist = await exceptionCompanyListAtNaver().catch((err) => []);
     if (!catalogUrl) return resolve([]);
 
     // const product_name = product.product_name;
