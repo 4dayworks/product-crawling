@@ -35,9 +35,11 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
         let $ = cheerio.load(body);
 
         try {
-          const storeList: StoreType[] = [];
+          let storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
-          const reviewCount = Number($(`#section-review > div > div > h3`).text().replace(regex, ""));
+          const reviewCount = Number(
+            $(`#section-review > div > div > h3`).text().replace(regex, "")
+          );
 
           $("#section-price > ul > li").each((i: number) => {
             // 판매처이름
@@ -49,7 +51,11 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
 
             // 회사 블랙리스트
             if (blacklist.indexOf(store_name) !== -1) {
-              l("PASS", "magenta", `[블랙리스트 회사] PASS (naver) ${store_name}`);
+              l(
+                "PASS",
+                "magenta",
+                `[블랙리스트 회사] PASS (naver) ${store_name}`
+              );
               return;
             }
 
@@ -70,17 +76,25 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
             const deliveryStr = $(
               `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)> span:nth-child(2)`
             ).text();
-            const delivery = deliveryStr ? Number(deliveryStr.replace(regex, "")) : 0;
+            const delivery = deliveryStr
+              ? Number(deliveryStr.replace(regex, ""))
+              : 0;
             // 판매처링크
-            const store_link = $(`#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`).attr("href");
+            const store_link = $(
+              `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`
+            ).attr("href");
 
             if (maxPrintLog++ < 3)
               l(
                 "GET",
                 "white",
-                `(${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
+                `(${idx.toString().padStart(2)}) id:${productId
                   .toString()
-                  .padStart(5)} price:${price.toString().padStart(6)}, delivery: ${delivery
+                  .padStart(5)} price:${price
+                  .toString()
+                  .padStart(5)} price:${price
+                  .toString()
+                  .padStart(6)}, delivery: ${delivery
                   .toString()
                   .padStart(4)}, ${store_name}`
               );
@@ -101,11 +115,22 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
               store_review_count: reviewCount,
               store_review_score: null,
             });
+
+            storeList = storeList.map((item) => ({
+              ...item,
+              store_review_count: item.store_review_count
+                ? item.store_review_count / storeList.length
+                : 0,
+            }));
           });
 
           return resolve(storeList);
         } catch (error) {
-          l("error 1", "red", `product_id:${productId.toString().padStart(5)}` + { error });
+          l(
+            "error 1",
+            "red",
+            `product_id:${productId.toString().padStart(5)}` + { error }
+          );
           resolve([]);
         }
       });
