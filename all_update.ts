@@ -1,5 +1,5 @@
 import axios from "axios";
-import { shuffle } from "lodash";
+import { groupBy, shuffle } from "lodash";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
 import {
@@ -34,36 +34,31 @@ export const updateByProductId = async ({
   // const exceptionList = await getHolyZoneId();
   // data = data.filter((p) => !exceptionList.includes(p.product_id));
 
-  let itemscoutList: getAllProductIdType[] = [];
-  let naverList: getAllProductIdType[] = [];
+  // 배열 섞기
+  if (!product_id_list) list = shuffle(list);
 
-  for (const item of list) {
-    if (item.type === "itemscout") itemscoutList.push(item);
-    else if (item.type === "naver") naverList.push(item);
+  //#region itemscout / naver type에 따라서 번갈아가며 한번씩 배열에 넣기
+  const grouped = groupBy(list, "type");
+  const combinedList: getAllProductIdType[] = [];
+  const types = ["naver", "itemscout"]; // 순서에 따라 번갈아가며 그룹화
+  const maxLength = Math.max(
+    grouped.naver ? grouped.naver.length : 0,
+    grouped.itemscout ? grouped.itemscout.length : 0
+  );
+  for (let i = 0; i < maxLength; i++) {
+    types.forEach((type) => {
+      if (grouped[type] && i < grouped[type].length)
+        combinedList.push(grouped[type][i]);
+    });
   }
+  list = combinedList;
+  //#endregion
 
-  itemscoutList = shuffle(itemscoutList);
-  naverList = shuffle(naverList);
-
-  for (let i = 0; i < Math.max(itemscoutList.length, naverList.length); 0) {
-    if (itemscoutList.length > i) {
-      const result = await setData(
-        itemscoutList[i],
-        i++,
-        itemscoutList.length + naverList.length
-      );
+  for (let i = 0; i < list.length; i++) {
+    if (list.length > i && list[i].type === "itemscout") {
+      const result = await setData(list[i], i, list.length);
       if (!result) {
-        wrapSlept(20000);
-        continue;
-      }
-    }
-    if (naverList.length > i) {
-      const result = await setData(
-        naverList[i],
-        i++,
-        itemscoutList.length + naverList.length
-      );
-      if (!result) {
+        // 문제 생겼을시 20초 대기 후 다음 재시도
         wrapSlept(20000);
         continue;
       }
