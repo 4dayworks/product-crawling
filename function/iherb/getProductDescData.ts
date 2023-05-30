@@ -202,7 +202,6 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           primary_ingredients: uniq(ingredientList).slice(0, 10).join(", "),
           func_content: uniq(rankStrList).slice(0, 10).join(", "),
         };
-        // console.log(data);
 
         if (iherbProductName === null) {
           l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다. iherbProductName = null");

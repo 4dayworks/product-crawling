@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { getCoupangStoreData } from "./coupang/getCoupangStoreData";
+import { getCoupangStoreDataV2 } from "./coupang/getCoupangStoreDataV2";
 import { getProductByNaverCatalogV2 } from "./getProductByNaverCatalogV2";
 import { getAllProductIdType } from "./product_price_update";
 import { getProductPriceData } from "./updateByIherb";
@@ -62,7 +62,7 @@ export const getStoreList = async (product: getAllProductIdType) => {
     const crawlingType = product.type;
     if (crawlingType === "itemscout") {
       const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
-        getCoupangStoreData(product),
+        getCoupangStoreDataV2(product),
         getProductPriceData(product),
         getProductByItemscoutV2(product),
       ]);
@@ -72,14 +72,14 @@ export const getStoreList = async (product: getAllProductIdType) => {
 
     if (crawlingType === "naver") {
       const [coupangStoreList, naverStoreList] = await Promise.all([
-        getCoupangStoreData(product),
+        getCoupangStoreDataV2(product),
         getProductByNaverCatalogV2(product),
       ]);
       return [...coupangStoreList, ...naverStoreList];
     }
     return [];
   } catch (error) {
-    console.log(error);
+    l("Err", "red", "getStoreList Error");
     return [];
   }
 };

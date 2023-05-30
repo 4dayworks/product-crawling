@@ -1,22 +1,13 @@
 import axios, { AxiosError } from "axios";
-import { l } from "../console";
-import { NODE_API_URL } from "../common";
-import { AuthorizationKey } from "../auth";
-import { wrapSlept } from "../wrapSlept";
-import { ItemscoutType, StoreType } from "../updateByItemscout";
-import { getAllProductIdType } from "../product_price_update";
+import { AuthorizationKey } from "../function/auth";
+import { NODE_API_URL } from "../function/common";
+import { l } from "../function/console";
+import { getAllProductIdType } from "../function/product_price_update";
+import { StoreType } from "../function/updateByItemscout";
+import { wrapSlept } from "../function/wrapSlept";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
-export const getCoupangStoreData = async ({
-  product_id,
-  product_name,
-}: // coupang_itemscout_keyword,
-// coupang_itemscout_keyword_id,
-
-// coupang_exception_keyword_list,
-// coupang_allow_tag,
-// coupang_require_keyword_list,
-getAllProductIdType) => {
+export const getCoupangStoreData = async ({ product_id, product_name }: getAllProductIdType) => {
   // 개요
   // 1. 키워드/키워드id DB에서 가져오기
   // 2. 키워드id 없을경우 itemscout 에서 keyword_id 가져오기
