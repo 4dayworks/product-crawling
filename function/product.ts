@@ -61,11 +61,14 @@ export const getStoreList = async (product: getAllProductIdType) => {
   try {
     const crawlingType = product.type;
     if (crawlingType === "itemscout") {
+      console.log("getStoreList", 1);
       const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
         getCoupangStoreDataV2(product),
         getProductPriceData(product),
         getProductByItemscoutV2(product),
       ]);
+      console.log("getStoreList", 2);
+      console.log("getStoreList", { itemscoutStoreList });
       if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
       return [...coupangStoreList, ...itemscoutStoreList];
     }
