@@ -5,7 +5,7 @@ import { StoreType } from "../updateByItemscout";
 import { l } from "../console";
 import { uniqueId } from "lodash";
 
-export const getCoupangStoreDataV2 = async ({ product_id, product_name }: getAllProductIdType) => {
+export const getCoupangStoreListV2 = async ({ product_id, product_name }: getAllProductIdType) => {
   const getHeaders = () => {
     return {
       "Accept-Encoding": "deflate, br",
@@ -85,6 +85,5 @@ export const getCoupangStoreDataV2 = async ({ product_id, product_name }: getAll
     };
     storeList.push(data);
   });
-  console.log("storeList", storeList);
   return storeList;
 };
