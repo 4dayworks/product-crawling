@@ -62,6 +62,7 @@ const setData = async (product: getAllProductIdType, i: number, max: number) => 
   const s = `[${i + 1}/${max}]id:${productStr}`;
 
   const startTime = new Date().getTime();
+
   l(`[${i + 1}/${max}]`, color, `id:${productStr} type:${product.type}`);
 
   // -- main logic --
