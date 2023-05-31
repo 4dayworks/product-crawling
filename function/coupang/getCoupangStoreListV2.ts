@@ -33,16 +33,17 @@ export const getCoupangStoreListV2 = async ({ product_id, product_name }: getAll
   const require_list = coupang_require_keyword_list ? coupang_require_keyword_list.split(",").map((k) => k.trim()) : [];
 
   // 2. 쿠팡 검색 결과 페이지 크롤링하기
+
   const response = await axios
     .get(
       `https://www.coupang.com/np/search?rocketAll=true&q=${product_name.replace(
-        / /g,
+        /[ \[\]]/g,
         "+"
       )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36`,
       { headers: getHeaders() }
     )
     .catch((e) => {
-      l("Err", "red", "getCoupangStoreDataV2");
+      l("Err", "red", "getCoupangStoreDataV2" + e);
       return { data: null };
     });
   const $ = cheerio.load(response.data);
