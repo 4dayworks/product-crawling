@@ -55,7 +55,7 @@ export const updateByProductId = async ({
   //#endregion
 
   for (let i = 0; i < list.length; i++) {
-    if (list.length > i) {
+    if (list.length > i && list[i].type === "naver") {
       const result = await setData(list[i], i, list.length);
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
