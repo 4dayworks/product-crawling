@@ -1,5 +1,5 @@
 import { getAllProductIdType } from "../function/product_price_update";
-import { getProductByNaverCatalogV2 } from "../function/getProductByNaverCatalogV2";
+import { getNaverCatalogStoreListV2 } from "../function/getNaverCatalogStoreListV2";
 import { NODE_API_URL } from "../function/common";
 import axios from "axios";
 import { AuthorizationKey } from "../function/auth";
@@ -23,7 +23,7 @@ const updateNotification = async (product_id_list?: number[]) => {
       await getItemscoutStoreListV2(product, i + 1, data.length, true);
       await wrapSlept(2000);
     } else if (product.type === "naver" && product.naver_catalog_link) {
-      await getProductByNaverCatalogV2(product, i + 1, data.length, true);
+      await getNaverCatalogStoreListV2(product, i + 1, data.length, true);
       await wrapSlept(2000);
     }
     l("timestamp", "cyan", new Date().toISOString());

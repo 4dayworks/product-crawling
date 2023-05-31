@@ -1,6 +1,6 @@
 import axios from "axios";
 import { groupBy, shuffle } from "lodash";
-import { NODE_API_URL } from "./function/common";
+import { NODE_API_URL, isLocalhost } from "./function/common";
 import { l } from "./function/console";
 import { getStoreList, setGraph, setLastMonthLowPrice, setStoreList } from "./function/product";
 import { getAllProductIdType } from "./function/product_price_update";
@@ -44,7 +44,7 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   //#endregion
 
   for (let i = 0; i < list.length; i++) {
-    if (list.length > i && list[i].type === "itemscout") {
+    if (list.length > i && (list[i].type === "itemscout" || isLocalhost)) {
       const result = await setData(list[i], i, list.length);
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
