@@ -123,7 +123,12 @@ export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
                 : 0,
             }));
           });
-
+          storeList = storeList.map((item) => ({
+            ...item,
+            store_review_count: item.store_review_count
+              ? item.store_review_count / storeList.length
+              : 0,
+          }));
           return resolve(storeList);
         } catch (error) {
           l(
