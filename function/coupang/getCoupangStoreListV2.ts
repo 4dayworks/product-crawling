@@ -38,7 +38,7 @@ export const getCoupangStoreListV2 = async ({ product_id, product_name }: getAll
       `https://www.coupang.com/np/search?rocketAll=true&q=${product_name.replace(
         / /g,
         "+"
-      )}&filterType=rocket%2Ccoupang_global&rating=0&sorter=scoreDesc&listSize=36`,
+      )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36`,
       { headers: getHeaders() }
     )
     .catch((e) => {
