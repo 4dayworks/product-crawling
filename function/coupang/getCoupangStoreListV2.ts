@@ -5,27 +5,19 @@ import { StoreType } from "../updateByItemscout";
 import { l } from "../console";
 import { uniqueId } from "lodash";
 
-const getHeaders = () => {
-  return {
-    "Accept-Encoding": "deflate, br",
-    "Content-Type": "text/html;charset=UTF-8",
-    "User-Agent": "PostmanRuntime/7.32.2",
-    Cookie: uniqueId(),
-  };
-};
-
-export const getCoupangStoreDataV2 = async ({
+export const getCoupangStoreListV2 = async ({
   product_id,
   product_name,
 }: getAllProductIdType) => {
-  // console.log(
-  //   "getCoupangStoreDataV2",
-  //   1,
-  //   `https://www.coupang.com/np/search?rocketAll=true&q=${product_name.replace(
-  //     / /g,
-  //     "+"
-  //   )}&filterType=rocket%2Ccoupang_global&rating=0&sorter=scoreDesc&listSize=36`
-  // );
+  const getHeaders = () => {
+    return {
+      "Accept-Encoding": "deflate, br",
+      "Content-Type": "text/html;charset=UTF-8",
+      "User-Agent": "PostmanRuntime/7.32.2",
+      Cookie: uniqueId(),
+    };
+  };
+
   const response = await axios
     .get(
       `https://www.coupang.com/np/search?rocketAll=true&q=${product_name.replace(

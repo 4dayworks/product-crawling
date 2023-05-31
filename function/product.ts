@@ -1,12 +1,12 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { getCoupangStoreDataV2 } from "./coupang/getCoupangStoreDataV2";
-import { getProductByNaverCatalogV2 } from "./getProductByNaverCatalogV2";
+import { getCoupangStoreListV2 } from "./coupang/getCoupangStoreListV2";
+import { getNaverCatalogStoreListV2 } from "./getNaverCatalogStoreListV2";
 import { getAllProductIdType } from "./product_price_update";
-import { getProductPriceData } from "./updateByIherb";
+import { getIherbStoreList } from "./getIherbStoreList";
 import { StoreType } from "./updateByItemscout";
-import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
+import { getItemscoutStoreListV2 } from "./getItemscoutStoreListV2";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -62,9 +62,9 @@ export const getStoreList = async (product: getAllProductIdType) => {
     const crawlingType = product.type;
     if (crawlingType === "itemscout") {
       const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
-        getCoupangStoreDataV2(product),
-        getProductPriceData(product),
-        getProductByItemscoutV2(product),
+        getCoupangStoreListV2(product),
+        getIherbStoreList(product),
+        getItemscoutStoreListV2(product),
       ]);
       if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
       return [...coupangStoreList, ...itemscoutStoreList];
@@ -72,8 +72,8 @@ export const getStoreList = async (product: getAllProductIdType) => {
 
     if (crawlingType === "naver") {
       const [coupangStoreList, naverStoreList] = await Promise.all([
-        getCoupangStoreDataV2(product),
-        getProductByNaverCatalogV2(product),
+        getCoupangStoreListV2(product),
+        getNaverCatalogStoreListV2(product),
       ]);
       return [...coupangStoreList, ...naverStoreList];
     }

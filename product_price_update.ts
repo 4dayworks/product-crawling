@@ -146,5 +146,5 @@ updateByProductId({
   ],
   // page: 0,
   // size: 6000,
-  // product_id_list: Array.from({ length: 5000 }).map((_, i) => i + 1),
+  // product_id_list: Array.from({ length: 100 }).map((_, i) => i + 1),
 });

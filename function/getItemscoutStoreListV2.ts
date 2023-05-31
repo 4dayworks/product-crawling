@@ -5,7 +5,7 @@ import { getAllProductIdType } from "./product_price_update";
 import { ItemscoutType, StoreType } from "./updateByItemscout";
 
 const headers = { "Accept-Encoding": "deflate, br" };
-export const getProductByItemscoutV2 = (product: getAllProductIdType) =>
+export const getItemscoutStoreListV2 = (product: getAllProductIdType) =>
   new Promise<StoreType[]>(async (resolve, reject) => {
     const originData = product;
 

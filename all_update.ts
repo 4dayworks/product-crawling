@@ -1,6 +1,6 @@
 import axios from "axios";
 import { groupBy, shuffle } from "lodash";
-import { NODE_API_URL } from "./function/common";
+import { NODE_API_URL, isLocalhost } from "./function/common";
 import { l } from "./function/console";
 import {
   getStoreList,
@@ -77,6 +77,7 @@ const setData = async (
   const s = `[${i + 1}/${max}]id:${productStr}`;
 
   const startTime = new Date().getTime();
+
   l(`[${i + 1}/${max}]`, color, `id:${productStr} type:${product.type}`);
 
   // -- main logic --
