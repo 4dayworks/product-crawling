@@ -1,0 +1,41 @@
+yarn run v1.22.19
+$ ts-node ./product_price_update
+[32m  [1/1577][0m id:    1 type:naver
+       GET ( 1) id:    1 price:26990 price: 26990, delivery: 3000, 브로콜리몰
+       GET ( 2) id:    1 price:32660 price: 32660, delivery: 3000, 건강-나눔
+       GET ( 3) id:    1 price:32670 price: 32670, delivery: 3000, DW그린케어
+[34m      TIME[0m id:    1 종료 시간: 2.21s, end_at: Thu, 01 Jun 2023 00:59:02 GMT, 작업 시간:2.21s
+
+[32m  [2/1577][0m id:    2 type:naver
+       GET ( 1) id:    2 price: 8900 price:  8900, delivery: 3000, 비타민마을
+[34m      TIME[0m id:    2 종료 시간: 3.33s, end_at: Thu, 01 Jun 2023 00:59:06 GMT, 작업 시간:3.33s
+
+[32m  [3/1577][0m id:    6 type:naver
+       GET ( 1) id:    6 price:31500 price: 31500, delivery: 2500, lemoncity
+       GET ( 2) id:    6 price:32000 price: 32000, delivery:    0, 속편한 쇼핑몰
+       GET ( 3) id:    6 price:32000 price: 32000, delivery: 3000, 휴담촌
+[34m      TIME[0m id:    6 종료 시간: 2.00s, end_at: Thu, 01 Jun 2023 00:59:08 GMT, 작업 시간:1.88s
+
+[32m  [4/1577][0m id:   10 type:naver
+       GET ( 1) id:   10 price: 6890 price:  6890, delivery: 3000, 메타골라할인모음담기추천몰
+       GET ( 2) id:   10 price: 6900 price:  6900, delivery:    0, 오마이비타
+       GET ( 3) id:   10 price: 8120 price:  8120, delivery:    0, 옥션
+[35m      PASS[0m [블랙리스트 회사] PASS (naver) 위메프
+[34m      TIME[0m id:   10 종료 시간: 2.00s, end_at: Thu, 01 Jun 2023 00:59:10 GMT, 작업 시간:2.00s
+
+[32m  [5/1577][0m id:   11 type:naver
+       GET ( 1) id:   11 price:39910 price: 39910, delivery: 3000, 11번가
+       GET ( 2) id:   11 price:40450 price: 40450, delivery: 3000, 옥션
+[35m      PASS[0m [블랙리스트 회사] PASS (naver) 식물영양소
+       GET ( 4) id:   11 price:40470 price: 40470, delivery: 3000, G마켓
+[34m      TIME[0m id:   11 종료 시간: 2.67s, end_at: Thu, 01 Jun 2023 00:59:12 GMT, 작업 시간:2.67s
+
+[32m  [6/1577][0m id:   16 type:naver
+[35m  No Store[0m MESSAGE product_id: 16 Pass Filtered No Store
+[34m      TIME[0m id:   16 종료 시간: 2.92s, end_at: Thu, 01 Jun 2023 00:59:15 GMT, 작업 시간:2.92s
+
+[32m  [7/1577][0m id:   18 type:naver
+       GET ( 1) id:   18 price:100000 price:100000, delivery: 3000, IRUDAM 이루담
+[34m      TIME[0m id:   18 종료 시간: 4.08s, end_at: Thu, 01 Jun 2023 00:59:19 GMT, 작업 시간:4.08s
+
+[32m  [8/1577][0m id:   20 type:naver

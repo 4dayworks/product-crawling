@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { groupBy, shuffle } from "lodash";
 import { NODE_API_URL, isLocalhost } from "./function/common";
 import { l } from "./function/console";
