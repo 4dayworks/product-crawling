@@ -43,7 +43,7 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   list = combinedList;
   //#endregion
 
-  for (let i = 0; i < list.length; i++) {
+  for (let i = 5000; i < list.length; i++) {
     if (list.length > i) {
       // if (list.length > i && (list[i].type === "itemscout" || isLocalhost)) {
       const result = await setData(list[i], i, list.length);
