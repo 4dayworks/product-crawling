@@ -3,7 +3,7 @@ import { AuthorizationKey } from "./function/auth";
 import { l } from "./function/console";
 import { getMaxPageList } from "./function/iherb/getMaxPageList";
 import { getProductListData } from "./function/iherb/getProductListData";
-import { getProductPriceData } from "./function/updateByIherb";
+import { getIherbStoreList } from "./function/getIherbStoreList";
 import { wrapSlept } from "./function/wrapSlept";
 import { getBrandURLList } from "./function/iherb/brandList";
 
@@ -50,7 +50,7 @@ const priceUpdateIherb = async (brandURLList: string[]) => {
         // if (brandIndex == 4 && page == 7 && i < 18) continue;
         /*START***************************************************************************** */
         const product = productURLList[i];
-        await getProductPriceData(product);
+        await getIherbStoreList(product);
 
         const start_at = new Date();
         const text = `iherb_product_id: ${product.product_url

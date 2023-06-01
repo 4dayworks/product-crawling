@@ -15,7 +15,7 @@ export type DataListType = {
   product_name: string | null;
 };
 
-export const getProductByNaverCatalogV2 = (product: getAllProductIdType) => {
+export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
   return new Promise<StoreType[]>(async (resolve) => {
     const productId = product.product_id;
     const catalogUrl = product.naver_catalog_link;
