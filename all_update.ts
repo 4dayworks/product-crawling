@@ -61,7 +61,7 @@ export const updateByProductId = async ({
       l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
-        wrapSlept(5000);
+        await wrapSlept(20000);
         continue;
       }
     }
