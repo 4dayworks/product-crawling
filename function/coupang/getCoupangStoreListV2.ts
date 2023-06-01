@@ -33,10 +33,11 @@ export const getCoupangStoreListV2 = async ({
         "ERR",
         `${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`
       );
-      return {
-        coupang_require_keyword_list: null,
-        coupang_exception_keyword_list: null,
-      };
+      throw Error("getCoupangStoreDataV2 Error");
+      // return {
+      //   coupang_require_keyword_list: null,
+      //   coupang_exception_keyword_list: null,
+      // };
     });
   const exception_list = coupang_exception_keyword_list
     ? coupang_exception_keyword_list.split(",").map((k) => k.trim())
@@ -57,7 +58,8 @@ export const getCoupangStoreListV2 = async ({
     )
     .catch((e) => {
       l("Err", "red", "getCoupangStoreDataV2" + e);
-      return { data: null };
+      throw Error("getCoupangStoreDataV2 Error");
+      // return { data: null };
     });
   // console.log("getCoupangStoreDataV2", 2, response);
   const $ = cheerio.load(response.data);

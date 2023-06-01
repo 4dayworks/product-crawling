@@ -3,31 +3,6 @@ import { AuthorizationKey } from "./function/auth";
 import { updateByProductId } from "./all_update";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
-axios.interceptors.request.use(
-  (req) => req,
-  (error) => {
-    const errorData = error as AxiosError;
-    console.log(
-      "Error Status: " + errorData.status,
-      "Error Code: " + errorData.code,
-      "Error Message: " + errorData.message
-    );
-    return Promise.reject(errorData);
-  }
-);
-
-axios.interceptors.response.use(
-  (res) => res,
-  (error) => {
-    const errorData = error as AxiosError;
-    console.log(
-      "Error Status: " + errorData.status,
-      "Error Code: " + errorData.code,
-      "Error Message: " + errorData.message
-    );
-    return Promise.reject(errorData);
-  }
-);
 // updateByProductId({page: 0, size: 3000, product_id_list: [12414,121213]});
 updateByProductId({
   product_id_list: [
