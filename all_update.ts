@@ -55,8 +55,10 @@ export const updateByProductId = async ({
   //#endregion
 
   for (let i = 0; i < list.length; i++) {
-    if (list.length > i && list[i].type === "naver") {
+    if (list.length > i) {
+      // if (list.length > i && (list[i].type === "itemscout" || isLocalhost)) {
       const result = await setData(list[i], i, list.length);
+      l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
         wrapSlept(5000);
@@ -95,7 +97,7 @@ const setData = async (
     await setLastMonthLowPrice(product);
 
     const executeTime = new Date().getTime() - startTime;
-    const waitTime = (product.type === "itemscout" ? 500 : 2000) - executeTime;
+    const waitTime = (product.type === "itemscout" ? 50 : 200) - executeTime;
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
