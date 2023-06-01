@@ -46,16 +46,17 @@ export const getCoupangStoreListV2 = async ({
     : [];
 
   // 2. 쿠팡 검색 결과 페이지 크롤링하기
+
   const response = await axios
     .get(
       `https://www.coupang.com/np/search?rocketAll=true&q=${product_name.replace(
-        / /g,
+        /[ \[\]]/g,
         "+"
-      )}&filterType=rocket%2Ccoupang_global&rating=0&sorter=scoreDesc&listSize=36`,
+      )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36`,
       { headers: getHeaders() }
     )
     .catch((e) => {
-      l("Err", "red", "getCoupangStoreDataV2");
+      l("Err", "red", "getCoupangStoreDataV2" + e);
       return { data: null };
     });
   // console.log("getCoupangStoreDataV2", 2, response);
@@ -73,9 +74,12 @@ export const getCoupangStoreListV2 = async ({
       "https:" + $(element).find("dl > dt > img").attr("data-img-src");
     const store_product_image_src =
       "https:" + $(element).find("dl > dt > img").attr("src");
-    const store_product_image = store_product_image_src.includes("undefined")
-      ? store_product_image_data_src
-      : store_product_image_src;
+
+    const store_product_image =
+      store_product_image_src.includes("undefined") ||
+      store_product_image_src.includes("blank1x1")
+        ? store_product_image_data_src
+        : store_product_image_src;
     const store_link = "https://www.coupang.com" + $(element).attr("href");
     const store_price = Number(
       $(element)

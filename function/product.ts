@@ -96,8 +96,8 @@ export const setStoreList = async (product: getAllProductIdType, storeList: Stor
       if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
       return res.data.data;
     })
-    .catch(() => {
-      l("Err ", "red", `setStoreList ${NODE_API_URL}/v2/crawling/store` + JSON.stringify(dataToSend));
+    .catch((e) => {
+      l("Err ", "red", `setStoreList ${NODE_API_URL}/v2/crawling/store`);
       return null;
     });
   return data;
