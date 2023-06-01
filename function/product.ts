@@ -87,7 +87,7 @@ export const getStoreList = async (product: getAllProductIdType) => {
     }
     return [];
   } catch (error) {
-    l("Err", "red", "getStoreList Error");
+    l("Err", "red", (error as Error).message);
     return null;
   }
 };
