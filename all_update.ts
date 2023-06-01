@@ -25,7 +25,7 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   // data = data.filter((p) => !exceptionList.includes(p.product_id));
 
   // 배열 섞기
-  if (!product_id_list) list = shuffle(list);
+  // if (!product_id_list) list = shuffle(list);
 
   //#region itemscout / naver type에 따라서 번갈아가며 한번씩 배열에 넣기
   const grouped = groupBy(list, "type");
