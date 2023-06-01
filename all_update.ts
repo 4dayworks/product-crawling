@@ -59,7 +59,7 @@ export const updateByProductId = async ({
       const result = await setData(list[i], i, list.length);
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
-        wrapSlept(20000);
+        wrapSlept(5000);
         continue;
       }
     }
