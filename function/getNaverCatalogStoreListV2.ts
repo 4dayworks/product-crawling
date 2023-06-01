@@ -29,7 +29,6 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
         let maxPrintLog = 0;
         if (error) {
           l("error request", "red", error);
-          resolve([]);
           throw error;
         }
         let $ = cheerio.load(body);

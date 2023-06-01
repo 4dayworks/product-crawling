@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { groupBy, shuffle } from "lodash";
 import { NODE_API_URL, isLocalhost } from "./function/common";
 import { l } from "./function/console";
@@ -58,9 +58,10 @@ export const updateByProductId = async ({
     if (list.length > i) {
       // if (list.length > i && (list[i].type === "itemscout" || isLocalhost)) {
       const result = await setData(list[i], i, list.length);
+      l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
-        wrapSlept(20000);
+        await wrapSlept(20000);
         continue;
       }
     }
