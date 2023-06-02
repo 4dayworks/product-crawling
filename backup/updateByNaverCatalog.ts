@@ -114,7 +114,7 @@ export const getProductByNaverCatalog = (productId: number, catalogUrl: string, 
             return resolve(true);
           }
           const { product_id, price: low_price, delivery, store_name, store_link } = cheapStore.data;
-          // console.log(product_id, low_price, delivery, store_name, store_link);
+          // console.info(product_id, low_price, delivery, store_name, store_link);
           if (!product_id || !low_price || delivery === undefined || delivery === null || !store_name || !store_link) {
             if (!product_id) l("Pass", "green", `[${index}/${max}] no product_id, product_id:${productId}`);
             if (!low_price) l("Pass", "green", `[${index}/${max}] no low_price, product_id:${productId}`);
