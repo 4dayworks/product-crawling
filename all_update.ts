@@ -53,8 +53,9 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
       // l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
-        await wrapSlept(20000);
-        continue;
+        break;
+        // await wrapSlept(20000);
+        // continue;
       }
     }
   }
