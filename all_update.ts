@@ -46,16 +46,18 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
 
   //70000번 이상으로 거르기
   list = list.filter((s) => s.product_id > 70000);
-
-  for (let i = 8087; i < list.length; i++) {
+  let chance = 3; //다시 시도할 기회
+  for (let i = 4751; i < list.length; i++) {
     if (list.length > i) {
       const result = await setData(list[i], i, list.length);
       // l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
-        // 문제 생겼을시 20초 대기 후 다음 재시도
-        break;
-        // await wrapSlept(20000);
-        // continue;
+        if (chance > 0) {
+          chance--;
+          // 문제 생겼을시 20초 대기 후 다음 재시도
+          await wrapSlept(20000);
+          continue;
+        } else break;
       }
     }
   }
