@@ -47,15 +47,15 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   //70000번 이상으로 거르기
   list = list.filter((s) => s.product_id > 70000);
   let chance = 3; //다시 시도할 기회
-  for (let i = 12000; i < list.length; i++) {
+  for (let i = 10160; i < list.length; i++) {
     if (list.length > i) {
       const result = await setData(list[i], i, list.length);
       // l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         if (chance > 0) {
+          // 문제 생겼을시 3분 또는 20초 대기 후 다음 재시도
+          await wrapSlept(chance === 1 ? 180000 : 20000);
           chance--;
-          // 문제 생겼을시 20초 대기 후 다음 재시도
-          await wrapSlept(20000);
           continue;
         } else break;
       }
