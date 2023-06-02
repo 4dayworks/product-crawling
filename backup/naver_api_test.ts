@@ -9,9 +9,8 @@
 //       headers: { "X-Naver-Client-Id": "yeoXdUtxPpcjkxR4G932", "X-Naver-Client-Secret": "TChrYL1rxH" },
 //     })
 //     .then((d: AxiosResponse) => getListFiltered(d.data))
-//     .catch((e: AxiosError) => console.log("err", e.message));
+//     .catch((e: AxiosError) => console.error("err", e.message));
 
-//   console.log(a);
 // };
 
 // execute();

@@ -4,8 +4,8 @@ import { iherb_list_ingredient } from "./아이허브성분";
 function start_lodash() {
   const list = iherb_list_ingredient;
 
-  console.log(countBy(list));
-  // console.log(uniq(list).join(","));
+  console.info(countBy(list));
+  // console.info(uniq(list).join(","));
 }
 
 start_lodash();

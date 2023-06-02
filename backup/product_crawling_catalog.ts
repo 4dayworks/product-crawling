@@ -284,6 +284,6 @@ const f = async () => {
       await wrapSlept(3000);
     }
   }
-  console.log("Done!");
+  console.info("Done!");
 };
 f();

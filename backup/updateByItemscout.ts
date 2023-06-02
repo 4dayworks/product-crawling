@@ -251,7 +251,7 @@ export const getProductByItemscout = (product_id: number, product_name: string, 
       //#endregion
     } catch (error) {
       l("error", "red", `[${index}/${max}] product_id:${product_id.toString().padStart(5)}`);
-      console.log(error);
+      console.error(error);
       resolve(true);
     }
   });
