@@ -59,6 +59,7 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
           continue;
         } else break;
       }
+      chance = 3;
     }
   }
   l("[DONE]", "blue", "complete - all product price update");
