@@ -13,7 +13,6 @@ type updateByProductIdType = {
 
 export const updateByProductId = async ({ page = 0, size = 100000, product_id_list }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
-  console.log(`${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`);
   let list: getAllProductIdType[] = await axios(
     `${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`
   ).then((d) => d.data.data);
@@ -51,7 +50,7 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   for (let i = 4000; i < list.length; i++) {
     if (list.length > i) {
       const result = await setData(list[i], i, list.length);
-      l("[result]", "magenta", JSON.stringify(result));
+      // l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
         await wrapSlept(20000);
