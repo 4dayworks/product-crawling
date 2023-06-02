@@ -2,12 +2,7 @@ import axios, { AxiosError } from "axios";
 import { groupBy, shuffle } from "lodash";
 import { NODE_API_URL, isLocalhost } from "./function/common";
 import { l } from "./function/console";
-import {
-  getStoreList,
-  setGraph,
-  setLastMonthLowPrice,
-  setStoreList,
-} from "./function/product";
+import { getStoreList, setGraph, setLastMonthLowPrice, setStoreList } from "./function/product";
 import { getAllProductIdType } from "./function/product_price_update";
 import { wrapSlept } from "./function/wrapSlept";
 type updateByProductIdType = {
@@ -16,19 +11,15 @@ type updateByProductIdType = {
   product_id_list?: number[];
 };
 
-export const updateByProductId = async ({
-  page = 0,
-  size = 100000,
-  product_id_list,
-}: updateByProductIdType) => {
+export const updateByProductId = async ({ page = 0, size = 100000, product_id_list }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
+  console.log(`${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`);
   let list: getAllProductIdType[] = await axios(
     `${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`
   ).then((d) => d.data.data);
 
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
-  if (product_id_list)
-    list = list.filter((p) => product_id_list.includes(p.product_id));
+  if (product_id_list) list = list.filter((p) => product_id_list.includes(p.product_id));
 
   //#region (2) 성지가격있는 제품아이디 모두 제외시키기
   // const exceptionList = await getHolyZoneId();
@@ -45,18 +36,20 @@ export const updateByProductId = async ({
     grouped.naver ? grouped.naver.length : 0,
     grouped.itemscout ? grouped.itemscout.length : 0
   );
-  for (let i = 0; i < maxLength; i++) {
+  for (let i = 2000; i < maxLength; i++) {
     types.forEach((type) => {
-      if (grouped[type] && i < grouped[type].length)
-        combinedList.push(grouped[type][i]);
+      if (grouped[type] && i < grouped[type].length) combinedList.push(grouped[type][i]);
     });
   }
   list = combinedList;
+
   //#endregion
+
+  //70000번 이상으로 거르기
+  list = list.filter((s) => s.product_id > 70000);
 
   for (let i = 0; i < list.length; i++) {
     if (list.length > i) {
-      // if (list.length > i && (list[i].type === "itemscout" || isLocalhost)) {
       const result = await setData(list[i], i, list.length);
       l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
@@ -69,11 +62,7 @@ export const updateByProductId = async ({
   l("[DONE]", "blue", "complete - all product price update");
 };
 
-const setData = async (
-  product: getAllProductIdType,
-  i: number,
-  max: number
-) => {
+const setData = async (product: getAllProductIdType, i: number, max: number) => {
   const color = product.type === "itemscout" ? "yellow" : "green";
   const productStr = String(product.product_id).padStart(5, " ");
   const s = `[${i + 1}/${max}]id:${productStr}`;
