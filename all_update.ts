@@ -82,7 +82,6 @@ const setData = async (
 
   // -- main logic --
   const storeList = await getStoreList(product);
-  console.log("getStoreList Error", storeList);
   if (storeList === null) return false;
   const result = await setStoreList(product, storeList);
   // -- main logic --
