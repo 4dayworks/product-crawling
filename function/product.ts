@@ -1,12 +1,12 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { getCoupangStoreDataV2 } from "./coupang/getCoupangStoreDataV2";
-import { getProductByNaverCatalogV2 } from "./getProductByNaverCatalogV2";
+import { getCoupangStoreListV2 } from "./coupang/getCoupangStoreListV2";
+import { getNaverCatalogStoreListV2 } from "./getNaverCatalogStoreListV2";
 import { getAllProductIdType } from "./product_price_update";
-import { getProductPriceData } from "./updateByIherb";
+import { getIherbStoreList } from "./getIherbStoreList";
 import { StoreType } from "./updateByItemscout";
-import { getProductByItemscoutV2 } from "./updateByItemscoutV2";
+import { getItemscoutStoreListV2 } from "./getItemscoutStoreListV2";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -39,7 +39,9 @@ export const exceptionCompanyListAtNaver = () =>
 export const getNotificationItemscoutList = () => {
   return axios
     .get(`${NODE_API_URL}/crawling/product/notification/itemscout`)
-    .then((res) => res.data.data.map((item: { product_id: string }) => item.product_id))
+    .then((res) =>
+      res.data.data.map((item: { product_id: string }) => item.product_id)
+    )
     .catch((error) => {
       l("[Notification Itemscout error]", "yellow");
       return [];
@@ -53,7 +55,11 @@ export const getHolyZoneId = (): Promise<number[]> =>
       return data.map((p) => p.product_id);
     })
     .catch((e) => {
-      l("Noti Err", "red", "성지존 알림 오류 /crawling/product/holyzone/all" + e.code);
+      l(
+        "Noti Err",
+        "red",
+        "성지존 알림 오류 /crawling/product/holyzone/all" + e.code
+      );
       return [];
     });
 
@@ -61,30 +67,35 @@ export const getStoreList = async (product: getAllProductIdType) => {
   try {
     const crawlingType = product.type;
     if (crawlingType === "itemscout") {
-      const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
-        getCoupangStoreDataV2(product),
-        getProductPriceData(product),
-        getProductByItemscoutV2(product),
-      ]);
-      if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
+      const [coupangStoreList, iherbStoreData, itemscoutStoreList] =
+        await Promise.all([
+          getCoupangStoreListV2(product),
+          getIherbStoreList(product),
+          getItemscoutStoreListV2(product),
+        ]);
+      if (iherbStoreData)
+        return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
       return [...coupangStoreList, ...itemscoutStoreList];
     }
 
     if (crawlingType === "naver") {
       const [coupangStoreList, naverStoreList] = await Promise.all([
-        getCoupangStoreDataV2(product),
-        getProductByNaverCatalogV2(product),
+        getCoupangStoreListV2(product),
+        getNaverCatalogStoreListV2(product),
       ]);
       return [...coupangStoreList, ...naverStoreList];
     }
     return [];
   } catch (error) {
     l("Err", "red", "getStoreList Error");
-    return [];
+    return null;
   }
 };
 
-export const setStoreList = async (product: getAllProductIdType, storeList: StoreType[]) => {
+export const setStoreList = async (
+  product: getAllProductIdType,
+  storeList: StoreType[]
+) => {
   const dataToSend = {
     product,
     store_list: storeList,
@@ -93,11 +104,16 @@ export const setStoreList = async (product: getAllProductIdType, storeList: Stor
   const data: boolean = await axios
     .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
     .then((res) => {
-      if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
+      if (res.data.message)
+        l(
+          `No Store`,
+          "magenta",
+          `MESSAGE product_id: ${product.product_id} ${res.data.message}`
+        );
       return res.data.data;
     })
-    .catch(() => {
-      l("Err ", "red", `setStoreList ${NODE_API_URL}/v2/crawling/store` + JSON.stringify(dataToSend));
+    .catch((e) => {
+      l("Err ", "red", `setStoreList ${NODE_API_URL}/v2/crawling/store`);
       return null;
     });
   return data;

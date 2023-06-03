@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { groupBy, shuffle } from "lodash";
-import { NODE_API_URL } from "./function/common";
+import { NODE_API_URL, isLocalhost } from "./function/common";
 import { l } from "./function/console";
 import {
   getStoreList,
@@ -55,7 +55,7 @@ export const updateByProductId = async ({
   //#endregion
 
   for (let i = 0; i < list.length; i++) {
-    if (list.length > i && list[i].type === "itemscout") {
+    if (list.length > i && list[i].type === "naver") {
       const result = await setData(list[i], i, list.length);
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
@@ -77,10 +77,13 @@ const setData = async (
   const s = `[${i + 1}/${max}]id:${productStr}`;
 
   const startTime = new Date().getTime();
+
   l(`[${i + 1}/${max}]`, color, `id:${productStr} type:${product.type}`);
 
   // -- main logic --
   const storeList = await getStoreList(product);
+  console.log("getStoreList Error", storeList);
+  if (storeList === null) return false;
   const result = await setStoreList(product, storeList);
   // -- main logic --
 
