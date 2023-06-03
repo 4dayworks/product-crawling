@@ -1,6 +1,6 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { groupBy, shuffle } from "lodash";
-import { NODE_API_URL, isLocalhost } from "./function/common";
+import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
 import {
   getStoreList,
