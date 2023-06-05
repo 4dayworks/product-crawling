@@ -25,7 +25,7 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   // data = data.filter((p) => !exceptionList.includes(p.product_id));
 
   // 배열 섞기
-  if (!product_id_list) list = shuffle(list);
+  // if (!product_id_list) list = shuffle(list);
 
   // //#region itemscout / naver type에 따라서 번갈아가며 한번씩 배열에 넣기
   // const grouped = groupBy(list, "type");
@@ -47,7 +47,7 @@ export const updateByProductId = async ({ page = 0, size = 100000, product_id_li
   // 70000번 이상으로 거르기
   // list = list.filter((s) => s.product_id <= 70000);
   let chance = 3; //다시 시도할 기회
-  for (let i = 8000; i < list.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     if (list.length > i) {
       const result = await setData(list[i], i, list.length);
       // l("[result]", "magenta", JSON.stringify(result));
