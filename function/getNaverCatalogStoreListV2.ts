@@ -16,7 +16,7 @@ export type DataListType = {
 };
 
 export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
-  return new Promise<StoreType[]>(async (resolve) => {
+  return new Promise<StoreType[]>(async (resolve, reject) => {
     const productId = product.product_id;
     const catalogUrl = product.naver_catalog_link;
     const blacklist = await exceptionCompanyListAtNaver().catch((err) => []);
@@ -29,7 +29,6 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
         let maxPrintLog = 0;
         if (error) {
           l("error request", "red", error);
-          resolve([]);
           throw error;
         }
         let $ = cheerio.load(body);
@@ -115,13 +114,6 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
               store_review_count: reviewCount,
               store_review_score: null,
             });
-
-            storeList = storeList.map((item) => ({
-              ...item,
-              store_review_count: item.store_review_count
-                ? item.store_review_count / storeList.length
-                : 0,
-            }));
           });
           storeList = storeList.map((item) => ({
             ...item,
@@ -136,12 +128,12 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
             "red",
             `product_id:${productId.toString().padStart(5)}` + { error }
           );
-          resolve([]);
+          reject(new Error("Naver Clawling Error"));
         }
       });
     } catch {
       l("error 2", "red", `product_id:${productId.toString().padStart(5)}`);
-      resolve([]);
+      reject(new Error("Naver Clawling Error"));
     }
   });
 };

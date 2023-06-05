@@ -120,6 +120,6 @@ const f = async () => {
       await wrapSlept(5000);
     }
   }
-  console.log("Done!");
+  console.info("Done!");
 };
 f();

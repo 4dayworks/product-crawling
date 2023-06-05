@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { AuthorizationKey } from "./function/auth";
 import { updateByProductId } from "./all_update";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
