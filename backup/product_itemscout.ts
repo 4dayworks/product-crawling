@@ -109,7 +109,7 @@ const execute = async (keyword: string, keyword_id: number, index: string) => {
       })
   );
   if (result && result.length) result.map((p) => writeQuery(insertForm(p)));
-  console.log(`${index} keyword:`, keyword, keyword_id, " Complete !");
+  console.info(`${index} keyword:`, keyword, keyword_id, " Complete !");
 };
 //#endregion
 
@@ -194,7 +194,7 @@ const wrapSlept = async (sec: number) => await new Promise((resolve) => setTimeo
 //     }
 //     if (i === max - 1) {
 //       await wrapSlept(100);
-//       console.log(`[${max}/${max}] Done!`);
+//       console.info(`[${max}/${max}] Done!`);
 //     }
 //   }
 // };
@@ -220,7 +220,7 @@ const getYagiProduct = async (page: number) => {
       const itemscout_keyword_id = await axios
         .post(url, { keyword: search_keyword }, { headers })
         .then((d) => d.data.data);
-      console.log(
+      console.info(
         `[${i + 1}/${arr.length}]`,
         "search_keyword:",
         search_keyword,

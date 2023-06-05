@@ -66,7 +66,7 @@ export const getCoupangStoreData = async ({ product_id, product_name }: getAllPr
         keyword_id: itemscout_keyword_id,
         keyword,
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }
 
   // 에러처리

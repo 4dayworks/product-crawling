@@ -1,6 +1,6 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { groupBy, shuffle } from "lodash";
-import { NODE_API_URL, isLocalhost } from "./function/common";
+import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
 import {
   getStoreList,
@@ -56,12 +56,10 @@ export const updateByProductId = async ({
 
   for (let i = 0; i < list.length; i++) {
     if (list.length > i) {
-      // if (list.length > i && (list[i].type === "itemscout" || isLocalhost)) {
       const result = await setData(list[i], i, list.length);
-      l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         // 문제 생겼을시 20초 대기 후 다음 재시도
-        await wrapSlept(20000);
+        wrapSlept(20000);
         continue;
       }
     }
@@ -85,7 +83,6 @@ const setData = async (
   // -- main logic --
   const storeList = await getStoreList(product);
   if (storeList === null) return false;
-
   const result = await setStoreList(product, storeList);
   // -- main logic --
 
@@ -97,7 +94,7 @@ const setData = async (
     await setLastMonthLowPrice(product);
 
     const executeTime = new Date().getTime() - startTime;
-    const waitTime = (product.type === "itemscout" ? 500 : 2000) - executeTime;
+    const waitTime = (product.type === "itemscout" ? 1000 : 2000) - executeTime;
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);

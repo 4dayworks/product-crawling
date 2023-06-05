@@ -82,13 +82,13 @@ const getProductPrice = ($: CheerioAPI, domain: DomainListType) => {
       break;
     // case "m.hnsmall.com":
     //   priceDiv = $(`div.goods-benefit-box > div:nth-child(2) > dl > dd > strong`);
-    //   console.log(priceDiv.text() + "asd");
+    //   console.info(priceDiv.text() + "asd");
     //   break;
     case "mitem.auction.co.kr":
       priceDiv = $(
         `#DetailTab > article > div.vip_top > div.vip_top__info > div.vip_top__pricearea.vip_delivery-noti > div.vip_top__price > div > strong`
       );
-      console.log(priceDiv.text() + "asd");
+      console.info(priceDiv.text() + "asd");
       break;
     default:
       break;
@@ -122,7 +122,7 @@ const getProduct = (productId: number, url: string, domain: DomainListType) => {
 
         try {
           const result = getProductPrice($, domain);
-          if (!result) console.log("  No Price", result, domain, url);
+          if (!result) console.error("  No Price", result, domain, url);
           //  #content > div > div:nth-child(2) > div:nth-child(2) > fieldset > div:nth-child(2) > div:nth-child(2) > div > strong > span:nth-child(2)
           //판매처 쇼핑몰 이름
           // const store_name = await getProductStoreName(brandUrl);
@@ -205,7 +205,7 @@ const wrapSlept = async (sec: number) => await new Promise((resolve) => setTimeo
 const f = async () => {
   //동작
   // const domainList = getUniqDomainList(productList[0][1]);
-  // console.log(domainList);
+  // console.info(domainList);
 
   for (let i = 0; i < productList.length; i++) {
     const item = productList[i];
@@ -224,6 +224,6 @@ const f = async () => {
       }
     }
   }
-  console.log("Done!");
+  console.info("Done!");
 };
 f();

@@ -36,7 +36,7 @@ export const getIherbStoreList = (
     );
 
     // Make all requests concurrently
-    const [res1, res2, res3] = await axios
+    const result = await axios
       .all([
         axios.get(
           `https://catalog.app.iherb.com/recommendations/freqpurchasedtogether?productId=${iherbProductId}&pageSize=2&page=1&_=1681620224467`,
@@ -62,8 +62,13 @@ export const getIherbStoreList = (
         )
       )
       .catch(() => {
-        throw Error("Iherb Crawling Error");
+        return "Iherb Crawling Error";
       });
+      
+      if(typeof result === 'string'){
+        return reject(new Error(result));
+      }
+      const [res1, res2, res3] = result;
     // # 더이상 안팔면 판매처 삭제필요함 가격/판매처 데이터 지우고 is_stock 0로 표시
     if ((res1 === null && res2 === null) || res2 === null) {
       const data = { iherb_product_id: iherbProductId };
