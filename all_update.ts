@@ -97,7 +97,7 @@ const setData = async (
     await setLastMonthLowPrice(product);
 
     const executeTime = new Date().getTime() - startTime;
-    const waitTime = (product.type === "itemscout" ? 50 : 200) - executeTime;
+    const waitTime = (product.type === "itemscout" ? 500 : 2000) - executeTime;
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
