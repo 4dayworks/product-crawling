@@ -11,15 +11,13 @@ type updateByProductIdType = {
   product_id_list?: number[];
 };
 
-export const updateByProductId = async ({ page = 0, size = 1000000, product_id_list }: updateByProductIdType) => {
+export const updateByProductId = async ({ page = 0, size = 100000, product_id_list }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let list: getAllProductIdType[] = await axios(
     `${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`
   ).then((d) => d.data.data);
-
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
   if (product_id_list) list = list.filter((p) => product_id_list.includes(p.product_id));
-
   //#region (2) 성지가격있는 제품아이디 모두 제외시키기
   // const exceptionList = await getHolyZoneId();
   // data = data.filter((p) => !exceptionList.includes(p.product_id));
@@ -47,8 +45,7 @@ export const updateByProductId = async ({ page = 0, size = 1000000, product_id_l
   // 70000번 이상으로 거르기
   // list = list.filter((s) => s.product_id <= 70000);
   let chance = 3; //다시 시도할 기회
-  for (let i = 16500; i < 22000; i++) {
-    // for (let i = 0; i < list.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     if (list.length > i) {
       const result = await setData(list[i], i, list.length);
       // l("[result]", "magenta", JSON.stringify(result));
