@@ -40,17 +40,20 @@ export const getCoupangStoreListV2 = async ({ product_id, product_name }: getAll
   //   : [];
 
   // 2. 쿠팡 검색 결과 페이지 크롤링하기
-
   const response = await axios
     .get(
-      `https://www.coupang.com/np/search?rocketAll=true&q=${product_name.replace(
-        /[ \[\]]/g,
-        "+"
-      )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36`,
+      `https://www.coupang.com/np/search?rocketAll=true&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36&q=` +
+        product_name.replace(/[ \[\]]/g, "+"),
       { headers: getHeaders() }
     )
     .catch((e) => {
-      l("Err", "red", "getCoupangStoreDataV2" + e);
+      l(
+        "Err",
+        "red",
+        "getCoupangStoreDataV2 " +
+          `https://www.coupang.com/np/search?rocketAll=true&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36&q=` +
+          product_name.replace(/[ \[\]]/g, "+")
+      );
       throw Error("Coupang Search Result Page Crawling Error");
     });
   const $ = cheerio.load(response.data);
