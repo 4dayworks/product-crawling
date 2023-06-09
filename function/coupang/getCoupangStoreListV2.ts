@@ -6,10 +6,7 @@ import { l } from "../console";
 import { uniqueId } from "lodash";
 import { NODE_API_URL } from "../common";
 
-export const getCoupangStoreListV2 = async ({
-  product_id,
-  product_name,
-}: getAllProductIdType) => {
+export const getCoupangStoreListV2 = async ({ product_id, product_name }: getAllProductIdType) => {
   const getHeaders = () => {
     return {
       "Accept-Encoding": "deflate, br",
@@ -20,27 +17,27 @@ export const getCoupangStoreListV2 = async ({
   };
 
   // 1. 키워드/키워드id DB에서 가져오기
-  const {
-    coupang_require_keyword_list,
-    coupang_exception_keyword_list,
-  }: CoupangDataType = await axios
-    .get(
-      `${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`
-    )
-    .then((d) => d.data.data)
-    .catch(() => {
-      console.error(
-        "ERR",
-        `${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`
-      );
-      throw Error("Get keyword/keyword_id Error");
-    });
-  const exception_list = coupang_exception_keyword_list
-    ? coupang_exception_keyword_list.split(",").map((k) => k.trim())
-    : [];
-  const require_list = coupang_require_keyword_list
-    ? coupang_require_keyword_list.split(",").map((k) => k.trim())
-    : [];
+  // const {
+  //   coupang_require_keyword_list,
+  //   coupang_exception_keyword_list,
+  // }: CoupangDataType = await axios
+  //   .get(
+  //     `${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`
+  //   )
+  //   .then((d) => d.data.data)
+  //   .catch(() => {
+  //     console.error(
+  //       "ERR",
+  //       `${NODE_API_URL}/crawling/product/coupang/keyword?product_id=${product_id}`
+  //     );
+  //     throw Error("Get keyword/keyword_id Error");
+  //   });
+  // const exception_list = coupang_exception_keyword_list
+  //   ? coupang_exception_keyword_list.split(",").map((k) => k.trim())
+  //   : [];
+  // const require_list = coupang_require_keyword_list
+  //   ? coupang_require_keyword_list.split(",").map((k) => k.trim())
+  //   : [];
 
   // 2. 쿠팡 검색 결과 페이지 크롤링하기
 
@@ -61,33 +58,19 @@ export const getCoupangStoreListV2 = async ({
   const storeList: StoreType[] = [];
   // 3. 판매처 정보 가져와서 광고 제품 필터링하기
   $("a.search-product-link").each((index, element) => {
-    const store_product_name = $(element)
-      .find("dl > dd > div > div.name")
-      .text()
-      .trim();
-    const store_product_image_data_src =
-      "https:" + $(element).find("dl > dt > img").attr("data-img-src");
-    const store_product_image_src =
-      "https:" + $(element).find("dl > dt > img").attr("src");
+    const store_product_name = $(element).find("dl > dd > div > div.name").text().trim();
+    const store_product_image_data_src = "https:" + $(element).find("dl > dt > img").attr("data-img-src");
+    const store_product_image_src = "https:" + $(element).find("dl > dt > img").attr("src");
 
     const store_product_image =
-      store_product_image_src.includes("undefined") ||
-      store_product_image_src.includes("blank1x1")
+      store_product_image_src.includes("undefined") || store_product_image_src.includes("blank1x1")
         ? store_product_image_data_src
         : store_product_image_src;
     const store_link = "https://www.coupang.com" + $(element).attr("href");
     const store_price = Number(
-      $(element)
-        .find("dl > dd > div > div.price-area > div > div.price > em > strong")
-        .text()
-        .trim()
-        .replace(/,/g, "")
+      $(element).find("dl > dd > div > div.price-area > div > div.price > em > strong").text().trim().replace(/,/g, "")
     );
-    const typeSrc = $(element)
-      .find(
-        "dl > dd > div > div.price-area > div > div.price > em > span > img"
-      )
-      .attr("src");
+    const typeSrc = $(element).find("dl > dd > div > div.price-area > div > div.price > em > span > img").attr("src");
     const type = !typeSrc
       ? null
       : typeSrc.includes("merchant")
@@ -100,10 +83,7 @@ export const getCoupangStoreListV2 = async ({
       ? "로켓배송"
       : null;
     const store_review_score = Number(
-      $(element)
-        .find("dl > dd > div > div.other-info > div > span.star > em")
-        .text()
-        .trim()
+      $(element).find("dl > dd > div > div.other-info > div > span.star > em").text().trim()
     );
     const store_review_count = Number(
       $(element)
@@ -112,11 +92,7 @@ export const getCoupangStoreListV2 = async ({
         .trim()
         .replace(/\(|\)/g, "")
     );
-    const is_ad =
-      $(element)
-        .find("dl > dd > div > span > span.ad-badge-text")
-        .text()
-        .trim() === "AD";
+    const is_ad = $(element).find("dl > dd > div > span > span.ad-badge-text").text().trim() === "AD";
 
     // 4. 판매처 list에 모으기
     if (!type || is_ad || !store_product_image) return;
@@ -138,15 +114,15 @@ export const getCoupangStoreListV2 = async ({
     };
 
     // 5. 제품명 DB의 require_keyword_list와 exception_keyword_list와 비교해서 필터링하기
-    if (
-      require_list
-        .map((r) => data.store_product_name.includes(r))
-        .filter((b) => b === false).length === 0 && //필수 키워드는 반드시 제품명에 있어야함
-      exception_list
-        .map((r) => data.store_product_name.includes(r))
-        .filter((b) => b === true).length === 0 //제외 키워드는 반드시 제품명에 없어야함
-    )
-      storeList.push(data);
+    // if (
+    //   require_list
+    //     .map((r) => data.store_product_name.includes(r))
+    //     .filter((b) => b === false).length === 0 && //필수 키워드는 반드시 제품명에 있어야함
+    //   exception_list
+    //     .map((r) => data.store_product_name.includes(r))
+    //     .filter((b) => b === true).length === 0 //제외 키워드는 반드시 제품명에 없어야함
+    // )
+    storeList.push(data);
   });
   return storeList;
 };
