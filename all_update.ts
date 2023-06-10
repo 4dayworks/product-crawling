@@ -91,7 +91,8 @@ const setData = async (product: getAllProductIdType, i: number, max: number) => 
     await setLastMonthLowPrice(product);
 
     const executeTime = new Date().getTime() - startTime;
-    const waitTime = (product.type === "itemscout" ? 500 : 2000) - executeTime;
+    const randomTime = Math.random() * 10000 < 5000 ? 5000 : Math.random() * 10000; //유저라는 걸 인식하기 위해 랜덤 시간
+    const waitTime = (product.type === "itemscout" ? randomTime : randomTime) - executeTime; //500 : 2000
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
