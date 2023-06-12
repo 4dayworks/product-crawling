@@ -3,14 +3,14 @@ import { uniqBy } from "lodash";
 import { getAllProductIdType } from "../product_price_update";
 
 /** 아이템스카우트 제외 키워드 판별해주는 함수  */
-// export function isExceptionKeyword(title: string, exception_keyword: string | null) {
+// function isExceptionKeyword(title: string, exception_keyword: string | null) {
 //   if (!exception_keyword) return false;
 //   if (title) return title.includes(exception_keyword);
 //   return false;
 // }
 
-/** 아이템스카우트 요구 키워드 판별해주는 함수 */
-// export const isRequireKeyword = (title: string, require_keyword: string | null) => {
+// /** 아이템스카우트 요구 키워드 판별해주는 함수 */
+// const isRequireKeyword = (title: string, require_keyword: string | null) => {
 //   if (!require_keyword) return true;
 //   if (title) return title.includes(require_keyword);
 //   return true;
