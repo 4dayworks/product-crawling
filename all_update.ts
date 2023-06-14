@@ -77,7 +77,7 @@ const setData = async (product: getAllProductIdType, i: number, max: number) => 
   l(
     `[${i + 1}/${max}]`,
     color,
-    `id:${productStr} type:${product.type} 키워드: ${product.keyword}\n\t\t필수: ${product.require_keyword}\n\t\t제외: ${product.exception_keyword}`
+    `id:${productStr} type:${product.type} 키워드: ${product.keyword}\n\t필수: ${product.require_keyword}\n\t제외: ${product.exception_keyword}`
   );
 
   // -- main logic --
