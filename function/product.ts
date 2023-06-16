@@ -66,6 +66,7 @@ export const getStoreList = async (product: getAllProductIdType) => {
         getIherbStoreList(product),
         getItemscoutStoreListV2(product),
       ]);
+      console.log({ coupangStoreList });
       if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
       return [...coupangStoreList, ...itemscoutStoreList];
     }
