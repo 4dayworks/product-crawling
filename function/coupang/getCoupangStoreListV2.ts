@@ -33,7 +33,7 @@ export const getCoupangStoreListV2 = async ({ product_id, product_name, keyword 
 
   const response = await axios
     .get(
-      `https://www.coupang.com/np/search?rocketAll=true&q=${(keyword || product_name).replace(
+      `https://www.coupang.com/np/search?rocketAll=true&q=${product_name.replace(
         /[ \[\]]/g,
         "+"
       )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36`,
