@@ -45,7 +45,7 @@ export const updateByProductId = async ({
     grouped.naver ? grouped.naver.length : 0,
     grouped.itemscout ? grouped.itemscout.length : 0
   );
-  for (let i = 0; i < maxLength; i++) {
+  for (let i = 3382; i < maxLength; i++) {
     types.forEach((type) => {
       if (grouped[type] && i < grouped[type].length)
         combinedList.push(grouped[type][i]);
