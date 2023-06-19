@@ -72,7 +72,7 @@ export const updateByProductId = async ({
           continue;
         } else {
           if (i >= 2) {
-            const message = `product_id: ${
+            const message = `index: ${i + 1} / product_id: ${
               list[i - 2].product_id
             } / product_name: ${
               list[i - 2].product_name
