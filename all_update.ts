@@ -45,7 +45,7 @@ export const updateByProductId = async ({
     grouped.naver ? grouped.naver.length : 0,
     grouped.itemscout ? grouped.itemscout.length : 0
   );
-  for (let i = 3382; i < maxLength; i++) {
+  for (let i = 0; i < maxLength; i++) {
     types.forEach((type) => {
       if (grouped[type] && i < grouped[type].length)
         combinedList.push(grouped[type][i]);
@@ -58,7 +58,7 @@ export const updateByProductId = async ({
   // 70000번 이상으로 거르기
   // list = list.filter((s) => s.product_id <= 70000);
   let chance = 3; //다시 시도할 기회
-  for (let i = 0; i < list.length; i++) {
+  for (let i = 3382; i < list.length; i++) {
     // for (let i = 0; i < list.length; i++) {
     if (list.length > i) {
       const result = await setData(list[i], i, list.length);
