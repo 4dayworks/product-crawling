@@ -17,7 +17,7 @@ const execute = async () => {
       const regex = /start-index-(\d+)/;
       const startIndex = d.data.name.match(regex)?.[1];
       l("Info", "blue", "instance name:" + d.data.name + " / " + Number(startIndex));
-      return !isNaN(Number(startIndex)) ? Number(startIndex) : undefined;
+      return !isNaN(Number(startIndex)) ? Number(startIndex) - 1 : undefined;
     })
     .catch(() => undefined);
   while (true) {
