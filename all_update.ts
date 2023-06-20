@@ -59,7 +59,7 @@ export const updateByProductId = async ({
   let chance = 3; //다시 시도할 기회
   for (let i = 0; i < list.length; i++) {
     // for (let i = 0; i < list.length; i++) {
-    if (isInit && instanceData?.startIndex) {
+    if (isInit && instanceData?.startIndex != undefined) {
       i = instanceData.startIndex;
       isInit = false;
     }
@@ -78,7 +78,7 @@ export const updateByProductId = async ({
             const message = `index: ${i + 1} / product_id: ${list[i - 2].product_id} / product_name: ${
               list[i - 2].product_name
             } / message: continuous error`;
-            if (instanceData?.instance_name) {
+            if (instanceData?.instance_name != undefined) {
               await axios
                 .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
                 .then((res) => res.data.data)
