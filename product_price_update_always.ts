@@ -7,7 +7,7 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 // GCP 자동 인스턴스 재생성 후
 // 해당 인덱스로 이동을 위해 메타데이터를 넣어줄떄 사용합니다.
 const execute = async () => {
-  const startIndex = await axios
+  const instanceData = await axios
     .get("http://metadata.google.internal/computeMetadata/v1/instance/?recursive=true", {
       headers: {
         "Metadata-Flavor": "Google",
@@ -17,11 +17,16 @@ const execute = async () => {
       const regex = /start-index-(\d+)/;
       const startIndex = d.data.name.match(regex)?.[1];
       l("Info", "blue", "instance name:" + d.data.name + " / " + Number(startIndex));
-      return !isNaN(Number(startIndex)) ? Number(startIndex) - 1 : undefined;
+      return {
+        startIndex: !isNaN(Number(startIndex)) ? Number(startIndex) - 1 : undefined,
+        instance_name: d.data.name,
+      };
     })
-    .catch(() => undefined);
+    .catch(() => {
+      return { startIndex: undefined, instance_name: undefined };
+    });
   while (true) {
-    await updateByProductId({ startIndex });
+    await updateByProductId({ instanceData });
   }
 };
 execute();

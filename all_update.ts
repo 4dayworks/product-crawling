@@ -10,6 +10,10 @@ type updateByProductIdType = {
   size?: number;
   product_id_list?: number[];
   startIndex?: number;
+  instanceData?: {
+    startIndex: number | undefined;
+    instance_name: string | undefined;
+  };
 };
 
 let isInit = true;
@@ -17,7 +21,7 @@ export const updateByProductId = async ({
   page = 0,
   size = 1000000,
   product_id_list,
-  startIndex,
+  instanceData,
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let list: getAllProductIdType[] = await axios(
@@ -55,8 +59,8 @@ export const updateByProductId = async ({
   let chance = 3; //다시 시도할 기회
   for (let i = 0; i < list.length; i++) {
     // for (let i = 0; i < list.length; i++) {
-    if (isInit && startIndex) {
-      i = startIndex;
+    if (isInit && instanceData?.startIndex) {
+      i = instanceData.startIndex;
       isInit = false;
     }
     if (list.length > i) {
@@ -74,10 +78,20 @@ export const updateByProductId = async ({
             const message = `index: ${i + 1} / product_id: ${list[i - 2].product_id} / product_name: ${
               list[i - 2].product_name
             } / message: continuous error`;
-            await axios
-              .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
-              .then((res) => res.data.data)
-              .catch((err) => l("Err", "red", "Slack Send Message Error"));
+            if (instanceData?.instance_name) {
+              await axios
+                .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+                .then((res) => res.data.data)
+                .catch((err) => l("Err", "red", "Slack Send Message Error"));
+              await axios
+                .get(
+                  `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
+                    i - 1
+                  }`
+                )
+                .then((res) => res.data.data)
+                .catch((err) => l("Err", "red", "Slack Send Message Error"));
+            }
           }
           break;
         }
