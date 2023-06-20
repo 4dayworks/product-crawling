@@ -26,9 +26,7 @@ const execute = async () => {
       return { startIndex: undefined, instance_name: undefined };
     });
   while (true) {
-    await updateByProductId({
-      instanceData: { startIndex: 0, instance_name: "product-crawling-202306200949-8ddc14a2-start-index-0" },
-    });
+    await updateByProductId({ instanceData });
   }
 };
 execute();
