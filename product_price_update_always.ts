@@ -1,6 +1,7 @@
 import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
 import { updateByProductId } from "./all_update";
+import { l } from "./function/console";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 // GCP 자동 인스턴스 재생성 후
@@ -15,6 +16,7 @@ const execute = async () => {
     .then((d: { data: ResponseType }) => {
       const regex = /start-index-(\d+)/;
       const startIndex = d.data.name.match(regex);
+      l("Info", "blue", "instance name:" + d.data.name + " / " + Number(startIndex));
       return !isNaN(Number(startIndex)) ? Number(startIndex) : undefined;
     })
     .catch(() => undefined);
