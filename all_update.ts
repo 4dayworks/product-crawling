@@ -9,9 +9,16 @@ type updateByProductIdType = {
   page?: number;
   size?: number;
   product_id_list?: number[];
+  startIndex?: number;
 };
 
-export const updateByProductId = async ({ page = 0, size = 1000000, product_id_list }: updateByProductIdType) => {
+let isInit = true;
+export const updateByProductId = async ({
+  page = 0,
+  size = 1000000,
+  product_id_list,
+  startIndex,
+}: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let list: getAllProductIdType[] = await axios(
     `${NODE_API_URL}/v4/crawling/product/all?page=${page}&size=${size}`
@@ -41,7 +48,6 @@ export const updateByProductId = async ({ page = 0, size = 1000000, product_id_l
     });
   }
   list = combinedList;
-
   //#endregion
 
   // 70000번 이상으로 거르기
@@ -49,6 +55,10 @@ export const updateByProductId = async ({ page = 0, size = 1000000, product_id_l
   let chance = 3; //다시 시도할 기회
   for (let i = 0; i < list.length; i++) {
     // for (let i = 0; i < list.length; i++) {
+    if (isInit && startIndex) {
+      i = startIndex;
+      isInit = false;
+    }
     if (list.length > i) {
       const result = await setData(list[i], i, list.length);
       // l("[result]", "magenta", JSON.stringify(result));
