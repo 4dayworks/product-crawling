@@ -64,6 +64,7 @@ export const updateByProductId = async ({
       isInit = false;
     }
     if (list.length > i) {
+      console.log(list[i], "index:", i);
       const result = await setData(list[i], i, list.length);
       // l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
