@@ -83,14 +83,14 @@ export const updateByProductId = async ({
                 .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
                 .then((res) => res.data.data)
                 .catch((err) => l("Err", "red", "Slack Send Message Error"));
-              await axios
-                .get(
-                  `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
-                    i - 1
-                  }`
-                )
-                .then((res) => res.data.data)
-                .catch((err) => l("Err", "red", "Slack Send Message Error"));
+              // await axios
+              //   .get(
+              //     `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
+              //       i - 1
+              //     }`
+              //   )
+              //   .then((res) => res.data.data)
+              //   .catch((err) => l("Err", "red", "Slack Send Message Error"));
             }
           }
           break;
