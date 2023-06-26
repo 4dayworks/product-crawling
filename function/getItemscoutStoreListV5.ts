@@ -17,11 +17,12 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword }: getProductTypeV5)
         .get(`${NODE_API_URL}/crawling/itemscout/keyword?keyword=${itemscout_keyword}`)
         .then((d) => d.data.data);
 
-      // 2. 키워드 가져오기 & 있는지 확인하고 야기 DB에 반영하기
-      //  (2-1). keyword가 있고 keyword_id가 없으면 해당 키워드로 검색하고 keyword_id update하기
+      // 2. 과거 키워드id 없을 경우 야기 DB에 저장하기
       const url = `https://api.itemscout.io/api/keyword`;
       if (!keyword_id) {
-        const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
+        const itemscout_keyword_id = await axios
+          .post(url, { keyword: itemscout_keyword }, { headers })
+          .then((d) => d.data.data);
         keyword_id = itemscout_keyword_id;
       }
       //#endregion
