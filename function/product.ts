@@ -1,12 +1,13 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { getCoupangStoreListV2 } from "./coupang/getCoupangStoreListV2";
+import { getCoupangStoreListV5 } from "./coupang/getCoupangStoreListV5";
 import { getNaverCatalogStoreListV2 } from "./getNaverCatalogStoreListV2";
 import { getAllProductIdType } from "./product_price_update";
-import { getIherbStoreList } from "./getIherbStoreList";
+import { getIherbStoreListV5 } from "./getIherbStoreListV5";
 import { StoreType } from "./updateByItemscout";
-import { getItemscoutStoreListV2 } from "./getItemscoutStoreListV2";
+import { getItemscoutStoreListV5 } from "./getItemscoutStoreListV5";
+import { getProductTypeV5 } from "../all_update";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -58,28 +59,42 @@ export const getHolyZoneId = (): Promise<number[]> =>
     });
 
 export const getStoreList = async (product: getAllProductIdType) => {
-  try {
-    const crawlingType = product.type;
-    if (crawlingType === "itemscout") {
-      const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
-        getCoupangStoreListV2(product),
-        getIherbStoreList(product),
-        getItemscoutStoreListV2(product),
-      ]);
-      if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
-      return [...coupangStoreList, ...itemscoutStoreList];
-    }
+  // try {
+  //   const crawlingType = product.type;
+  //   if (crawlingType === "itemscout") {
+  //     const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
+  //       getCoupangStoreListV2(product),
+  //       getIherbStoreList(product),
+  //       getItemscoutStoreListV2(product),
+  //     ]);
+  //     if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
+  //     return [...coupangStoreList, ...itemscoutStoreList];
+  //   }
+  //   if (crawlingType === "naver") {
+  //     const [coupangStoreList, naverStoreList] = await Promise.all([
+  //       getCoupangStoreListV2(product),
+  //       getNaverCatalogStoreListV2(product),
+  //     ]);
+  //     return [...coupangStoreList, ...naverStoreList];
+  //   }
+  //   return [];
+  // } catch (error) {
+  //   l("Err", "red", (error as Error).message);
+  //   return null;
+  // }
+};
 
-    if (crawlingType === "naver") {
-      const [coupangStoreList, naverStoreList] = await Promise.all([
-        getCoupangStoreListV2(product),
-        getNaverCatalogStoreListV2(product),
-      ]);
-      return [...coupangStoreList, ...naverStoreList];
-    }
-    return [];
+export const getStoreListV5 = async (product: getProductTypeV5) => {
+  try {
+    const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
+      getCoupangStoreListV5(product),
+      getIherbStoreListV5(product),
+      getItemscoutStoreListV5(product),
+      getNaverCatalogStoreListV2(product),
+    ]);
+    return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
   } catch (error) {
-    l("Err", "red", (error as Error).message);
+    l("Err", "red", "getStoreListV5 " + (error as Error).message);
     return null;
   }
 };
