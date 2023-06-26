@@ -2,11 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
 import { headers as iherbHeaders } from "./iherb/headers";
-import {
-  IherbProductPriceType1,
-  IherbProductPriceType2,
-  ProductType,
-} from "./iherb/updateByIherb";
+import { IherbProductPriceType1, IherbProductPriceType2, ProductType } from "./iherb/updateByIherb";
 import { getAllProductIdType } from "./product_price_update";
 import { StoreType } from "./updateByItemscout";
 import { IherbPriceType } from "./updateByItemscout";
@@ -42,10 +38,7 @@ export const getIherbStoreList = (
           `https://catalog.app.iherb.com/recommendations/freqpurchasedtogether?productId=${iherbProductId}&pageSize=2&page=1&_=1681620224467`,
           iherbHeaders(true)
         ),
-        axios.get(
-          `https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}`,
-          iherbHeaders(true)
-        ),
+        axios.get(`https://kr.iherb.com/ugc/api/product/v2/${iherbProductId}`, iherbHeaders(true)),
         axios.get(
           `https://catalog.app.iherb.com/product/${iherbProductId}/discounts?_=1681707804820`,
           iherbHeaders(true)
@@ -64,11 +57,11 @@ export const getIherbStoreList = (
       .catch(() => {
         return "Iherb Crawling Error";
       });
-      
-      if(typeof result === 'string'){
-        return reject(new Error(result));
-      }
-      const [res1, res2, res3] = result;
+
+    if (typeof result === "string") {
+      return reject(new Error(result));
+    }
+    const [res1, res2, res3] = result;
     // # 더이상 안팔면 판매처 삭제필요함 가격/판매처 데이터 지우고 is_stock 0로 표시
     if ((res1 === null && res2 === null) || res2 === null) {
       const data = { iherb_product_id: iherbProductId };
@@ -85,13 +78,9 @@ export const getIherbStoreList = (
         res1?.originProduct.discountedPriceAmount ||
         res1?.originProduct.listPrice.replace(/[^0-9]/gi, "") ||
         (res3 && res3.special
-          ? (res3.special.discountPrice * 100) /
-            (100 - res3.special.discountPercentage)
+          ? (res3.special.discountPrice * 100) / (100 - res3.special.discountPercentage)
           : undefined), //res1데이터 없으면 res3이용해서 할인율,할인가 역산해서 원가 계산함.
-      discount_percent:
-        res1?.originProduct.salesDiscountPercentage ||
-        res3?.special?.discountPercentage ||
-        0,
+      discount_percent: res1?.originProduct.salesDiscountPercentage || res3?.special?.discountPercentage || 0,
 
       discount_type: res1?.originProduct.discountType || null,
       discount_price:
@@ -101,11 +90,7 @@ export const getIherbStoreList = (
         null,
 
       delivery_price:
-        (res1?.originProduct.discountedPriceAmount ||
-          res3?.special?.discountPrice ||
-          0) > 40000
-          ? 0
-          : 5000, //가격이 4만원넘으면 무료배송
+        (res1?.originProduct.discountedPriceAmount || res3?.special?.discountPrice || 0) > 40000 ? 0 : 5000, //가격이 4만원넘으면 무료배송
 
       rating: res1?.originProduct.rating,
       review_count: res1?.originProduct.ratingCount,
@@ -126,9 +111,7 @@ export const getIherbStoreList = (
 
     const originData = product;
 
-    let keyword = originData.keyword
-      ? originData.keyword
-      : originData.product_name;
+    let keyword = originData.keyword ? originData.keyword : originData.product_name;
 
     if (iherbPriceData && iherbPriceData.is_stock === "1") {
       const iherbStore: StoreType = {
@@ -155,10 +138,7 @@ export const getIherbStoreList = (
 };
 
 // Handle response and error
-function handleResponse(
-  response: AxiosResponse<any, any>,
-  errorMessage: string
-) {
+function handleResponse(response: AxiosResponse<any, any>, errorMessage: string) {
   if (response && response.data.errorType === undefined) {
     return response.data;
   } else {
