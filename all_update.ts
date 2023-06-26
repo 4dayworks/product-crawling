@@ -77,7 +77,7 @@ export const updateByProductId = async ({
           if (i >= 2) {
             const message = `index: ${i + 1} / product_id: ${list[i - 2].product_id} / product_name: ${
               list[i - 2].product_name
-            } / message: continuous error`;
+            } / message: continuous error / instance_name: ${instanceData?.instance_name}`;
             if (instanceData?.instance_name != undefined) {
               await axios
                 .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
