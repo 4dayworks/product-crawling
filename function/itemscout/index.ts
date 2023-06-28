@@ -30,6 +30,7 @@ const acceptCategoryObj: {
   [key: string]: boolean;
 } = {
   "식품>다이어트식품>가르시니아": true,
+  "식품>다이어트식품>CLA": true,
   "식품>다이어트식품>기타다이어트식품": true,
   "식품>다이어트식품>단백질보충제": true,
   "식품>다이어트식품>단백질보충제>단백질파우더": true,
