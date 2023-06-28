@@ -33,6 +33,20 @@ export const getItemscoutStoreListV2 = (product: getAllProductIdType) =>
       ).then(async (d) => {
         let list: any[] = d.data.data.productListResult;
         if (!list) return [];
+        // d.data.data.productListResult.map(
+        //   (d: any) =>
+        //     console.log(
+        //       "%c%s %ccategory:%s %c제품명: %s",
+        //       "color: red;",
+        //       String(d.mall).padEnd(10, " "),
+        //       "color: green;",
+        //       d.category,
+        //       "color: blue;",
+        //       d.title
+        //     )
+
+        // );
+
         list = filterArray(d.data.data.productListResult, product, originData);
         return list;
       });
@@ -73,7 +87,6 @@ export const getItemscoutStoreListV2 = (product: getAllProductIdType) =>
 
         storeList.push(data);
       });
-
       return resolve(storeList);
     } catch (error) {
       reject(new Error("getItemscoutStoreListV2 Error"));
