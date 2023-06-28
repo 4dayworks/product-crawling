@@ -87,7 +87,6 @@ export const getCoupangStoreListV2 = async ({ product_id, product_name, keyword 
 
     // 4. 판매처 list에 모으기
     if (!type || is_ad || !store_product_image || outOfStock === "일시품절") return;
-    console.log({ outOfStock });
     const data: StoreType = {
       itemscout_keyword: product_name, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
       store_product_image,
