@@ -49,6 +49,7 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
       $(element).find("dl > dd > div > div.price-area > div > div.price > em > strong").text().trim().replace(/,/g, "")
     );
     const typeSrc = $(element).find("dl > dd > div > div.price-area > div > div.price > em > span > img").attr("src");
+    const outOfStock = $(element).find("dl > dd > div > div.price-area > div.out-of-stock").text().trim();
     const type = !typeSrc
       ? null
       : typeSrc.includes("merchant")
@@ -72,7 +73,7 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
     );
     const is_ad = $(element).find("dl > dd > div > span > span.ad-badge-text").text().trim() === "AD";
     // 4. 판매처 list에 모으기
-    if (!type || is_ad || !store_product_image) return;
+    if (!type || is_ad || !store_product_image || outOfStock === "일시품절") return;
     const data: StoreTypeV5 = {
       yagi_keyword: coupang_keyword,
       origin_product_name: store_product_name,

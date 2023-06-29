@@ -6,7 +6,7 @@ import { ItemscoutType, StoreType, StoreTypeV5 } from "./updateByItemscout";
 import { NODE_API_URL } from "./common";
 
 const headers = { "Accept-Encoding": "deflate, br" };
-export const getItemscoutStoreListV5 = ({ itemscout_keyword }: getProductTypeV5) =>
+export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getProductTypeV5) =>
   new Promise<StoreTypeV5[]>(async (resolve, reject) => {
     try {
       // 0. 아이템스카우트 키워드 없으면 무시하기
@@ -28,7 +28,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword }: getProductTypeV5)
       //#endregion
       //#region (3) itemscout에서 keyword_id 로 검색해서 집어넣기
       if (!keyword_id) {
-        l("Err", "red", `No keyword_id product_id:${originData.product_id}`);
+        l("Err", "red", `No keyword_id product_id:${product_id}`);
         return resolve([]);
       }
       // POST /product/keyword/data
@@ -38,42 +38,42 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword }: getProductTypeV5)
       ).then(async (d) => {
         let list: any[] = d.data.data.productListResult;
         if (!list) return [];
-        list = filterArray(d.data.data.productListResult, product, originData);
+        // list = filterArray(d.data.data.productListResult, product, originData);
         return list;
       });
 
       // 리스트 없을 경우 제품명으로 다시 검색
-      if (productListResult.length === 0) {
-        keyword = originData.product_name;
-        const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
-        keyword_id = itemscout_keyword_id;
-        productListResult = await axios(
-          `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
-          { headers }
-        ).then((d) => {
-          if (!d.data.data.productListResult) return [];
-          const list = filterArray(d.data.data.productListResult, product, originData);
+      // if (productListResult.length === 0) {
+      //   keyword = product_name;
+      //   const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
+      //   keyword_id = itemscout_keyword_id;
+      //   productListResult = await axios(
+      //     `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
+      //     { headers }
+      //   ).then((d) => {
+      //     if (!d.data.data.productListResult) return [];
+      //     const list = filterArray(d.data.data.productListResult, product, originData);
 
-          return list;
-        });
-      }
-      const storeList: StoreType[] = [];
+      //     return list;
+      //   });
+      // }
+
+      const storeList: StoreTypeV5[] = [];
       productListResult.forEach((item) => {
-        const data: StoreType = {
-          yagi_product_id: product.product_id,
-          itemscout_keyword_id: keyword_id,
-          itemscout_keyword: keyword,
-          store_product_name: item.title,
-          store_product_image: item.image,
+        const data: StoreTypeV5 = {
+          yagi_keyword: itemscout_keyword,
+          origin_product_name: item.title,
+          product_image: item.image,
+          mall_image: null,
+          price: item.price,
+          delivery: Number(item.deliveryFee),
           store_name: item.shop,
-          store_price: item.price,
-          store_category: item.category,
-          store_review_count: item.reviewCount,
-          store_review_score: item.reviewScore,
+          category: item.category,
+          review_count: item.reviewCount,
+          review_score: item.reviewScore,
+          is_naver_shop: item.isNaverShop,
+          is_oversea: item.isOversea,
           store_link: item.mobileProductUrl || item.pcProductUrl || item.link,
-          store_is_oversea: item.isOversea,
-          store_is_navershop: item.isNaverShop,
-          store_delivery: Number(item.deliveryFee),
         };
 
         storeList.push(data);
