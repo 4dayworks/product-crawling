@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import { getStoreListV5 } from "./function/product";
+import { getStoreListV5, setStoreListV5 } from "./function/product";
 
 type updateByProductIdType = {
   page?: number;
@@ -122,7 +122,7 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
   const storeList = await getStoreListV5(product);
   if (storeList === null) return false;
 
-  // const result = await setStoreList(product, storeList);
+  const result = await setStoreListV5(product, storeList);
   // // -- main logic --
 
   // if (result === null) {
