@@ -61,6 +61,7 @@ export const getCoupangStoreListV2 = async ({ product_id, product_name, keyword 
       $(element).find("dl > dd > div > div.price-area > div > div.price > em > strong").text().trim().replace(/,/g, "")
     );
     const typeSrc = $(element).find("dl > dd > div > div.price-area > div > div.price > em > span > img").attr("src");
+    const outOfStock = $(element).find("dl > dd > div > div.price-area > div.out-of-stock").text().trim();
     const type = !typeSrc
       ? null
       : typeSrc.includes("merchant")
@@ -85,7 +86,7 @@ export const getCoupangStoreListV2 = async ({ product_id, product_name, keyword 
     const is_ad = $(element).find("dl > dd > div > span > span.ad-badge-text").text().trim() === "AD";
 
     // 4. 판매처 list에 모으기
-    if (!type || is_ad || !store_product_image) return;
+    if (!type || is_ad || !store_product_image || outOfStock === "일시품절") return;
     const data: StoreType = {
       itemscout_keyword: product_name, // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름",
       store_product_image,
