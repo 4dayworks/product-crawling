@@ -1,9 +1,9 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import { uniqueId } from "lodash";
-import { getProductTypeV5 } from "../../all_update";
-import { l } from "../console";
-import { StoreTypeV5 } from "../updateByItemscout";
+import { getProductTypeV5 } from "../all_update";
+import { l } from "./console";
+import { StoreTypeV5 } from "./updateByItemscout";
 
 export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV5) => {
   const getHeaders = () => {
@@ -89,11 +89,6 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
       is_oversea: type === "로켓직구",
       store_link,
     };
-    // // 5. 제품명 DB의 require_keyword_list와 exception_keyword_list와 비교해서 필터링하기
-    // if (
-    //   require_list.map((r) => data.store_product_name.includes(r)).filter((b) => b === false).length === 0 && //필수 키워드는 반드시 제품명에 있어야함
-    //   exception_list.map((r) => data.store_product_name.includes(r)).filter((b) => b === true).length === 0 //제외 키워드는 반드시 제품명에 없어야함
-    // )
     storeList.push(data);
   });
   return storeList;

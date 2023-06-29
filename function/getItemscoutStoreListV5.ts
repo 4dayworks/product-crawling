@@ -23,7 +23,14 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
         const itemscout_keyword_id = await axios
           .post(url, { keyword: itemscout_keyword }, { headers })
           .then((d) => d.data.data);
-        keyword_id = itemscout_keyword_id;
+        // 새 itemscout_keyword_id 업데이트
+        if (itemscout_keyword_id) {
+          await axios.patch(`${NODE_API_URL}/crawling/itemscout/keyword`, {
+            keyword_id: itemscout_keyword_id,
+            itemscout_keyword: itemscout_keyword,
+          });
+          keyword_id = itemscout_keyword_id;
+        }
       }
       //#endregion
       //#region (3) itemscout에서 keyword_id 로 검색해서 집어넣기
@@ -38,7 +45,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
       ).then(async (d) => {
         let list: any[] = d.data.data.productListResult;
         if (!list) return [];
-        // list = filterArray(d.data.data.productListResult, product, originData);
+        list = filterArray(d.data.data.productListResult); //is_drugstore,
         return list;
       });
 

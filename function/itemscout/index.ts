@@ -57,17 +57,17 @@ export const exceptCategory = (category: string) => {
 };
 
 export const filterArray = (
-  array: any[],
-  product: getAllProductIdType,
-  originData: getAllProductIdType,
-  iherbPriceData?: IherbPriceType | null
+  array: any[]
+  // is_drugstore: number,
+  // originData: getAllProductIdType,
+  // iherbPriceData?: IherbPriceType | null
 ) => {
   return uniqBy(array as any[], (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`).filter(
     (p: ItemscoutType) =>
       p.isAd === false &&
-      (p.isOversea === false || product.is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
-      !isExceptionKeyword(p.title, originData.exception_keyword) &&
-      isRequireKeyword(p.title, originData.require_keyword) &&
+      // (p.isOversea === false || is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
+      // !isExceptionKeyword(p.title, originData.exception_keyword) &&
+      // isRequireKeyword(p.title, originData.require_keyword) &&
       exceptCategory(p.category) &&
       p.mall !== "쿠팡" //쿠팡 제외
   );

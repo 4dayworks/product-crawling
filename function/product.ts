@@ -1,13 +1,13 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+import { getProductTypeV5 } from "../all_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { getCoupangStoreListV5 } from "./coupang/getCoupangStoreListV5";
-import { getNaverCatalogStoreListV2 } from "./getNaverCatalogStoreListV2";
-import { getAllProductIdType } from "./product_price_update";
+import { getCoupangStoreListV5 } from "./getCoupangStoreListV5";
 import { getIherbStoreListV5 } from "./getIherbStoreListV5";
-import { StoreType } from "./updateByItemscout";
 import { getItemscoutStoreListV5 } from "./getItemscoutStoreListV5";
-import { getProductTypeV5 } from "../all_update";
+import { getNaverCatalogStoreListV5 } from "./getNaverCatalogStoreListV5";
+import { getAllProductIdType } from "./product_price_update";
+import { StoreTypeV5 } from "./updateByItemscout";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -58,39 +58,13 @@ export const getHolyZoneId = (): Promise<number[]> =>
       return [];
     });
 
-export const getStoreList = async (product: getAllProductIdType) => {
-  // try {
-  //   const crawlingType = product.type;
-  //   if (crawlingType === "itemscout") {
-  //     const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
-  //       getCoupangStoreListV2(product),
-  //       getIherbStoreList(product),
-  //       getItemscoutStoreListV2(product),
-  //     ]);
-  //     if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
-  //     return [...coupangStoreList, ...itemscoutStoreList];
-  //   }
-  //   if (crawlingType === "naver") {
-  //     const [coupangStoreList, naverStoreList] = await Promise.all([
-  //       getCoupangStoreListV2(product),
-  //       getNaverCatalogStoreListV2(product),
-  //     ]);
-  //     return [...coupangStoreList, ...naverStoreList];
-  //   }
-  //   return [];
-  // } catch (error) {
-  //   l("Err", "red", (error as Error).message);
-  //   return null;
-  // }
-};
-
 export const getStoreListV5 = async (product: getProductTypeV5) => {
   try {
     const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
       getCoupangStoreListV5(product),
       getIherbStoreListV5(product),
       getItemscoutStoreListV5(product),
-      getNaverCatalogStoreListV2(product),
+      getNaverCatalogStoreListV5(product),
     ]);
     return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
   } catch (error) {
@@ -99,14 +73,14 @@ export const getStoreListV5 = async (product: getProductTypeV5) => {
   }
 };
 
-export const setStoreList = async (product: getAllProductIdType, storeList: StoreType[]) => {
+export const setStoreListV5 = async (product: getProductTypeV5, storeList: StoreTypeV5[]) => {
   const dataToSend = {
     product,
     store_list: storeList,
   };
 
   const data: boolean = await axios
-    .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
+    .post(`${NODE_API_URL}/v5/crawling/store`, dataToSend)
     .then((res) => {
       if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
       return res.data.data;
