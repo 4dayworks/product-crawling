@@ -27,11 +27,12 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
         if (itemscout_keyword_id) {
           await axios.patch(`${NODE_API_URL}/crawling/itemscout/keyword`, {
             keyword_id: itemscout_keyword_id,
-            itemscout_keyword: itemscout_keyword,
+            itemscout_keyword,
           });
           keyword_id = itemscout_keyword_id;
         }
       }
+
       //#endregion
       //#region (3) itemscout에서 keyword_id 로 검색해서 집어넣기
       if (!keyword_id) {
@@ -88,6 +89,6 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
 
       return resolve(storeList);
     } catch (error) {
-      reject(new Error("getItemscoutStoreListV2 Error"));
+      reject(new Error("getItemscoutStoreListV5 Error"));
     }
   });

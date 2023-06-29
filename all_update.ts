@@ -6,7 +6,7 @@ import { getStoreListV5, setStoreListV5 } from "./function/product";
 type updateByProductIdType = {
   page?: number;
   size?: number;
-  productSelectedList?: number[];
+  product_id_list?: number[];
   startIndex?: number;
   instanceData?: {
     startIndex: number | undefined;
@@ -31,7 +31,7 @@ let isInit = true;
 export const updateByProductId = async ({
   page = 0,
   size = 1000000,
-  productSelectedList,
+  product_id_list: productSelectedList,
   instanceData,
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
@@ -47,7 +47,7 @@ export const updateByProductId = async ({
     return l("STOP", "red", "크롤링할 제품이 없습니다. product_price_crawling_keyword에 데이터를 추가해주세요.");
 
   // 배열 섞기
-  // if (!product_id_list) list = shuffle(list);
+  // if (!productSelectedList) list = shuffle(list);
 
   let chance = 3; //다시 시도할 기회
   for (let i = 0; i < productIdListAll.length; i++) {
