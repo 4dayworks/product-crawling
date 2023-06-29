@@ -76,7 +76,7 @@ export const getStoreListV5 = async (product: getProductTypeV5) => {
 export const setStoreListV5 = async (product: getProductTypeV5, storeList: StoreTypeV5[]) => {
   const dataToSend = {
     product,
-    store_list: storeList,
+    store_list: storeList.slice(2),
   };
 
   const data: boolean = await axios
