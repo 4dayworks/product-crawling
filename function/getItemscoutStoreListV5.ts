@@ -12,8 +12,6 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
       // 0. 아이템스카우트 키워드 없으면 무시하기
       if (!itemscout_keyword) return [];
 
-      console.log(`${NODE_API_URL}/crawling/itemscout/keyword?keyword=${itemscout_keyword}`);
-
       // 1. 과거에 사용했던 keyword_id 가져오기
       let keyword_id: number | null = await axios
         .get(`${NODE_API_URL}/crawling/itemscout/keyword?keyword=${itemscout_keyword}`)
