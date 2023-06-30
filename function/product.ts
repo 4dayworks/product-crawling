@@ -73,11 +73,8 @@ export const getStoreListV5 = async (product: getProductTypeV5) => {
   }
 };
 
-export const setStoreListV5 = async (product: getProductTypeV5, storeList: StoreTypeV5[]) => {
-  const dataToSend = {
-    product,
-    store_list: storeList.slice(2),
-  };
+export const setStoreListV5 = async (product: getProductTypeV5, store_list: StoreTypeV5[]) => {
+  const dataToSend = { product, store_list };
 
   const data: boolean = await axios
     .post(`${NODE_API_URL}/v5/crawling/store`, dataToSend)
