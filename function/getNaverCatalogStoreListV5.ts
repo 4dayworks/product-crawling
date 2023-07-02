@@ -30,11 +30,11 @@ export const getNaverCatalogStoreListV5 = ({ product_id, naver_catalog_url }: ge
         }
         let $ = cheerio.load(body);
 
-        const origin_product_name = $(`#__next > div > div > div > div > div > h2`).text();
+        const origin_product_name =
+          "(브랜드 카탈로그) " + $(`#__next > div > div > div > div > div > h2`).text().replace("제품속성", "");
         const product_image = $(`#__next > div > div > div > div > div > img`).attr("src") || null;
         const regex = /[^0-9]/g;
         const reviewCount = Number($(`#section-review > div > div > h3`).text().replace(regex, ""));
-
         try {
           let storeList: StoreTypeV5[] = [];
 

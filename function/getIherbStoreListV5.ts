@@ -16,7 +16,6 @@ export const getIherbStoreListV5 = ({ iherb_product_id }: getProductTypeV5): Pro
   return new Promise(async (resolve, reject) => {
     // 1. 아이허브 없으면 무시함
     if (iherb_product_id === null) return resolve([]);
-
     // 2. 아이허브 데이터 가져오기
     const result = await axios
       .all([
