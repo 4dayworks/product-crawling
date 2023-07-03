@@ -3,14 +3,20 @@ import { uniqBy } from "lodash";
 import { getAllProductIdType } from "../product_price_update";
 
 /** 아이템스카우트 제외 키워드 판별해주는 함수  */
-export function isExceptionKeyword(title: string, exception_keyword: string | null) {
+export function isExceptionKeyword(
+  title: string,
+  exception_keyword: string | null
+) {
   if (!exception_keyword) return false;
   if (title) return title.includes(exception_keyword);
   return false;
 }
 
 /** 아이템스카우트 요구 키워드 판별해주는 함수 */
-export const isRequireKeyword = (title: string, require_keyword: string | null) => {
+export const isRequireKeyword = (
+  title: string,
+  require_keyword: string | null
+) => {
   if (!require_keyword) return true;
   if (title) return title.includes(require_keyword);
   return true;
@@ -50,6 +56,7 @@ const acceptCategoryObj: {
 export const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
   if (category.includes("식품>다이어트식품")) return true;
+  if (category.includes("식품>식용유/오일")) return true;
   if (acceptCategoryObj[category]) return true;
   if (categoryData[0] !== "식품") return false;
   if (exceptCategoryObj[category]) return false;
@@ -63,7 +70,10 @@ export const filterArray = (
   // originData: getAllProductIdType,
   // iherbPriceData?: IherbPriceType | null
 ) => {
-  return uniqBy(array as any[], (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`).filter(
+  return uniqBy(
+    array as any[],
+    (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`
+  ).filter(
     (p: ItemscoutType) =>
       p.isAd === false &&
       // (p.isOversea === false || is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
