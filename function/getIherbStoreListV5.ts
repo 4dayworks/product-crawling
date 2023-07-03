@@ -1,12 +1,10 @@
 import axios, { AxiosResponse } from "axios";
+import { getProductTypeV5 } from "../all_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
 import { headers as iherbHeaders } from "./iherb/headers";
 import { IherbProductPriceType1, IherbProductPriceType2, ProductType } from "./iherb/updateByIherb";
-import { getAllProductIdType } from "./product_price_update";
-import { StoreType, StoreTypeV5 } from "./updateByItemscout";
-import { IherbPriceType } from "./updateByItemscout";
-import { getProductTypeV5 } from "../all_update";
+import { StoreTypeV5 } from "./updateByItemscout";
 
 // # (1)가격은 getProductPriceData 사용해서 가져오고(REST API 사용),
 // # (2)제품의 상세 데이터는 getProductDescData를 통해 가져옴(페이지 크롤링)
@@ -73,7 +71,9 @@ export const getIherbStoreListV5 = ({ iherb_product_id }: getProductTypeV5): Pro
 
     if (data && data.is_stock === "1") {
       const iherbDetail: { iherb_product_name: string; iherb_product_image: string; product_url: string } | null =
-        await axios.get(`${NODE_API_URL}/crawling/iherb/detail?iherb_id=${iherb_product_id}`).then((d) => d.data.data);
+        await axios
+          .get(`${NODE_API_URL}/crawling/iherb/detail?iherb_product_id=${iherb_product_id}`)
+          .then((d) => d.data.data);
 
       if (!iherbDetail) return resolve([]);
       const iherbStore: StoreTypeV5 = {

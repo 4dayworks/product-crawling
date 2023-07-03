@@ -19,8 +19,28 @@ export const setGraph = async (product: getAllProductIdType) => {
     l("Sub Err", "red", "failed - product_price write history");
   }
 };
+export const setGraphV5 = async (product: getProductTypeV5) => {
+  try {
+    await axios.post(`${NODE_API_URL}/v2/product/daily_price/history`, {
+      product_id: product.product_id,
+    });
+    // l("Sub", "blue", "complete - product_price write history");
+  } catch (error) {
+    l("Sub Err", "red", "failed - product_price write history");
+  }
+};
 
 export const setLastMonthLowPrice = async (product: getAllProductIdType) => {
+  try {
+    await axios.patch(`${NODE_API_URL}/product/price/low_price`, {
+      product_id: product.product_id,
+    });
+    // l("Sub", "blue", "complete - low price of month was written");
+  } catch (error) {
+    l("Sub Err", "red", "failed - low price of month was written");
+  }
+};
+export const setLastMonthLowPriceV5 = async (product: getProductTypeV5) => {
   try {
     await axios.patch(`${NODE_API_URL}/product/price/low_price`, {
       product_id: product.product_id,
