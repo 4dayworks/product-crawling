@@ -49,6 +49,7 @@ const acceptCategoryObj: {
  */
 export const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
+  if (category.includes("식품>다이어트식품")) return true;
   if (acceptCategoryObj[category]) return true;
   if (categoryData[0] !== "식품") return false;
   if (exceptCategoryObj[category]) return false;
