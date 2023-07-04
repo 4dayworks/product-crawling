@@ -42,6 +42,8 @@ const acceptCategoryObj: {
   "식품>다이어트식품": true,
   "생활/건강>반려동물>강아지 건강/관리용품>영양제": true,
   "화장품/미용>스킨케어>크림": true,
+  "식품>건강식품>홍삼>홍삼액": true,
+  "식품>음료>우유/요구르트>우유": true,
 };
 
 /** 제외해야할 category를 필터링 해주는 함수입니다.
@@ -51,8 +53,7 @@ const acceptCategoryObj: {
 export const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
   if (category.includes("식품>다이어트식품")) return true;
-  if (category.includes("식품>식용유/오일")) return true;
-  if (category.includes("식품>음료>우유/요구르트>우유")) return true;
+  if (category.includes("")) return true;
   if (acceptCategoryObj[category]) return true;
   if (categoryData[0] !== "식품") return false;
   if (exceptCategoryObj[category]) return false;
