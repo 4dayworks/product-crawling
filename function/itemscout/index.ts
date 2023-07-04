@@ -57,6 +57,7 @@ export const exceptCategory = (category: string) => {
   const categoryData = String(category).split(">");
   if (category.includes("식품>다이어트식품")) return true;
   if (category.includes("식품>식용유/오일")) return true;
+  if (category.includes("식품>음료>우유/요구르트>우유")) return true;
   if (acceptCategoryObj[category]) return true;
   if (categoryData[0] !== "식품") return false;
   if (exceptCategoryObj[category]) return false;
