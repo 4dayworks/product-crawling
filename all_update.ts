@@ -71,35 +71,35 @@ export const updateByProductId = async ({
       if (product === null) continue;
       const result = await setData(product, i, productIdListAll.length);
 
-      // l("[result]", "magenta", JSON.stringify(result));
-      // if (!result) {
-      //   if (chance > 0) {
-      //     // 문제 생겼을시 10분 또는 20초 대기 후 다음 재시도
-      //     await wrapSlept(chance === 1 ? 600000 : 20000);
-      //     chance--;
-      //     if (chance === 1) i--;
-      //     continue;
-      //   } else {
-      //     if (i >= 2) {
-      //       const message = `index: ${i + 1} / product_id: ${list[i - 2].product_id} / message: continuous error`;
-      //       if (instanceData?.instance_name != undefined) {
-      //         await axios
-      //           .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
-      //           .then((res) => res.data.data)
-      //           .catch((err) => l("Err", "red", "Slack Send Message Error"));
-      //         // await axios
-      //         //   .get(
-      //         //     `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
-      //         //       i - 1
-      //         //     }`
-      //         //   )
-      //         //   .then((res) => res.data.data)
-      //         //   .catch((err) => l("Err", "red", "Slack Send Message Error"));
-      //       }
-      //     }
-      //     break;
-      //   }
-      // }
+      l("[result]", "magenta", JSON.stringify(result));
+      if (!result) {
+        if (chance > 0) {
+          // 문제 생겼을시 10분 또는 20초 대기 후 다음 재시도
+          await wrapSlept(chance === 1 ? 600000 : 20000);
+          chance--;
+          if (chance === 1) i--;
+          continue;
+        } else {
+          if (i >= 2) {
+            // const message = `index: ${i + 1} / product_id: ${productIdListAll[i - 2]} / message: continuous error`;
+            // if (instanceData?.instance_name != undefined) {
+            //   await axios
+            //     .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+            //     .then((res) => res.data.data)
+            //     .catch((err) => l("Err", "red", "Slack Send Message Error"));
+            // await axios
+            //   .get(
+            //     `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
+            //       i - 1
+            //     }`
+            //   )
+            //   .then((res) => res.data.data)
+            //   .catch((err) => l("Err", "red", "Slack Send Message Error"));
+            // }
+          }
+          break;
+        }
+      }
       chance = 3;
     }
   }
