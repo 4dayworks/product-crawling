@@ -36,9 +36,7 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
         try {
           let storeList: StoreType[] = [];
           const regex = /[^0-9]/g;
-          const reviewCount = Number(
-            $(`#section-review > div > div > h3`).text().replace(regex, "")
-          );
+          const reviewCount = Number($(`#section-review > div > div > h3`).text().replace(regex, ""));
 
           $("#section-price > ul > li").each((i: number) => {
             // 판매처이름
@@ -49,14 +47,8 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
             ).text();
 
             // 회사 블랙리스트
-            if (blacklist.indexOf(store_name) !== -1) {
-              l(
-                "PASS",
-                "magenta",
-                `[블랙리스트 회사] PASS (naver) ${store_name}`
-              );
-              return;
-            }
+            if (blacklist.indexOf(store_name) !== -1 || store_name.includes("면세점"))
+              return l("PASS", "magenta", `[블랙리스트 회사] PASS (naver) ${store_name}`);
 
             // 판매처 제품가격
             // #section-price > ul > li:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)  > span:nth-child(2) > span:nth-child(1)
@@ -66,34 +58,23 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
             const price = priceStr ? Number(priceStr.replace(regex, "")) : 0;
 
             // 100원 이하 배제
-            if (price <= 100) {
-              l("[100원이하] 가격PASS (naver)", "magenta", store_name);
-              return;
-            }
+            if (price <= 100) return l("[100원이하] 가격PASS (naver)", "magenta", store_name);
 
             //판매처 배송비
             const deliveryStr = $(
               `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2)> span:nth-child(2)`
             ).text();
-            const delivery = deliveryStr
-              ? Number(deliveryStr.replace(regex, ""))
-              : 0;
+            const delivery = deliveryStr ? Number(deliveryStr.replace(regex, "")) : 0;
             // 판매처링크
-            const store_link = $(
-              `#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`
-            ).attr("href");
+            const store_link = $(`#section-price > ul > li:nth-child(${idx}) > div:nth-child(1) > a`).attr("href");
 
             if (maxPrintLog++ < 3)
               l(
                 "GET",
                 "white",
-                `(${idx.toString().padStart(2)}) id:${productId
+                `(${idx.toString().padStart(2)}) id:${productId.toString().padStart(5)} price:${price
                   .toString()
-                  .padStart(5)} price:${price
-                  .toString()
-                  .padStart(5)} price:${price
-                  .toString()
-                  .padStart(6)}, delivery: ${delivery
+                  .padStart(5)} price:${price.toString().padStart(6)}, delivery: ${delivery
                   .toString()
                   .padStart(4)}, ${store_name}`
               );
@@ -117,17 +98,11 @@ export const getNaverCatalogStoreListV2 = (product: getAllProductIdType) => {
           });
           storeList = storeList.map((item) => ({
             ...item,
-            store_review_count: item.store_review_count
-              ? item.store_review_count / storeList.length
-              : 0,
+            store_review_count: item.store_review_count ? item.store_review_count / storeList.length : 0,
           }));
           return resolve(storeList);
         } catch (error) {
-          l(
-            "error 1",
-            "red",
-            `product_id:${productId.toString().padStart(5)}` + { error }
-          );
+          l("error 1", "red", `product_id:${productId.toString().padStart(5)}` + { error });
           reject(new Error("Naver Clawling Error"));
         }
       });
