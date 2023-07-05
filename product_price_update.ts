@@ -7,7 +7,7 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 updateByProductId({
   // page: 0,
   // size: 6000,
-  // product_id_list: [5580],
+  // product_id_list: [6124],
   // product_id_list: [
   //   1, 25, 29, 35, 42, 48, 55, 56, 57, 63, 66, 78, 79, 88, 89, 90, 91, 107, 123, 132, 133, 151, 153, 159, 175, 182, 202,
   //   204, 206, 225, 243, 252, 271, 273, 280, 289, 356, 371, 408, 415, 429, 463, 506, 516, 639, 736, 738, 790, 859, 878,
