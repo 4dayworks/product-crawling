@@ -35,11 +35,10 @@ export const getNaverCatalogStoreListV5 = ({ product_id, naver_catalog_url }: ge
         let product_image = $(`#__next > div > div > div > div > div > img`).attr("src") || null;
 
         // 모바일 버전으로 가져오기
-        const text =
-          "background-image:url(https://shopping-phinf.pstatic.net/main_2346274/23462749491.20210802142534.jpg?type=w640)";
+        const text = $(`#__next > div > div:nth-child(2) > div > div > div > div > div > div`).attr("style");
         const urlPattern = /url\((https?:\/\/[^\)]+)\)/;
-        const match = text.match(urlPattern);
-        if (!product_image && match && match[1]) product_image = match[1];
+        const match = (text || "").match(urlPattern);
+        if (!product_image && match && match[1]) product_image = match[1] || null;
 
         const regex = /[^0-9]/g;
         const reviewCount = Number($(`#section-review > div > div > h3`).text().replace(regex, ""));
