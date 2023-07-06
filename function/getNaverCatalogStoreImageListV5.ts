@@ -1,6 +1,8 @@
 import cheerio from "cheerio";
 import request from "request";
 import { l } from "./console";
+import axios from "axios";
+import { NODE_API_URL } from "./common";
 
 export const getNaverCatalogStoreImageListV5 = (product_id: number, naver_catalog_url: string | null) => {
   return new Promise<string[] | null>(async (resolve, reject) => {
@@ -15,10 +17,6 @@ export const getNaverCatalogStoreImageListV5 = (product_id: number, naver_catalo
         let $ = cheerio.load(body);
 
         const nextData = $(`#__NEXT_DATA__`).text();
-
-        if (!nextData) {
-          $(".se-main-container > div > div > div > div > a").each((index, element) => {});
-        }
 
         if (!nextData) return resolve(null);
 
@@ -37,7 +35,11 @@ export const getNaverCatalogStoreImageListV5 = (product_id: number, naver_catalo
   });
 };
 
-export const setProductImage = (product_id: number, imaegList: string[]) => {
-  return new Promise<string[] | null>(async (resolve, reject) => {});
+export const setProductImage = (product_id: number, imageList: string[]) => {
+  return new Promise<boolean>(async (resolve, reject) => {
+    await axios
+      .post(`${NODE_API_URL}/product/store/detail/image`, { image_list: imageList, product_id })
+      .catch(() => resolve(false));
+    resolve(true);
+  });
 };
-// .se-main-container > div > div > div > div > a
