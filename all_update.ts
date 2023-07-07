@@ -10,6 +10,7 @@ import {
   setStoreListV5,
 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
+import { shuffle } from "lodash";
 
 type updateByProductIdType = {
   page?: number;
@@ -55,14 +56,14 @@ export const updateByProductId = async ({
     return l("STOP", "red", "크롤링할 제품이 없습니다. product_price_crawling_keyword에 데이터를 추가해주세요.");
 
   // 배열 섞기
-  // if (!productSelectedList) list = shuffle(list);
+  // if (!productSelectedList) productIdListAll = shuffle(productIdListAll);
 
   let chance = 3; //다시 시도할 기회
-  for (let i = 0; i < productIdListAll.length; i++) {
-    if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
-      i = instanceData.startIndex;
-      isInit = false;
-    }
+  for (let i = 1000; i < productIdListAll.length; i++) {
+    // if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
+    //   i = instanceData.startIndex;
+    //   isInit = false;
+    // }
     if (productIdListAll.length > i) {
       const product: getProductTypeV5 | null = await axios(
         `${NODE_API_URL}/v5/crawling/product?product_id=${productIdListAll[i]}`
