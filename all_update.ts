@@ -141,8 +141,8 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
     await setLastMonthLowPriceV5(product);
 
     const executeTime = new Date().getTime() - startTime;
-    const randomTime = Math.random() * 10000 < 5000 ? 5000 : Math.random() * 12000; //유저라는 걸 인식하기 위해 랜덤 시간
-    const waitTime = (product.naver_catalog_url !== null ? randomTime : randomTime) - executeTime; //500 : 2000
+    // const randomTime = Math.random() * 10000 < 5000 ? 5000 : Math.random() * 12000; //유저라는 걸 인식하기 위해 랜덤 시간
+    const waitTime = (product.naver_catalog_url !== null ? 1000 : 1000) - executeTime; //500 : 2000
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
