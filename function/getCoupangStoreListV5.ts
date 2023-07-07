@@ -30,7 +30,7 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
       { headers: getHeaders() }
     )
     .catch((e) => {
-      l("Err", "red", "getCoupangStoreDataV2" + e);
+      l("Err", "red", "getCoupangStoreDataV5" + e);
       throw Error("Coupang Search Result Page Crawling Error");
     });
   const $ = cheerio.load(response.data);
