@@ -76,9 +76,9 @@ export const updateByProductId = async ({
       if (!result) {
         if (chance > 0) {
           // 문제 생겼을시 10분 또는 20초 대기 후 다음 재시도
-          await wrapSlept(chance === 1 ? 600000 : 20000);
-          chance--;
-          if (chance === 1) i--;
+          // await wrapSlept(chance === 1 ? 600000 : 20000);
+          // chance--;
+          // if (chance === 1) i--;
           continue;
         } else {
           if (i >= 2) {
