@@ -15,6 +15,22 @@ export interface StoreType {
   store_delivery: number | null;
 }
 
+export interface StoreTypeV5 {
+  yagi_keyword: string | null;
+  origin_product_name: string | null;
+  product_image: string | null;
+  mall_image: string | null;
+  price: number | null;
+  delivery: number | null;
+  store_name: string | null;
+  category: string | null;
+  review_count: number | null;
+  review_score: number | null;
+  is_naver_shop: boolean;
+  is_oversea: boolean;
+  store_link: string | null;
+}
+
 export interface ItemscoutType extends ProductDesc, ProductShopDesc, Url {
   title: string; // "먹는 화이트 콜라겐 글루타치온정 / 글루타치온 필름";
   image: string; // "https://shopping-phinf.pstatic.net/main_8545538/85455382789.1.jpg";

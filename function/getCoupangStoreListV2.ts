@@ -1,10 +1,10 @@
 import cheerio from "cheerio";
 import axios from "axios";
-import { getAllProductIdType } from "../product_price_update";
-import { StoreType } from "../updateByItemscout";
-import { l } from "../console";
+import { getAllProductIdType } from "./product_price_update";
+import { StoreType } from "./updateByItemscout";
+import { l } from "./console";
 import { uniqueId } from "lodash";
-import { NODE_API_URL } from "../common";
+import { NODE_API_URL } from "./common";
 
 export const getCoupangStoreListV2 = async ({ product_id, product_name, keyword }: getAllProductIdType) => {
   const getHeaders = () => {

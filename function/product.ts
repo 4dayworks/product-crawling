@@ -1,12 +1,13 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
+import { getProductTypeV5 } from "../all_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { getCoupangStoreListV2 } from "./coupang/getCoupangStoreListV2";
-import { getNaverCatalogStoreListV2 } from "./getNaverCatalogStoreListV2";
+import { getCoupangStoreListV5 } from "./getCoupangStoreListV5";
+import { getIherbStoreListV5 } from "./getIherbStoreListV5";
+import { getItemscoutStoreListV5 } from "./getItemscoutStoreListV5";
+import { getNaverCatalogStoreListV5 } from "./getNaverCatalogStoreListV5";
 import { getAllProductIdType } from "./product_price_update";
-import { getIherbStoreList } from "./getIherbStoreList";
-import { StoreType } from "./updateByItemscout";
-import { getItemscoutStoreListV2 } from "./getItemscoutStoreListV2";
+import { StoreTypeV5 } from "./updateByItemscout";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -18,8 +19,28 @@ export const setGraph = async (product: getAllProductIdType) => {
     l("Sub Err", "red", "failed - product_price write history");
   }
 };
+export const setGraphV5 = async (product: getProductTypeV5) => {
+  try {
+    await axios.post(`${NODE_API_URL}/v2/product/daily_price/history`, {
+      product_id: product.product_id,
+    });
+    // l("Sub", "blue", "complete - product_price write history");
+  } catch (error) {
+    l("Sub Err", "red", "failed - product_price write history");
+  }
+};
 
 export const setLastMonthLowPrice = async (product: getAllProductIdType) => {
+  try {
+    await axios.patch(`${NODE_API_URL}/product/price/low_price`, {
+      product_id: product.product_id,
+    });
+    // l("Sub", "blue", "complete - low price of month was written");
+  } catch (error) {
+    l("Sub Err", "red", "failed - low price of month was written");
+  }
+};
+export const setLastMonthLowPriceV5 = async (product: getProductTypeV5) => {
   try {
     await axios.patch(`${NODE_API_URL}/product/price/low_price`, {
       product_id: product.product_id,
@@ -57,41 +78,26 @@ export const getHolyZoneId = (): Promise<number[]> =>
       return [];
     });
 
-export const getStoreList = async (product: getAllProductIdType) => {
+export const getStoreListV5 = async (product: getProductTypeV5) => {
   try {
-    const crawlingType = product.type;
-    if (crawlingType === "itemscout") {
-      const [coupangStoreList, iherbStoreData, itemscoutStoreList] = await Promise.all([
-        getCoupangStoreListV2(product),
-        getIherbStoreList(product),
-        getItemscoutStoreListV2(product),
-      ]);
-      if (iherbStoreData) return [...coupangStoreList, iherbStoreData, ...itemscoutStoreList];
-      return [...coupangStoreList, ...itemscoutStoreList];
-    }
-
-    if (crawlingType === "naver") {
-      const [coupangStoreList, naverStoreList] = await Promise.all([
-        getCoupangStoreListV2(product),
-        getNaverCatalogStoreListV2(product),
-      ]);
-      return [...coupangStoreList, ...naverStoreList];
-    }
-    return [];
+    const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
+      getCoupangStoreListV5(product),
+      getIherbStoreListV5(product),
+      getItemscoutStoreListV5(product),
+      getNaverCatalogStoreListV5(product),
+    ]);
+    return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
   } catch (error) {
-    l("Err", "red", (error as Error).message);
+    l("Err", "red", "getStoreListV5 " + (error as Error).message);
     return null;
   }
 };
 
-export const setStoreList = async (product: getAllProductIdType, storeList: StoreType[]) => {
-  const dataToSend = {
-    product,
-    store_list: storeList,
-  };
+export const setStoreListV5 = async (product: getProductTypeV5, store_list: StoreTypeV5[]) => {
+  const dataToSend = { product, store_list };
 
   const data: boolean = await axios
-    .post(`${NODE_API_URL}/v2/crawling/store`, dataToSend)
+    .post(`${NODE_API_URL}/v5/crawling/store`, dataToSend)
     .then((res) => {
       if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
       return res.data.data;
