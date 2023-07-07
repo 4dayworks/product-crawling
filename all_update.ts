@@ -59,7 +59,7 @@ export const updateByProductId = async ({
   // if (!productSelectedList) productIdListAll = shuffle(productIdListAll);
 
   let chance = 3; //다시 시도할 기회
-  for (let i = 670; i < productIdListAll.length; i++) {
+  for (let i = 0; i < productIdListAll.length; i++) {
     // if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
     //   i = instanceData.startIndex;
     //   isInit = false;
