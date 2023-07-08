@@ -32,6 +32,7 @@ export const getIherbStoreList = (
     );
 
     // Make all requests concurrently
+
     const result = await axios
       .all([
         axios.get(
@@ -54,7 +55,7 @@ export const getIherbStoreList = (
             ] as [IherbProductPriceType1, ProductType, IherbProductPriceType2]
         )
       )
-      .catch(() => {
+      .catch((e) => {
         return "Iherb Crawling Error";
       });
 

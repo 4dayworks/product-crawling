@@ -15,29 +15,29 @@ export const getIherbStoreListV5 = ({ iherb_product_id }: getProductTypeV5): Pro
     // 1. 아이허브 없으면 무시함
     if (iherb_product_id === null) return resolve([]);
     // 2. 아이허브 데이터 가져오기
-    const result = await axios
+    const [r1, r2, r3] = await axios
       .all([
-        axios.get(
-          `https://catalog.app.iherb.com/recommendations/freqpurchasedtogether?productId=${iherb_product_id}&pageSize=2&page=1&_=1681620224467`,
-          iherbHeaders(true)
-        ),
-        axios.get(`https://kr.iherb.com/ugc/api/product/v2/${iherb_product_id}`, iherbHeaders(true)),
-        axios.get(
-          `https://catalog.app.iherb.com/product/${iherb_product_id}/discounts?_=1681707804820`,
-          iherbHeaders(true)
-        ),
+        axios
+          .get(
+            `https://catalog.app.iherb.com/recommendations/freqpurchasedtogether?productId=${iherb_product_id}&pageSize=2&page=1&_=1681620224467`,
+            iherbHeaders(true)
+          )
+          .catch(() => null),
+        axios.get(`https://kr.iherb.com/ugc/api/product/v2/${iherb_product_id}`, iherbHeaders(true)).catch(() => null),
+        axios
+          .get(
+            `https://catalog.app.iherb.com/product/${iherb_product_id}/discounts?_=1681707804820`,
+            iherbHeaders(true)
+          )
+          .catch(() => null),
       ])
-      .then(
-        axios.spread(
-          (r1, r2, r3) =>
-            [
-              handleResponse(r1, "iherb 데이터를 가져올 수 없습니다.(1)"),
-              handleResponse(r2, "iherb 데이터를 가져올 수 없습니다.(4)"),
-              handleResponse(r3, "iherb 데이터를 가져올 수 없습니다.(3)"),
-            ] as [IherbProductPriceType1, ProductType, IherbProductPriceType2]
-        )
-      )
-      .catch(() => "Iherb Crawling Error");
+      .catch(() => [null, null, null]);
+
+    const result = [
+      handleResponse(r1, "iherb 데이터를 가져올 수 없습니다.(1)"),
+      handleResponse(r2, "iherb 데이터를 가져올 수 없습니다.(4)"),
+      handleResponse(r3, "iherb 데이터를 가져올 수 없습니다.(3)"),
+    ] as [IherbProductPriceType1, ProductType, IherbProductPriceType2];
 
     // 3. 아이허브 데이터 체크
     if (typeof result === "string") return reject(new Error(result));
@@ -99,10 +99,10 @@ export const getIherbStoreListV5 = ({ iherb_product_id }: getProductTypeV5): Pro
 };
 
 // Handle response and error
-function handleResponse(response: AxiosResponse<any, any>, errorMessage: string) {
-  if (response && response.data.errorType === undefined) {
-    return response.data;
-  } else {
+function handleResponse(response: AxiosResponse<any, any> | null, errorMessage: string) {
+  if (response === null) return null;
+  if (response && response.data.errorType === undefined) return response.data;
+  else {
     l("ERR Data", "red", errorMessage);
     return null;
   }
