@@ -59,11 +59,11 @@ export const updateByProductId = async ({
   // if (!productSelectedList) productIdListAll = shuffle(productIdListAll);
 
   let chance = 3; //다시 시도할 기회
-  for (let i = 1244; i < productIdListAll.length; i++) {
-    // if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
-    //   i = instanceData.startIndex;
-    //   isInit = false;
-    // }
+  for (let i = 0; i < productIdListAll.length; i++) {
+    if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
+      i = instanceData.startIndex;
+      isInit = false;
+    }
     if (productIdListAll.length > i) {
       const product: getProductTypeV5 | null = await axios(
         `${NODE_API_URL}/v5/crawling/product?product_id=${productIdListAll[i]}`
@@ -76,27 +76,27 @@ export const updateByProductId = async ({
       if (!result) {
         if (chance > 0) {
           // 문제 생겼을시 10분 또는 20초 대기 후 다음 재시도
-          // await wrapSlept(chance === 1 ? 600000 : 20000);
-          // chance--;
-          // if (chance === 1) i--;
+          await wrapSlept(chance === 1 ? 600000 : 20000);
+          chance--;
+          if (chance === 1) i--;
           continue;
         } else {
           if (i >= 2) {
-            // const message = `index: ${i + 1} / product_id: ${productIdListAll[i - 2]} / message: continuous error`;
-            // if (instanceData?.instance_name != undefined) {
-            //   await axios
-            //     .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
-            //     .then((res) => res.data.data)
-            //     .catch((err) => l("Err", "red", "Slack Send Message Error"));
-            // await axios
-            //   .get(
-            //     `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
-            //       i - 1
-            //     }`
-            //   )
-            //   .then((res) => res.data.data)
-            //   .catch((err) => l("Err", "red", "Slack Send Message Error"));
-            // }
+            const message = `index: ${i + 1} / product_id: ${productIdListAll[i - 2]} / message: continuous error`;
+            if (instanceData?.instance_name != undefined) {
+              await axios
+                .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+                .then((res) => res.data.data)
+                .catch((err) => l("Err", "red", "Slack Send Message Error"));
+              await axios
+                .get(
+                  `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
+                    i - 1
+                  }`
+                )
+                .then((res) => res.data.data)
+                .catch((err) => l("Err", "red", "Slack Send Message Error"));
+            }
           }
           break;
         }
