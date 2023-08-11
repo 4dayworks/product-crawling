@@ -100,10 +100,10 @@ const parseHTML = (scriptContent: string): string[] => {
 
 //#region MAIN Source
 const updateProductImage = async () => {
-  for (let i = 448; i < naverCatalogList.length; i++) {
+  for (let i = 0; i < naverCatalogList.length; i++) {
     const item = naverCatalogList[i];
     // get image list
-    // if (item.product_id != 33) continue;
+    // if (item.product_id != 71) continue;
     const imgList = await getNaverCatalogImageList(item);
 
     // set image list
@@ -114,7 +114,7 @@ const updateProductImage = async () => {
       `product_id:${item.product_id} image length : ${imgList.length}`
     );
 
-    await wrapSlept(100);
+    await wrapSlept(1000);
   }
 };
 updateProductImage();
