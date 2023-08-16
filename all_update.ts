@@ -60,6 +60,12 @@ export const updateByProductId = async ({
 
   let chance = 3; //다시 시도할 기회
   for (let i = 0; i < productIdListAll.length; i++) {
+    const message = `index: ${i + 1} / product_id: ${productIdListAll[i - 2]} / message: continuous error`;
+    await axios
+      .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+      .then((res) => res.data.data)
+      .catch((err) => l("Err", "red", "Slack Send Message Error"));
+
     if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
       i = instanceData.startIndex;
       isInit = false;
