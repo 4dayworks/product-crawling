@@ -60,7 +60,9 @@ export const updateByProductId = async ({
 
   let chance = 3; //다시 시도할 기회
   for (let i = 0; i < productIdListAll.length; i++) {
-    const message = `index: ${i + 1} / product_id: ${productIdListAll[i - 2]} / message: continuous error`;
+    const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
+      productIdListAll[i - 2]
+    } / message: continuous error / remain_change: ${chance}`;
     await axios
       .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
       .then((res) => res.data.data)
@@ -88,7 +90,9 @@ export const updateByProductId = async ({
           continue;
         } else {
           if (i >= 2) {
-            const message = `index: ${i + 1} / product_id: ${productIdListAll[i - 2]} / message: continuous error`;
+            const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
+              productIdListAll[i - 2]
+            } / message: continuous error / remain_change: ${chance} / remain chance out -> Crawling Server Restart !!`;
             if (instanceData?.instance_name != undefined) {
               await axios
                 .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
