@@ -8,4 +8,5 @@ updateByProductId({
   // page: 0,
   // size: 6000,
   // product_id_list: [2716, 85950, 86421, 88342],
+  product_id_list: [60818],
 });
