@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { getProductTypeV5 } from "../all_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
@@ -96,7 +96,14 @@ export const getIherbStoreListV5 = ({
         .get(
           `${NODE_API_URL}/crawling/iherb/detail?iherb_product_id=${iherb_product_id}`
         )
-        .then((d) => d.data.data);
+        .then((d) => d.data.data)
+        .catch((err) => {
+          const axiosErr = err as AxiosError;
+          if (axiosErr.response?.status === 502) {
+            l("502 Error", "red", axiosErr.message);
+          }
+          return null;
+        });
 
       if (!iherbDetail) return resolve([]);
       const iherbStore: StoreTypeV5 = {
