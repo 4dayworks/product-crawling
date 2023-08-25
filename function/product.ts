@@ -103,7 +103,7 @@ export const setStoreListV5 = async (product: getProductTypeV5, store_list: Stor
       return res.data.data;
     })
     .catch((e) => {
-      l("Err ", "red", `setStoreList ${NODE_API_URL}/v2/crawling/store`);
+      l("Err ", "red", `setStoreList ${NODE_API_URL}/v5/crawling/store`);
       return null;
     });
   return data;
