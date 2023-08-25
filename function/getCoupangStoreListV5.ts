@@ -25,11 +25,12 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
     /[ \[\]]/g,
     "+"
   )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket_luxury%2Crocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=719&component=&rating=0&sorter=scoreDesc&listSize=36`;
+  console.log(url, getHeaders());
+
   const response = await axios.get(url, { headers: getHeaders() }).catch((e) => {
     l("Err", "red", "getCoupangStoreDataV5" + e);
     throw Error("Coupang Search Result Page Crawling Error");
   });
-  console.log(url, getHeaders());
 
   const $ = cheerio.load(response.data);
   const storeList: StoreTypeV5[] = [];
