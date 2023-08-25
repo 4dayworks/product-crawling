@@ -21,18 +21,16 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
   }
 
   // 2. 쿠팡 검색 결과 페이지 크롤링하기
-  const response = await axios
-    .get(
-      `https://www.coupang.com/np/search?rocketAll=true&q=${coupang_keyword.replace(
-        /[ \[\]]/g,
-        "+"
-      )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=18919&component=&rating=0&sorter=scoreDesc&listSize=36`,
-      { headers: getHeaders() }
-    )
-    .catch((e) => {
-      l("Err", "red", "getCoupangStoreDataV5" + e);
-      throw Error("Coupang Search Result Page Crawling Error");
-    });
+  const url = `https://www.coupang.com/np/search?rocketAll=true&q=${coupang_keyword.replace(
+    /[ \[\]]/g,
+    "+"
+  )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket_luxury%2Crocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=719&component=&rating=0&sorter=scoreDesc&listSize=36`;
+  const response = await axios.get(url, { headers: getHeaders() }).catch((e) => {
+    l("Err", "red", "getCoupangStoreDataV5" + e);
+    throw Error("Coupang Search Result Page Crawling Error");
+  });
+  console.log(url, getHeaders());
+
   const $ = cheerio.load(response.data);
   const storeList: StoreTypeV5[] = [];
   // 3. 판매처 정보 가져와서 광고 제품 필터링하기
