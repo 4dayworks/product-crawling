@@ -69,6 +69,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
       const storeList: StoreTypeV5[] = [];
       productListResult.forEach((item) => {
         if (item.shop.includes("면세점")) return;
+        if (item.shop === "iherb") return;
         const data: StoreTypeV5 = {
           yagi_keyword: itemscout_keyword,
           origin_product_name: item.title,

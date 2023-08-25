@@ -1,6 +1,6 @@
 export type IherbProductPriceType1 = {
   recommendedProducts: ProductDetailType[]; //2개씩 오는듯
-  originProduct: ProductDetailType;
+  originProduct: ProductDetailType | null;
 };
 export type IherbProductPriceType2 = {
   id: number; //115008;
@@ -49,7 +49,7 @@ type ProductDetailType = {
   ratingCount: number; //12977;
   ratingUrl: string; //"https://kr.iherb.com/pr/21st-century-biotin-800-mcg-110-easy-swallow-tablets/43724#product-detail-reviews";
   reviewUrl: string; //"https://kr.iherb.com/r/21st-century-biotin-800-mcg-110-easy-swallow-tablets/43724";
-  listPrice: string; //"₩2,840";
+  listPrice: string | null; //"₩2,840";
   discountedPrice: string; //"₩2,840";
   discountedPriceAmount: number; //2840;
   hidePrice: boolean; //false;
