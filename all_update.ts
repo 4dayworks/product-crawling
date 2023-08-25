@@ -98,7 +98,8 @@ export const updateByProductId = async ({
       if (product === null) continue;
       const result = await setData(product, i, productIdListAll.length);
 
-      l("[result]", "magenta", JSON.stringify(result));
+      l("[result]", "magenta", String(result));
+      console.log({ type: typeof result, isTrue: result === true, isFalse: result === false });
       if (!result) {
         if (chance > 0) {
           const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
