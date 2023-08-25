@@ -102,7 +102,7 @@ export const updateByProductId = async ({
       if (!result) {
         if (chance > 0) {
           const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
-            productIdListAll[i]
+            productIdListAll[i + 1]
           } / message: continuous error / remain_change: ${chance}`;
           await axios
             .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
@@ -117,7 +117,7 @@ export const updateByProductId = async ({
         } else {
           if (i >= 2) {
             const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
-              productIdListAll[i]
+              productIdListAll[i + 1]
             } / message: continuous error / remain_change: ${chance} / remain chance out -> Crawling Server Restart !!`;
             if (instanceData?.instance_name != undefined) {
               await axios
