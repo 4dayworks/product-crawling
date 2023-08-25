@@ -67,29 +67,18 @@ export const updateByProductId = async ({
   }
 
   // 특정 제품만 가져오기 (없으면 전체 제품 대상)
-  if (productSelectedList)
-    productIdListAll = productIdListAll.filter((id) =>
-      productSelectedList.includes(id)
-    );
+  if (productSelectedList) productIdListAll = productIdListAll.filter((id) => productSelectedList.includes(id));
 
   // 가져올 제품 갯수 체크
   if (productIdListAll.length === 0)
-    return l(
-      "STOP",
-      "red",
-      "크롤링할 제품이 없습니다. product_price_crawling_keyword에 데이터를 추가해주세요."
-    );
+    return l("STOP", "red", "크롤링할 제품이 없습니다. product_price_crawling_keyword에 데이터를 추가해주세요.");
 
   // 배열 섞기
   // if (!productSelectedList) productIdListAll = shuffle(productIdListAll);
 
   let chance = 3; //다시 시도할 기회
   for (let i = 0; i < productIdListAll.length; i++) {
-    if (
-      isInit &&
-      instanceData?.startIndex != undefined &&
-      instanceData.startIndex > 0
-    ) {
+    if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
       i = instanceData.startIndex;
       isInit = false;
     }
@@ -112,9 +101,7 @@ export const updateByProductId = async ({
       l("[result]", "magenta", JSON.stringify(result));
       if (!result) {
         if (chance > 0) {
-          const message = `instance_name: ${
-            instanceData?.instance_name
-          }, index: ${i + 1} / product_id: ${
+          const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
             productIdListAll[i - 2]
           } / message: continuous error / remain_change: ${chance}`;
           await axios
@@ -129,9 +116,7 @@ export const updateByProductId = async ({
           continue;
         } else {
           if (i >= 2) {
-            const message = `instance_name: ${
-              instanceData?.instance_name
-            }, index: ${i + 1} / product_id: ${
+            const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
               productIdListAll[i - 2]
             } / message: continuous error / remain_change: ${chance} / remain chance out -> Crawling Server Restart !!`;
             if (instanceData?.instance_name != undefined) {
@@ -141,7 +126,9 @@ export const updateByProductId = async ({
                 .catch((err) => l("Err", "red", "Slack Send Message Error"));
               await axios
                 .get(
-                  `http://34.22.78.170:3001/gcp/restart?instance_name=product-crawling-202308230300-e2-start-index-12568`
+                  `http://34.22.78.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
+                    i - 1
+                  }`
                 )
                 .then((res) => res.data.data)
                 .catch((err) => l("Err", "red", "Slack Send Message Error"));
@@ -193,17 +180,14 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
 
     const executeTime = new Date().getTime() - startTime;
     // const randomTime = Math.random() * 10000 < 5000 ? 5000 : Math.random() * 12000; //유저라는 걸 인식하기 위해 랜덤 시간
-    const waitTime =
-      (product.naver_catalog_url !== null ? 1000 : 1000) - executeTime; //500 : 2000
+    const waitTime = (product.naver_catalog_url !== null ? 1000 : 1000) - executeTime; //500 : 2000
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
     l(
       "TIME",
       "blue",
-      `id:${
-        product.product_id
-      } 종료 시간: ${endTime}s, end_at: ${new Date().toUTCString()}, 작업 시간:${(
+      `id:${product.product_id} 종료 시간: ${endTime}s, end_at: ${new Date().toUTCString()}, 작업 시간:${(
         executeTime / 1000
       ).toFixed(2)}s\n`
     );
