@@ -1,10 +1,6 @@
 {
   "name": "product_crawling",
-<<<<<<< HEAD
-  "version": "1.0.4",
-=======
   "version": "1.0.8",
->>>>>>> e2fd9c1000524bf97555239c498b03081fcc280d
   "description": "",
   "main": "index.js",
   "scripts": {
