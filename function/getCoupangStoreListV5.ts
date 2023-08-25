@@ -8,26 +8,15 @@ import { StoreTypeV5 } from "./updateByItemscout";
 export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV5) => {
   const getHeaders = () => {
     return {
-      Accept:
-        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+      Accept: "*/*",
       "Accept-Encoding": "gzip, deflate, br",
       "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-      "Cache-Control": "no-cache",
-      Dnt: "1",
-      Pragma: "no-cache",
-      "Sec-Ch-Ua": '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
-      "Sec-Ch-Ua-Mobile": "?0",
-      "Sec-Ch-Ua-Platform": '"Windows"',
-      "Sec-Fetch-Dest": "document",
-      "Sec-Fetch-Mode": "navigate",
-      "Sec-Fetch-Site": "none",
-      "Sec-Fetch-User": "?1",
-      "Upgrade-Insecure-Requests": "1",
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-      Cookie:
-        `PCID=16928890801943952919877; trac_src=1139000; trac_spec=10799999; trac_addtag=900; trac_ctag=HOME; trac_lptag=AF6484854; trac_itime=20230824235800; sid=2cdf6b1516e9414e85be5ef7fd4962cf8ade0074; MARKETID=16928890801943952919877; x-coupang-accept-language=ko-KR; x-coupang-target-market=KR; overrideAbTestGroup=%5B%5D; bm_sz=A3BDD1F042E5BC88F1AB40ABFFA8DE8C~YAAQTXXTF2bdCymKAQAAj9GEKhQ3SKE89NmUGZlQwVTqoEfM33tDSPmRG1MLrctq2bdOKVRWFVQ5KR3z9xazkG2eiW+hjQz9/N/RRriHXhkpux84G898pCbt3NrBzZQgFRCL04TwAh3KazkqB52FvxKa8dVKmD6+H+Ec+SRLDutGP1okp8MoWh48ndnP/dEZ0pWCH74QewHB4u8f5xZ3HZjuhmE8xO5q4PlJTY9gE8Rm6UZnBNvt/rTYQ/1kzjqgJRMx4YdFnx0GLcaca3qrHSxJMOVhHmzUKqc+dmyYvbhfbFAW~3289414~3228994; ak_bmsc=1C3CE7DEDC3A45CF6CF4EA0841D31CAE~000000000000000000000000000000~YAAQTXXTFxHeCymKAQAAm9SEKhQ5B0AC8jCi3VxOTvNAdiGZXgzfyT6M4Mnz9ulR5hJhGsX8Sw+fwo8tAWzUnTEFb2XdqnBL/MEYPmaETiyQ+dtMQcSm4DvSeJ2TMuOJIMzG08WtuViUkHD9z5o/AjEf8UStl2dr9aDa9mkfK+cECsTwT+y6oU8l6/GD8bQlt2Y4iFGPuvp9CSPjA1Eqre5LMFt+MUNUr1kZoFYJOqyrL1ZRbwomVWii2f2YzOMZQO3BEYoSp83S3VyKjSELRc6qtnl4TxUjCRFHTaLCoaJHjbzUkjlUt6IzbUxLkOEhJIh96XUHfJcPRJt/SPEZJuhrC/KVXdDoG5VbGrQ6Va1drAPFX6gYRRv8IGO/xqAYDOsqK31Bf3xA1SF1gfOxIunwA7bmsg1FESOZWq0iXO7hTDx636iRb2c75Z626TTML0goHEOsOwjphQPIXCCT5okUTLWbgxRf2ZQMxlEboygZUbBJ3Up8JD80cVdh2MG0Wbiv; _abck=F63CA9EF2EAFE709480B18DF9FBEDCF3~0~YAAQTXXTF6j1CymKAQAAOTyFKgqaSZy1xseJ9m+OZHdYi3U2ElADbXRdO4DyhhNf4rLMhINj0XkiEhvRQ0Nb1H7ShFuDfyDYUY4kj94/ZAyCwKUM7EX9E+4hOY6O+904bUg//pkJXgt6i/07xDmGQbRMV+fZjyujOtbZnACmxMlKhVX3tL4DphhTeuHQ/wu5aCk0VyU4a/td1BwukB3p6O421Cgsy2ZsIvtNeWajMpCQMHXMN/yGvY+eiELFh5um/p6+ESItI1iFd9Ex5/dLk0xbKUhpRfbyMt9dKTVvBxXRD3gsaMJvSu8yrQel2M5c64ze+ChFNLpvJ7JH9Cb1DiujeVHjeLCbtCwOD6mKafT3maXWNEhWhkTCHWRCfP9a11O2+fGeTAtrrUkEgWCJYQmEhNrCn3LUXPN0YCSUMGyGYsR13heB~-1~-1~-1; _fbp=fb.1.1692930491645.434875172; searchKeyword=%EB%89%B4%ED%8A%B8%EB%A6%AC%ED%8C%8C%EB%A7%88%20%EC%8A%A4%ED%8A%B8%EB%A0%88%EC%8A%A4%20%EB%B9%84%ED%83%80%EB%AF%B9%EC%8A%A4%7C%EB%89%B4%ED%8A%B8%EB%A6%AC%ED%8C%8C%EB%A7%88; searchKeywordType=%7B%22%EB%89%B4%ED%8A%B8%EB%A6%AC%ED%8C%8C%EB%A7%88%20%EC%8A%A4%ED%8A%B8%EB%A0%88%EC%8A%A4%20%EB%B9%84%ED%83%80%EB%AF%B9%EC%8A%A4%22%3A0%7D%7C%7B%22%EB%89%B4%ED%8A%B8%EB%A6%AC%ED%8C%8C%EB%A7%88%22%3A0%7D; cto_bundle=6-W6SV9TcnEzV0U2ayUyQnQlMkZzbld1aGhZSFBhVk82bGx5MTIlMkZjWjZOVkM5RFI4dm11RllYSGFIU1RnNGxwN3NhNWN3WDdmYmdPRGxXWXRYcldtUVFhaUFUNWM3bklHUGc2JTJCSlpKTGZOcERjZHJJWEUzQXVzQjJucThMNkZ4aSUyQkVpTDJhTnZhZUtPYkklMkZjSDFueFZac3lhcFJ0M0ElM0QlM0Q; bm_sv=7BFE6F62809E171F9D9E37E959E439D0~YAAQnaUrF25W7RKKAQAANJSQKhSVY+Oizf+HJgz4et8XAfmF2k5TCdWLXNFfSfMuDSq28+eZDyTF1WdCHiwH7BtuIKVOtKMEhuzDelx/QUuj9SwIU8Jmf+VrrLuXQQl5Z6kXtIoiYPGomMJSvmX59RCVDtrgqNVdVwFB/+MMv83i03CwHyA+gzTKAlDBXBEKnif2n/if2SWEMMdilLjP2QVnUTkKaWX4K0xfhW5xyKB1ygAwNad2otl6hxFChDZfjwc=~1; __cf_bm=O57Tje7SI08IXyJjJ8zBU.RXFEy6cGOGthgGcmr3Dgw-1692931235-0-AdwwQmqZtV0kRjc3Sgp6FkCIX95tJXA1jx/vnN55tgWBwyjYuLjxlWnygaaS` +
-        uniqueId(),
+      Cookie: "1",
+      "Postman-Token": "2360597e-8d8b-45a2-aa5a-c76ea406ef7d",
+      Host: "www.coupang.com",
+      Connection: "keep-alive",
     };
   };
   // 1. 쿠팡 키워드 없을 경우 쿠팡 데이터를 가져오지 않음.
@@ -37,9 +26,9 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
   }
 
   // 2. 쿠팡 검색 결과 페이지 크롤링하기
-  const url = `https://www.coupang.com/np/search?rocketAll=true&q=${coupang_keyword.replace(
-    /[ \[\]]/g,
-    "+"
+  // .replace(    /[ \[\]]/g,    "+"  )
+  const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(
+    coupang_keyword
   )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket_luxury%2Crocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=719&component=&rating=0&sorter=scoreDesc&listSize=36`;
 
   console.log(url, getHeaders());
