@@ -8,9 +8,23 @@ import { StoreTypeV5 } from "./updateByItemscout";
 export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV5) => {
   const getHeaders = () => {
     return {
-      "Accept-Encoding": "deflate, br",
-      "Content-Type": "text/html;charset=UTF-8",
-      "User-Agent": "PostmanRuntime/7.32.2",
+      Accept:
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+      "Cache-Control": "no-cache",
+      Dnt: "1",
+      Pragma: "no-cache",
+      "Sec-Ch-Ua": '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
+      "Sec-Ch-Ua-Mobile": "?0",
+      "Sec-Ch-Ua-Platform": '"Windows"',
+      "Sec-Fetch-Dest": "document",
+      "Sec-Fetch-Mode": "navigate",
+      "Sec-Fetch-Site": "none",
+      "Sec-Fetch-User": "?1",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
       Cookie: uniqueId(),
     };
   };
@@ -25,6 +39,7 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
     /[ \[\]]/g,
     "+"
   )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket_luxury%2Crocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=719&component=&rating=0&sorter=scoreDesc&listSize=36`;
+
   console.log(url, getHeaders());
 
   const response = await axios.get(url, { headers: getHeaders() }).catch((e) => {
