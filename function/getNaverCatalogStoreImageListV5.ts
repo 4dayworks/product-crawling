@@ -37,9 +37,10 @@ export const getNaverCatalogStoreImageListV5 = (product_id: number, naver_catalo
 
 export const setProductImage = (product_id: number, imageList: string[]) => {
   return new Promise<boolean>(async (resolve, reject) => {
-    await axios
-      .post(`${NODE_API_URL}/product/store/detail/image`, { image_list: imageList, product_id })
-      .catch(() => resolve(false));
+    await axios.post(`${NODE_API_URL}/product/store/detail/image`, { image_list: imageList, product_id }).catch((e) => {
+      resolve(false);
+      console.log(e);
+    });
     resolve(true);
   });
 };

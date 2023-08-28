@@ -1,11 +1,11 @@
 import axios from "axios";
-import { AuthorizationKey } from "./function/auth";
-import { l } from "./function/console";
-import { getMaxPageList } from "./function/iherb/getMaxPageList";
-import { getProductListData } from "./function/iherb/getProductListData";
-import { getIherbStoreList } from "./function/getIherbStoreList";
-import { wrapSlept } from "./function/wrapSlept";
-import { getBrandURLList } from "./function/iherb/brandList";
+import { AuthorizationKey } from "../auth";
+import { l } from "../console";
+import { getMaxPageList } from "./getMaxPageList";
+import { getProductListData } from "./getProductListData";
+import { getIherbStoreList } from "../getIherbStoreList";
+import { wrapSlept } from "../wrapSlept";
+import { getBrandURLList } from "./brandList";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 

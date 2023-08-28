@@ -98,11 +98,11 @@ export const updateByProductId = async ({
       if (product === null) continue;
       const result = await setData(product, i, productIdListAll.length);
 
-      l("[result]", "magenta", JSON.stringify(result));
+      l("[result]", "magenta", String(result));
       if (!result) {
         if (chance > 0) {
           const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
-            productIdListAll[i - 2]
+            product.product_id
           } / message: continuous error / remain_change: ${chance}`;
           await axios
             .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
@@ -117,7 +117,7 @@ export const updateByProductId = async ({
         } else {
           if (i >= 2) {
             const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
-              productIdListAll[i - 2]
+              product.product_id
             } / message: continuous error / remain_change: ${chance} / remain chance out -> Crawling Server Restart !!`;
             if (instanceData?.instance_name != undefined) {
               await axios
@@ -126,7 +126,7 @@ export const updateByProductId = async ({
                 .catch((err) => l("Err", "red", "Slack Send Message Error"));
               await axios
                 .get(
-                  `http://34.64.183.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
+                  `http://34.22.78.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
                     i - 1
                   }`
                 )
