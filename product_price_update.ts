@@ -7,9 +7,5 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 updateByProductId({
   // page: 0,
   // size: 6000,
-<<<<<<< HEAD
   product_id_list: [82829],
-=======
-  product_id_list: [73],
->>>>>>> 8a1dcf04b64d6824e3f811a32ab4db9c29c2a95a
 });
