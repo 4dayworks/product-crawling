@@ -161,7 +161,7 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
 
   const executeTime = new Date().getTime() - startTime;
   const randomTime = Math.floor(Math.random() * 10000); //유저라는 걸 인식하기 위해 랜덤 시간
-  const waitTime = (product.naver_catalog_url !== null ? 1000 : 4000) - executeTime + randomTime;
+  const waitTime = (product.naver_catalog_url !== null ? 1000 : 1000) - executeTime + randomTime;
   await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
   if (result === null) {
