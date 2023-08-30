@@ -1,12 +1,8 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-<<<<<<< HEAD
-import { getStoreListV6, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
-=======
-import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
->>>>>>> 6ac34829d5fde58bda055a44b09755206e8d6cb7
 import { wrapSlept } from "./function/wrapSlept";
+import { getStoreListV6 } from "./function/product";
 
 type updateByProductIdType = {
   page?: number;
