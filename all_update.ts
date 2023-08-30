@@ -1,16 +1,8 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import {
-  getStoreListV5,
-  setGraph,
-  setGraphV5,
-  setLastMonthLowPrice,
-  setLastMonthLowPriceV5,
-  setStoreListV5,
-} from "./function/product";
+import { getStoreListV6, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
-import { shuffle } from "lodash";
 
 type updateByProductIdType = {
   page?: number;
@@ -164,33 +156,37 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
   );
 
   // -- main logic --
-  const storeList = await getStoreListV5(product);
+  const storeList = await getStoreListV6(product);
 
-  if (storeList === null) return false;
+  console.log({ storeList });
 
-  const result = await setStoreListV5(product, storeList);
-  // // -- main logic --
+  return false;
 
-  if (result === null) {
-    l("Err", "red", `${s} setStoreList result: null`);
-    return false;
-  } else {
-    await setGraphV5(product);
-    await setLastMonthLowPriceV5(product);
+  // if (storeList === null) return false;
 
-    const executeTime = new Date().getTime() - startTime;
-    // const randomTime = Math.random() * 10000 < 5000 ? 5000 : Math.random() * 12000; //유저라는 걸 인식하기 위해 랜덤 시간
-    const waitTime = (product.naver_catalog_url !== null ? 1000 : 1000) - executeTime; //500 : 2000
-    await wrapSlept(waitTime < 0 ? 0 : waitTime);
+  // const result = await setStoreListV5(product, storeList);
+  // // // -- main logic --
 
-    const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
-    l(
-      "TIME",
-      "blue",
-      `id:${product.product_id} 종료 시간: ${endTime}s, end_at: ${new Date().toUTCString()}, 작업 시간:${(
-        executeTime / 1000
-      ).toFixed(2)}s\n`
-    );
-    return true;
-  }
+  // if (result === null) {
+  //   l("Err", "red", `${s} setStoreList result: null`);
+  //   return false;
+  // } else {
+  //   await setGraphV5(product);
+  //   await setLastMonthLowPriceV5(product);
+
+  //   const executeTime = new Date().getTime() - startTime;
+  //   // const randomTime = Math.random() * 10000 < 5000 ? 5000 : Math.random() * 12000; //유저라는 걸 인식하기 위해 랜덤 시간
+  //   const waitTime = (product.naver_catalog_url !== null ? 1000 : 1000) - executeTime; //500 : 2000
+  //   await wrapSlept(waitTime < 0 ? 0 : waitTime);
+
+  //   const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
+  //   l(
+  //     "TIME",
+  //     "blue",
+  //     `id:${product.product_id} 종료 시간: ${endTime}s, end_at: ${new Date().toUTCString()}, 작업 시간:${(
+  //       executeTime / 1000
+  //     ).toFixed(2)}s\n`
+  //   );
+  //   return true;
+  // }
 };

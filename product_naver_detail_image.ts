@@ -645,7 +645,7 @@ const naver_url_list: [number, string][] = [
 // https://msearch.shopping.naver.com/catalog/6743170459 이런거 잘됨
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 async function getProductImage() {
-  for (let i = 0; i < naver_url_list.length; i++) {
+  for (let i = 111; i < naver_url_list.length; i++) {
     const item = naver_url_list[i];
     const pid = item[0];
     const naver_catalog_url = item[1];
