@@ -1,7 +1,11 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
+<<<<<<< HEAD
 import { getStoreListV6, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
+=======
+import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
+>>>>>>> 6ac34829d5fde58bda055a44b09755206e8d6cb7
 import { wrapSlept } from "./function/wrapSlept";
 
 type updateByProductIdType = {
@@ -96,13 +100,14 @@ export const updateByProductId = async ({
           const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
             product.product_id
           } / message: continuous error / remain_change: ${chance}`;
-          await axios
-            .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
-            .then((res) => res.data.data)
-            .catch((err) => l("Err", "red", "Slack Send Message Error"));
+          if (chance < 2)
+            await axios
+              .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+              .then((res) => res.data.data)
+              .catch((err) => l("Err", "red", "Slack Send Message Error"));
 
-          // 문제 생겼을시 10분 또는 20초 대기 후 다음 재시도
-          await wrapSlept(chance === 1 ? 600000 : 20000);
+          // 문제 생겼을시 10분 또는 1분 대기 후 다음 재시도
+          await wrapSlept(chance === 1 ? 600000 : 60000);
           chance--;
           if (chance === 1) i--;
           continue;
@@ -164,8 +169,10 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
 
   // if (storeList === null) return false;
 
-  // const result = await setStoreListV5(product, storeList);
-  // // // -- main logic --
+    // const executeTime = new Date().getTime() - startTime;
+    // const randomTime = Math.floor(Math.random() * 10000); //유저라는 걸 인식하기 위해 랜덤 시간
+    // const waitTime = (product.naver_catalog_url !== null ? 1000 : 12000) - executeTime + randomTime;
+    // await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
   // if (result === null) {
   //   l("Err", "red", `${s} setStoreList result: null`);
