@@ -1,16 +1,8 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import {
-  getStoreListV5,
-  setGraph,
-  setGraphV5,
-  setLastMonthLowPrice,
-  setLastMonthLowPriceV5,
-  setStoreListV5,
-} from "./function/product";
+import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
-import { shuffle } from "lodash";
 
 type updateByProductIdType = {
   page?: number;
@@ -110,8 +102,8 @@ export const updateByProductId = async ({
               .then((res) => res.data.data)
               .catch((err) => l("Err", "red", "Slack Send Message Error"));
 
-          // 문제 생겼을시 10분 또는 20초 대기 후 다음 재시도
-          await wrapSlept(chance === 1 ? 600000 : 20000);
+          // 문제 생겼을시 10분 또는 1분 대기 후 다음 재시도
+          await wrapSlept(chance === 1 ? 600000 : 60000);
           chance--;
           if (chance === 1) i--;
           continue;
@@ -180,8 +172,8 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
     await setLastMonthLowPriceV5(product);
 
     const executeTime = new Date().getTime() - startTime;
-    // const randomTime = Math.random() * 10000 < 5000 ? 5000 : Math.random() * 12000; //유저라는 걸 인식하기 위해 랜덤 시간
-    const waitTime = (product.naver_catalog_url !== null ? 1000 : 4000) - executeTime; //500 : 2000
+    const randomTime = Math.floor(Math.random() * 10000); //유저라는 걸 인식하기 위해 랜덤 시간
+    const waitTime = (product.naver_catalog_url !== null ? 1000 : 12000) - executeTime + randomTime;
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
