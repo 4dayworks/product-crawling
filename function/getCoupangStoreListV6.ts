@@ -19,7 +19,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
 
-    const productElements = await driver.wait(until.elementsLocated(By.css("a.search-product-link")), 1000);
+    const productElements = await driver.wait(until.elementsLocated(By.css("ul.search-product-link")), 1000);
     const storeList: StoreTypeV5[] = [];
 
     console.log({ url, productElements });
