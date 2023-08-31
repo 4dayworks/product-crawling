@@ -120,7 +120,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     for (let i = 1; i < proxies.length - 1; i++) {
       chromeOptions.addArguments(`--proxy-server=http://${proxies[i].ip}:${proxies[i].port}`);
 
-      driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
+      const driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
 
       const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
       await driver.get(url);
