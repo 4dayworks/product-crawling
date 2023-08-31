@@ -26,12 +26,15 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
   //   exec("/usr/bin/google-chrome --remote-debugging-port=9222");
   //   isChromeRunning = true;
   // }
-
+  console.log(-1);
   driver = await new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
+  console.log(0);
   const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
+  console.log(1, { url });
   await driver.get(url);
+  console.log(2);
   const productElements = await driver.findElements(By.className("search-product-list"));
-  console.log({ productElements, isChromeRunning });
+  console.log(3);
   const storeList: StoreTypeV5[] = [];
 
   for (let element of productElements) {
