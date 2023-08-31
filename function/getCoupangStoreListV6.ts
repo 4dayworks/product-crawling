@@ -212,7 +212,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     throw error;
   } finally {
     if (driver) {
-      await driver.quit();
+      // await driver.quit();
     }
   }
 };
