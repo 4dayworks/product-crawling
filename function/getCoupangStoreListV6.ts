@@ -12,28 +12,13 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     const chromeOptions = new chrome.Options();
     chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--no-sandbox");
-    chromeOptions.addArguments("--referer=coupang.com"); // 리퍼러 설정 (선택적)
-    chromeOptions.addArguments("--cookies-file=Mozilla/5.0"); // 쿠키 파일 경로 (선택적)
-
-    // 1. Change User-Agent
-    const userAgents = [
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537",
-      "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0",
-    ];
-    const randomUserAgent = userAgents[Math.floor(Math.random() * userAgents.length)];
-    chromeOptions.addArguments(`user-agent=${randomUserAgent}`);
-
-    driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
-
-    // Setting referrer and cookies
-    driver.executeScript(`document.referrer = "https://www.coupang.com/"`); // Set referrer
+    chromeOptions.addArguments("--disable-dev-shm-usage");
 
     driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
 
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
-    const bodyContent = await driver.findElement(By.tagName("body")).getAttribute("outerHTML");
-    console.log({ bodyContent });
+
     const productElements = await driver.findElements(By.css("a.search-product-link"));
     const storeList: StoreTypeV5[] = [];
 
