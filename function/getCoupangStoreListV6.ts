@@ -1,7 +1,7 @@
 import { getProductTypeV5 } from "../all_update";
 import { StoreTypeV5 } from "./updateByItemscout";
 
-import { Builder, By } from "selenium-webdriver";
+import { Builder, By, until } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 
 export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV5): Promise<StoreTypeV5[]> => {
@@ -19,7 +19,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
 
-    const productElements = await driver.findElements(By.css("a.search-product-link"));
+    const productElements = await driver.wait(until.elementsLocated(By.css("a.search-product-link")), 1000);
     const storeList: StoreTypeV5[] = [];
 
     console.log({ url, productElements });
