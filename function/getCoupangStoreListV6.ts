@@ -13,6 +13,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     // const response = await torRequest.request(url); // Tor를 통해 요청 보내기
 
     torRequest.request("https://api.ipify.org", function (err: any, res: any, body: any) {
+      console.log({ err, body, res });
       if (!err && res.statusCode == 200) {
         console.log("Your public (through Tor) IP is: " + body);
       }
