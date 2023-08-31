@@ -116,15 +116,18 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
       { ip: "76.80.116.106", port: 8080 },
       { ip: "179.1.66.66", port: 8080 },
     ];
-    chromeOptions.addArguments(`--proxy-server=http://${proxies[0].ip}:${proxies[0].port}`);
 
-    driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
+    for (let i = 0; i < proxies.length - 1; i++) {
+      chromeOptions.addArguments(`--proxy-server=http://${proxies[i].ip}:${proxies[i].port}`);
 
-    const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
-    await driver.get(url);
+      driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
 
-    const bodyContent = await driver.findElement(By.tagName("body")).getAttribute("outerHTML");
-    console.log({ bodyContent });
+      const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
+      await driver.get(url);
+
+      const bodyContent = await driver.findElement(By.tagName("body")).getAttribute("outerHTML");
+      console.log({ bodyContent });
+    }
 
     const productElements = await driver.findElements(By.css("a.search-product-link"));
     const storeList: StoreTypeV5[] = [];
