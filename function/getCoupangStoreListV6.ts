@@ -8,7 +8,6 @@ let driver: WebDriver;
 const getHeaders = () => {
   const userAgent =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36";
-
   const chromeOptions = new chrome.Options();
   chromeOptions.addArguments(`--user-agent=${userAgent}`);
   chromeOptions.addArguments("--lang=ko-KR"); // Accept-Language 설정
@@ -24,12 +23,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
 
-    driver = new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
-    await driver.manage().addCookie({
-      name: "your_cookie_name",
-      value: "your_cookie_value",
-      domain: "www.coupang.com",
-    });
+    driver = await new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
 
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
