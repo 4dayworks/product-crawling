@@ -109,7 +109,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
       { ip: "179.1.66.66", port: 8080 },
     ];
 
-    for (let i = 3; i < proxies.length - 1; i++) {
+    for (let i = 3 + 4; i < proxies.length - 1; i++) {
       const chromeOptions = new chrome.Options();
       chromeOptions.addArguments("--headless");
       chromeOptions.addArguments("--no-sandbox");
