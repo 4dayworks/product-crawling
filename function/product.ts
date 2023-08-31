@@ -82,7 +82,7 @@ export const getHolyZoneId = (): Promise<number[]> =>
 export const getStoreListV6 = async (product: getProductTypeV5) => {
   try {
     const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
-      getCoupangStoreListV6(product),
+      getCoupangStoreListV5(product),
       getIherbStoreListV5(product),
       getItemscoutStoreListV5(product),
       getNaverCatalogStoreListV5(product),
