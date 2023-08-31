@@ -4,7 +4,7 @@ import { uniqueId } from "lodash";
 import { Builder, By, WebDriver } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 
-let driver: WebDriver;
+let driver: any;
 const getHeaders = () => {
   const userAgent =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36";
@@ -25,6 +25,9 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     driver = await new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
+    await driver.executeCdpCommand("Page.addScriptToEvaluateOnNewDocument", {
+      source: `Object.defineProperty(navigator, 'webdriver', { get: () => undefined })`,
+    });
 
     const productElements = await driver.findElements(By.className("search-product-list"));
     const bodyContent = await driver.findElement(By.tagName("body")).getAttribute("outerHTML");
