@@ -1,3 +1,4 @@
+// @ts-ignore
 import torRequest from "tor-request";
 import cheerio from "cheerio";
 import { StoreTypeV5 } from "./updateByItemscout";
