@@ -9,14 +9,6 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
   let driver;
 
   try {
-    const chromeOptions = new chrome.Options();
-    chromeOptions.addArguments("--headless");
-    chromeOptions.addArguments("--no-sandbox");
-    chromeOptions.addArguments("--disable-dev-shm-usage");
-    // User-Agent를 일반적인 최신 웹 브라우저의 User-Agent로 설정
-    chromeOptions.addArguments(
-      `--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36`
-    );
     // 리퍼러를 쿠팡의 메인 페이지로 설정 (크롤링 대상 페이지에 진입하는 것처럼 흉내)
     // chromeOptions.addArguments("--referer=https://www.coupang.com/");
 
@@ -118,6 +110,14 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     ];
 
     for (let i = 1; i < proxies.length - 1; i++) {
+      const chromeOptions = new chrome.Options();
+      chromeOptions.addArguments("--headless");
+      chromeOptions.addArguments("--no-sandbox");
+      chromeOptions.addArguments("--disable-dev-shm-usage");
+      // User-Agent를 일반적인 최신 웹 브라우저의 User-Agent로 설정
+      chromeOptions.addArguments(
+        `--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36`
+      );
       chromeOptions.addArguments(`--proxy-server=http://${proxies[i].ip}:${proxies[i].port}`);
 
       const driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
