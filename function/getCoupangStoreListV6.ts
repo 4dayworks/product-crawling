@@ -1,49 +1,36 @@
-import { getProductTypeV5 } from "../all_update";
+import torRequest from "tor-request";
+import cheerio from "cheerio";
 import { StoreTypeV5 } from "./updateByItemscout";
-import { Builder, By } from "selenium-webdriver";
-import chrome from "selenium-webdriver/chrome";
 
-export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV5): Promise<StoreTypeV5[]> => {
+export const getCoupangStoreListV6 = async ({ coupang_keyword }): Promise<StoreTypeV5[]> => {
   if (!coupang_keyword) return [];
-  let driver;
 
   try {
-    const chromeOptions = new chrome.Options();
-    chromeOptions.addArguments("--headless");
-    chromeOptions.addArguments("--no-sandbox");
-    chromeOptions.addArguments("--disable-dev-shm-usage");
-
-    driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
-
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
-    await driver.get(url);
-    const bodyContent = await driver.findElement(By.tagName("body")).getAttribute("outerHTML");
-    console.log({ bodyContent });
-    const productElements = await driver.findElements(By.css("a.search-product-link"));
+    const response = await torRequest.request(url); // Tor를 통해 요청 보내기
+
+    const $ = cheerio.load(response.body); // cheerio로 HTML 내용 로드하기
+    const productElements = $("a.search-product-link");
     const storeList: StoreTypeV5[] = [];
 
-    for (let element of productElements) {
-      const store_product_name = await element.findElement(By.css("dl > dd > div > div.name")).getText();
-      const store_product_image_data_src =
-        "https:" + (await element.findElement(By.css("dl > dt > img")).getAttribute("data-img-src"));
-      const store_product_image_src =
-        "https:" + (await element.findElement(By.css("dl > dt > img")).getAttribute("src"));
+    productElements.each((index, element) => {
+      const store_product_name = $(element).find("dl > dd > div > div.name").text();
+      const store_product_image_data_src = "https:" + $(element).find("dl > dt > img").attr("data-img-src");
+      const store_product_image_src = "https:" + $(element).find("dl > dt > img").attr("src");
       const store_product_image =
         store_product_image_src.includes("undefined") || store_product_image_src.includes("blank1x1")
           ? store_product_image_data_src
           : store_product_image_src;
-      const store_link = "https://www.coupang.com" + (await element.getAttribute("href"));
+      const store_link = "https://www.coupang.com" + $(element).attr("href");
       const store_price = Number(
-        (await element.findElement(By.css("dl > dd > div > div.price-area > div > div.price > em > strong")).getText())
+        $(element)
+          .find("dl > dd > div > div.price-area > div > div.price > em > strong")
+          .text()
           .trim()
           .replace(/,/g, "")
       );
-      const typeSrc = await element
-        .findElement(By.css("dl > dd > div > div.price-area > div > div.price > em > span > img"))
-        .getAttribute("src");
-      const outOfStock = await element
-        .findElement(By.css("dl > dd > div > div.price-area > div.out-of-stock"))
-        .getText();
+      const typeSrc = $(element).find("dl > dd > div > div.price-area > div > div.price > em > span > img").attr("src");
+      const outOfStock = $(element).find("dl > dd > div > div.price-area > div.out-of-stock").text();
       const type = !typeSrc
         ? null
         : typeSrc.includes("merchant")
@@ -56,16 +43,18 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
         ? "로켓배송"
         : null;
       const store_review_score = Number(
-        await element.findElement(By.css("dl > dd > div > div.other-info > div > span.star > em")).getText()
+        $(element).find("dl > dd > div > div.other-info > div > span.star > em").text()
       );
       const store_review_count = Number(
-        (await element.findElement(By.css("dl > dd > div > div.other-info > div > span.rating-total-count")).getText())
+        $(element)
+          .find("dl > dd > div > div.other-info > div > span.rating-total-count")
+          .text()
           .trim()
           .replace(/\(|\)/g, "")
       );
-      const is_ad = (await element.findElement(By.css("dl > dd > div > span > span.ad-badge-text")).getText()) === "AD";
+      const is_ad = $(element).find("dl > dd > div > span > span.ad-badge-text").text() === "AD";
 
-      if (!type || is_ad || !store_product_image || outOfStock === "일시품절") continue;
+      if (!type || is_ad || !store_product_image || outOfStock === "일시품절") return;
 
       const data = {
         yagi_keyword: coupang_keyword,
@@ -84,15 +73,11 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
       };
 
       storeList.push(data);
-    }
+    });
 
     return storeList;
   } catch (error) {
-    console.error("Error in web scraping:", error);
+    console.error("웹 스크래핑 오류:", error);
     throw error;
-  } finally {
-    if (driver) {
-      await driver.quit();
-    }
   }
 };
