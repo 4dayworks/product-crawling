@@ -13,6 +13,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
+    chromeOptions.addArguments(`user-agent=Chrome${Math.floor(Math.random() * 100)}`);
 
     driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
 
