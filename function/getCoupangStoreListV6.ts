@@ -10,10 +10,22 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
 
   try {
     const chromeOptions = new chrome.Options();
-    chromeOptions.debuggerAddress("localhost:9222");
     chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
+
+    // 1. Change User-Agent
+    const userAgents = [
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537",
+      "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0",
+    ];
+    const randomUserAgent = userAgents[Math.floor(Math.random() * userAgents.length)];
+    chromeOptions.addArguments(`user-agent=${randomUserAgent}`);
+
+    driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
+
+    // Setting referrer and cookies
+    driver.executeScript(`document.referrer = "https://www.coupang.com/"`); // Set referrer
 
     driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
 
