@@ -79,10 +79,24 @@ export const getHolyZoneId = (): Promise<number[]> =>
       return [];
     });
 
-export const getStoreListV6 = async (product: getProductTypeV5) => {
+export const getStoreListV5 = async (product: getProductTypeV5) => {
   try {
     const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
       getCoupangStoreListV5(product),
+      getIherbStoreListV5(product),
+      getItemscoutStoreListV5(product),
+      getNaverCatalogStoreListV5(product),
+    ]);
+    return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
+  } catch (error) {
+    l("Err", "red", "getStoreListV6 " + (error as Error).message);
+    return null;
+  }
+};
+export const getStoreListV6 = async (product: getProductTypeV5) => {
+  try {
+    const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
+      getCoupangStoreListV6(product),
       getIherbStoreListV5(product),
       getItemscoutStoreListV5(product),
       getNaverCatalogStoreListV5(product),

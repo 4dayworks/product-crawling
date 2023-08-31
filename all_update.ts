@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import { getStoreListV6, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
+import { getStoreListV5, getStoreListV6, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
 
 type updateByProductIdType = {
