@@ -4,7 +4,7 @@ import { uniqueId } from "lodash";
 import { Builder, By, WebDriver } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 
-let driver: any;
+let driver: WebDriver;
 
 const getHeaders = () => {
   const userAgent =
@@ -27,9 +27,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     driver = await new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
 
     // Add this to bypass the browser automation detection
-    await driver.executeCdpCommand("Page.addScriptToEvaluateOnNewDocument", {
-      source: `Object.defineProperty(navigator, 'webdriver', { get: () => undefined })`,
-    });
+    await driver.executeScript("Object.defineProperty(navigator, 'webdriver', { get: () => undefined })");
 
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
