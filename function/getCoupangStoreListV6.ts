@@ -1,10 +1,20 @@
 import { getProductTypeV5 } from "../all_update";
 import { StoreTypeV5 } from "./updateByItemscout";
-
+import { uniqueId } from "lodash";
 import { Builder, By, WebDriver } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 
 let driver: WebDriver;
+const getHeaders = () => {
+  const userAgent =
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36";
+
+  const chromeOptions = new chrome.Options();
+  chromeOptions.addArguments(`--user-agent=${userAgent}`);
+  chromeOptions.addArguments("--lang=ko-KR"); // Accept-Language 설정
+
+  return chromeOptions;
+};
 export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV5): Promise<StoreTypeV5[]> => {
   if (!coupang_keyword) return [];
 
@@ -13,9 +23,13 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
-    chromeOptions.addArguments(`user-agent=Chrome${Math.floor(Math.random() * 100)}`);
 
-    driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
+    driver = new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
+    await driver.manage().addCookie({
+      name: "your_cookie_name",
+      value: "your_cookie_value",
+      domain: "www.coupang.com",
+    });
 
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
