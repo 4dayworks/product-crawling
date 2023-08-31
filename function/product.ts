@@ -87,6 +87,7 @@ export const getStoreListV6 = async (product: getProductTypeV5) => {
       getItemscoutStoreListV5(product),
       getNaverCatalogStoreListV5(product),
     ]);
+    console.log({ coupangStoreList });
     return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
   } catch (error) {
     l("Err", "red", "getStoreListV6 " + (error as Error).message);
