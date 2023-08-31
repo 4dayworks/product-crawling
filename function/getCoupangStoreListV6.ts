@@ -9,6 +9,10 @@ const getHeaders = () => {
   const userAgent =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36";
   const chromeOptions = new chrome.Options();
+  chromeOptions.addArguments("--headless");
+  chromeOptions.addArguments("--no-sandbox");
+  chromeOptions.addArguments("--disable-dev-shm-usage");
+  chromeOptions.addArguments("--remote-debugging-port=9222");
   chromeOptions.addArguments(`--user-agent=${userAgent}`);
   chromeOptions.addArguments("--lang=ko-KR"); // Accept-Language 설정
 
@@ -18,17 +22,10 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
   if (!coupang_keyword) return [];
 
   try {
-    const chromeOptions = new chrome.Options();
-    chromeOptions.addArguments("--headless");
-    chromeOptions.addArguments("--no-sandbox");
-    chromeOptions.addArguments("--disable-dev-shm-usage");
-
     driver = await new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
-
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     await driver.get(url);
 
-    await driver.sleep(1000);
     const productElements = await driver.findElements(By.className("search-product-list"));
     const bodyContent = await driver.findElement(By.tagName("body")).getAttribute("outerHTML");
     console.log({ bodyContent });
