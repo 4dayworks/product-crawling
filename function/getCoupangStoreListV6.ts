@@ -10,6 +10,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
 
   try {
     const chromeOptions = new chrome.Options();
+    chromeOptions.setChromeBinaryPath("/usr/bin/google-chrome");
     chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
