@@ -1,6 +1,5 @@
 import { getProductTypeV5 } from "../all_update";
 import { StoreTypeV5 } from "./updateByItemscout";
-
 import { Builder, By } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 
@@ -25,32 +24,26 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
 
     for (let element of productElements) {
       const store_product_name = await element.findElement(By.css("dl > dd > div > div.name")).getText();
-
       const store_product_image_data_src =
         "https:" + (await element.findElement(By.css("dl > dt > img")).getAttribute("data-img-src"));
       const store_product_image_src =
         "https:" + (await element.findElement(By.css("dl > dt > img")).getAttribute("src"));
-
       const store_product_image =
         store_product_image_src.includes("undefined") || store_product_image_src.includes("blank1x1")
           ? store_product_image_data_src
           : store_product_image_src;
-
       const store_link = "https://www.coupang.com" + (await element.getAttribute("href"));
-
       const store_price = Number(
         (await element.findElement(By.css("dl > dd > div > div.price-area > div > div.price > em > strong")).getText())
           .trim()
           .replace(/,/g, "")
       );
-
       const typeSrc = await element
         .findElement(By.css("dl > dd > div > div.price-area > div > div.price > em > span > img"))
         .getAttribute("src");
       const outOfStock = await element
         .findElement(By.css("dl > dd > div > div.price-area > div.out-of-stock"))
         .getText();
-
       const type = !typeSrc
         ? null
         : typeSrc.includes("merchant")
@@ -62,17 +55,14 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
         : typeSrc.includes("rocket")
         ? "로켓배송"
         : null;
-
       const store_review_score = Number(
         await element.findElement(By.css("dl > dd > div > div.other-info > div > span.star > em")).getText()
       );
-
       const store_review_count = Number(
         (await element.findElement(By.css("dl > dd > div > div.other-info > div > span.rating-total-count")).getText())
           .trim()
           .replace(/\(|\)/g, "")
       );
-
       const is_ad = (await element.findElement(By.css("dl > dd > div > span > span.ad-badge-text")).getText()) === "AD";
 
       if (!type || is_ad || !store_product_image || outOfStock === "일시품절") continue;
@@ -105,9 +95,4 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
       await driver.quit();
     }
   }
-};
-
-type CoupangDataType = {
-  coupang_require_keyword_list: string | null;
-  coupang_exception_keyword_list: string | null;
 };
