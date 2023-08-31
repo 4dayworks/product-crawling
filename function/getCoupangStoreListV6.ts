@@ -117,7 +117,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
       { ip: "179.1.66.66", port: 8080 },
     ];
 
-    for (let i = 0; i < proxies.length - 1; i++) {
+    for (let i = 1; i < proxies.length - 1; i++) {
       chromeOptions.addArguments(`--proxy-server=http://${proxies[i].ip}:${proxies[i].port}`);
 
       driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
