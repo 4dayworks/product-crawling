@@ -1,12 +1,12 @@
 import { getProductTypeV5 } from "../all_update";
 import { StoreTypeV5 } from "./updateByItemscout";
 
-import { Builder, By } from "selenium-webdriver";
+import { Builder, By, WebDriver } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 
+let driver: WebDriver;
 export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV5): Promise<StoreTypeV5[]> => {
   if (!coupang_keyword) return [];
-  let driver;
 
   try {
     const chromeOptions = new chrome.Options();
