@@ -11,6 +11,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
     const response = await torRequest.request(url); // Tor를 통해 요청 보내기
 
+    console.log({ response });
     const $ = cheerio.load(response.body); // cheerio로 HTML 내용 로드하기
     const productElements = $("a.search-product-link");
     const storeList: StoreTypeV5[] = [];
