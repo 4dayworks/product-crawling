@@ -19,6 +19,7 @@ const getHeaders = () => {
   chromeOptions.addArguments("--disable-gpu");
   chromeOptions.addArguments("--remote-debugging-port=9222");
   chromeOptions.addArguments("--disable-software-rasterizer");
+  chromeOptions.addArguments("--headless");
 
   return chromeOptions;
 };
