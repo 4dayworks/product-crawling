@@ -1,12 +1,9 @@
-import { getProductTypeV5 } from "../all_update";
-import { StoreTypeV5 } from "./updateByItemscout";
-import { uniqueId } from "lodash";
 import { Builder, By, WebDriver } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
-import { exec } from "child_process";
+import { getProductTypeV5 } from "../all_update";
+import { StoreTypeV5 } from "./updateByItemscout";
 
 let driver: WebDriver;
-let isChromeRunning = false;
 
 const getHeaders = () => {
   const userAgent =
@@ -18,7 +15,6 @@ const getHeaders = () => {
   chromeOptions.addArguments("--no-sandbox");
   chromeOptions.addArguments("--disable-dev-shm-usage");
   chromeOptions.addArguments("--disable-gpu");
-  chromeOptions.addArguments("--remote-debugging-port=9222");
   chromeOptions.addArguments("--disable-software-rasterizer");
   chromeOptions.addArguments("--headless");
 
