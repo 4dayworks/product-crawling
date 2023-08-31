@@ -94,6 +94,7 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
     };
     storeList.push(data);
   });
+
   return storeList;
 };
 

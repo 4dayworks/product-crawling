@@ -157,8 +157,9 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
   );
 
   // -- main logic --
-
-  const result = await getStoreListV5(product);
+  const storeList = await getStoreListV5(product);
+  if (storeList === null) return false;
+  const result = await setStoreListV5(product, storeList);
 
   if (result === null) {
     l("Err", "red", `${s} setStoreList result: null`);
