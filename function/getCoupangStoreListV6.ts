@@ -17,13 +17,15 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     driver = await new Builder().forBrowser("chrome").setChromeOptions(chromeOptions).build();
 
     const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
-    const response = await driver.get(url);
+    await driver.get(url);
 
     await driver.sleep(1000);
     const productElements = await driver.findElements(By.className("search-product-list"));
+    const bodyContent = await driver.findElement(By.tagName("body")).getAttribute("outerHTML");
+    console.log({ bodyContent });
     const storeList: StoreTypeV5[] = [];
 
-    console.log({ url, productElements, response });
+    console.log({ url, productElements });
     for (let element of productElements) {
       const store_product_name = await element.findElement(By.css("dl > dd > div > div.name")).getText();
 
