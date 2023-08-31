@@ -8,10 +8,11 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
   if (!coupang_keyword) return [];
 
   try {
-    const url = `https://google.com/`;
+    // const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
+    const url = `https://github.com/`;
     const response = await torRequest.request(url); // Tor를 통해 요청 보내기
 
-    console.log({ response: response.statusCode });
+    console.log({ response: response });
     const $ = cheerio.load(response.body); // cheerio로 HTML 내용 로드하기
     const productElements = $("a.search-product-link");
     const storeList: StoreTypeV5[] = [];
