@@ -27,7 +27,12 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
   //   isChromeRunning = true;
   // }
   console.log(-1);
-  driver = await new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
+  try {
+    driver = await new Builder().forBrowser("chrome").setChromeOptions(getHeaders()).build();
+    console.log(0);
+  } catch (error) {
+    console.error("Error initializing the driver:", error);
+  }
   console.log(0);
   const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
   console.log(1, { url });
