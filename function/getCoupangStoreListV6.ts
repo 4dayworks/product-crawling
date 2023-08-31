@@ -8,7 +8,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
   if (!coupang_keyword) return [];
 
   try {
-    const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(coupang_keyword)}`;
+    const url = `https://google.com/`;
     const response = await torRequest.request(url); // Tor를 통해 요청 보내기
 
     console.log({ response: response.statusCode });
