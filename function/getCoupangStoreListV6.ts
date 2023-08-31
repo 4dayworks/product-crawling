@@ -16,6 +16,9 @@ const getHeaders = () => {
   chromeOptions.addArguments("--lang=ko-KR");
   chromeOptions.addArguments("--no-sandbox");
   chromeOptions.addArguments("--disable-dev-shm-usage");
+  chromeOptions.addArguments("--disable-gpu");
+  chromeOptions.addArguments("--remote-debugging-port=9222");
+  chromeOptions.addArguments("--disable-software-rasterizer");
 
   return chromeOptions;
 };
