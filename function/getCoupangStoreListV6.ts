@@ -10,6 +10,7 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
 
   try {
     const chromeOptions = new chrome.Options();
+    chromeOptions.debuggerAddress("localhost:9222");
     chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
