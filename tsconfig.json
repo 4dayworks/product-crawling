@@ -10,6 +10,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules", "dump"],
+  "exclude": ["node_modules", "dump", "function/getCoupangStoreListV6.ts"],
   "include": ["./**/*.ts", "*.json"]
 }
