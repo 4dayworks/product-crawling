@@ -102,8 +102,8 @@ export const updateByProductId = async ({
               .then((res) => res.data.data)
               .catch((err) => l("Err", "red", "Slack Send Message Error"));
 
-          // 문제 생겼을시 10분 또는 20초 대기 후 다음 재시도
-          await wrapSlept(chance === 1 ? 600000 : 20000);
+          // 문제 생겼을시 10시간 또는 30분 대기 후 다음 재시도
+          await wrapSlept(chance === 1 ? 36000000 : 1800000);
           chance--;
           if (chance === 1) i--;
           continue;
