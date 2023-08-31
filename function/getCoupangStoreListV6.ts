@@ -22,9 +22,9 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
     const productElements = await driver.findElements(By.css("a.search-product-link"));
     const storeList: StoreTypeV5[] = [];
 
+    console.log({ url, productElements });
     for (let element of productElements) {
       const store_product_name = await element.findElement(By.css("dl > dd > div > div.name")).getText();
-      console.log({ store_product_name });
 
       const store_product_image_data_src =
         "https:" + (await element.findElement(By.css("dl > dt > img")).getAttribute("data-img-src"));
