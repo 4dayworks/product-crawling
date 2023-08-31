@@ -10,7 +10,6 @@ export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV
 
   try {
     const chromeOptions = new chrome.Options();
-    chromeOptions.setChromeBinaryPath("/usr/bin/google-chrome"); // 크롬의 실제 경로로 설정
     chromeOptions.addArguments("--headless");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--referer=coupang.com"); // 리퍼러 설정 (선택적)
