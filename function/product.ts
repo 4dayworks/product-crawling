@@ -8,7 +8,7 @@ import { getItemscoutStoreListV5 } from "./getItemscoutStoreListV5";
 import { getNaverCatalogStoreListV5 } from "./getNaverCatalogStoreListV5";
 import { getAllProductIdType } from "./product_price_update";
 import { StoreTypeV5 } from "./updateByItemscout";
-import { getCoupangStoreListV6 } from "./getCoupangStoreListV6";
+import { getCoupangStoreListV6 } from "./getCoupangStoreListV6_unused2";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {

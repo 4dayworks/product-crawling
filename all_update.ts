@@ -158,7 +158,7 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
 
   // -- main logic --
 
-  const result = await getStoreListV6(product);
+  const result = await getStoreListV5(product);
 
   const executeTime = new Date().getTime() - startTime;
   const randomTime = Math.floor(Math.random() * 10000); //유저라는 걸 인식하기 위해 랜덤 시간
