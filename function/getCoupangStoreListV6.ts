@@ -12,7 +12,7 @@ const getHeaders = () => {
   const userAgent =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36";
   const chromeOptions = new chrome.Options();
-  chromeOptions.debuggerAddress("127.0.0.1:9222");
+  chromeOptions.debuggerAddress("localhost:9222");
   chromeOptions.addArguments(`--user-agent=${userAgent}`);
   chromeOptions.addArguments("--lang=ko-KR");
 
