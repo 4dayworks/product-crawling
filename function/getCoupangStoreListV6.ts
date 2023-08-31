@@ -2,7 +2,7 @@ import torRequest from "tor-request";
 import cheerio from "cheerio";
 import { StoreTypeV5 } from "./updateByItemscout";
 import { getProductTypeV5 } from "../all_update";
-import "../tor-request";
+import "./tor-request";
 
 export const getCoupangStoreListV6 = async ({ coupang_keyword }: getProductTypeV5): Promise<StoreTypeV5[]> => {
   if (!coupang_keyword) return [];
