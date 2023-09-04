@@ -35,12 +35,12 @@ export const updateByProductId = async ({
   size = 1000000,
   product_id_list: productSelectedList,
   instanceData,
-  is_no_coupang = false,
+  is_no_coupang,
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let productIdListAll: number[] | null = await axios(
-    is_no_coupang
-      ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=true`
+    typeof is_no_coupang === "boolean"
+      ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${is_no_coupang}`
       : `${NODE_API_URL}/v5/crawling/product/id/list?page=${page}&size=${size}`
   )
     .then((d) => d.data.data)
