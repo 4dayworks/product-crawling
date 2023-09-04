@@ -1,11 +1,11 @@
 import cheerio from "cheerio";
 import request from "request";
-import { l } from "./function/console";
-import { wrapSlept } from "./function/wrapSlept";
+import { l } from "../console";
+import { wrapSlept } from "../wrapSlept";
 import axios from "axios";
-import { NODE_API_URL } from "./function/common";
-import { naverCatalogList } from "./function/naverCatalogImage/progressList";
-import { AuthorizationKey } from "./function/auth";
+import { NODE_API_URL } from "../common";
+import { naverCatalogList } from "./progressList";
+import { AuthorizationKey } from "../auth";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 //#region sub-routine

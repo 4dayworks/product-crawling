@@ -8,7 +8,8 @@
     "update:iherb-brand": "ts-node product_brand_add_iherb",
     "update-notification:itemscout": "ts-node product_price_update_itemscout_subscription",
     "update": "ts-node ./product_price_update",
-    "update:always": "ts-node ./product_price_update_always",
+    "update:always": "ts-node ./product_price_update_always_no_coupang",
+    "update:coupang": "ts-node ./product_price_update_always",
     "update:product-image": "ts-node ./product_naver_detail_image",
     "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push"
   },

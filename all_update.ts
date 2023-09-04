@@ -13,6 +13,7 @@ type updateByProductIdType = {
     startIndex: number | undefined;
     instance_name: string | undefined;
   };
+  is_no_coupang?: boolean;
 };
 
 export type getProductTypeV5 = {
@@ -34,10 +35,13 @@ export const updateByProductId = async ({
   size = 1000000,
   product_id_list: productSelectedList,
   instanceData,
+  is_no_coupang = false,
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
   let productIdListAll: number[] | null = await axios(
-    `${NODE_API_URL}/v5/crawling/product/id/list?page=${page}&size=${size}`
+    is_no_coupang
+      ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=true`
+      : `${NODE_API_URL}/v5/crawling/product/id/list?page=${page}&size=${size}`
   )
     .then((d) => d.data.data)
     .catch((err) => {
