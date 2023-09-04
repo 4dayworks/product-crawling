@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
+import { getStoreListV5, getStoreListV6, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
 
 type updateByProductIdType = {
@@ -95,15 +95,15 @@ export const updateByProductId = async ({
         if (chance > 0) {
           const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
             product.product_id
-          } / message: continuous error / remain_change: ${chance}`;
+          } / message: continuous error 1 / remain_change: ${chance}`;
           if (chance < 2)
             await axios
               .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
               .then((res) => res.data.data)
               .catch((err) => l("Err", "red", "Slack Send Message Error"));
 
-          // 문제 생겼을시 10분 또는 1분 대기 후 다음 재시도
-          await wrapSlept(chance === 1 ? 600000 : 60000);
+          // 문제 생겼을시 1시간 또는 3분 대기 후 다음 재시도
+          await wrapSlept(chance === 1 ? 3600000 : 180000);
           chance--;
           if (chance === 1) i--;
           continue;
@@ -111,7 +111,7 @@ export const updateByProductId = async ({
           if (i >= 2) {
             const message = `instance_name: ${instanceData?.instance_name}, index: ${i + 1} / product_id: ${
               product.product_id
-            } / message: continuous error / remain_change: ${chance} / remain chance out -> Crawling Server Restart !!`;
+            } / message: continuous error 2 / remain_change: ${chance} / remain chance out -> Crawling Server Restart !!`;
             if (instanceData?.instance_name != undefined) {
               await axios
                 .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
@@ -158,11 +158,8 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
 
   // -- main logic --
   const storeList = await getStoreListV5(product);
-
   if (storeList === null) return false;
-
   const result = await setStoreListV5(product, storeList);
-  // // -- main logic --
 
   if (result === null) {
     l("Err", "red", `${s} setStoreList result: null`);
@@ -172,8 +169,8 @@ const setData = async (product: getProductTypeV5, i: number, max: number) => {
     await setLastMonthLowPriceV5(product);
 
     const executeTime = new Date().getTime() - startTime;
-    const randomTime = Math.floor(Math.random() * 10000); //유저라는 걸 인식하기 위해 랜덤 시간
-    const waitTime = (product.naver_catalog_url !== null ? 1000 : 12000) - executeTime + randomTime;
+    const randomTime = Math.floor(Math.random() * 4000); //유저라는 걸 인식하기 위해 랜덤 시간
+    const waitTime = (product.naver_catalog_url !== null ? 1000 : 6000) - executeTime + randomTime;
     await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
     const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["./types", "./node_modules/@types"],
     "strict": true,
     "module": "commonjs",
     "moduleResolution": "node",
@@ -10,5 +11,5 @@
     "resolveJsonModule": true
   },
   "exclude": ["node_modules", "dump"],
-  "include": ["/**/*.ts", "*.json"]
+  "include": ["./**/*.ts", "*.json"]
 }
