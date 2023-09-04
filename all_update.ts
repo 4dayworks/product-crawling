@@ -1,9 +1,11 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import { getStoreListV5, getStoreListV6, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
+import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
+import { AuthorizationKey } from "./function/auth";
 
+axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 type updateByProductIdType = {
   page?: number;
   size?: number;
@@ -38,6 +40,7 @@ export const updateByProductId = async ({
   is_no_coupang,
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
+
   let productIdListAll: number[] | null = await axios(
     typeof is_no_coupang === "boolean"
       ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${is_no_coupang}`
@@ -48,6 +51,8 @@ export const updateByProductId = async ({
       const axiosErr = err as AxiosError;
       if (axiosErr.response?.status === 502) {
         l("502 Error", "red", axiosErr.message);
+      } else {
+        l("Axios Error", "red", "crawling/product/id/list " + axiosErr.message);
       }
       return null;
     });
@@ -73,7 +78,7 @@ export const updateByProductId = async ({
   // if (!productSelectedList) productIdListAll = shuffle(productIdListAll);
 
   let chance = 3; //다시 시도할 기회
-  for (let i = 10000; i < productIdListAll.length; i++) {
+  for (let i = 0; i < productIdListAll.length; i++) {
     if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
       i = instanceData.startIndex;
       isInit = false;

@@ -8,7 +8,7 @@ import { getItemscoutStoreListV5 } from "./getItemscoutStoreListV5";
 import { getNaverCatalogStoreListV5 } from "./getNaverCatalogStoreListV5";
 import { getAllProductIdType } from "./product_price_update";
 import { StoreTypeV5 } from "./updateByItemscout";
-import { getCoupangStoreListV6 } from "./getCoupangStoreListV6_unused2";
+// import { getCoupangStoreListV6 } from "./getCoupangStoreListV6_unused2";
 
 export const setGraph = async (product: getAllProductIdType) => {
   try {
@@ -93,20 +93,20 @@ export const getStoreListV5 = async (product: getProductTypeV5) => {
     return null;
   }
 };
-export const getStoreListV6 = async (product: getProductTypeV5) => {
-  try {
-    const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
-      getCoupangStoreListV6(product),
-      getIherbStoreListV5(product),
-      getItemscoutStoreListV5(product),
-      getNaverCatalogStoreListV5(product),
-    ]);
-    return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
-  } catch (error) {
-    l("Err", "red", "getStoreListV6 " + (error as Error).message);
-    return null;
-  }
-};
+// export const getStoreListV6 = async (product: getProductTypeV5) => {
+//   try {
+//     const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
+//       getCoupangStoreListV6(product),
+//       getIherbStoreListV5(product),
+//       getItemscoutStoreListV5(product),
+//       getNaverCatalogStoreListV5(product),
+//     ]);
+//     return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
+//   } catch (error) {
+//     l("Err", "red", "getStoreListV6 " + (error as Error).message);
+//     return null;
+//   }
+// };
 
 export const setStoreListV5 = async (product: getProductTypeV5, store_list: StoreTypeV5[]) => {
   const dataToSend = { product, store_list };
