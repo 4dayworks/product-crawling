@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FILE="/Users/minsekim/projects/Yagiyagi/product-crawling/script/get_product_image.log"
+LOG_FILE="/Users/minsekim/projects/Yagiyagi/product-crawling/script/update:coupang.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 
@@ -8,7 +8,7 @@ echo "[$(date)] Script started" > $LOG_FILE
 export PATH="/Users/minsekim/.nvm/versions/node/v16.20.1/bin:$PATH"
 
 cd /Users/minsekim/projects/Yagiyagi/product-crawling
-npm run update:product-image >> $LOG_FILE 2>&1
+npm run update:coupang >> $LOG_FILE 2>&1
 
 if [ $? -eq 0 ]; then
     echo "[$(date)] Script completed successfully" >> $LOG_FILE

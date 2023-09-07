@@ -26,7 +26,7 @@ const execute = async () => {
       return { startIndex: undefined, instance_name: undefined };
     });
   while (true) {
-    await updateByProductId({ instanceData, is_no_coupang: false });
+    await updateByProductId({ instanceData, is_no_coupang: false, waitTime: 24 - 60 * 60 * 1000 });
   }
 };
 execute();

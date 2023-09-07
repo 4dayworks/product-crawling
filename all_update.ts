@@ -16,6 +16,7 @@ type updateByProductIdType = {
     instance_name: string | undefined;
   };
   is_no_coupang?: boolean;
+  waitTime?: number;
 };
 
 export type getProductTypeV5 = {
@@ -38,6 +39,7 @@ export const updateByProductId = async ({
   product_id_list: productSelectedList,
   instanceData,
   is_no_coupang,
+  waitTime = 1 * 60 * 60 * 1000, //1시간 -> 1*60*60*1000
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
 
@@ -112,7 +114,7 @@ export const updateByProductId = async ({
               .catch((err) => l("Err", "red", "Slack Send Message Error"));
 
           // 문제 생겼을시 1시간 또는 3분 대기 후 다음 재시도
-          await wrapSlept(chance === 1 ? 3600000 : 180000);
+          await wrapSlept(chance === 1 ? waitTime : 180000);
           chance--;
           if (chance === 1) i--;
           continue;

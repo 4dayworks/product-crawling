@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "update": "ts-node ./product_price_update",
-    "update:always": "ts-node ./product_price_update_always_no_coupang",
+    "update:always": "ts-node ./product_price_update_always_coupang",
     "update:coupang": "ts-node ./product_price_update_always_coupang",
     "update:coupang:check": "ts-node ./product_price_update_always_coupang_check",
     "update:all": "ts-node ./product_price_update_always",
