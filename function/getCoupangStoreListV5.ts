@@ -53,7 +53,6 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
     );
     const typeSrc = $(element).find("dl > dd > div > div.price-area > div > div.price > em > span > img").attr("src");
     const outOfStock = $(element).find("dl > dd > div > div.price-area > div.out-of-stock").text().trim();
-    console.log(typeSrc);
     const type = !typeSrc
       ? null
       : typeSrc.includes("Merchant")
