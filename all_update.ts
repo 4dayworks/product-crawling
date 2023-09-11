@@ -198,7 +198,11 @@ const setData = async (product: getProductTypeV6, i: number, max: number, type: 
   );
 
   // -- main logic --
-  const storeList = await getStoreListV5(product);
+  const storeList = await getStoreListV5({
+    ...product,
+    coupang_keyword:
+      type === "all" ? product.coupang_keyword || product.before_coupang_keyword : product.coupang_keyword, //전체 돌릴때는 과거 쿠팡 키워드 활용
+  });
   if (storeList === null) return false;
   const result = await setStoreListV5(product, storeList);
 
