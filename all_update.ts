@@ -88,7 +88,7 @@ export const updateByProductId = async ({
   //#endregion
   for (let i = 0; i < productIdListAll.length; i++) {
     //#region 2/3 쿠팡 MAX check 로직
-    if (type === "coupang" && completeCount > 1000) {
+    if (["coupang", "all"].includes(type || "") && completeCount > 1000) {
       const message = `instance_name: ${instanceData?.instance_name}, index: ${
         i + 1
       } / message: coupang max reached 1000 / remain_change: ${chance} / completeCount: ${completeCount}`;
