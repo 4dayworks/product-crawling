@@ -91,7 +91,7 @@ export const updateByProductId = async ({
     if (type === "coupang" && completeCount > 1000) {
       const message = `instance_name: ${instanceData?.instance_name}, index: ${
         i + 1
-      } / message: coupang max reached 1000 / remain_change: ${chance}`;
+      } / message: coupang max reached 1000 / remain_change: ${chance} / completeCount: ${completeCount}`;
       await axios
         .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
         .then((res) => res.data.data)
