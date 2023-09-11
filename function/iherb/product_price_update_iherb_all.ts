@@ -3,7 +3,7 @@ import { AuthorizationKey } from "../auth";
 import { l } from "../console";
 import { getMaxPageList } from "./getMaxPageList";
 import { getProductListData } from "./getProductListData";
-import { getIherbStoreList } from "../getIherbStoreList";
+import { getIherbStoreList } from "./getIherbStoreList";
 import { wrapSlept } from "../wrapSlept";
 import { getBrandURLList } from "./brandList";
 

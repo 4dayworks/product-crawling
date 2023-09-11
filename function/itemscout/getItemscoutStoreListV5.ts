@@ -1,12 +1,12 @@
 import axios from "axios";
-import { l } from "./console";
-import { filterArray } from "./itemscout";
-import { getProductTypeV5 } from "../all_update";
-import { ItemscoutType, StoreType, StoreTypeV5 } from "./updateByItemscout";
-import { NODE_API_URL } from "./common";
+import { getProductTypeV6 } from "../../all_update";
+import { NODE_API_URL } from "../common";
+import { l } from "../console";
+import { filterArray } from "../itemscout";
+import { ItemscoutType, StoreTypeV5 } from "../updateByItemscout";
 
 const headers = { "Accept-Encoding": "deflate, br" };
-export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getProductTypeV5) =>
+export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getProductTypeV6) =>
   new Promise<StoreTypeV5[]>(async (resolve, reject) => {
     try {
       // 0. 아이템스카우트 키워드 없으면 무시하기

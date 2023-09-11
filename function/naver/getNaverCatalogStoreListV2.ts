@@ -1,9 +1,9 @@
 import cheerio from "cheerio";
 import request from "request";
-import { l } from "./console";
-import { exceptionCompanyListAtNaver } from "./product";
-import { getAllProductIdType } from "./product_price_update";
-import { StoreType } from "./updateByItemscout";
+import { l } from "../console";
+import { exceptionCompanyListAtNaver } from "../product";
+import { getAllProductIdType } from "../product_price_update";
+import { StoreType } from "../updateByItemscout";
 
 export type DataListType = {
   product_id: number;

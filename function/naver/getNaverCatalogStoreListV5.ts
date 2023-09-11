@@ -1,10 +1,9 @@
 import cheerio from "cheerio";
 import request from "request";
-import { l } from "./console";
-import { exceptionCompanyListAtNaver } from "./product";
-import { getAllProductIdType } from "./product_price_update";
-import { StoreType, StoreTypeV5 } from "./updateByItemscout";
-import { getProductTypeV5 } from "../all_update";
+import { l } from "../console";
+import { exceptionCompanyListAtNaver } from "../product";
+import { StoreTypeV5 } from "../updateByItemscout";
+import { getProductTypeV6 } from "../../all_update";
 
 export type DataListType = {
   product_id: number;
@@ -16,7 +15,7 @@ export type DataListType = {
   product_name: string | null;
 };
 
-export const getNaverCatalogStoreListV5 = ({ product_id, naver_catalog_url }: getProductTypeV5) => {
+export const getNaverCatalogStoreListV5 = ({ product_id, naver_catalog_url }: getProductTypeV6) => {
   return new Promise<StoreTypeV5[]>(async (resolve, reject) => {
     const blacklist = await exceptionCompanyListAtNaver().catch((err) => []);
     if (!naver_catalog_url) return resolve([]);

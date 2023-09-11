@@ -1,13 +1,13 @@
 import axios from "axios";
-import { getProductTypeV5 } from "../all_update";
+import { getProductTypeV6 } from "../all_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
-import { getCoupangStoreListV5 } from "./getCoupangStoreListV5";
-import { getIherbStoreListV5 } from "./getIherbStoreListV5";
-import { getItemscoutStoreListV5 } from "./getItemscoutStoreListV5";
-import { getNaverCatalogStoreListV5 } from "./getNaverCatalogStoreListV5";
+import { getCoupangStoreListV5 } from "./coupang/getCoupangStoreListV5";
 import { getAllProductIdType } from "./product_price_update";
 import { StoreTypeV5 } from "./updateByItemscout";
+import { getIherbStoreListV5 } from "./iherb/getIherbStoreListV5";
+import { getItemscoutStoreListV5 } from "./itemscout/getItemscoutStoreListV5";
+import { getNaverCatalogStoreListV5 } from "./naver/getNaverCatalogStoreListV5";
 // import { getCoupangStoreListV6 } from "./getCoupangStoreListV6_unused2";
 
 export const setGraph = async (product: getAllProductIdType) => {
@@ -20,7 +20,7 @@ export const setGraph = async (product: getAllProductIdType) => {
     l("Sub Err", "red", "failed - product_price write history");
   }
 };
-export const setGraphV5 = async (product: getProductTypeV5) => {
+export const setGraphV5 = async (product: getProductTypeV6) => {
   try {
     await axios.post(`${NODE_API_URL}/v2/product/daily_price/history`, {
       product_id: product.product_id,
@@ -41,7 +41,7 @@ export const setLastMonthLowPrice = async (product: getAllProductIdType) => {
     l("Sub Err", "red", "failed - low price of month was written");
   }
 };
-export const setLastMonthLowPriceV5 = async (product: getProductTypeV5) => {
+export const setLastMonthLowPriceV5 = async (product: getProductTypeV6) => {
   try {
     await axios.patch(`${NODE_API_URL}/product/price/low_price`, {
       product_id: product.product_id,
@@ -79,7 +79,7 @@ export const getHolyZoneId = (): Promise<number[]> =>
       return [];
     });
 
-export const getStoreListV5 = async (product: getProductTypeV5) => {
+export const getStoreListV5 = async (product: getProductTypeV6) => {
   try {
     const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
       getCoupangStoreListV5(product),
@@ -93,7 +93,7 @@ export const getStoreListV5 = async (product: getProductTypeV5) => {
     return null;
   }
 };
-// export const getStoreListV6 = async (product: getProductTypeV5) => {
+// export const getStoreListV6 = async (product: getProductTypeV6) => {
 //   try {
 //     const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
 //       getCoupangStoreListV6(product),
@@ -108,7 +108,7 @@ export const getStoreListV5 = async (product: getProductTypeV5) => {
 //   }
 // };
 
-export const setStoreListV5 = async (product: getProductTypeV5, store_list: StoreTypeV5[]) => {
+export const setStoreListV5 = async (product: getProductTypeV6, store_list: StoreTypeV5[]) => {
   const dataToSend = { product, store_list };
 
   const data: boolean = await axios

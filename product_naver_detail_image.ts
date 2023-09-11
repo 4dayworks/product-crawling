@@ -1,7 +1,10 @@
 import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
 import { NODE_API_URL } from "./function/common";
-import { getNaverCatalogStoreImageListV5, setProductImage } from "./function/getNaverCatalogStoreImageListV5";
+import {
+  getNaverCatalogStoreImageListV5,
+  setProductImage,
+} from "./function/naverCatalogImage/getNaverCatalogStoreImageListV5";
 import { wrapSlept } from "./function/wrapSlept";
 import { naverCatalogCompletedList } from "./function/naverCatalogImage/completeList";
 

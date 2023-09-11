@@ -1,8 +1,8 @@
 import cheerio from "cheerio";
 import request from "request";
-import { l } from "./console";
+import { l } from "../console";
 import axios from "axios";
-import { NODE_API_URL } from "./common";
+import { NODE_API_URL } from "../common";
 
 export const getNaverCatalogStoreImageListV5 = (product_id: number, naver_catalog_url: string | null) => {
   return new Promise<string[] | null>(async (resolve, reject) => {

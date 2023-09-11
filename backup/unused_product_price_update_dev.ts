@@ -1,11 +1,11 @@
 import { getAllProductIdType } from "../function/product_price_update";
-import { getNaverCatalogStoreListV2 } from "../function/getNaverCatalogStoreListV2";
+import { getNaverCatalogStoreListV2 } from "../function/naver/getNaverCatalogStoreListV2";
 import { NODE_API_URL } from "../function/common";
 import axios from "axios";
 import { AuthorizationKey } from "../function/auth";
 import { l } from "../function/console";
 import { wrapSlept } from "../function/wrapSlept";
-import { getItemscoutStoreListV2 } from "../function/getItemscoutStoreListV2";
+import { getItemscoutStoreListV2 } from "../function/itemscout/getItemscoutStoreListV2";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 const updateByProductIdDev = async (product_id_list?: number[]) => {

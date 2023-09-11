@@ -2,7 +2,7 @@ import axios from "axios";
 import { AuthorizationKey } from "../function/auth";
 import { NODE_API_URL } from "../function/common";
 import { l } from "../function/console";
-import { getNaverCatalogStoreListV2 } from "../function/getNaverCatalogStoreListV2";
+import { getNaverCatalogStoreListV2 } from "../function/naver/getNaverCatalogStoreListV2";
 import { wrapSlept } from "../function/wrapSlept";
 import { getAllProductIdType } from "../function/product_price_update";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;

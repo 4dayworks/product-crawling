@@ -1,7 +1,7 @@
 import axios from "axios";
-import { AuthorizationKey } from "./function/auth";
-import { updateByProductId } from "./all_update";
-import { l } from "./function/console";
+import { AuthorizationKey } from "../auth";
+import { updateByProductId } from "../../all_update";
+import { l } from "../console";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 // GCP 자동 인스턴스 재생성 후
@@ -26,7 +26,15 @@ const execute = async () => {
       return { startIndex: undefined, instance_name: undefined };
     });
   while (true) {
-    await updateByProductId({ instanceData, is_no_coupang: false, waitTime: 24 - 60 * 60 * 1000 });
+    await updateByProductId({
+      instanceData,
+      type: instanceData.instance_name?.includes("no-coupang")
+        ? "no-coupang"
+        : instanceData.instance_name?.includes("coupang")
+        ? "coupang"
+        : "all",
+      waitTime: 24 - 60 * 60 * 1000,
+    });
   }
 };
 execute();

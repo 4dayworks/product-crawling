@@ -25,8 +25,28 @@ const execute = async () => {
     .catch(() => {
       return { startIndex: undefined, instance_name: undefined };
     });
+
+  if (!instanceData.instance_name) return console.error("product_price_update_always.ts Err");
+  if (
+    !instanceData.instance_name.includes("all") &&
+    !instanceData.instance_name.includes("no-coupang") &&
+    !instanceData.instance_name.includes("coupang")
+  )
+    return console.error(
+      "product_price_update_always.ts Err : instance_name muse include all or no-coupang or coupang"
+    );
+
   while (true) {
-    await updateByProductId({ instanceData });
+    await updateByProductId({
+      instanceData,
+      type: instanceData.instance_name.includes("all")
+        ? "all"
+        : instanceData.instance_name.includes("no-coupang")
+        ? "no-coupang"
+        : instanceData.instance_name.includes("coupang")
+        ? "coupang"
+        : undefined,
+    });
   }
 };
 execute();

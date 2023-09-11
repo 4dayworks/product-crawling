@@ -1,11 +1,11 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import { uniqueId } from "lodash";
-import { getProductTypeV5 } from "../all_update";
-import { l } from "./console";
-import { StoreTypeV5 } from "./updateByItemscout";
+import { getProductTypeV6 } from "../../all_update";
+import { l } from "../console";
+import { StoreTypeV5 } from "../updateByItemscout";
 
-export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV5) => {
+export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV6) => {
   const getHeaders = () => {
     return {
       Accept: "*/*",

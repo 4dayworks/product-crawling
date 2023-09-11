@@ -1,8 +1,8 @@
 import axios from "axios";
-import { l } from "./console";
-import { filterArray } from "./itemscout";
-import { getAllProductIdType } from "./product_price_update";
-import { ItemscoutType, StoreType } from "./updateByItemscout";
+import { l } from "../console";
+import { filterArray } from ".";
+import { getAllProductIdType } from "../product_price_update";
+import { ItemscoutType, StoreType } from "../updateByItemscout";
 
 const headers = { "Accept-Encoding": "deflate, br" };
 export const getItemscoutStoreListV2 = (product: getAllProductIdType) =>

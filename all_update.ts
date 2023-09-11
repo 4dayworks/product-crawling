@@ -15,11 +15,11 @@ type updateByProductIdType = {
     startIndex: number | undefined;
     instance_name: string | undefined;
   };
-  is_no_coupang?: boolean;
+  type?: "all" | "no-coupang" | "coupang";
   waitTime?: number;
 };
 
-export type getProductTypeV5 = {
+export type getProductTypeV6 = {
   product_id: number;
   min_score: string | null;
   itemscout_keyword: string | null;
@@ -30,6 +30,7 @@ export type getProductTypeV5 = {
   coupang_exception_keyword_list: string | null;
   naver_catalog_url: string | null;
   iherb_product_id: number | null;
+  before_coupang_keyword: string | null;
 };
 
 let isInit = true;
@@ -38,14 +39,16 @@ export const updateByProductId = async ({
   size = 1000000,
   product_id_list: productSelectedList,
   instanceData,
-  is_no_coupang,
+  type,
   waitTime = 1 * 60 * 60 * 1000, //1시간 -> 1*60*60*1000
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
 
   let productIdListAll: number[] | null = await axios(
-    typeof is_no_coupang === "boolean"
-      ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${is_no_coupang}`
+    ["coupang", "no-coupang"].includes(type || "")
+      ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${
+          type === "no-coupang" ? true : false
+        }`
       : `${NODE_API_URL}/v5/crawling/product/id/list?page=${page}&size=${size}`
   )
     .then((d) => d.data.data)
@@ -86,15 +89,13 @@ export const updateByProductId = async ({
       isInit = false;
     }
     if (productIdListAll.length > i) {
-      const product: getProductTypeV5 | null = await axios(
+      const product: getProductTypeV6 | null = await axios(
         `${NODE_API_URL}/v5/crawling/product?product_id=${productIdListAll[i]}`
       )
         .then((d) => d.data.data)
         .catch((err) => {
           const axiosErr = err as AxiosError;
-          if (axiosErr.response?.status === 502) {
-            l("502 Error", "red", axiosErr.message);
-          }
+          if (axiosErr.response?.status === 502) l("502 Error", "red", axiosErr.message);
           return null;
         });
 
@@ -147,7 +148,7 @@ export const updateByProductId = async ({
   l("[DONE]", "blue", "complete - all product price update");
 };
 
-const setData = async (product: getProductTypeV5, i: number, max: number) => {
+const setData = async (product: getProductTypeV6, i: number, max: number) => {
   const color = product.naver_catalog_url !== null ? "green" : "yellow";
   const s = `[${i + 1}/${max}]id:${product.product_id}`;
   const startTime = new Date().getTime();
