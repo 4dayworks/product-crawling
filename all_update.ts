@@ -40,7 +40,7 @@ export const updateByProductId = async ({
   product_id_list: productSelectedList,
   instanceData,
   type,
-  waitTime = 1 * 60 * 60 * 1000, //1시간 -> 1*60*60*1000
+  waitTime = 1 * 5 * 60 * 1000, //5분, (1시간=>1*60*60*1000)
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
 
@@ -83,7 +83,27 @@ export const updateByProductId = async ({
   // if (!productSelectedList) productIdListAll = shuffle(productIdListAll);
 
   let chance = 3; //다시 시도할 기회
+  //#region 1/3 쿠팡 MAX check 로직
+  let completeCount = 0; //크롤링 성공한 제품수
+  //#endregion
   for (let i = 0; i < productIdListAll.length; i++) {
+    //#region 2/3 쿠팡 MAX check 로직
+    if (type === "coupang" && completeCount > 1000) {
+      const message = `instance_name: ${instanceData?.instance_name}, index: ${
+        i + 1
+      } / message: coupang max reached 1000 / remain_change: ${chance}`;
+      await axios
+        .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+        .then((res) => res.data.data)
+        .catch(() => l("Err", "red", "Slack Send Message Error"));
+      await axios
+        .get(`http://34.22.78.170:3001/gcp/restart?instance_name=${instanceData?.instance_name}&start_index=${i - 1}`)
+        .then((res) => res.data.data)
+        .catch(() => l("Err", "red", "Slack Send Message Error"));
+      return;
+    }
+    //#endregion
+
     if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
       i = instanceData.startIndex;
       isInit = false;
@@ -143,6 +163,9 @@ export const updateByProductId = async ({
         }
       }
       chance = 3;
+      //#region 3/3 쿠팡 MAX check 로직
+      completeCount++;
+      //#endregion
     }
   }
   l("[DONE]", "blue", "complete - all product price update");
