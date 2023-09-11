@@ -26,7 +26,7 @@ const execute = async () => {
       return { startIndex: undefined, instance_name: undefined };
     });
 
-  if (!instanceData.instance_name) return console.error("product_price_update_always.ts Err");
+  if (!instanceData.instance_name) instanceData.instance_name = "all";
   if (
     !instanceData.instance_name.includes("all") &&
     !instanceData.instance_name.includes("no-coupang") &&

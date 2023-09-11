@@ -51,6 +51,19 @@ export const setLastMonthLowPriceV5 = async (product: getProductTypeV6) => {
     l("Sub Err", "red", "failed - low price of month was written");
   }
 };
+export const setCoupangKeyword = async (product: getProductTypeV6, storeList: StoreTypeV5[]) => {
+  try {
+    await axios.patch(`${NODE_API_URL}/crawling/product/coupang/keyword`, {
+      product_id: product.product_id,
+      before_coupang_keyword: product.before_coupang_keyword,
+      coupang_keyword: product.coupang_keyword,
+      is_coupang: storeList.filter((i) => i.store_link?.includes("coupang.")).length > 0 ? "1" : "0",
+    });
+  } catch (error) {
+    l("Sub Err", "red", "failed - setCoupangKeyword");
+    console.log(error);
+  }
+};
 export const shuffle = (array: getAllProductIdType[]) => {
   array.sort(() => Math.random() - 0.5);
 };

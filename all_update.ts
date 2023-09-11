@@ -1,7 +1,13 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5 } from "./function/product";
+import {
+  getStoreListV5,
+  setCoupangKeyword,
+  setGraphV5,
+  setLastMonthLowPriceV5,
+  setStoreListV5,
+} from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
 import { AuthorizationKey } from "./function/auth";
 
@@ -45,7 +51,7 @@ export const updateByProductId = async ({
   // (1) 키워드 가져올 제품아이디 전체 가져오기
 
   let productIdListAll: number[] | null = await axios(
-    ["coupang", "no-coupang"].includes(type || "")
+    type === "coupang" || type === "no-coupang"
       ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${
           type === "no-coupang" ? true : false
         }`
@@ -110,7 +116,7 @@ export const updateByProductId = async ({
     }
     if (productIdListAll.length > i) {
       const product: getProductTypeV6 | null = await axios(
-        `${NODE_API_URL}/v5/crawling/product?product_id=${productIdListAll[i]}`
+        `${NODE_API_URL}/v6/crawling/product?product_id=${productIdListAll[i]}`
       )
         .then((d) => d.data.data)
         .catch((err) => {
@@ -118,9 +124,8 @@ export const updateByProductId = async ({
           if (axiosErr.response?.status === 502) l("502 Error", "red", axiosErr.message);
           return null;
         });
-
       if (product === null) continue;
-      const result = await setData(product, i, productIdListAll.length);
+      const result = await setData(product, i, productIdListAll.length, type);
 
       l("[result]", "magenta", String(result));
       if (!result) {
@@ -171,7 +176,7 @@ export const updateByProductId = async ({
   l("[DONE]", "blue", "complete - all product price update");
 };
 
-const setData = async (product: getProductTypeV6, i: number, max: number) => {
+const setData = async (product: getProductTypeV6, i: number, max: number, type: updateByProductIdType["type"]) => {
   const color = product.naver_catalog_url !== null ? "green" : "yellow";
   const s = `[${i + 1}/${max}]id:${product.product_id}`;
   const startTime = new Date().getTime();
@@ -184,6 +189,7 @@ const setData = async (product: getProductTypeV6, i: number, max: number) => {
   itemscout_require_keyword_list: ${product.itemscout_require_keyword_list}
   itemscout_exception_keyword_list: ${product.itemscout_exception_keyword_list}
   coupang_keyword: ${product.coupang_keyword}
+  coupang_keyword_before: ${product.before_coupang_keyword}
   coupang_require_keyword_list: ${product.coupang_require_keyword_list}
   coupang_exception_keyword_list: ${product.coupang_exception_keyword_list}
   naver_catalog_url: ${product.naver_catalog_url}
@@ -199,25 +205,26 @@ const setData = async (product: getProductTypeV6, i: number, max: number) => {
   if (result === null) {
     l("Err", "red", `${s} setStoreList result: null`);
     return false;
-  } else {
-    await setGraphV5(product);
-    await setLastMonthLowPriceV5(product);
-
-    const executeTime = new Date().getTime() - startTime;
-    const randomTime = Math.floor(Math.random() * 4000); //유저라는 걸 인식하기 위해 랜덤 시간
-    const waitTime = (product.naver_catalog_url !== null ? 1000 : 6000) - executeTime + randomTime;
-    await wrapSlept(waitTime < 0 ? 0 : waitTime);
-
-    const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
-    l(
-      "TIME",
-      "blue",
-      `id:${product.product_id} 종료 시간: ${endTime}s, end_at: ${new Date().toUTCString()}, 작업 시간:${(
-        executeTime / 1000
-      ).toFixed(2)}s\n`
-    );
-    return true;
   }
+
+  await setGraphV5(product);
+  await setLastMonthLowPriceV5(product);
+  await setCoupangKeyword(product, storeList);
+
+  const executeTime = new Date().getTime() - startTime;
+  const randomTime = Math.floor(Math.random() * 4000); //유저라는 걸 인식하기 위해 랜덤 시간
+  const waitTime = (product.naver_catalog_url !== null ? 1000 : 6000) - executeTime + randomTime;
+  await wrapSlept(waitTime < 0 ? 0 : waitTime);
+
+  const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
+  l(
+    "TIME",
+    "blue",
+    `id:${product.product_id} 종료 시간: ${endTime}s, end_at: ${new Date().toUTCString()}, 작업 시간:${(
+      executeTime / 1000
+    ).toFixed(2)}s\n`
+  );
+  return true;
 };
 
 // 92에서 멈춤
