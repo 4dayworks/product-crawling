@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getProductTypeV6 } from "../all_update";
+import { getProductTypeV6, updateByProductIdType } from "../all_update";
 import { NODE_API_URL } from "./common";
 import { l } from "./console";
 import { getCoupangStoreListV5 } from "./coupang/getCoupangStoreListV5";
@@ -51,22 +51,6 @@ export const setLastMonthLowPriceV5 = async (product: getProductTypeV6) => {
     l("Sub Err", "red", "failed - low price of month was written");
   }
 };
-export const setCoupangKeyword = async (product: getProductTypeV6, storeList: StoreTypeV5[]) => {
-  try {
-    await axios.patch(`${NODE_API_URL}/crawling/product/coupang/keyword`, {
-      product_id: product.product_id,
-      before_coupang_keyword: product.before_coupang_keyword,
-      coupang_keyword: product.coupang_keyword,
-      is_coupang: storeList.filter((i) => i.store_link?.includes("coupang.")).length > 0 ? "1" : "0",
-    });
-  } catch (error) {
-    l("Sub Err", "red", "failed - setCoupangKeyword");
-    console.log(error);
-  }
-};
-export const shuffle = (array: getAllProductIdType[]) => {
-  array.sort(() => Math.random() - 0.5);
-};
 
 export const exceptionCompanyListAtNaver = () =>
   axios.get(`${NODE_API_URL}/crawling/blacklist`).then((res) => res.data.data);
@@ -106,20 +90,6 @@ export const getStoreListV5 = async (product: getProductTypeV6) => {
     return null;
   }
 };
-// export const getStoreListV6 = async (product: getProductTypeV6) => {
-//   try {
-//     const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList] = await Promise.all([
-//       getCoupangStoreListV6(product),
-//       getIherbStoreListV5(product),
-//       getItemscoutStoreListV5(product),
-//       getNaverCatalogStoreListV5(product),
-//     ]);
-//     return coupangStoreList.concat(iherbStoreData, itemscoutStoreList, naverStoreList);
-//   } catch (error) {
-//     l("Err", "red", "getStoreListV6 " + (error as Error).message);
-//     return null;
-//   }
-// };
 
 export const setStoreListV5 = async (product: getProductTypeV6, store_list: StoreTypeV5[]) => {
   const dataToSend = { product, store_list };
@@ -132,6 +102,26 @@ export const setStoreListV5 = async (product: getProductTypeV6, store_list: Stor
     })
     .catch((e) => {
       l("Err ", "red", `setStoreList ${NODE_API_URL}/v5/crawling/store`);
+      return null;
+    });
+  return data;
+};
+
+export const setStoreListV6 = async (
+  product: getProductTypeV6,
+  store_list: StoreTypeV5[],
+  type: updateByProductIdType["type"]
+) => {
+  const dataToSend = { product, store_list, type };
+
+  const data: boolean = await axios
+    .post(`${NODE_API_URL}/v6/crawling/store`, dataToSend)
+    .then((res) => {
+      if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
+      return res.data.data;
+    })
+    .catch((e) => {
+      l("Err ", "red", `setStoreList ${NODE_API_URL}/v6/crawling/store`);
       return null;
     });
   return data;

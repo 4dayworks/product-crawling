@@ -1,18 +1,12 @@
 import axios, { AxiosError } from "axios";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import {
-  getStoreListV5,
-  setCoupangKeyword,
-  setGraphV5,
-  setLastMonthLowPriceV5,
-  setStoreListV5,
-} from "./function/product";
+import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5, setStoreListV6 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
 import { AuthorizationKey } from "./function/auth";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
-type updateByProductIdType = {
+export type updateByProductIdType = {
   page?: number;
   size?: number;
   product_id_list?: number[];
@@ -204,7 +198,7 @@ const setData = async (product: getProductTypeV6, i: number, max: number, type: 
       type === "all" ? product.coupang_keyword || product.before_coupang_keyword : product.coupang_keyword, //전체 돌릴때는 과거 쿠팡 키워드 활용
   });
   if (storeList === null) return false;
-  const result = await setStoreListV5(product, storeList);
+  const result = await setStoreListV6(product, storeList, type);
 
   if (result === null) {
     l("Err", "red", `${s} setStoreList result: null`);
@@ -213,7 +207,6 @@ const setData = async (product: getProductTypeV6, i: number, max: number, type: 
 
   await setGraphV5(product);
   await setLastMonthLowPriceV5(product);
-  await setCoupangKeyword(product, storeList);
 
   const executeTime = new Date().getTime() - startTime;
   const randomTime = Math.floor(Math.random() * 4000); //유저라는 걸 인식하기 위해 랜덤 시간
