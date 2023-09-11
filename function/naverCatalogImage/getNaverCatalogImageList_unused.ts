@@ -20,8 +20,6 @@ const getURL = (link: string) => ({
 
 export const getNaverCatalogImageList = ({ product_id, link }: { product_id: number; link: string }) => {
   return new Promise<string[]>(async (resolve, reject) => {
-    console.log(link);
-
     try {
       request(getURL(link), async (error, response, body) => {
         if (error) {
@@ -34,7 +32,6 @@ export const getNaverCatalogImageList = ({ product_id, link }: { product_id: num
           const scriptContent = $("script#__NEXT_DATA__").html();
           if (scriptContent) {
             const imageList = parseHTML(scriptContent);
-            console.log(imageList);
             if (imageList.length > 0) return resolve(imageList);
           }
 
