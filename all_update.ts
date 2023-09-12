@@ -84,24 +84,24 @@ export const updateByProductId = async ({
 
   let chance = 3; //다시 시도할 기회
   //#region 1/3 쿠팡 MAX check 로직
-  let completeCount = 0; //크롤링 성공한 제품수
+  // let completeCount = 0; //크롤링 성공한 제품수
   //#endregion
   for (let i = 0; i < productIdListAll.length; i++) {
     //#region 2/3 쿠팡 MAX check 로직
-    if (["coupang", "all"].includes(type || "") && completeCount > 1000) {
-      const message = `instance_name: ${instanceData?.instance_name}, index: ${
-        i + 1
-      } / message: coupang max reached 1000 / remain_change: ${chance} / completeCount: ${completeCount}`;
-      await axios
-        .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
-        .then((res) => res.data.data)
-        .catch(() => l("Err", "red", "Slack Send Message Error"));
-      await axios
-        .get(`http://34.22.78.170:3001/gcp/restart?instance_name=${instanceData?.instance_name}&start_index=${i - 1}`)
-        .then((res) => res.data.data)
-        .catch(() => l("Err", "red", "Slack Send Message Error"));
-      return;
-    }
+    // if (["coupang", "all"].includes(type || "") && completeCount > 1000) {
+    //   const message = `instance_name: ${instanceData?.instance_name}, index: ${
+    //     i + 1
+    //   } / message: coupang max reached 1000 / remain_change: ${chance} / completeCount: ${completeCount}`;
+    //   await axios
+    //     .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+    //     .then((res) => res.data.data)
+    //     .catch(() => l("Err", "red", "Slack Send Message Error"));
+    //   await axios
+    //     .get(`http://34.22.78.170:3001/gcp/restart?instance_name=${instanceData?.instance_name}&start_index=${i - 1}`)
+    //     .then((res) => res.data.data)
+    //     .catch(() => l("Err", "red", "Slack Send Message Error"));
+    //   return;
+    // }
     //#endregion
 
     if (isInit && instanceData?.startIndex != undefined && instanceData.startIndex > 0) {
@@ -163,7 +163,7 @@ export const updateByProductId = async ({
       }
       chance = 3;
       //#region 3/3 쿠팡 MAX check 로직
-      completeCount++;
+      // completeCount++;
       //#endregion
     }
   }
