@@ -15,7 +15,7 @@ export type updateByProductIdType = {
     startIndex: number | undefined;
     instance_name: string | undefined;
   };
-  type?: "all" | "no-coupang" | "coupang";
+  type: "all" | "no-coupang" | "coupang";
   waitTime?: number;
 };
 
