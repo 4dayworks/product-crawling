@@ -76,7 +76,10 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
         .trim()
         .replace(/\(|\)/g, "")
     );
-    const is_ad = $(element).find("dl > dd > div > span > span.ad-badge-text").text().trim() === "AD";
+    const is_ad = false;
+    //쿠팡 오류로 인해 뺌 2023/09/15
+    //$(element).find("dl > dd > div > span > span.ad-badge-text").text().trim() === "AD";
+
     // 4. 판매처 list에 모으기
     if (!type || is_ad || !store_product_image || outOfStock === "일시품절") return;
     const data: StoreTypeV5 = {
