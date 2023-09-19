@@ -210,7 +210,10 @@ const setData = async (product: getProductTypeV6, i: number, max: number, type: 
 
   const executeTime = new Date().getTime() - startTime;
   const randomTime = Math.floor(Math.random() * 4000); //유저라는 걸 인식하기 위해 랜덤 시간
-  const waitTime = (product.naver_catalog_url !== null ? 1000 : 6000) - executeTime + randomTime;
+  const waitTime =
+    (type == "all" || type === "coupang" ? 10000 : product.naver_catalog_url !== null ? 1000 : 6000) -
+    executeTime +
+    randomTime;
   await wrapSlept(waitTime < 0 ? 0 : waitTime);
 
   const endTime = ((new Date().getTime() - startTime) / 1000).toFixed(2);
