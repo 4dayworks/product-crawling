@@ -1,6 +1,6 @@
 import axios from "axios";
 import { load } from "cheerio";
-import { NODE_API_URL } from "./common";
+import { NODE_API_URL } from "../common";
 
 export type ThirthMallProductType = {
   imageUrl: string;

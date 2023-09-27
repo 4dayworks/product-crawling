@@ -1,4 +1,4 @@
-import { ThirthMallProductType, getStoreData, saveProductList } from "./function/product_thirthmall.module";
+import { ThirthMallProductType, getStoreData, saveProductList } from "./function/etc_store/product_thirthmall.module";
 
 async function fetchPageData(urlList: string[]) {
   const productList: ThirthMallProductType[] = [];

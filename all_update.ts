@@ -1,9 +1,9 @@
 import axios, { AxiosError } from "axios";
+import { AuthorizationKey } from "./function/auth";
 import { NODE_API_URL } from "./function/common";
 import { l } from "./function/console";
-import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV5, setStoreListV6 } from "./function/product";
+import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV6 } from "./function/product";
 import { wrapSlept } from "./function/wrapSlept";
-import { AuthorizationKey } from "./function/auth";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 export type updateByProductIdType = {

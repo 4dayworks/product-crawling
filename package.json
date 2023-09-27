@@ -9,7 +9,8 @@
     "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push",
     "update:iherb-price": "ts-node product_price_update_iherb_all",
     "update:iherb-brand": "ts-node product_brand_add_iherb",
-    "update:product-image": "ts-node ./product_naver_detail_image"
+    "update:product-image": "ts-node ./product_naver_detail_image",
+    "update:thirthmall": "ts-node ./product_thirthmall_update"
   },
   "author": "",
   "license": "ISC",
