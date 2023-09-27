@@ -1,7 +1,6 @@
 import axios from "axios";
 import { load } from "cheerio";
-import fs from "fs";
-import path from "path";
+import { NODE_API_URL } from "./common";
 
 export type ThirthMallProductType = {
   imageUrl: string;
@@ -13,9 +12,7 @@ export type ThirthMallProductType = {
   deliveryFee: number;
 };
 
-//TODO accesstoken 로그인해서 넣어서 price:0 인것 없는지 체크하기
-// ㄴ 파라미터 따로 있음 item_link > button.btn_basket_get > data-goods-price attr에 있음
-const getMallData = async (url: string) => {
+export const getStoreData = async (url: string) => {
   try {
     const response = await axios.get(url, { headers: { "Accept-Encoding": "deflate, br" } });
     if (!response) return;
@@ -69,30 +66,48 @@ const getMallData = async (url: string) => {
   }
 };
 
-async function fetchPageData(urlList: string[]) {
-  const productList: ThirthMallProductType[] = [];
-  console.info(`Start fetching product list`, new Date().toISOString());
-  for (let i = 0; i < urlList.length; i++) {
-    const list = await getMallData(urlList[i]);
-    if (list) productList.push(...list);
-    console.info(
-      `[${i + 1}/${urlList.length}] Complete fetching product list - product length ${productList.length}`,
-      new Date().toISOString()
-    );
+type resType = {
+  require_keyword: string; // "퍼펙토|PERFECTO";
+  exception_keyword: string; //"";
+  yagi_product_id: number; //92150;
+};
+
+const filteredProducts = (productList: ThirthMallProductType[], requireKeyword: string, exceptionKeyword: string) => {
+  const includesPattern = (str: string, words: string[]) => words.every((word) => str.includes(word));
+  const excludesPattern = (str: string, words: string[]) => !words.some((word) => str.includes(word));
+  requireKeyword = requireKeyword.replace(/\s+/g, "");
+  const rkList = requireKeyword.includes(",") ? requireKeyword.split(",") : [];
+  exceptionKeyword = exceptionKeyword.replace(/\s+/g, "");
+  const ekList = exceptionKeyword.includes(",") ? exceptionKeyword.split(",") : [];
+  return productList.filter((p) => includesPattern(p.productName, rkList) && excludesPattern(p.productName, ekList));
+};
+
+export const saveProductList = async (productList: ThirthMallProductType[]) => {
+  let result_count = 0;
+
+  const keywordList = await axios
+    .get(`${NODE_API_URL}/crawling/product/keyword`)
+    .then((d) => d.data.data as resType[])
+    .catch(() => [] as resType[]);
+
+  console.info("야기야기의 북마크되어있고 필수키워드 있는 제품갯수", keywordList.length);
+
+  const result: { [pid: number]: ThirthMallProductType[] } = {};
+  for (let i = 0; i < keywordList.length; i++) {
+    const { require_keyword: rk, exception_keyword: ek, yagi_product_id: pid } = keywordList[i];
+    const filteredList = filteredProducts(productList, rk, ek);
+    if (filteredList.length > 0 && filteredList.length < 5) {
+      result_count++;
+      // console.info("매칭수:", filteredList.length, "rk:", rk || "null", "ek:", ek || "null", "pid:", pid);
+      result[pid] = filteredList;
+    }
   }
-  console.info(`End fetching product list`, new Date().toISOString());
-  // 결과를 파일에 쓴다.
-  const formattedData = productList.map((p) => JSON.stringify(p, null, 2)).join("\n");
-  const outputPath = path.join(__dirname, "log/thirtymall_output.log");
-  fs.writeFileSync(outputPath, formattedData, "utf8");
-  console.info(`Data written to ${outputPath}`);
-}
-const urlList = [
-  "https://www.thirtymall.com/goods/goods_list.php?cateCd=004&sort=g.regDt+desc&pageNum=1000&page=1",
-  "https://www.thirtymall.com/goods/goods_list.php?cateCd=004&sort=g.regDt+desc&pageNum=1000&page=2",
-  "https://www.thirtymall.com/goods/goods_list.php?cateCd=004&sort=g.regDt+desc&pageNum=1000&page=3",
-  "https://www.thirtymall.com/goods/goods_list.php?cateCd=004&sort=g.regDt+desc&pageNum=1000&page=4",
-  "https://www.thirtymall.com/goods/goods_list.php?cateCd=004&sort=g.regDt+desc&pageNum=1000&page=5",
-  "https://www.thirtymall.com/goods/goods_list.php?cateCd=004&sort=g.regDt+desc&pageNum=1000&page=6",
-];
-fetchPageData(urlList);
+
+  console.info("야기야기와 떠리몰 제품 매칭 수:", result_count);
+
+  const res = await axios.post(`${NODE_API_URL}/crawling/product/etc_store/list`, {
+    store_domain: "thirtymall.com",
+    list: result,
+  });
+  console.info(res.data.data === true ? "성공" : "실패");
+};
