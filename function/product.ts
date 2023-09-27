@@ -87,8 +87,8 @@ export const getStoreListV5 = async (product: getProductTypeV6) => {
     return coupangStoreList.concat(
       iherbStoreData,
       itemscoutStoreList,
-      naverStoreList
-      // etcStoreList <- 주석풀면 떠리몰 가능
+      naverStoreList,
+      etcStoreList // <- 주석풀면 떠리몰 가능
     );
   } catch (error) {
     l("Err", "red", "getStoreListV6 " + (error as Error).message);
