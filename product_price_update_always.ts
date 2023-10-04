@@ -27,14 +27,14 @@ const execute = async () => {
     });
 
   if (!instanceData.instance_name) instanceData.instance_name = "all";
-  if (
-    !instanceData.instance_name.includes("all") &&
-    !instanceData.instance_name.includes("no-coupang") &&
-    !instanceData.instance_name.includes("coupang")
-  )
-    return console.error(
-      "product_price_update_always.ts Err : instance_name muse include all or no-coupang or coupang"
-    );
+  // if (
+  //   !instanceData.instance_name.includes("all") &&
+  //   !instanceData.instance_name.includes("no-coupang") &&
+  //   !instanceData.instance_name.includes("coupang")
+  // )
+  //   return console.error(
+  //     "product_price_update_always.ts Err : instance_name must include all or no-coupang or coupang"
+  //   );
 
   while (true) {
     await updateByProductId({
