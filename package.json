@@ -10,7 +10,7 @@
     "update:iherb-price": "ts-node product_price_update_iherb_all",
     "update:iherb-brand": "ts-node product_brand_add_iherb",
     "update:product-image": "ts-node ./product_naver_detail_image",
-    "update:thirthmall": "ts-node ./product_thirthmall_update"
+    "update:product-thirthmall": "ts-node ./product_thirthmall_update"
   },
   "author": "",
   "license": "ISC",
