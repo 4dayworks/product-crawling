@@ -1,7 +1,9 @@
 import axios from "axios";
 import { load } from "cheerio";
 import { NODE_API_URL } from "../common";
+import { AuthorizationKey } from "../auth";
 
+axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 export type ThirthMallProductType = {
   imageUrl: string;
   productLink: string;

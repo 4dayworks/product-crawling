@@ -3,7 +3,9 @@ import { getProductTypeV6 } from "../../all_update";
 import { NODE_API_URL } from "../common";
 import { l } from "../console";
 import { StoreTypeV5 } from "../updateByItemscout";
+import { AuthorizationKey } from "../auth";
 
+axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 type ResType = {
   yagi_keyword: null;
   origin_product_name: string;
@@ -34,6 +36,7 @@ export const getEtcStoreListV1 = (product: getProductTypeV6) => {
             is_oversea: store.is_oversea === 1,
           }));
         });
+      console.log({ data });
       resolve(data);
     } catch (error) {
       l("ERR", "red", `getEtcStoreListV1 product_id:${product_id.toString().padStart(5)}`);
