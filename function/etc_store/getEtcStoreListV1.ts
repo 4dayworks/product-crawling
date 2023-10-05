@@ -36,7 +36,6 @@ export const getEtcStoreListV1 = (product: getProductTypeV6) => {
             is_oversea: store.is_oversea === 1,
           }));
         });
-      console.log({ data });
       resolve(data);
     } catch (error) {
       l("ERR", "red", `getEtcStoreListV1 product_id:${product_id.toString().padStart(5)}`);

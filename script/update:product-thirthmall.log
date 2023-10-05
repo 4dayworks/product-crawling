@@ -1,0 +1,18 @@
+[Thu Oct  5 09:00:00 KST 2023] Script started
+
+> product_crawling@1.0.44 update:product-thirthmall
+> ts-node ./product_thirthmall_update
+
+Start fetching product list 2023-10-05T00:00:03.813Z
+[1/6] Complete fetching product list - product length 1000 2023-10-05T00:00:23.421Z
+[2/6] Complete fetching product list - product length 2000 2023-10-05T00:00:42.220Z
+[3/6] Complete fetching product list - product length 3000 2023-10-05T00:00:58.877Z
+[4/6] Complete fetching product list - product length 4000 2023-10-05T00:01:18.681Z
+[5/6] Complete fetching product list - product length 4872 2023-10-05T00:01:34.536Z
+[6/6] Complete fetching product list - product length 4872 2023-10-05T00:01:37.544Z
+End fetching product list 2023-10-05T00:01:37.544Z
+총 떠리몰 제품수: 4872
+야기야기의 북마크되어있고 필수키워드 있는 제품갯수 6017
+야기야기와 떠리몰 제품 매칭 수: 478
+성공
+[Thu Oct  5 09:01:42 KST 2023] Script completed successfully

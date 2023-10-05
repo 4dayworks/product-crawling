@@ -150,9 +150,7 @@ export const updateByProductId = async ({
                 .catch((err) => l("Err", "red", "Slack Send Message Error"));
               await axios
                 .get(
-                  `http://34.22.78.170:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${
-                    i - 1
-                  }`
+                  `http://34.64.51.83:3001/gcp/restart?instance_name=${instanceData.instance_name}&start_index=${i - 1}`
                 )
                 .then((res) => res.data.data)
                 .catch((err) => l("Err", "red", "Slack Send Message Error"));
