@@ -40,7 +40,7 @@ export const updateByProductId = async ({
   product_id_list: productSelectedList,
   instanceData,
   type,
-  waitTime = 1 * 2 * 60 * 1000, //2분, (1시간=>1*60*60*1000)
+  waitTime = 12 * 60 * 60 * 1000, //12시간, (1시간=>1*60*60*1000)
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
 
@@ -134,7 +134,7 @@ export const updateByProductId = async ({
               .catch((err) => l("Err", "red", "Slack Send Message Error"));
 
           // 문제 생겼을시 2분 대기 후 다음 재시도
-          await wrapSlept(waitTime);
+          await wrapSlept(chance === 1 ? waitTime : 20000);
           chance--;
           if (chance === 1) i--;
           continue;
