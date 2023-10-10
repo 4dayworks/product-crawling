@@ -45,7 +45,7 @@ const execute = async () => {
         ? "no-coupang"
         : instanceData.instance_name.includes("coupang")
         ? "coupang"
-        : "no-coupang",
+        : "all",
     });
   }
 };
