@@ -71,7 +71,7 @@ async function fetchPageData() {
 
   const resultList: getHomeShoppingListResponseType = [];
   console.info(`Start fetching shop list`, new Date().toISOString());
-  for (let i = 0; i < resultList.length; i++) {
+  for (let i = 0; i < shopList.length; i++) {
     const list = await getStoreData(shopList[i]);
     if (list) resultList.push(list);
     console.info(
