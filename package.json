@@ -1,6 +1,6 @@
 {
   "name": "product_crawling",
-  "version": "1.0.49",
+  "version": "1.0.50",
   "description": "",
   "main": "index.js",
   "scripts": {
