@@ -1,0 +1,15 @@
+[Mon Oct 16 13:12:00 KST 2023] Script started
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   159  100   159    0     0   2904      0 --:--:-- --:--:-- --:--:--  3456
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET //crawling/shop/check</pre>
+</body>
+</html>
+[Mon Oct 16 13:12:00 KST 2023] Script completed successfully

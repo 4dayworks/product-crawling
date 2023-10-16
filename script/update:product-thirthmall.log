@@ -1,18 +1,18 @@
-[Tue Oct 10 09:00:00 KST 2023] Script started
+[Mon Oct 16 12:00:00 KST 2023] Script started
 
-> product_crawling@1.0.46 update:product-thirthmall
+> product_crawling@1.0.49 update:product-thirthmall
 > ts-node ./product_thirthmall_update
 
-Start fetching product list 2023-10-10T00:00:03.720Z
-[1/6] Complete fetching product list - product length 1000 2023-10-10T00:00:22.723Z
-[2/6] Complete fetching product list - product length 2000 2023-10-10T00:00:40.888Z
-[3/6] Complete fetching product list - product length 3000 2023-10-10T00:00:58.151Z
-[4/6] Complete fetching product list - product length 4000 2023-10-10T00:01:18.787Z
-[5/6] Complete fetching product list - product length 4797 2023-10-10T00:01:34.436Z
-[6/6] Complete fetching product list - product length 4797 2023-10-10T00:01:37.615Z
-End fetching product list 2023-10-10T00:01:37.615Z
-총 떠리몰 제품수: 4797
-야기야기의 북마크되어있고 필수키워드 있는 제품갯수 6164
-야기야기와 떠리몰 제품 매칭 수: 483
+Start fetching product list 2023-10-16T03:00:03.776Z
+[1/6] Complete fetching product list - product length 1000 2023-10-16T03:00:26.050Z
+[2/6] Complete fetching product list - product length 2000 2023-10-16T03:00:42.914Z
+[3/6] Complete fetching product list - product length 3000 2023-10-16T03:01:00.696Z
+[4/6] Complete fetching product list - product length 4000 2023-10-16T03:01:20.973Z
+[5/6] Complete fetching product list - product length 4860 2023-10-16T03:01:37.104Z
+[6/6] Complete fetching product list - product length 4860 2023-10-16T03:01:39.748Z
+End fetching product list 2023-10-16T03:01:39.749Z
+총 떠리몰 제품수: 4860
+야기야기의 북마크되어있고 필수키워드 있는 제품갯수 6584
+야기야기와 떠리몰 제품 매칭 수: 507
 성공
-[Tue Oct 10 09:01:42 KST 2023] Script completed successfully
+[Mon Oct 16 12:01:47 KST 2023] Script completed successfully
