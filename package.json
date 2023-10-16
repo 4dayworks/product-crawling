@@ -17,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.11.0",
     "assert": "^2.0.0",
     "axios": "^1.2.0",
     "cheerio": "^1.0.0-rc.12",

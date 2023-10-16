@@ -11,7 +11,8 @@ const getStoreData = async (data: getHomeShoppingListResponseType[0]): Promise<g
   const shop_thumnail_url = $('meta[property="og:image"]').attr("content") || null; // 썸네일 주소 가져오기
 
   // 제품상세이미지 URL 추출하기
-  const detailFunctionString = result.match(/loadDescription\(\) \{[^}]*\}/)[0];
+  const str = result.match(/loadDescription\(\) \{[^}]*\}/);
+  const detailFunctionString = str && str.length > 0 ? str[0] : "";
   const detailImageUrl = detailFunctionString.match(/http:\/\/cdn\.api\.livehomeshopping\.com\/[^"]+/)[0];
   // 해당 detailImageUrl로 요청하여 .img_detail > p > img의 src 가져오기
   const detailImageResponse = await axios.get(detailImageUrl);
