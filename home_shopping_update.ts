@@ -24,6 +24,7 @@ const getStoreData = async (data: getHomeShoppingListResponseType[0]): Promise<g
     .map((time: string) => time.trim()); // 방송시작시간과 방송끝시간 가져오기
   const startText = broadcastTime[0]
     .replace("오늘 ", dayjs().format("MM월 DD일 "))
+    .replace("내일 ", dayjs().add(1, "day").format("MM월 DD일 "))
     .split("방송시간")[1]
     .trim()
     .replace("월 ", "-")
@@ -70,7 +71,7 @@ async function fetchPageData() {
 
   const resultList: getHomeShoppingListResponseType = [];
   console.info(`Start fetching shop list`, new Date().toISOString());
-  for (let i = 0; i < shopList.length; i++) {
+  for (let i = 26; i < 28; i++) {
     const list = await getStoreData(shopList[i]);
     if (list) resultList.push(list);
     console.info(
