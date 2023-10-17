@@ -77,7 +77,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
           mall_image: null,
           price: item.price,
           delivery: Number(item.deliveryFee),
-          store_name: item.shop,
+          store_name: item.shop || (item.isNaverShop ? "네이버 쇼핑몰" : ""),
           category: item.category,
           review_count: item.reviewCount,
           review_score: item.reviewScore,

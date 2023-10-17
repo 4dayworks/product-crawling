@@ -3,20 +3,14 @@ import { uniqBy } from "lodash";
 import { getAllProductIdType } from "../product_price_update";
 
 /** 아이템스카우트 제외 키워드 판별해주는 함수  */
-export function isExceptionKeyword(
-  title: string,
-  exception_keyword: string | null
-) {
+export function isExceptionKeyword(title: string, exception_keyword: string | null) {
   if (!exception_keyword) return false;
   if (title) return title.includes(exception_keyword);
   return false;
 }
 
 /** 아이템스카우트 요구 키워드 판별해주는 함수 */
-export const isRequireKeyword = (
-  title: string,
-  require_keyword: string | null
-) => {
+export const isRequireKeyword = (title: string, require_keyword: string | null) => {
   if (!require_keyword) return true;
   if (title) return title.includes(require_keyword);
   return true;
@@ -75,10 +69,7 @@ export const filterArray = (
   // originData: getAllProductIdType,
   // iherbPriceData?: IherbPriceType | null
 ) => {
-  return uniqBy(
-    array as any[],
-    (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`
-  ).filter(
+  return uniqBy(array as any[], (item) => `${item.mall}-${item.title}-${item.price}-${item.delivery}`).filter(
     (p: ItemscoutType) =>
       p.isAd === false &&
       // (p.isOversea === false || is_drugstore === 4) && // is_drugstore 4는 해외제품이므로 해외여부 무시.
