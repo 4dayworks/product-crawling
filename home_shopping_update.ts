@@ -116,7 +116,7 @@ const classNameToStoreName: {
   "sprite-logo-580001": "공영홈쇼핑",
   "sprite-logo-580002": "쇼핑엔T",
   "sprite-logo-590001": "KT알파 쇼핑",
-  "sprite-logo-590002": "롯데OneTV",
+  "sprite-logo-590002": "더블유쇼핑",
   "sprite-logo-590003": "신세계 라이브쇼핑",
   "sprite-logo-590005": "현대홈쇼핑+Shop",
   "sprite-logo-590006": "CJ온스타일+",

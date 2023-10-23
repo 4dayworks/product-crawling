@@ -1,6 +1,5 @@
-import { IherbPriceType, ItemscoutType } from ".././updateByItemscout";
 import { uniqBy } from "lodash";
-import { getAllProductIdType } from "../product_price_update";
+import { ItemscoutType } from ".././updateByItemscout";
 
 /** 아이템스카우트 제외 키워드 판별해주는 함수  */
 export function isExceptionKeyword(title: string, exception_keyword: string | null) {
