@@ -1,8 +1,0 @@
-[Mon Oct 23 00:00:00 KST 2023] Script started
-
-> product_crawling@1.0.58 update:product-image
-> ts-node ./product_naver_detail_image
-
-[662/778] 76304 24
-[731/778] 88256 0
-[Mon Oct 23 00:00:07 KST 2023] Script completed successfully
