@@ -13,11 +13,14 @@ const getStoreData = async (data: getHomeShoppingListResponseType[0]): Promise<g
   // 제품상세이미지 URL 추출하기
   const str = result.match(/loadDescription\(\) \{[^}]*\}/);
   const detailFunctionString = str && str.length > 0 ? str[0] : "";
-  const detailImageUrl = detailFunctionString.match(/http:\/\/cdn\.api\.livehomeshopping\.com\/[^"]+/)[0];
+  const detailImageUrl = (detailFunctionString.match(/http:\/\/cdn\.api\.livehomeshopping\.com\/[^"]+/) || [])[0];
   // 해당 detailImageUrl로 요청하여 .img_detail > p > img의 src 가져오기
-  const detailImageResponse = await axios.get(detailImageUrl);
-  const detail$ = load(detailImageResponse.data);
-  const shop_desc_image_url = detail$(".img_detail > p > img").attr("src") || data.shop_desc_image_url;
+  let shop_desc_image_url = null;
+  if (detailImageUrl) {
+    const detailImageResponse = await axios.get(detailImageUrl);
+    const detail$ = load(detailImageResponse.data);
+    shop_desc_image_url = detail$(".img_detail > p > img").attr("src") || data.shop_desc_image_url;
+  }
 
   const broadcastTime = $(".date")
     .text()
@@ -47,7 +50,7 @@ const getStoreData = async (data: getHomeShoppingListResponseType[0]): Promise<g
   const video_url = $("video > source").attr("src") || getVideoURL(shop_name || "") || data.video_url; // m3u8 비디오 URL 가져오기
   return {
     ...data,
-    is_crawling: 1,
+    is_crawling: getVideoURL(shop_name || "") === null ? 0 : 1,
     start_at,
     end_at,
     shop_desc_image_url,
@@ -122,7 +125,7 @@ const classNameToStoreName: {
   "sprite-logo-590006": "CJ온스타일+",
   "sprite-logo-590007": "롯데OneTV",
   "sprite-logo-590008": "NS Shop+",
-  "sprite-logo-600002": "홈앤쇼핑",
+  "sprite-logo-600002": "홈앤쇼핑TV2", //<-- 문제
   "sprite-logo-600003": "KT알파쇼핑TV플러스",
   "sprite-logo-600004": "SK 스토아",
   "sprite-logo-700004": "KT알파 쇼핑",
@@ -148,6 +151,8 @@ const getVideoURL = (shopName: string) => {
       return "http://cast.skstoa.com:8080/live/SKSTOA.daml/playlist.m3u8";
     case "홈앤쇼핑":
       return "http://livevod.hnsmall.com:1935/live/mp4:a.stream/playlist.m3u8";
+    case "홈앤쇼핑TV2":
+      return null;
     case "NS홈쇼핑":
       return "http://livestream.nsmall.com:1935/IPHONE/nsmallMobile.m3u8";
     case "KT알파쇼핑TV플러스":
