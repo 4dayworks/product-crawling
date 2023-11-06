@@ -1,5 +1,5 @@
-[Thu Oct 26 18:30:00 KST 2023] Script started
+[Mon Nov  6 16:50:00 KST 2023] Script started
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0     64      0 --:--:-- --:--:-- --:--:--    72
-{"data":true}[Thu Oct 26 18:30:01 KST 2023] Script completed successfully
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    35  100    35    0     0    112      0 --:--:-- --:--:-- --:--:--   116
+{"error":"setCache result is null"}[Mon Nov  6 16:50:00 KST 2023] Script completed successfully
