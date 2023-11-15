@@ -86,7 +86,9 @@ export const getStoreListV5 = async (product: getProductTypeV6) => {
     ]);
     return coupangStoreList.concat(
       iherbStoreData,
-      itemscoutStoreList,
+      naverStoreList.length > 0
+        ? itemscoutStoreList.filter((i) => !i.store_name?.includes("판매처 "))
+        : itemscoutStoreList,
       naverStoreList,
       etcStoreList // <- 주석풀면 떠리몰 가능
     );

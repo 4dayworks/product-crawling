@@ -6,5 +6,5 @@
 */10 * * * * /Users/minsekim/projects/Yagiyagi/product-crawling/script/update:lowest.sh
 * * * * * /Users/minsekim/projects/Yagiyagi/product-crawling/script/update:home-shopping-send-push.sh
 0 18 * * * /Users/minsekim/projects/Yagiyagi/product-crawling/script/update:home-shopping-get-shoppingmall.sh
-1 * * * * /Users/minsekim/projects/Yagiyagi/product-crawling/script/update:fourweek-send-push.sh
+0 * * * * /Users/minsekim/projects/Yagiyagi/product-crawling/script/update:fourweek-send-push.sh
 ```
