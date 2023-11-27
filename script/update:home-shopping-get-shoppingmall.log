@@ -1,8 +1,8 @@
-[Wed Nov 15 18:00:00 KST 2023] Script started
+[Sun Nov 26 18:00:00 KST 2023] Script started
 
 > product_crawling@1.0.58 update:shop
 > ts-node ./home_shopping_update
 
-Start fetching shop list 2023-11-15T09:00:05.273Z
-End fetching product list 2023-11-15T09:00:05.279Z
-[Wed Nov 15 18:00:05 KST 2023] Script completed successfully
+Start fetching shop list 2023-11-26T09:00:04.255Z
+End fetching product list 2023-11-26T09:00:04.256Z
+[Sun Nov 26 18:00:04 KST 2023] Script completed successfully

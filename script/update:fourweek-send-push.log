@@ -1,5 +1,5 @@
-[Wed Nov 15 18:00:05 KST 2023] Script started
+[Mon Nov 27 15:00:06 KST 2023] Script started
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0    181      0 --:--:-- --:--:-- --:--:--   216
-{"data":true}[Wed Nov 15 18:00:05 KST 2023] Script completed successfully
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    36  100    36    0     0    523      0 --:--:-- --:--:-- --:--:--   610
+{"data":true,"error":"no user list"}[Mon Nov 27 15:00:06 KST 2023] Script completed successfully

@@ -73,20 +73,19 @@ async function fetchPageData() {
     .get(`${NODE_API_URL}/crawling/shop`)
     .then((d) => d.data.data as getHomeShoppingListResponseType);
 
-  const resultList: getHomeShoppingListResponseType = [];
   console.info(`Start fetching shop list`, new Date().toISOString());
   for (let i = 0; i < shopList.length; i++) {
-    const list = await getStoreData(shopList[i]);
-    if (list) resultList.push(list);
     console.info(
-      `[${i + 1}/${shopList.length}] Complete schedule_id:`,
+      `[${i + 1}/${shopList.length}] start schedule_id:`,
       shopList[i].schedule_id,
       shopList[i].livehs_url,
       new Date().toISOString()
     );
+
+    const list = await getStoreData(shopList[i]);
+    if (list) await saveProductList([list]);
   }
   console.info(`End fetching product list`, new Date().toISOString());
-  saveProductList(resultList);
 }
 
 fetchPageData();
