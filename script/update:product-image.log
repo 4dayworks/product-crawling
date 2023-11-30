@@ -1,6 +1,6 @@
-[Mon Nov 27 00:00:00 KST 2023] Script started
+[Thu Nov 30 00:00:00 KST 2023] Script started
 
-> product_crawling@1.0.58 update:product-image
+> product_crawling@1.0.59 update:product-image
 > ts-node ./product_naver_detail_image
 
 [585/776] 73568 0
@@ -27,4 +27,4 @@
 [765/776] 91861 0
 [767/776] 91972 0
 [768/776] 91979 0
-[Mon Nov 27 00:00:14 KST 2023] Script completed successfully
+[Thu Nov 30 00:00:15 KST 2023] Script completed successfully
