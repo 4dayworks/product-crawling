@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FILE="/Users/minsekim/projects/Yagiyagi/product-crawling/script/update:lowest.log"
+LOG_FILE="/Users/minsekim/projects/dayworks4/product-crawling/script/update:lowest.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 

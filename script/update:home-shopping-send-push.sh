@@ -2,7 +2,7 @@
 
 sleep 5
 
-LOG_FILE="/Users/minsekim/projects/Yagiyagi/product-crawling/script/update:home-shopping-send-push.log"
+LOG_FILE="/Users/minsekim/projects/dayworks4/product-crawling/script/update:home-shopping-send-push.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 

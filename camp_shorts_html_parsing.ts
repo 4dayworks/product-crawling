@@ -19,6 +19,7 @@ $("ytd-video-renderer").each((index, element) => {
   const description = $(element)
     .find("yt-formatted-string.metadata-snippet-text.style-scope.ytd-video-renderer")
     .text();
+  const category = "캠핑꿀팁";
 
   list.push(
     `('${thumbnailUrl.replace(/'/g, "''")}', '${title.replace(/'/g, "''")}', '${videoLink.replace(
@@ -27,11 +28,11 @@ $("ytd-video-renderer").each((index, element) => {
     )}', '${viewCount.replace(/'/g, "''")}', '${publishedDate.replace(/'/g, "''")}', '${authorName.replace(
       /'/g,
       "''"
-    )}', '${authorImage.replace(/'/g, "''")}', '${description.replace(/'/g, "''")}')`
+    )}', '${authorImage.replace(/'/g, "''")}', '${description.replace(/'/g, "''")}', '${category.replace(/'/g, "''")}')`
   );
 });
 
-const sqlQuery = `INSERT INTO shorts (thumbnail_url, title, video_link, view_count, published_date, author_name, author_image, description) VALUES ${list.join(
+const sqlQuery = `INSERT IGNORE INTO shorts (thumbnail_url, title, video_link, view_count, published_date, author_name, author_image, description, category) VALUES ${list.join(
   ", "
 )};`;
 
