@@ -1,25 +1,3 @@
-[Tue Jan  2 00:00:00 KST 2024] Script started
-
-> product_crawling@1.0.62 update:product-image
-> ts-node ./product_naver_detail_image
-
-[583/767] 73577 0
-[592/767] 73788 0
-[593/767] 73793 0
-[594/767] 73811 0
-[596/767] 73883 0
-[598/767] 73890 0
-[599/767] 73898 0
-[600/767] 73904 0
-[619/767] 74968 0
-[649/767] 76517 0
-[651/767] 76549 0
-[692/767] 86164 0
-[713/767] 87618 0
-[718/767] 88256 0
-[721/767] 88831 0
-[739/767] 89810 0
-[757/767] 91826 0
-[758/767] 91972 0
-[759/767] 91979 0
-[Tue Jan  2 00:00:18 KST 2024] Script completed successfully
+[Tue Jan  9 00:00:01 KST 2024] Script started
+/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:product-image.sh: line 11: npm: command not found
+[Tue Jan  9 00:00:01 KST 2024] Script encountered an error

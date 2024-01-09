@@ -1,8 +1,3 @@
-[Mon Jan  1 18:00:00 KST 2024] Script started
-
-> product_crawling@1.0.62 update:shop
-> ts-node ./home_shopping_update
-
-Start fetching shop list 2024-01-01T09:00:05.226Z
-End fetching product list 2024-01-01T09:00:05.227Z
-[Mon Jan  1 18:00:05 KST 2024] Script completed successfully
+[Mon Jan  8 18:00:01 KST 2024] Script started
+/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:home-shopping-get-shoppingmall.sh: line 11: npm: command not found
+[Mon Jan  8 18:00:01 KST 2024] Script encountered an error

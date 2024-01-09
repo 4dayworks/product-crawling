@@ -1,18 +1,3 @@
-[Tue Jan  2 15:00:00 KST 2024] Script started
-
-> product_crawling@1.0.62 update:product-thirthmall
-> ts-node ./product_thirthmall_update
-
-Start fetching product list 2024-01-02T06:00:04.766Z
-[1/6] Complete fetching product list - product length 1000 2024-01-02T06:00:25.902Z
-[2/6] Complete fetching product list - product length 2000 2024-01-02T06:00:44.895Z
-[3/6] Complete fetching product list - product length 3000 2024-01-02T06:01:04.444Z
-[4/6] Complete fetching product list - product length 4000 2024-01-02T06:01:24.646Z
-[5/6] Complete fetching product list - product length 4761 2024-01-02T06:01:39.940Z
-[6/6] Complete fetching product list - product length 4761 2024-01-02T06:01:42.836Z
-End fetching product list 2024-01-02T06:01:42.837Z
-총 떠리몰 제품수: 4761
-야기야기의 북마크되어있고 필수키워드 있는 제품갯수 6939
-야기야기와 떠리몰 제품 매칭 수: 522
-성공
-[Tue Jan  2 15:01:50 KST 2024] Script completed successfully
+[Tue Jan  9 15:00:00 KST 2024] Script started
+/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:product-thirthmall.sh: line 11: npm: command not found
+[Tue Jan  9 15:00:00 KST 2024] Script encountered an error
