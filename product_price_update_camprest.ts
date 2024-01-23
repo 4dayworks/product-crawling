@@ -7,6 +7,9 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 updateByCampProduct({
   // page: 0,
   // size: 6000,
-  productSelectedList: [1, 2, 3],
+  productSelectedList: [1],
   type: "all",
 });
+
+// 캠퍼레스트 제품 (판매처) 업데이트
+// yarn update:yaigyagi
