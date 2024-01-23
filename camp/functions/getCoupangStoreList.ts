@@ -31,7 +31,7 @@ export const getCoupangStoreList = async (
       store_product_image_src.includes("undefined") || store_product_image_src.includes("blank1x1")
         ? store_product_image_data_src
         : store_product_image_src;
-    const store_link = "https://www.coupang.com" + $(element).attr("data-product-link");
+    const store_link = "https://www.coupang.com" + $(element).attr("href");
     const store_price = Number(
       $(element).find("dl > dd > div > div.price-area > div > div.price > em > strong").text().trim().replace(/,/g, "")
     );
