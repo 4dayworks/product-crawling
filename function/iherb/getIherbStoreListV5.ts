@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { getProductTypeV6 } from "../../all_update";
-import { NODE_API_URL } from "../common";
+import { getProductTypeV6 } from "../../legacy/all_update";
+import { NODE_API_URL_YAGI } from "../common";
 import { l } from "../console";
 import { headers as iherbHeaders } from "../iherb/headers";
 import { IherbProductPriceType1, IherbProductPriceType2, ProductType } from "../iherb/updateByIherb";
@@ -74,7 +74,7 @@ export const getIherbStoreListV5 = ({ iherb_product_id }: getProductTypeV6): Pro
         iherb_product_image: string;
         product_url: string;
       } | null = await axios
-        .get(`${NODE_API_URL}/crawling/iherb/detail?iherb_product_id=${iherb_product_id}`)
+        .get(`${NODE_API_URL_YAGI}/crawling/iherb/detail?iherb_product_id=${iherb_product_id}`)
         .then((d) => d.data.data)
         .catch((err) => {
           const axiosErr = err as AxiosError;

@@ -1,0 +1,126 @@
+import axios from "axios";
+import { ItemscoutType, StoreType } from "../types/craw";
+import { filterArray } from "./getItemscoutStroeListFunctions";
+import { ProductType } from "./getProductIdList";
+import { getProxyData } from "./getProxyData";
+import { yagiHeaders } from "./yagiHeaders";
+import { NODE_API_URL_CAMP } from "../../function/common";
+import { l } from "../../function/console";
+
+const header = { "Accept-Encoding": "deflate, br" };
+export const getItemscoutStoreList = (
+  { product_id, itemscout_keyword }: ProductType,
+  bot_id: number,
+  proxyIP: string
+) =>
+  new Promise<StoreType[]>(async (resolve, reject) => {
+    try {
+      // 0. 아이템스카우트 키워드 없으면 무시하기
+      if (!itemscout_keyword || !itemscout_keyword.trim()) return resolve([]);
+
+      // 1. 과거에 사용했던 keyword_id 가져오기
+      //
+      let keyword_id: number | null = await axios
+        .get(`${NODE_API_URL_CAMP}/crawling/itemscout/keyword?keyword=${itemscout_keyword}`, { headers: yagiHeaders })
+        .then((d) => d.data.data);
+
+      // 2. 과거 키워드id 없을 경우 야기 DB에 저장하기
+      if (!keyword_id) {
+        const itemscout_keyword_id = await getProxyData(
+          bot_id,
+          proxyIP,
+          `https://api.itemscout.io/api/keyword`,
+          "POST",
+          header,
+          {
+            keyword: itemscout_keyword,
+          }
+        ).then((d) => d.data.data);
+        // 새 itemscout_keyword_id 업데이트
+        if (itemscout_keyword_id) {
+          await axios.patch(
+            `${NODE_API_URL_CAMP}/crawling/itemscout/keyword`,
+            { keyword_id: itemscout_keyword_id, itemscout_keyword: itemscout_keyword },
+            { headers: yagiHeaders }
+          );
+          keyword_id = itemscout_keyword_id;
+        }
+      }
+
+      //#endregion
+      //#region (3) itemscout에서 keyword_id 로 검색해서 집어넣기
+      if (!keyword_id) {
+        l("Err", "red", `No keyword_id product_id:${product_id}`);
+        return resolve([]);
+      }
+
+      // 리스트 없을 경우 제품명으로 다시 검색
+      // if (productListResult.length === 0) {
+      //   keyword = product_name;
+      //   const itemscout_keyword_id = await axios.post(url, { keyword }, { headers }).then((d) => d.data.data);
+      //   keyword_id = itemscout_keyword_id;
+      //   productListResult = await axios(
+      //     `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
+      //     { headers }
+      //   ).then((d) => {
+      //     if (!d.data.data.productListResult) return [];
+      //     const list = filterArray(d.data.data.productListResult, product, originData);
+
+      //     return list;
+      //   });
+      // }
+
+      let storeListByItemscout: ItemscoutType[] = await getProxyData(
+        bot_id,
+        proxyIP,
+        `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
+        "GET",
+        header
+      ).then(async (d) => {
+        const result = d.data.data.productListResult;
+        return !result ? [] : filterArray(result);
+      });
+
+      // let storeListByCoupang: ItemscoutType[] = await getProxyData(
+      //   bot_id,
+      //   proxyIP,
+      //   `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=coupang`,
+      //   "GET",
+      //   header
+      // ).then(async (d) => {
+      //   const result = d.data.data.productListResult;
+      //   return !result ? [] : filterArray(result);
+      // });
+
+      const storeList: StoreType[] = [];
+      storeListByItemscout.forEach((item) => {
+        if (item.shop.includes("면세점")) return;
+        const data: StoreType = {
+          camp_keyword: itemscout_keyword,
+          origin_product_name: item.title,
+          product_image: item.image,
+          mall_image: null,
+          price: item.price,
+          delivery: item.deliveryFee === "-1" ? null : Number(item.deliveryFee),
+          store_name: item.shop || (item.isNaverShop ? "네이버 쇼핑몰" : ""),
+          category: item.category,
+          review_count: item.reviewCount,
+          review_score: item.reviewScore,
+          is_naver_shop: item.isNaverShop,
+          is_oversea: item.isOversea,
+          store_link: item.mobileProductUrl || item.pcProductUrl || item.link,
+          apiType: "itemscout-naver",
+        };
+
+        storeList.push(data);
+      });
+
+      return resolve(storeList);
+    } catch (error: any) {
+      console.error(error);
+
+      reject(new Error("getItemscoutStoreList Error \n\t" + error.message));
+    }
+  });
+
+// getItemscoutStoreList("고려은단 비타민C 1000", 11, "http://localhost:3003");

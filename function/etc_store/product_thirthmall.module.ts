@@ -1,6 +1,6 @@
 import axios from "axios";
 import { load } from "cheerio";
-import { NODE_API_URL } from "../common";
+import { NODE_API_URL_YAGI } from "../common";
 import { AuthorizationKey } from "../auth";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
@@ -88,7 +88,7 @@ export const saveProductList = async (productList: ThirthMallProductType[]) => {
   let result_count = 0;
 
   const keywordList = await axios
-    .get(`${NODE_API_URL}/crawling/product/keyword`)
+    .get(`${NODE_API_URL_YAGI}/crawling/product/keyword`)
     .then((d) => d.data.data as resType[])
     .catch(() => [] as resType[]);
 
@@ -107,7 +107,7 @@ export const saveProductList = async (productList: ThirthMallProductType[]) => {
 
   console.info("야기야기와 떠리몰 제품 매칭 수:", result_count);
 
-  const res = await axios.post(`${NODE_API_URL}/crawling/product/etc_store/list`, {
+  const res = await axios.post(`${NODE_API_URL_YAGI}/crawling/product/etc_store/list`, {
     store_domain: "thirtymall.com",
     list: result,
   });

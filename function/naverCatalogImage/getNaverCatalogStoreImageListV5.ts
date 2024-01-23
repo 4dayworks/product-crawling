@@ -2,7 +2,7 @@ import cheerio from "cheerio";
 import request from "request";
 import { l } from "../console";
 import axios from "axios";
-import { NODE_API_URL } from "../common";
+import { NODE_API_URL_YAGI } from "../common";
 
 export const getNaverCatalogStoreImageListV5 = (product_id: number, naver_catalog_url: string | null) => {
   return new Promise<string[] | null>(async (resolve, reject) => {
@@ -37,9 +37,11 @@ export const getNaverCatalogStoreImageListV5 = (product_id: number, naver_catalo
 
 export const setProductImage = (product_id: number, imageList: string[]) => {
   return new Promise<boolean>(async (resolve, reject) => {
-    await axios.post(`${NODE_API_URL}/product/store/detail/image`, { image_list: imageList, product_id }).catch((e) => {
-      resolve(false);
-    });
+    await axios
+      .post(`${NODE_API_URL_YAGI}/product/store/detail/image`, { image_list: imageList, product_id })
+      .catch((e) => {
+        resolve(false);
+      });
     resolve(true);
   });
 };

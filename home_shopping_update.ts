@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AuthorizationKey } from "./function/auth";
-import { NODE_API_URL } from "./function/common";
+import { NODE_API_URL_YAGI } from "./function/common";
 import { load } from "cheerio";
 import dayjs from "dayjs";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
@@ -64,13 +64,13 @@ const getStoreData = async (data: getHomeShoppingListResponseType[0]): Promise<g
 };
 
 async function saveProductList(result_list: getHomeShoppingListResponseType) {
-  await axios.post(`${NODE_API_URL}/crawling/shop`, { result_list });
+  await axios.post(`${NODE_API_URL_YAGI}/crawling/shop`, { result_list });
   return;
 }
 
 async function fetchPageData() {
   const shopList = await axios
-    .get(`${NODE_API_URL}/crawling/shop`)
+    .get(`${NODE_API_URL_YAGI}/crawling/shop`)
     .then((d) => d.data.data as getHomeShoppingListResponseType);
 
   console.info(`Start fetching shop list`, new Date().toISOString());

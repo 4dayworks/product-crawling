@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getProductTypeV6 } from "../../all_update";
-import { NODE_API_URL } from "../common";
+import { getProductTypeV6 } from "../../legacy/all_update";
+import { NODE_API_URL_YAGI } from "../common";
 import { l } from "../console";
 import { StoreTypeV5 } from "../updateByItemscout";
 import { AuthorizationKey } from "../auth";
@@ -27,7 +27,7 @@ export const getEtcStoreListV1 = (product: getProductTypeV6) => {
     const { product_id } = product;
     try {
       const data = await axios
-        .get<{ data: ResType[] }>(`${NODE_API_URL}/crawling/product/etc_store/list?product_id=${product_id}`)
+        .get<{ data: ResType[] }>(`${NODE_API_URL_YAGI}/crawling/product/etc_store/list?product_id=${product_id}`)
         .then((d) => {
           const data = d.data.data;
           return data.map((store) => ({

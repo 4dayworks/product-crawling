@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AuthorizationKey } from "../auth";
-import { updateByProductId } from "../../all_update";
+import { updateByYagiProduct } from "../../legacy/all_update";
 import { l } from "../console";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
@@ -26,7 +26,7 @@ const execute = async () => {
       return { startIndex: undefined, instance_name: undefined };
     });
   while (true) {
-    await updateByProductId({
+    await updateByYagiProduct({
       instanceData,
       type: instanceData.instance_name?.includes("no-coupang")
         ? "no-coupang"

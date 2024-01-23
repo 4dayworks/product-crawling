@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { NODE_API_URL } from "../common";
+import { NODE_API_URL_YAGI } from "../common";
 import { l } from "../console";
 import { headers as iherbHeaders } from "./headers";
 import { IherbProductPriceType1, IherbProductPriceType2, ProductType } from "./updateByIherb";
@@ -66,7 +66,7 @@ export const getIherbStoreList = (
     // # 더이상 안팔면 판매처 삭제필요함 가격/판매처 데이터 지우고 is_stock 0로 표시
     if ((res1 === null && res2 === null) || res2 === null) {
       const data = { iherb_product_id: iherbProductId };
-      await axios.delete(`${NODE_API_URL}/crawling/product/iherb`, { data });
+      await axios.delete(`${NODE_API_URL_YAGI}/crawling/product/iherb`, { data });
       l("ERR Data", "red", "iherb 데이터를 가져올 수 없습니다.(5) ");
       return resolve(null);
     }
@@ -98,7 +98,7 @@ export const getIherbStoreList = (
     };
 
     //product_iherb의 가격만 업데이트함. 그래프(product_daily_price), 최저가(product_price) 저장은 따로 저장해야됨)
-    await axios.patch(`${NODE_API_URL}/crawling/product/iherb/price`, data);
+    await axios.patch(`${NODE_API_URL_YAGI}/crawling/product/iherb/price`, data);
     const iherbPriceData: IherbPriceType | null = data
       ? {
           ...data,

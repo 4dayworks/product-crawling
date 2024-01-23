@@ -1,26 +1,15 @@
-import axios from "axios";
-import cheerio from "cheerio";
-import { uniqueId } from "lodash";
-import { getProductTypeV6 } from "../../legacy/all_update";
-import { l } from "../console";
-import { StoreTypeV5 } from "../updateByItemscout";
+import { load } from "cheerio";
 
-// const proxyIP = "http://localhost:3003";
+import { StoreType } from "../types/craw";
+import { ProductType } from "./getProductIdList";
+import { getProxyData } from "./getProxyData";
+import { l } from "../../function/console";
 
-export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV6) => {
-  const getHeaders = () => {
-    return {
-      Accept: "*/*",
-      "Accept-Encoding": "deflate, br",
-      "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-      Cookie: uniqueId(),
-      "Postman-Token": "2360597e-8d8b-45a2-aa5a-c76ea406ef7d",
-      Host: "www.coupang.com",
-      Connection: "keep-alive",
-    };
-  };
+export const getCoupangStoreList = async (
+  { coupang_keyword, itemscout_keyword }: ProductType,
+  bot_id: number,
+  proxyIP: string
+) => {
   // 1. 쿠팡 키워드 없을 경우 쿠팡 데이터를 가져오지 않음.
   if (!coupang_keyword) {
     l("INFO", "green", "no coupang keyword <- 판매처 가져오지 않음");
@@ -28,23 +17,11 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
   }
 
   // 2. 쿠팡 검색 결과 페이지 크롤링하기
-  // .replace(    /[ \[\]]/g,    "+"  )
-  const url = `https://www.coupang.com/np/search?rocketAll=true&q=${encodeURIComponent(
-    coupang_keyword
-  )}&brand=&offerCondition=&filter=&availableDeliveryFilter=&filterType=rocket_luxury%2Crocket%2Ccoupang_global&isPriceRange=false&priceRange=&minPrice=&maxPrice=&page=1&trcid=&traid=&filterSetByUser=true&channel=user&backgroundColor=&searchProductCount=719&component=&rating=0&sorter=scoreDesc&listSize=36`;
+  const url = `https://www.coupang.com/np/search?component=&q=${encodeURIComponent(coupang_keyword)}&channel=user`;
+  const response = await getProxyData(bot_id, proxyIP, url);
 
-  // const response = await axios.post(proxyIP, { targetURL: url }).catch((e) => {
-  //   l("Err", "red", "getCoupangStoreDataV5" + e);
-  //   throw Error("Coupang Search Result Page Crawling Error");
-  // });
-
-  const response = await axios.get(url, { headers: getHeaders() }).catch((e) => {
-    l("Err", "red", "getCoupangStoreDataV5" + e);
-    throw Error("Coupang Search Result Page Crawling Error");
-  });
-
-  const $ = cheerio.load(response.data);
-  const storeList: StoreTypeV5[] = [];
+  const $ = load(response.data);
+  const storeList: StoreType[] = [];
   // 3. 판매처 정보 가져와서 광고 제품 필터링하기
   $("a.search-product-link").each((index, element) => {
     const store_product_name = $(element).find("dl > dd > div > div.name").text().trim();
@@ -58,6 +35,8 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
     const store_price = Number(
       $(element).find("dl > dd > div > div.price-area > div > div.price > em > strong").text().trim().replace(/,/g, "")
     );
+    const store_is_free_delivery = $(element).find("dl > dd > div.descriptions-inner").text().includes("무료배송");
+
     const typeSrc = $(element).find("dl > dd > div > div.price-area > div > div.price > em > span > img").attr("src");
     const outOfStock = $(element).find("dl > dd > div > div.price-area > div.out-of-stock").text().trim();
     const type = !typeSrc
@@ -83,26 +62,24 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
         .trim()
         .replace(/\(|\)/g, "")
     );
-    const is_ad = false;
-    //쿠팡 오류로 인해 뺌 2023/09/15
-    //$(element).find("dl > dd > div > span > span.ad-badge-text").text().trim() === "AD";
 
     // 4. 판매처 list에 모으기
-    if (!type || is_ad || !store_product_image || outOfStock === "일시품절") return;
-    const data: StoreTypeV5 = {
-      yagi_keyword: coupang_keyword,
+    if (!store_product_image || outOfStock === "일시품절") return;
+    const data: StoreType = {
+      camp_keyword: coupang_keyword,
       origin_product_name: store_product_name,
       product_image: store_product_image,
       mall_image: null,
       price: store_price,
-      delivery: 0,
-      store_name: type,
+      delivery: store_is_free_delivery ? 0 : null,
+      store_name: type || "쿠팡",
       category: null,
       review_count: store_review_count,
       review_score: store_review_score,
       is_naver_shop: false,
       is_oversea: type === "로켓직구",
       store_link,
+      apiType: "coupang",
     };
     storeList.push(data);
   });
@@ -110,7 +87,4 @@ export const getCoupangStoreListV5 = async ({ coupang_keyword }: getProductTypeV
   return storeList;
 };
 
-type CoupangDataType = {
-  coupang_require_keyword_list: string | null;
-  coupang_exception_keyword_list: string | null;
-};
+// getCoupangStoreList("비오비타", "http://localhost:3003");

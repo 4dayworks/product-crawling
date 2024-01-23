@@ -4,7 +4,7 @@ import request from "request";
 import { l } from "../console";
 import { headers } from "./headers";
 import { productURLDataType, IherbType } from "./updateByIherb";
-import { NODE_API_URL } from "../common";
+import { NODE_API_URL_YAGI } from "../common";
 import { uniq } from "lodash";
 export const getProductDescData = (urlData: productURLDataType): Promise<IherbType | null> => {
   return new Promise(async (resolve, reject) => {
@@ -208,7 +208,7 @@ export const getProductDescData = (urlData: productURLDataType): Promise<IherbTy
           return resolve(null);
         }
         await axios
-          .post(`${NODE_API_URL}/crawling/product/iherb`, data)
+          .post(`${NODE_API_URL_YAGI}/crawling/product/iherb`, data)
           .catch((d) => l("ERR Data", "red", "iherb 데이터 중 일부가 누락되었습니다."));
         return resolve(data);
       });

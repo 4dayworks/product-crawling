@@ -1,9 +1,9 @@
 import axios, { AxiosError } from "axios";
-import { AuthorizationKey } from "./function/auth";
-import { NODE_API_URL } from "./function/common";
-import { l } from "./function/console";
-import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV6 } from "./function/product";
-import { wrapSlept } from "./function/wrapSlept";
+import { AuthorizationKey } from "../function/auth";
+import { NODE_API_URL_YAGI } from "../function/common";
+import { l } from "../function/console";
+import { getStoreListV5, setGraphV5, setLastMonthLowPriceV5, setStoreListV6 } from "../function/product";
+import { wrapSlept } from "../function/wrapSlept";
 
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 export type updateByProductIdType = {
@@ -34,7 +34,7 @@ export type getProductTypeV6 = {
 };
 
 let isInit = true;
-export const updateByProductId = async ({
+export const updateByYagiProduct = async ({
   page = 0,
   size = 1000000,
   product_id_list: productSelectedList,
@@ -46,10 +46,10 @@ export const updateByProductId = async ({
 
   let productIdListAll: number[] | null = await axios(
     type === "coupang" || type === "no-coupang"
-      ? `${NODE_API_URL}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${
+      ? `${NODE_API_URL_YAGI}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${
           type === "no-coupang" ? true : false
         }`
-      : `${NODE_API_URL}/v5/crawling/product/id/list?page=${page}&size=${size}`
+      : `${NODE_API_URL_YAGI}/v5/crawling/product/id/list?page=${page}&size=${size}`
   )
     .then((d) => d.data.data)
     .catch((err) => {
@@ -66,7 +66,7 @@ export const updateByProductId = async ({
   if (productIdListAll === null) {
     const message = `instance_name: ${instanceData?.instance_name} / message: Not get productIdListAll`;
     await axios
-      .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+      .get(`${NODE_API_URL_YAGI}/slack/crawling?message=${message}`)
       .then((res) => res.data.data)
       .catch((err) => l("Err", "red", "Slack Send Message Error"));
     return;
@@ -110,7 +110,7 @@ export const updateByProductId = async ({
     }
     if (productIdListAll.length > i) {
       const product: getProductTypeV6 | null = await axios(
-        `${NODE_API_URL}/v6/crawling/product?product_id=${productIdListAll[i]}`
+        `${NODE_API_URL_YAGI}/v6/crawling/product?product_id=${productIdListAll[i]}`
       )
         .then((d) => d.data.data)
         .catch((err) => {
@@ -129,7 +129,7 @@ export const updateByProductId = async ({
           } / message: continuous error 1 / remain_change: ${chance}`;
           if (chance < 2)
             await axios
-              .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+              .get(`${NODE_API_URL_YAGI}/slack/crawling?message=${message}`)
               .then((res) => res.data.data)
               .catch((err) => l("Err", "red", "Slack Send Message Error"));
 
@@ -145,7 +145,7 @@ export const updateByProductId = async ({
             } / message: continuous error 2 / remain_change: ${chance} / remain chance out -> Crawling Server Restart !!`;
             if (instanceData?.instance_name != undefined) {
               await axios
-                .get(`${NODE_API_URL}/slack/crawling?message=${message}`)
+                .get(`${NODE_API_URL_YAGI}/slack/crawling?message=${message}`)
                 .then((res) => res.data.data)
                 .catch((err) => l("Err", "red", "Slack Send Message Error"));
               await axios

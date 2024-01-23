@@ -1,12 +1,12 @@
 import axios from "axios";
-import { AuthorizationKey } from "./function/auth";
-import { NODE_API_URL } from "./function/common";
+import { AuthorizationKey } from "../function/auth";
+import { NODE_API_URL_YAGI } from "../function/common";
 import {
   getNaverCatalogStoreImageListV5,
   setProductImage,
-} from "./function/naverCatalogImage/getNaverCatalogStoreImageListV5";
-import { wrapSlept } from "./function/wrapSlept";
-import { naverCatalogCompletedList } from "./function/naverCatalogImage/completeList";
+} from "../function/naverCatalogImage/getNaverCatalogStoreImageListV5";
+import { wrapSlept } from "../function/wrapSlept";
+import { naverCatalogCompletedList } from "../function/naverCatalogImage/completeList";
 
 //실행방법: yarn update:product-image
 // naver_url_list=아래 쿼리,
@@ -21,9 +21,9 @@ import { naverCatalogCompletedList } from "./function/naverCatalogImage/complete
 // https://msearch.shopping.naver.com/catalog/6743170459 이런거 잘됨
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 async function getProductImage() {
-  axios.get(`${NODE_API_URL}/slack/crawling?message=product_naver_image_get_START!`);
+  axios.get(`${NODE_API_URL_YAGI}/slack/crawling?message=product_naver_image_get_START!`);
   const naver_url_list: { product_id: number; naver_catalog_url: string }[] = await axios
-    .get(`${NODE_API_URL}/crawling/naver/image/list`)
+    .get(`${NODE_API_URL_YAGI}/crawling/naver/image/list`)
     .then((d) => d.data.data);
 
   for (let i = 0; i < naver_url_list.length; i++) {
@@ -42,7 +42,7 @@ async function getProductImage() {
     if (!imageList || imageList.length === 0) continue;
     await setProductImage(pid, imageList);
   }
-  axios.get(`${NODE_API_URL}/slack/crawling?message=product_naver_image_get_END!`);
+  axios.get(`${NODE_API_URL_YAGI}/slack/crawling?message=product_naver_image_get_END!`);
 }
 
 getProductImage();

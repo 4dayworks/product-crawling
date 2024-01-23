@@ -1,7 +1,7 @@
 import axios from "axios";
-import { AuthorizationKey } from "./function/auth";
-import { updateByProductId } from "./all_update";
-import { l } from "./function/console";
+import { AuthorizationKey } from "../function/auth";
+import { updateByYagiProduct } from "./all_update";
+import { l } from "../function/console";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
 // GCP 자동 인스턴스 재생성 후
@@ -37,7 +37,7 @@ const execute = async () => {
   //   );
 
   while (true) {
-    await updateByProductId({
+    await updateByYagiProduct({
       instanceData,
       type: instanceData.instance_name.includes("all")
         ? "all"

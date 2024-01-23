@@ -4,15 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "update": "ts-node ./product_price_update",
-    "update:always": "ts-node ./product_price_update_always",
-    "update:always-coupang": "ts-node ./product_price_update_always_coupang",
-    "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push",
-    "update:iherb-price": "ts-node product_price_update_iherb_all",
-    "update:iherb-brand": "ts-node product_brand_add_iherb",
-    "update:product-image": "ts-node ./product_naver_detail_image",
-    "update:product-thirthmall": "ts-node ./product_thirthmall_update",
-    "update:shop": "ts-node ./home_shopping_update"
+    "update:yagiyagi": "ts-node ./product_price_update_yagiyagi",
+    "update:camprest": "ts-node ./product_price_update_camprest",
+    "update:shop": "ts-node ./home_shopping_update",
+    "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push"
   },
   "author": "",
   "license": "ISC",

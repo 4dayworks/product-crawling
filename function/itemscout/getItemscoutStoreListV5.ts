@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getProductTypeV6 } from "../../all_update";
-import { NODE_API_URL } from "../common";
+import { getProductTypeV6 } from "../../legacy/all_update";
+import { NODE_API_URL_YAGI } from "../common";
 import { l } from "../console";
 import { filterArray } from "../itemscout";
 import { ItemscoutType, StoreTypeV5 } from "../updateByItemscout";
@@ -14,7 +14,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
 
       // 1. 과거에 사용했던 keyword_id 가져오기
       let keyword_id: number | null = await axios
-        .get(`${NODE_API_URL}/crawling/itemscout/keyword?keyword=${itemscout_keyword}`)
+        .get(`${NODE_API_URL_YAGI}/crawling/itemscout/keyword?keyword=${itemscout_keyword}`)
         .then((d) => d.data.data);
 
       // 2. 과거 키워드id 없을 경우 야기 DB에 저장하기
@@ -25,7 +25,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
           .then((d) => d.data.data);
         // 새 itemscout_keyword_id 업데이트
         if (itemscout_keyword_id) {
-          await axios.patch(`${NODE_API_URL}/crawling/itemscout/keyword`, {
+          await axios.patch(`${NODE_API_URL_YAGI}/crawling/itemscout/keyword`, {
             keyword_id: itemscout_keyword_id,
             itemscout_keyword,
           });

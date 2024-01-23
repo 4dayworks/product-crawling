@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getProductTypeV6, updateByProductIdType } from "../all_update";
-import { NODE_API_URL } from "./common";
+import { getProductTypeV6, updateByProductIdType } from "../legacy/all_update";
+import { NODE_API_URL_YAGI } from "./common";
 import { l } from "./console";
 import { getCoupangStoreListV5 } from "./coupang/getCoupangStoreListV5";
 import { getIherbStoreListV5 } from "./iherb/getIherbStoreListV5";
@@ -21,7 +21,7 @@ import { getEtcStoreListV1 } from "./etc_store/getEtcStoreListV1";
 // };
 export const setGraphV5 = async (product: getProductTypeV6) => {
   try {
-    await axios.post(`${NODE_API_URL}/v2/product/daily_price/history`, {
+    await axios.post(`${NODE_API_URL_YAGI}/v2/product/daily_price/history`, {
       product_id: product.product_id,
     });
     // l("Sub", "blue", "complete - product_price write history");
@@ -42,7 +42,7 @@ export const setGraphV5 = async (product: getProductTypeV6) => {
 // };
 export const setLastMonthLowPriceV5 = async (product: getProductTypeV6) => {
   try {
-    await axios.patch(`${NODE_API_URL}/product/price/low_price`, {
+    await axios.patch(`${NODE_API_URL_YAGI}/product/price/low_price`, {
       product_id: product.product_id,
     });
     // l("Sub", "blue", "complete - low price of month was written");
@@ -52,7 +52,7 @@ export const setLastMonthLowPriceV5 = async (product: getProductTypeV6) => {
 };
 
 export const exceptionCompanyListAtNaver = () =>
-  axios.get(`${NODE_API_URL}/crawling/blacklist`).then((res) => res.data.data);
+  axios.get(`${NODE_API_URL_YAGI}/crawling/blacklist`).then((res) => res.data.data);
 
 // export const getNotificationItemscoutList = () => {
 //   return axios
@@ -106,13 +106,13 @@ export const setStoreListV6 = async (
   const dataToSend = { product, store_list, type };
 
   const data: boolean = await axios
-    .post(`${NODE_API_URL}/v6/crawling/store`, dataToSend)
+    .post(`${NODE_API_URL_YAGI}/v6/crawling/store`, dataToSend)
     .then((res) => {
       if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
       return res.data.data;
     })
     .catch((e) => {
-      l("Err ", "red", `setStoreList ${NODE_API_URL}/v6/crawling/store`);
+      l("Err ", "red", `setStoreList ${NODE_API_URL_YAGI}/v6/crawling/store`);
       return null;
     });
   return data;
