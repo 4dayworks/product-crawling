@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "update:yagiyagi": "ts-node ./product_price_update_yagiyagi",
-    "update:camprest": "ts-node ./product_price_update_camprest",
+    "update:camperest": "ts-node ./product_price_update_camprest",
     "update:shop": "ts-node ./home_shopping_update",
     "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push"
   },

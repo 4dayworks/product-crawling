@@ -12,4 +12,4 @@ updateByCampProduct({
 });
 
 // 캠퍼레스트 제품 (판매처) 업데이트
-// yarn update:yaigyagi
+// yarn update:camperest
