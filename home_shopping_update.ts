@@ -5,7 +5,9 @@ import { load } from "cheerio";
 import dayjs from "dayjs";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 
-const getStoreData = async (data: getHomeShoppingListResponseType[0]): Promise<getHomeShoppingListResponseType[0]> => {
+const getStoreData = async (
+  data: getHomeShoppingListResponseType[0]
+): Promise<getHomeShoppingListResponseType[0] | undefined> => {
   const result = await axios.get(data.livehs_url).then((d) => d.data);
   const $ = load(result);
   const shop_thumnail_url = $('meta[property="og:image"]').attr("content") || null; // 썸네일 주소 가져오기
@@ -25,46 +27,52 @@ const getStoreData = async (data: getHomeShoppingListResponseType[0]): Promise<g
   const broadcastTime = $(".date")
     .text()
     .split("~")
-    .map((time: string) => time.trim()); // 방송시작시간과 방송끝시간 가져오기
-  const startText = broadcastTime[0]
-    .replace("오늘 ", dayjs().format("MM월 DD일 "))
-    .replace("내일 ", dayjs().add(1, "day").format("MM월 DD일 "))
-    .split("방송시간")[1]
+    .map((time: string) => (time || "").trim()); // 방송시작시간과 방송끝시간 가져오기
+  const startText = (
+    broadcastTime[0]
+      .replace("오늘 ", dayjs().format("MM월 DD일 "))
+      .replace("내일 ", dayjs().add(1, "day").format("MM월 DD일 "))
+      .split("방송시간")[1] || ""
+  )
     .trim()
     .replace("월 ", "-")
     .replace("일 ", "T");
   const startTime = dayjs(dayjs().get("year") + "-" + startText);
   const start_at = startTime.format("YYYY-MM-DDTHH:mm:ss");
 
-  const endHour = Number(broadcastTime[1].split(":")[0]);
-  const endMin = Number(broadcastTime[1].split(":")[1]);
+  const endHour = Number((broadcastTime[1] || "").split(":")[0]);
+  const endMin = Number((broadcastTime[1] || "").split(":")[1]);
   const end_at = startTime.set("h", endHour).set("minute", endMin).format("YYYY-MM-DDTHH:mm:ss");
 
   const shop_product_name = $("div.product-detail > div.title").text(); // 제품 이름 가져오기
-  const shop_price = Number($(".discount-price.price").text().replace(/,/g, "").replace("원", "").trim()); // 제품 판매가격 가져오기
+  const shop_price = Number(
+    ((($(".discount-price.price").text() || "").replace(/,/g, "") || "").replace("원", "") || "").trim()
+  ); // 제품 판매가격 가져오기
   const shop_purchase_url = $(".buy").attr("href") || data.shop_purchase_url; // 구매링크 가져오기
 
   const className = $("i.sprite-site-logo").attr("class")?.split(" ")[1] || "";
   const shop_name = getStoreName(className);
 
   const video_url = $("video > source").attr("src") || getVideoURL(shop_name || "") || data.video_url; // m3u8 비디오 URL 가져오기
-  return {
-    ...data,
-    is_crawling: getVideoURL(shop_name || "") === null ? 0 : 1,
-    start_at,
-    end_at,
-    shop_desc_image_url,
-    shop_price: Number(shop_price),
-    shop_purchase_url,
-    shop_product_name,
-    shop_thumnail_url,
-    video_url,
-    shop_name,
-  };
+  if (video_url)
+    return {
+      ...data,
+      is_crawling: getVideoURL(shop_name || "") === null ? 0 : 1,
+      start_at,
+      end_at,
+      shop_desc_image_url,
+      shop_price: Number(shop_price),
+      shop_purchase_url,
+      shop_product_name,
+      shop_thumnail_url,
+      video_url,
+      shop_name,
+    };
+  else console.log(`${data.livehs_url} (사라진 링크)해당 링크에서 제품 정보를 가져올 수 없습니다.`);
 };
 
 async function saveProductList(result_list: getHomeShoppingListResponseType) {
-  await axios.post(`${NODE_API_URL_YAGI}/crawling/shop`, { result_list });
+  await axios.post(`${NODE_API_URL_YAGI}/crawling/shop`, { result_list }).catch(() => {});
   return;
 }
 
