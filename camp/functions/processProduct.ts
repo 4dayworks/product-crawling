@@ -70,7 +70,7 @@ export const processProduct = async (
   if (!storeList) return false;
   writeLog(processName, `[${i + 1}/${max}] ${message} ${new Date().toISOString()} store_length: ${storeList.length}`);
 
-  const result = await setStoreList(product, storeList);
+  const result = await setStoreList(product, storeList, type);
   if (!result) {
     writeLog(
       processName,

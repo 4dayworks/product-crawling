@@ -7,7 +7,7 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 updateByCampProduct({
   // page: 0,
   // size: 6000,
-  productSelectedList: [101],
+  productSelectedList: [121],
   type: "all",
 });
 

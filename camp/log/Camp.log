@@ -64,3 +64,44 @@
 [16/16] product_id: 136 2024-01-29T07:00:57.472Z store_length: 52
 [1/1] product_id: 101 2024-01-29T07:56:48.647Z
 [1/1] product_id: 101 2024-01-29T07:56:50.012Z store_length: 38
+[1/1] product_id: 101 2024-01-29T08:31:34.656Z
+[1/1] product_id: 101 2024-01-29T08:31:35.715Z store_length: 38
+[1/1] product_id: 101 2024-01-29T08:32:05.623Z
+[1/1] product_id: 101 2024-01-29T08:32:05.832Z store_length: 2
+[ERROR] No Store List  setStoreList result: null for product_id:101 2024-01-29T08:32:06.034Z
+[1/1] product_id: 101 2024-01-29T08:35:13.204Z
+[1/1] product_id: 101 2024-01-29T08:35:13.484Z store_length: 2
+[1/1] product_id: 101 2024-01-29T08:40:23.098Z
+[1/1] product_id: 101 2024-01-29T08:40:23.339Z store_length: 2
+[1/1] product_id: 101 2024-01-29T08:41:30.576Z
+[1/1] product_id: 101 2024-01-29T08:41:31.603Z store_length: 38
+[1/1] product_id: 101 2024-01-29T08:41:55.676Z
+[1/1] product_id: 101 2024-01-29T08:41:56.138Z store_length: 2
+[1/1] product_id: 101 2024-01-29T08:42:37.666Z
+[1/1] product_id: 101 2024-01-29T08:42:38.058Z store_length: 2
+[1/1] product_id: 101 2024-01-29T08:42:57.590Z
+[1/1] product_id: 101 2024-01-29T08:42:58.622Z store_length: 38
+[1/1] product_id: 101 2024-01-29T08:43:42.653Z
+[1/1] product_id: 101 2024-01-29T08:43:43.115Z store_length: 2
+[1/1] product_id: 101 2024-01-29T08:43:56.805Z
+[1/1] product_id: 101 2024-01-29T08:43:58.218Z store_length: 38
+[1/1] product_id: 102 2024-01-29T08:45:38.437Z
+[1/1] product_id: 102 2024-01-29T08:45:51.996Z store_length: 81
+[1/1] product_id: 102 2024-01-29T08:46:22.354Z
+[1/1] product_id: 102 2024-01-29T08:46:22.597Z store_length: 35
+[1/1] product_id: 103 2024-01-29T08:46:31.999Z
+[1/1] product_id: 103 2024-01-29T08:46:42.377Z store_length: 39
+[1/1] product_id: 103 2024-01-29T08:46:59.062Z
+[1/1] product_id: 103 2024-01-29T08:47:00.081Z store_length: 75
+[1/1] product_id: 104 2024-01-29T08:47:13.727Z
+[1/1] product_id: 104 2024-01-29T08:47:14.704Z store_length: 60
+[1/1] product_id: 105 2024-01-29T08:47:25.333Z
+[1/1] product_id: 105 2024-01-29T08:47:26.273Z store_length: 56
+[1/1] product_id: 106 2024-01-29T08:47:37.306Z
+[1/1] product_id: 106 2024-01-29T08:47:39.383Z store_length: 43
+[1/1] product_id: 121 2024-01-29T08:47:49.046Z
+[1/1] product_id: 121 2024-01-29T08:47:50.178Z store_length: 72
+[1/1] product_id: 121 2024-01-29T08:48:02.039Z
+[1/1] product_id: 121 2024-01-29T08:48:02.201Z store_length: 36
+[1/1] product_id: 121 2024-01-29T08:48:48.028Z
+[1/1] product_id: 121 2024-01-29T08:48:49.347Z store_length: 72

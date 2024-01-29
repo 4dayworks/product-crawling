@@ -38,9 +38,13 @@ export const getStoreList = async (
   }
 };
 
-export const setStoreList = async (product: ProductType, store_list: StoreType[]) => {
+export const setStoreList = async (
+  product: ProductType,
+  store_list: StoreType[],
+  type: UpdateByProductIdType["type"]
+) => {
   const data: boolean = await axios
-    .post(`${NODE_API_URL_CAMP}/crawling/store`, { product, store_list })
+    .post(`${NODE_API_URL_CAMP}/crawling/store`, { product, store_list, type })
     .then((res) => {
       if (res.data.message) l(`No Store`, "magenta", `MESSAGE product_id: ${product.product_id} ${res.data.message}`);
 
