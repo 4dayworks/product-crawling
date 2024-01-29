@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getProductTypeV6, updateByProductIdType } from "../legacy/all_update";
+import { getProductTypeV6, updateByProductIdType } from "../backup/all_update";
 import { NODE_API_URL_YAGI } from "./common";
 import { l } from "./console";
 import { getCoupangStoreListV5 } from "./coupang/getCoupangStoreListV5";

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AuthorizationKey } from "../auth";
-import { updateByYagiProduct } from "../../legacy/all_update";
+import { updateByYagiProduct } from "../../backup/all_update";
 import { l } from "../console";
 axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 

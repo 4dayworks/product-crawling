@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getProductTypeV6 } from "../../legacy/all_update";
+import { getProductTypeV6 } from "../../backup/all_update";
 import { NODE_API_URL_YAGI } from "../common";
 import { l } from "../console";
 import { StoreTypeV5 } from "../updateByItemscout";

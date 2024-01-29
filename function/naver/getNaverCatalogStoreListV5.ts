@@ -3,7 +3,7 @@ import request from "request";
 import { l } from "../console";
 import { exceptionCompanyListAtNaver } from "../product";
 import { StoreTypeV5 } from "../updateByItemscout";
-import { getProductTypeV6 } from "../../legacy/all_update";
+import { getProductTypeV6 } from "../../backup/all_update";
 
 export type DataListType = {
   product_id: number;

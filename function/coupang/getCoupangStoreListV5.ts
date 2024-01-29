@@ -1,7 +1,7 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import { uniqueId } from "lodash";
-import { getProductTypeV6 } from "../../legacy/all_update";
+import { getProductTypeV6 } from "../../backup/all_update";
 import { l } from "../console";
 import { StoreTypeV5 } from "../updateByItemscout";
 
