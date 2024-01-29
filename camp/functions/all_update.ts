@@ -80,7 +80,6 @@ export const updateByCampProduct = async ({
       // 7. 문제 없을 시 되돌리기
       chance = 3;
     }
-    i++;
   }
   l("[완료]", "blue", "모든 상품 가격 업데이트 완료");
   if (productSelectedList) return false;
