@@ -31,13 +31,9 @@ export const updateByCampProduct = async ({
   let chance = 3; //다시 시도할 기회
 
   // 3. 가져온 제품별로 반복
-  let i = startIndex || 0;
-
-  if (!productSelectedList) return;
-  while (i < productSelectedList.length) {
+  const max = productSelectedList ? productSelectedList.length : productIdListAll.length;
+  for (let i = startIndex || 0; i < max; i++) {
     // 개별로 돌릴때 체크
-    if (!!productSelectedList && i >= productSelectedList.length) break;
-
     const index = i % productIdListAll.length;
     // 4. 제품 키워드 가져오기
     const product = await getKeywordByProductId(productIdListAll[index]);
@@ -87,5 +83,6 @@ export const updateByCampProduct = async ({
     i++;
   }
   l("[완료]", "blue", "모든 상품 가격 업데이트 완료");
-  l("[로그]", "white", "로그 확인 ctrl + 클릭 -> ./camp/log/Camp.log");
+  if (productSelectedList) return false;
+  return true;
 };
