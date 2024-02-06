@@ -50,7 +50,7 @@ export const updateByCampProduct = async ({
       type,
       processName || "Camp",
       botId || 0,
-      proxyIP || "http://192.168.2.42:3001"
+      proxyIP || "http://34.64.180.61:3001"
     );
 
     // 6. 로직 문제 시 처리
