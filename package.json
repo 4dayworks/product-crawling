@@ -4,10 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "update:always": "ts-node ./product_price_update_always",
+    "update:always-coupang": "ts-node ./product_price_update_always_coupang",
+    "update:iherb-brand": "ts-node ./backup/product_brand_add_iherb",
+    "update:product-image": "ts-node ./backup/product_naver_detail_image",
+    "update:product-thirthmall": "ts-node ./backup/product_thirthmall_update",
+    "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push",
     "update:yagiyagi": "ts-node ./product_price_update_yagiyagi",
     "update:camperest": "ts-node ./product_price_update_camprest",
-    "update:shop": "ts-node ./home_shopping_update",
-    "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push"
+    "update:shop": "ts-node ./home_shopping_update"
   },
   "author": "",
   "license": "ISC",
