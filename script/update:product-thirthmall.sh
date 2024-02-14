@@ -8,7 +8,7 @@ echo "[$(date)] Script started" > $LOG_FILE
 export PATH="/Users/yagiyagi/.nvm/versions/node/v16.20.1/bin:$PATH"
 
 cd /Users/yagiyagi/projects/dayworks4/product-crawling
-npm run update:product-thirthmall >> $LOG_FILE 2>&1
+yarn update:product-thirthmall >> $LOG_FILE 2>&1
 
 if [ $? -eq 0 ]; then
     echo "[$(date)] Script completed successfully" >> $LOG_FILE
