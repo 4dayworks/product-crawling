@@ -1,3 +1,24 @@
-[Wed Feb 14 00:00:00 KST 2024] Script started
-/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:product-image.sh: line 11: npm: command not found
-[Wed Feb 14 00:00:00 KST 2024] Script encountered an error
+[2024년 2월 17일 토요일 13시 29분 52초 KST] Script started
+yarn run v1.22.21
+$ ts-node ./backup/product_naver_detail_image
+[583/767] 73577 0
+[592/767] 73788 0
+[593/767] 73793 0
+[594/767] 73811 0
+[596/767] 73883 0
+[598/767] 73890 0
+[599/767] 73898 0
+[600/767] 73904 0
+[619/767] 74968 0
+[649/767] 76517 0
+[651/767] 76549 0
+[692/767] 86164 0
+[713/767] 87618 0
+[718/767] 88256 0
+[721/767] 88831 0
+[739/767] 89810 0
+[757/767] 91826 0
+[758/767] 91972 0
+[759/767] 91979 0
+Done in 11.51s.
+[2024년 2월 17일 토요일 13시 30분 04초 KST] Script completed successfully

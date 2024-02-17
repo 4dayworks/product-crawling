@@ -5,7 +5,8 @@ LOG_FILE="/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:camp
 echo "[$(date)] Script started" > $LOG_FILE
 
 # Node.js와 npm의 경로 추가
-export PATH="/Users/yagiyagi/.nvm/versions/node/v16.20.1/bin:$PATH"
+# export PATH="/Users/yagiyagi/.nvm/versions/node/v16.20.1/bin:$PATH"
+export PATH="/Users/yagiyagi/.nvm/versions/node/v18.19.0/bin/node:$PATH"
 
 # 기준 날짜 설정 (예: 2024년 1월 10일)
 BASE_DATE="2024-01-10"
