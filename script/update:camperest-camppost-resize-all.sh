@@ -10,7 +10,7 @@ export PATH="/Users/yagiyagi/.nvm/versions/node/v18.19.0/bin/node:$PATH"
 
 for i in {1..6}
 do
-   curl -X POST -H "Authorization: Bearer dirldirlvkdlxld41669197319627067" "https://node5.yagiyagi.kr/campsite/post/resize" >> $LOG_FILE 2>&1
+   curl -X POST -H "Authorization: Bearer dirldirlvkdlxld41669197319627067" "http://localhost:4001/campsite/post/resize" >> $LOG_FILE 2>&1
     if [ $? -eq 0 ]; then
         echo "[$(date)] Script completed successfully" >> $LOG_FILE
     else
