@@ -14,10 +14,8 @@ export async function getProxyData(
   if (header) params.header = header;
   if (body) params.body = body;
 
-  const a = await axios.post(proxyIP, params).catch((e) => {
+  return await axios.post(proxyIP, params).catch((e) => {
     l("Err", "red", "getProxyData " + e.message);
-    throw Error("getProxyData Error " + e.message);
+    throw Error("getProxyData Error " + proxyIP + ", " + params.url + ", " + +e.message);
   });
-
-  return a;
 }

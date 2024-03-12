@@ -6,8 +6,8 @@ import { getProxyData } from "./getProxyData";
 import { yagiHeaders } from "./yagiHeaders";
 import { NODE_API_URL_CAMP } from "../../function/common";
 import { l } from "../../function/console";
+import { itemscountHeader } from "../../function/itemscout";
 
-const header = { "Accept-Encoding": "deflate, br" };
 export const getItemscoutStoreList = (
   { product_id, itemscout_keyword }: ProductType,
   bot_id: number,
@@ -31,7 +31,7 @@ export const getItemscoutStoreList = (
           proxyIP,
           `https://api.itemscout.io/api/keyword`,
           "POST",
-          header,
+          itemscountHeader,
           {
             keyword: itemscout_keyword,
           }
@@ -75,7 +75,7 @@ export const getItemscoutStoreList = (
         proxyIP,
         `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
         "GET",
-        header
+        itemscountHeader
       ).then(async (d) => {
         const result = d.data.data.productListResult;
         return !result ? [] : filterArray(result);

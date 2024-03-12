@@ -2,10 +2,9 @@ import axios from "axios";
 import { getProductTypeV6 } from "../../backup/all_update";
 import { NODE_API_URL_YAGI } from "../common";
 import { l } from "../console";
-import { filterArray } from "../itemscout";
+import { filterArray, itemscountHeader } from "../itemscout";
 import { ItemscoutType, StoreTypeV5 } from "../updateByItemscout";
 
-const headers = { "Accept-Encoding": "deflate, br" };
 export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getProductTypeV6) =>
   new Promise<StoreTypeV5[]>(async (resolve, reject) => {
     try {
@@ -21,7 +20,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
       const url = `https://api.itemscout.io/api/keyword`;
       if (!keyword_id) {
         const itemscout_keyword_id = await axios
-          .post(url, { keyword: itemscout_keyword }, { headers })
+          .post(url, { keyword: itemscout_keyword }, { headers: itemscountHeader })
           .then((d) => d.data.data);
         // 새 itemscout_keyword_id 업데이트
         if (itemscout_keyword_id) {
@@ -42,7 +41,7 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
       // POST /product/keyword/data
       let productListResult: ItemscoutType[] = await axios(
         `https://api.itemscout.io/api/v2/keyword/products?kid=${keyword_id}&type=total`,
-        { headers }
+        { headers: itemscountHeader }
       ).then(async (d) => {
         let list: any[] = d.data.data.productListResult;
         if (!list) return [];

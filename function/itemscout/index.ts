@@ -78,3 +78,11 @@ export const filterArray = (
       p.mall !== "쿠팡" //쿠팡 제외
   );
 };
+
+export const itemscountHeader = {
+  "Accept-Encoding": "deflate, br",
+  Cookie:
+    "_tmp_vid=de1cfe426ec67f; _fbp=fb.1.1710225993292.1834197389; _ga=GA1.1.272021811.1710225993; ch-veil-id=17dad8cc-583d-43fa-8e71-3a2dd4b1d82d; i_token=8f1b062c4983db4675ee8eaa73d45e4f; logged_in=1; session_checked=1; u_id=330328; ch-session-18876=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZXMiLCJrZXkiOiIxODg3Ni02NWVmZmE0YWIwNGY5NzYxOWFiNCIsImlhdCI6MTcxMDIyNjMyMCwiZXhwIjoxNzEyODE4MzIwfQ.N47J1ielNr9kyPDy8yX05PQ9PzFjo5K83qgyLtthqAc; _ga_PHL0WGSFWB=GS1.1.1710225993.1.1.1710226336.9.0.0",
+  "User-Agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+};

@@ -143,3 +143,28 @@
 [1/1] product_id: 121 2024-01-29T10:12:18.665Z store_length: 72
 [1/1] product_id: 133 2024-01-29T10:12:52.172Z
 [1/1] product_id: 133 2024-01-29T10:12:53.657Z store_length: 80
+[1/1] product_id: 404 2024-03-12T06:42:58.292Z
+[ERROR] getStoreList getItemscoutStoreList Error 
+	getProxyData Error Request failed with status code 400
+[1/1] product_id: 404 2024-03-12T06:43:45.428Z
+[ERROR] getStoreList getItemscoutStoreList Error 
+	getProxyData Error http://34.64.180.61:3001, NaN
+[1/1] product_id: 404 2024-03-12T06:45:17.160Z
+[ERROR] getStoreList getItemscoutStoreList Error 
+	getProxyData Error http://34.64.180.61:3001[object Object], NaN
+[1/1] product_id: 404 2024-03-12T06:45:35.253Z
+[ERROR] getStoreList getItemscoutStoreList Error 
+	getProxyData Error http://34.64.180.61:3001https://api.itemscout.io/api/v2/keyword/products?kid=408529177&type=total, NaN
+[1/1] product_id: 404 2024-03-12T06:58:24.334Z
+[ERROR] getStoreList getItemscoutStoreList Error 
+	getProxyData Error http://34.64.180.61:3001, https://api.itemscout.io/api/v2/keyword/products?kid=408529177&type=total, NaN
+[1/1] product_id: 404 2024-03-12T06:58:50.086Z
+[ERROR] getStoreList getItemscoutStoreList Error 
+	getProxyData Error http://34.64.180.61:3001, https://api.itemscout.io/api/v2/keyword/products?kid=408529177&type=total, NaN
+[1/1] product_id: 404 2024-03-12T07:00:22.446Z
+[1/1] product_id: 404 2024-03-12T07:01:39.850Z
+[1/1] product_id: 404 2024-03-12T07:01:44.497Z store_length: 75
+[1/1] product_id: 404 2024-03-12T07:03:30.766Z
+[1/1] product_id: 404 2024-03-12T07:03:33.034Z store_length: 75
+[1/1] product_id: 404 2024-03-12T07:07:55.434Z
+[1/1] product_id: 404 2024-03-12T07:07:56.736Z store_length: 75
