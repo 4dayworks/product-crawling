@@ -31,7 +31,6 @@ export const getItemscoutStoreListV5 = ({ itemscout_keyword, product_id }: getPr
           keyword_id = itemscout_keyword_id;
         }
       }
-
       //#endregion
       //#region (3) itemscout에서 keyword_id 로 검색해서 집어넣기
       if (!keyword_id) {
