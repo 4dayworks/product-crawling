@@ -168,3 +168,16 @@
 [1/1] product_id: 404 2024-03-12T07:03:33.034Z store_length: 75
 [1/1] product_id: 404 2024-03-12T07:07:55.434Z
 [1/1] product_id: 404 2024-03-12T07:07:56.736Z store_length: 75
+[1/1] product_id: 404 2024-03-12T07:42:43.575Z
+[1/1] product_id: 404 2024-03-12T07:42:44.978Z store_length: 75
+[1/1] product_id: 404 2024-03-12T09:54:10.122Z
+[1/1] product_id: 404 2024-03-12T09:54:15.395Z store_length: 116
+[ERROR] No Store List  setStoreList result: null for product_id:404 2024-03-12T09:54:15.489Z
+[1/1] product_id: 404 2024-03-12T09:56:49.887Z
+[1/1] product_id: 404 2024-03-12T09:56:55.049Z store_length: 116
+[ERROR] No Store List  setStoreList result: null for product_id:404 2024-03-12T09:56:55.082Z
+[1/1] product_id: 404 2024-03-12T09:57:39.065Z
+[1/1] product_id: 404 2024-03-12T09:57:43.755Z store_length: 76
+[ERROR] No Store List  setStoreList result: null for product_id:404 2024-03-12T09:57:44.218Z
+[1/1] product_id: 404 2024-03-12T09:58:51.072Z
+[1/1] product_id: 404 2024-03-12T09:58:54.185Z store_length: 76

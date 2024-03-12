@@ -3,10 +3,10 @@ import { StoreType } from "../types/craw";
 import { writeLog } from "../writeLog";
 import { UpdateByProductIdType } from "./UpdateByProductIdType";
 import { getCoupangStoreList } from "./getCoupangStoreList";
-import { getItemscoutStoreList } from "./getItemscoutStoreList";
 import { ProductType } from "./getProductIdList";
 import { NODE_API_URL_CAMP } from "../../function/common";
 import { l } from "../../function/console";
+import getNatverStoreList from "../../function/naver/getNaverStoreList";
 
 export const getStoreList = async (
   product: ProductType,
@@ -17,19 +17,19 @@ export const getStoreList = async (
 ) => {
   try {
     if (type === "all") {
-      const [coupangStoreList, itemscoutStoreList] = await Promise.all([
+      const [coupangStoreList, naverStoreList] = await Promise.all([
         getCoupangStoreList(product, bot_id, proxyIP),
-        getItemscoutStoreList(product, bot_id, proxyIP),
+        getNatverStoreList({ keyword: product.itemscout_keyword }),
       ]);
-      const message = `itemscout: ${itemscoutStoreList.length} 개 판매처, coupang: ${coupangStoreList.length} 개 판매처를 불러왔습니다.`;
+      const message = `naver: ${naverStoreList.length} 개 판매처, coupang: ${coupangStoreList.length} 개 판매처를 불러왔습니다.`;
       l("[필터링전]", "white", message);
-      return coupangStoreList.concat(itemscoutStoreList);
+      return coupangStoreList.concat(naverStoreList);
     }
     if (type === "only-itemscout-naver") {
-      const itemscoutStoreList = await getItemscoutStoreList(product, bot_id, proxyIP);
-      const message = `itemscout: ${itemscoutStoreList.length} 개 판매처, coupang: 0 개 판매처를 불러왔습니다.`;
+      const naverStoreList = await getNatverStoreList({ keyword: product.itemscout_keyword });
+      const message = `naver: ${naverStoreList.length} 개 판매처, coupang: 0 개 판매처를 불러왔습니다.`;
       l("[필터링전]", "white", message);
-      return itemscoutStoreList;
+      return naverStoreList;
     }
   } catch (error) {
     writeLog(processName, `[ERROR] getStoreList ${(error as Error).message}`);

@@ -23,6 +23,7 @@
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
     "proxycrawl": "^2.5.0",
+    "puppeteer": "^22.4.1",
     "request": "^2.88.2",
     "selenium-webdriver": "^4.11.1"
   },
