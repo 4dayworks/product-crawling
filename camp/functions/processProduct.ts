@@ -1,4 +1,6 @@
 import { l } from "../../function/console";
+import getNaverStoreList from "../../function/naver/getNaverStoreList";
+import { getNaverUsedStoreListAndSave } from "../../function/naver/getNaverUsedList";
 import { wrapSlept } from "../../function/wrapSlept";
 import { writeLog } from "../writeLog";
 import { UpdateByProductIdType } from "./UpdateByProductIdType";
@@ -79,6 +81,9 @@ export const processProduct = async (
     l("Err", "red", `No Store List setStoreList result: null for product_id:${product_id}`);
     return false;
   }
+
+  // #3 중고거래 API 크롤링하기
+  await getNaverUsedStoreListAndSave(product.product_id, product.naver_used_keyword);
 
   const randomTime = Math.floor(Math.random() * 500 + 2000);
   await wrapSlept(randomTime);

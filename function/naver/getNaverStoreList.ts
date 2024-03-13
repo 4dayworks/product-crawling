@@ -2,7 +2,7 @@ import puppeteer, { Page } from "puppeteer";
 import { StoreType } from "../../camp/types/craw";
 import { wrapSlept } from "../wrapSlept";
 
-export default async function getNatverStoreList({ keyword }: { keyword: string | null }): Promise<StoreType[]> {
+export default async function getNaverStoreList({ keyword }: { keyword: string | null }): Promise<StoreType[]> {
   if (!keyword) return [];
   const query = keyword.replace(/ /g, "+");
   const url = `https://search.shopping.naver.com/search/all?pagingIndex=1&pagingSize=40&productSet=total&query=${query}&sort=rel&timestamp=&viewType=list`;

@@ -8,7 +8,7 @@ import { getItemscoutStoreListV5 } from "./itemscout/getItemscoutStoreListV5";
 import { getNaverCatalogStoreListV5 } from "./naver/getNaverCatalogStoreListV5";
 import { StoreTypeV5 } from "./updateByItemscout";
 import { getEtcStoreListV1 } from "./etc_store/getEtcStoreListV1";
-import getNatverStoreList from "./naver/getNaverStoreList";
+import getNaverStoreList from "./naver/getNaverStoreList";
 
 // export const setGraph = async (product: getAllProductIdType) => {
 //   try {
@@ -81,7 +81,7 @@ export const getStoreListV5 = async (product: getProductTypeV6) => {
     const [coupangStoreList, iherbStoreData, naverStoreList, naverCatalogStoreList, etcStoreList] = await Promise.all([
       getCoupangStoreListV5(product),
       getIherbStoreListV5(product),
-      getNatverStoreList({ keyword: product.itemscout_keyword }),
+      getNaverStoreList({ keyword: product.itemscout_keyword }),
       getNaverCatalogStoreListV5(product),
       getEtcStoreListV1(product),
     ]);

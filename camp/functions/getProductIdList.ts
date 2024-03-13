@@ -15,6 +15,9 @@ export type ProductType = {
   product_name: string | null;
   product_brand: string | null;
   product_color: string | null;
+  naver_used_keyword: string | null;
+  naver_used_keyword_require: string | null;
+  naver_used_keyword_exception: string | null;
 };
 
 export const getProductIdList = async (page: number, size: number) => {
