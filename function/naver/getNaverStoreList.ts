@@ -1,5 +1,6 @@
 import puppeteer, { Page } from "puppeteer";
 import { StoreType } from "../../camp/types/craw";
+import { wrapSlept } from "../wrapSlept";
 
 export default async function getNatverStoreList({ keyword }: { keyword: string | null }): Promise<StoreType[]> {
   if (!keyword) return [];
@@ -59,7 +60,7 @@ export default async function getNatverStoreList({ keyword }: { keyword: string 
         is_naver_shop,
         is_oversea,
         store_link,
-        apiType: "naver",
+        apiType: "itemscout-naver",
       };
     });
   });
@@ -94,16 +95,19 @@ async function autoScroll(page: Page) {
 // const test = async () => {
 //   while (true) {
 //     const start = new Date();
-//     await getNatverStoreList({ keyword: "히알루론산 해외" }).then((storeList) => {
-//       const end = new Date();
-//       console.log(
-//         `${start.getDate() + "일" + start.getHours() + "시" + start.getMinutes() + "분" + start.getSeconds() + "초"}`,
-//         (end.getTime() - start.getTime()) / 1000,
-//         "초걸림!, 가져온갯수:",
-//         storeList.length,
-//         storeList
-//       );
-//     });
+//     const responseComplete = await getNatverStoreList({ keyword: "히알루론산 해외" })
+//       .then((storeList) => {
+//         const end = new Date();
+//         console.log(
+//           `${start.getDate() + "일" + start.getHours() + "시" + start.getMinutes() + "분" + start.getSeconds() + "초"}`,
+//           (end.getTime() - start.getTime()) / 1000,
+//           "초걸림!, 가져온갯수:",
+//           storeList.length
+//         );
+//         return true;
+//       })
+//       .catch(() => false);
+//     if (!responseComplete) await wrapSlept(60000); // 실패시 1분대기
 //   }
 // };
 // test();

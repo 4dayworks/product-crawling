@@ -181,3 +181,9 @@
 [ERROR] No Store List  setStoreList result: null for product_id:404 2024-03-12T09:57:44.218Z
 [1/1] product_id: 404 2024-03-12T09:58:51.072Z
 [1/1] product_id: 404 2024-03-12T09:58:54.185Z store_length: 76
+[1/1] product_id: 404 2024-03-13T02:41:30.613Z
+[1/1] product_id: 404 2024-03-13T02:41:34.613Z store_length: 76
+[1/1] product_id: 404 2024-03-13T02:47:14.240Z
+[1/1] product_id: 404 2024-03-13T02:47:17.978Z store_length: 76
+[1/1] product_id: 142 2024-03-13T02:49:07.366Z
+[1/1] product_id: 142 2024-03-13T02:49:11.340Z store_length: 76

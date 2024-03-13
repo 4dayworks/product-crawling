@@ -8,6 +8,7 @@ import { getItemscoutStoreListV5 } from "./itemscout/getItemscoutStoreListV5";
 import { getNaverCatalogStoreListV5 } from "./naver/getNaverCatalogStoreListV5";
 import { StoreTypeV5 } from "./updateByItemscout";
 import { getEtcStoreListV1 } from "./etc_store/getEtcStoreListV1";
+import getNatverStoreList from "./naver/getNaverStoreList";
 
 // export const setGraph = async (product: getAllProductIdType) => {
 //   try {
@@ -77,19 +78,20 @@ export const exceptionCompanyListAtNaver = () =>
 
 export const getStoreListV5 = async (product: getProductTypeV6) => {
   try {
-    const [coupangStoreList, iherbStoreData, itemscoutStoreList, naverStoreList, etcStoreList] = await Promise.all([
+    const [coupangStoreList, iherbStoreData, naverStoreList, naverCatalogStoreList, etcStoreList] = await Promise.all([
       getCoupangStoreListV5(product),
       getIherbStoreListV5(product),
-      getItemscoutStoreListV5(product),
+      getNatverStoreList({ keyword: product.itemscout_keyword }),
       getNaverCatalogStoreListV5(product),
       getEtcStoreListV1(product),
     ]);
+    const naverStoreListV5 = naverStoreList.map((i) => ({ ...i, yagi_keyword: i.camp_keyword } as StoreTypeV5));
     return coupangStoreList.concat(
       iherbStoreData,
-      naverStoreList.length > 0
-        ? itemscoutStoreList.filter((i) => !i.store_name?.includes("판매처 "))
-        : itemscoutStoreList,
-      naverStoreList,
+      naverCatalogStoreList.length > 0
+        ? naverStoreListV5.filter((i) => !i.store_name?.includes("판매처 "))
+        : naverStoreListV5,
+      naverCatalogStoreList,
       etcStoreList // <- 주석풀면 떠리몰 가능
     );
   } catch (error) {

@@ -43,21 +43,20 @@ export const updateByYagiProduct = async ({
   waitTime = 12 * 60 * 60 * 1000, //12시간, (1시간=>1*60*60*1000)
 }: updateByProductIdType) => {
   // (1) 키워드 가져올 제품아이디 전체 가져오기
-
-  let productIdListAll: number[] | null = await axios(
+  const url =
     type === "coupang" || type === "no-coupang"
       ? `${NODE_API_URL_YAGI}/v6/crawling/product/id/list?page=${page}&size=${size}&is_no_coupang=${
           type === "no-coupang" ? true : false
         }`
-      : `${NODE_API_URL_YAGI}/v5/crawling/product/id/list?page=${page}&size=${size}`
-  )
+      : `${NODE_API_URL_YAGI}/v5/crawling/product/id/list?page=${page}&size=${size}`;
+  let productIdListAll: number[] | null = await axios(url)
     .then((d) => d.data.data)
     .catch((err) => {
       const axiosErr = err as AxiosError;
       if (axiosErr.response?.status === 502) {
-        l("502 Error", "red", axiosErr.message);
+        l("502 Error", "red", axiosErr.message + ",url:" + url);
       } else {
-        l("Axios Error", "red", "crawling/product/id/list " + axiosErr.message);
+        l("Axios Error", "red", "crawling/product/id/list " + axiosErr.message + ",url:" + url);
       }
       return null;
     });

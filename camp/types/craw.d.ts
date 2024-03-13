@@ -13,7 +13,7 @@ export interface StoreType {
   is_oversea: boolean;
   store_link: string | null;
 
-  apiType: "itemscout-naver" | "itemscout-coupang" | "coupang" | "naver";
+  apiType: "itemscout-naver" | "itemscout-coupang" | "coupang";
 }
 
 export type ProductType = {

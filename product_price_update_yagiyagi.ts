@@ -7,9 +7,9 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 updateByYagiProduct({
   // page: 0,
   // size: 6000,
-  product_id_list: [1, 2, 3],
+  product_id_list: [159],
   type: "all",
 });
 
 // 야기야기 제품 (판매처) 업데이트
-// yarn update:yaigyagi
+// yarn update:yagiyagi
