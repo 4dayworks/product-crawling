@@ -1,5 +1,5 @@
-[Wed Mar 13 12:40:00 KST 2024] Script started
+[Wed Mar 13 13:45:00 KST 2024] Script started
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0100    13  100    13    0     0      5      0  0:00:02  0:00:02 --:--:--     5
-{"data":true}[Wed Mar 13 12:40:03 KST 2024] Script completed successfully
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    33  100    33    0     0    762      0 --:--:-- --:--:-- --:--:--   750100    33  100    33    0     0    751      0 --:--:-- --:--:-- --:--:--   750
+{"data":true,"message":"no list"}[Wed Mar 13 13:45:00 KST 2024] Script completed successfully

@@ -72,16 +72,14 @@ export default async function getNatverStoreList({ keyword }: { keyword: string 
 
 // 페이지 끝까지 자동으로 스크롤하는 함수
 async function autoScroll(page: Page) {
-  await page.evaluate(async () => {
-    await new Promise<void>((resolve, reject) => {
+  await page.evaluate(() => {
+    return new Promise<void>((resolve) => {
       var totalHeight = 0;
-      var distance = 500;
+      var distance = 100; // 스크롤할 픽셀 단위
       var timer = setInterval(() => {
-        var scrollHeight = document.body.scrollHeight;
         window.scrollBy(0, distance);
         totalHeight += distance;
-
-        if (totalHeight >= scrollHeight) {
+        if (totalHeight >= document.body.scrollHeight) {
           clearInterval(timer);
           resolve();
         }
