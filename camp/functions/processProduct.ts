@@ -1,5 +1,4 @@
 import { l } from "../../function/console";
-import getNaverStoreList from "../../function/naver/getNaverStoreList";
 import { getNaverUsedStoreListAndSave } from "../../function/naver/getNaverUsedList";
 import { wrapSlept } from "../../function/wrapSlept";
 import { writeLog } from "../writeLog";
