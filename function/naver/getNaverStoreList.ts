@@ -1,6 +1,7 @@
 import puppeteer, { Page } from "puppeteer";
 import { StoreType } from "../../camp/types/craw";
 import { wrapSlept } from "../wrapSlept";
+import axios, { AxiosError } from "axios";
 
 export default async function getNaverStoreList({ keyword }: { keyword: string | null }): Promise<StoreType[]> {
   if (!keyword) return [];
@@ -42,6 +43,7 @@ export default async function getNaverStoreList({ keyword }: { keyword: string |
       const is_naver_shop = store_name === "브랜드 카탈로그" || !!sellerNameElement?.textContent?.trim();
 
       const store_link = getDetail(".product_link__TrAac", "href"); // 구매 링크 추출
+
       // 해외 구매 여부 판단
       const overseaButton = div.querySelector(".product_title__Mmw2K .ad_label__2bKRj");
       const is_oversea = (overseaButton && overseaButton?.textContent?.includes("해외")) || false;
@@ -67,7 +69,66 @@ export default async function getNaverStoreList({ keyword }: { keyword: string |
 
   await browser.close();
 
-  return productList.map((i) => ({ ...i, camp_keyword: keyword }));
+  // axios.get 요청을 병렬로 처리
+  const list: StoreType[] = await Promise.all(
+    productList.map(async (i, index) => {
+      if (!i.store_link || !i.store_link.includes("https://cr.shopping.naver.com/adcr.nhn"))
+        return { ...i, camp_keyword: keyword };
+      const location = await axios
+        .get(i.store_link, {
+          maxRedirects: 5,
+          headers: {
+            "Content-Type": "application/json",
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+            "Accept-Encoding": "deflate, br",
+          },
+          validateStatus: () => true,
+        })
+        .then(async (r) => {
+          let url = r.request.res.responseUrl;
+
+          if (url.includes("https://cr.shoppin")) {
+            const htmlContent = r.data;
+            const regex = /var targetUrl = "(.*?)";/g;
+            const match = regex.exec(htmlContent);
+            url = match ? match[1] : url;
+          }
+
+          if (url.includes("https://cr.shoppin")) {
+            // console.log(i.store_link.slice(0, 20), url.slice(0, 20));
+
+            const body = await axios
+              .get(url, {
+                maxRedirects: 5,
+                headers: {
+                  "Content-Type": "application/json",
+                  "User-Agent":
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+                  "Accept-Encoding": "deflate, br",
+                },
+                validateStatus: () => true,
+              })
+              .catch(() => ({ data: null }));
+
+            const htmlContent = body.data;
+            const regex = /var targetUrl = "(.*?)";/g;
+            const match = regex.exec(htmlContent);
+            return match ? match[1] : i.store_link || null;
+          } else {
+            return url || i.store_link || null;
+          }
+        });
+
+      // console.log(i.store_link.slice(0, 20), location.slice(0, 20));
+
+      i.store_link = location || i.store_link || null;
+
+      return { ...i, camp_keyword: keyword, store_link: i.store_link };
+    })
+  );
+
+  return list;
 }
 
 // 페이지 끝까지 자동으로 스크롤하는 함수
@@ -93,7 +154,7 @@ async function autoScroll(page: Page) {
 // const test = async () => {
 //   while (true) {
 //     const start = new Date();
-//     const responseComplete = await getNatverStoreList({ keyword: "히알루론산 해외" })
+//     const responseComplete = await getNaverStoreList({ keyword: "제로그램 엘찰텐 제로본" })
 //       .then((storeList) => {
 //         const end = new Date();
 //         console.log(

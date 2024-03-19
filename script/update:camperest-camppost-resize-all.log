@@ -1,31 +1,5 @@
-[Mon Mar 18 13:12:00 KST 2024] Script started
+[Tue Mar 19 14:37:00 KST 2024] Script started
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-curl: (7) Failed to connect to localhost port 4001 after 1 ms: Couldn't connect to server
-[Mon Mar 18 13:12:00 KST 2024] Script encountered an error
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-curl: (7) Failed to connect to localhost port 4001 after 2 ms: Couldn't connect to server
-[Mon Mar 18 13:12:10 KST 2024] Script encountered an error
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-curl: (7) Failed to connect to localhost port 4001 after 11 ms: Couldn't connect to server
-[Mon Mar 18 13:12:21 KST 2024] Script encountered an error
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-curl: (7) Failed to connect to localhost port 4001 after 24 ms: Couldn't connect to server
-[Mon Mar 18 13:12:31 KST 2024] Script encountered an error
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-curl: (7) Failed to connect to localhost port 4001 after 2 ms: Couldn't connect to server
-[Mon Mar 18 13:12:41 KST 2024] Script encountered an error
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-curl: (7) Failed to connect to localhost port 4001 after 2 ms: Couldn't connect to server
-[Mon Mar 18 13:12:51 KST 2024] Script encountered an error
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0    188      0 --:--:-- --:--:-- --:--:--   191
+{"data":true}[Tue Mar 19 14:37:00 KST 2024] Script completed successfully

@@ -199,3 +199,58 @@
 [1/1] product_id: 104 2024-03-13T09:16:04.249Z store_length: 54
 [1/1] product_id: 104 2024-03-13T09:16:37.370Z
 [1/1] product_id: 104 2024-03-13T09:16:43.537Z store_length: 54
+[1/1] product_id: 110 2024-03-19T03:41:47.366Z
+[ERROR] getStoreList Could not find Chrome (ver. 122.0.6261.111). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /Users/yagiyagi/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+[1/1] product_id: 110 2024-03-19T03:42:28.742Z
+[1/1] product_id: 110 2024-03-19T03:42:41.374Z store_length: 76
+[1/1] product_id: 110 2024-03-19T03:43:51.963Z
+[1/1] product_id: 110 2024-03-19T03:44:02.829Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:10:12.789Z
+[1/1] product_id: 110 2024-03-19T04:10:23.978Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:13:54.238Z
+[1/1] product_id: 110 2024-03-19T04:14:05.702Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:15:51.100Z
+[1/1] product_id: 110 2024-03-19T04:16:02.680Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:16:57.709Z
+[1/1] product_id: 110 2024-03-19T04:17:09.181Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:18:51.502Z
+[1/1] product_id: 110 2024-03-19T04:19:04.896Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:21:43.460Z
+[1/1] product_id: 110 2024-03-19T04:21:58.741Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:35:25.671Z
+[1/1] product_id: 110 2024-03-19T04:35:37.640Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:36:13.822Z
+[1/1] product_id: 110 2024-03-19T04:36:25.636Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:37:16.316Z
+[1/1] product_id: 110 2024-03-19T04:37:28.641Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:38:47.556Z
+[1/1] product_id: 110 2024-03-19T04:38:58.054Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:40:22.686Z
+[1/1] product_id: 110 2024-03-19T04:40:35.304Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:41:04.597Z
+[1/1] product_id: 110 2024-03-19T04:41:17.163Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:43:36.890Z
+[1/1] product_id: 110 2024-03-19T04:43:48.520Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:45:15.630Z
+[1/1] product_id: 110 2024-03-19T04:45:27.178Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:45:53.139Z
+[1/1] product_id: 110 2024-03-19T04:46:05.122Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:47:23.695Z
+[1/1] product_id: 110 2024-03-19T04:47:36.234Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:48:20.366Z
+[1/1] product_id: 110 2024-03-19T04:48:32.650Z store_length: 76
+[1/1] product_id: 110 2024-03-19T04:51:20.549Z
+[1/1] product_id: 110 2024-03-19T04:51:32.303Z store_length: 76
+[1/1] product_id: 110 2024-03-19T05:07:40.093Z
+[1/1] product_id: 110 2024-03-19T05:07:52.892Z store_length: 76
+[1/1] product_id: 110 2024-03-19T05:08:21.432Z
+[1/1] product_id: 110 2024-03-19T05:08:34.731Z store_length: 76
+[1/1] product_id: 498 2024-03-19T05:21:04.077Z
+[1/1] product_id: 498 2024-03-19T05:21:22.796Z store_length: 76
+[1/1] product_id: 498 2024-03-19T05:23:44.803Z
+[1/1] product_id: 498 2024-03-19T05:23:57.973Z store_length: 76
+[1/1] product_id: 498 2024-03-19T05:35:52.494Z
+[1/1] product_id: 498 2024-03-19T05:36:04.429Z store_length: 76
