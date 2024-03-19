@@ -255,3 +255,27 @@ For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides
 [1/1] product_id: 498 2024-03-19T05:35:52.494Z
 [1/1] product_id: 498 2024-03-19T05:36:04.429Z store_length: 76
 [1/375] product_id: 110 2024-03-19T08:42:28.999Z
+[1/375] product_id: 110 2024-03-19T08:42:40.221Z store_length: 75
+[2/375] product_id: 111 2024-03-19T08:42:43.281Z
+[2/375] product_id: 111 2024-03-19T08:42:46.965Z store_length: 39
+[3/375] product_id: 112 2024-03-19T08:42:49.862Z
+[3/375] product_id: 112 2024-03-19T08:43:04.228Z store_length: 76
+[4/375] product_id: 113 2024-03-19T08:43:07.307Z
+[4/375] product_id: 113 2024-03-19T08:43:19.547Z store_length: 76
+[5/375] product_id: 114 2024-03-19T08:43:22.332Z
+[5/375] product_id: 114 2024-03-19T08:43:34.500Z store_length: 56
+[6/375] product_id: 115 2024-03-19T08:43:37.246Z
+[6/375] product_id: 115 2024-03-19T08:43:48.968Z store_length: 76
+[7/375] product_id: 116 2024-03-19T08:43:51.855Z
+[7/375] product_id: 116 2024-03-19T08:44:03.974Z store_length: 76
+[8/375] product_id: 117 2024-03-19T08:44:06.784Z
+[8/375] product_id: 117 2024-03-19T08:44:19.148Z store_length: 75
+[9/375] product_id: 118 2024-03-19T08:44:21.877Z
+[9/375] product_id: 118 2024-03-19T08:44:33.152Z store_length: 76
+[10/375] product_id: 120 2024-03-19T08:44:36.132Z
+[10/375] product_id: 120 2024-03-19T08:44:41.136Z store_length: 46
+[11/375] product_id: 121 2024-03-19T08:44:43.810Z
+[11/375] product_id: 121 2024-03-19T08:44:55.711Z store_length: 76
+[12/375] product_id: 122 2024-03-19T08:44:59.114Z
+[12/375] product_id: 122 2024-03-19T08:45:11.892Z store_length: 76
+[13/375] product_id: 123 2024-03-19T08:45:14.986Z
