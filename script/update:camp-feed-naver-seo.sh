@@ -19,7 +19,7 @@
 
 # echo "[$(date)] Script started" > $LOG_FILE
 
-# curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer dirldirlvkdlxld41669197319627067" "http://localhost:4001/seo/naver/manual" -d "{\"page\": $PAGE, \"size\": 50}" >> $LOG_FILE 2>&1
+# curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer dirldirlvkdlxld41669197319627067" "http://localhost:4003/seo/naver/manual" -d "{\"page\": $PAGE, \"size\": 50}" >> $LOG_FILE 2>&1
 
 # if [ $? -eq 0 ]; then
 #     echo "[$(date)] Script completed successfully" >> $LOG_FILE

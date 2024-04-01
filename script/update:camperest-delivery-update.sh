@@ -8,7 +8,7 @@ echo "[$(date)] Script started" > $LOG_FILE
 # export PATH="/Users/yagiyagi/.nvm/versions/node/v16.20.1/bin:$PATH"
 export PATH="/Users/yagiyagi/.nvm/versions/node/v18.19.0/bin/node:$PATH"
 
-curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer dirldirlvkdlxld41669197319627067" "http://localhost:4001/pay/purchase/delivery/all" >> $LOG_FILE 2>&1
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer dirldirlvkdlxld41669197319627067" "http://localhost:4003/pay/purchase/delivery/all" >> $LOG_FILE 2>&1
 
 if [ $? -eq 0 ]; then
     echo "[$(date)] Script completed successfully" >> $LOG_FILE
