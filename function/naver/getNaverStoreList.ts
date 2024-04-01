@@ -1,19 +1,58 @@
+import axios from "axios";
 import puppeteer, { Page } from "puppeteer";
-import { StoreType } from "../../camp/types/craw";
-import { wrapSlept } from "../wrapSlept";
-import axios, { AxiosError } from "axios";
+import { StoreType } from "../types/craw";
+import { getUserAgent } from "./getUserAgent";
+
+// import puppeteerExtra from "puppeteer-extra";
+// import StealthPlugin from "puppeteer-extra-plugin-stealth";
+// puppeteerExtra.use(StealthPlugin());
+
+// 사용자 에이전트 리스트 중 하나를 랜덤으로 선택하는 로직 추가
 
 export default async function getNaverStoreList({ keyword }: { keyword: string | null }): Promise<StoreType[]> {
   if (!keyword) return [];
   const query = keyword.replace(/ /g, "+");
   const url = `https://search.shopping.naver.com/search/all?pagingIndex=1&pagingSize=40&productSet=total&query=${query}&sort=rel&timestamp=&viewType=list`;
 
-  const browser = await puppeteer.launch();
+  // const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: "shell" });
   const page = await browser.newPage();
+  const userAgentString = getUserAgent();
+  await page.setViewport({ width: 1280, height: 800 });
+
+  await page.setUserAgent(userAgentString);
+  // 기타 필요한 헤더 추가
+  await page.setExtraHTTPHeaders({
+    Accept:
+      "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "Accept-Language": "en-US,en;q=0.9",
+  });
+
   await page.goto(url);
 
-  // 대상 요소가 나타날 때까지 대기
-  await page.waitForSelector("div#content");
+  // 최대 재시도 횟수 설정
+  const maxRetries = 10;
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      // 대상 요소가 나타날 때까지 대기
+      await page.waitForSelector("div#content", { timeout: 3000 });
+      console.log("Selector found. Proceeding with data extraction.");
+      // 데이터 추출 로직 여기에 추가
+      break; // 성공하면 반복 중단
+    } catch (error) {
+      console.log(`Attempt ${attempt + 1}: Selector not found, refreshing the page with a new user agent...`);
+      // 새로운 사용자 에이전트로 업데이트하고 페이지 새로 고침
+      const userAgentString = getUserAgent();
+      await page.setUserAgent(userAgentString);
+      await page.reload();
+    }
+  }
+
+  if (!(await page.$("div#content"))) {
+    console.log("Failed to load the content after maximum retries. Exiting...");
+    await browser.close();
+    return []; // 최대 시도 후 실패 시 빈 배열 반환
+  }
 
   // 페이지 끝까지 스크롤 다운하여 모든 목록 로드
   await autoScroll(page);
@@ -136,7 +175,7 @@ async function autoScroll(page: Page) {
   await page.evaluate(() => {
     return new Promise<void>((resolve) => {
       var totalHeight = 0;
-      var distance = 100; // 스크롤할 픽셀 단위
+      var distance = 200; // 스크롤할 픽셀 단위
       var timer = setInterval(() => {
         window.scrollBy(0, distance);
         totalHeight += distance;

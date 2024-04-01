@@ -1190,3 +1190,184 @@ For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides
 [46/47] product_id: 483 2024-03-20T04:50:45.782Z store_length: 75
 [47/47] product_id: 494 2024-03-20T04:50:48.585Z
 [47/47] product_id: 494 2024-03-20T04:51:04.421Z store_length: 76
+[1/1] product_id: 101 2024-04-01T06:21:01.007Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 30000ms exceeded
+[1/1] product_id: 101 2024-04-01T06:23:53.930Z
+[1/1] product_id: 101 2024-04-01T06:24:19.964Z
+[1/1] product_id: 101 2024-04-01T06:24:22.003Z store_length: 36
+[1/1] product_id: 101 2024-04-01T06:24:46.699Z
+[1/1] product_id: 101 2024-04-01T06:24:48.774Z store_length: 36
+[1/1] product_id: 101 2024-04-01T06:24:54.587Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 30000ms exceeded
+[1/1] product_id: 101 2024-04-01T06:25:29.389Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 10000ms exceeded
+[1/1] product_id: 101 2024-04-01T06:27:00.676Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 3000ms exceeded
+[1/1] product_id: 101 2024-04-01T06:27:44.282Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 3000ms exceeded
+[1/1] product_id: 101 2024-04-01T06:37:29.625Z
+[1/1] product_id: 101 2024-04-01T06:42:21.844Z
+[1/1] product_id: 101 2024-04-01T06:43:34.733Z
+[1/1] product_id: 101 2024-04-01T06:43:45.874Z
+[1/1] product_id: 101 2024-04-01T06:44:58.916Z
+[1/1] product_id: 101 2024-04-01T06:47:15.844Z
+[1/1] product_id: 101 2024-04-01T06:52:06.047Z
+[1/1] product_id: 101 2024-04-01T06:52:32.435Z
+[1/1] product_id: 101 2024-04-01T06:53:15.703Z
+[1/1] product_id: 101 2024-04-01T06:59:12.963Z
+[1/1] product_id: 101 2024-04-01T07:01:10.180Z
+[1/1] product_id: 101 2024-04-01T07:01:11.999Z store_length: 36
+[1/1] product_id: 101 2024-04-01T07:03:13.948Z
+[1/1] product_id: 101 2024-04-01T07:03:23.360Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 3000ms exceeded
+[1/1] product_id: 101 2024-04-01T07:03:34.253Z
+[1/1] product_id: 101 2024-04-01T07:03:47.752Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 3000ms exceeded
+[1/1] product_id: 101 2024-04-01T07:10:00.368Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 3000ms exceeded
+[1/1] product_id: 101 2024-04-01T07:14:42.660Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 3000ms exceeded
+[1/1] product_id: 101 2024-04-01T07:14:53.702Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Protocol error (Runtime.callFunctionOn): Target closed
+[1/1] product_id: 101 2024-04-01T07:15:06.790Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Protocol error (Runtime.callFunctionOn): Target closed
+[1/1] product_id: 101 2024-04-01T07:16:12.653Z
+[1/1] product_id: 101 2024-04-01T07:16:35.658Z store_length: 76
+[1/1] product_id: 101 2024-04-01T07:16:49.007Z
+[ERROR] getStoreList Protocol error (Runtime.callFunctionOn): Target closed
+[1/1] product_id: 101 2024-04-01T07:17:20.096Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 5000ms exceeded
+[1/1] product_id: 101 2024-04-01T07:17:50.809Z
+[1/1] product_id: 101 2024-04-01T07:18:00.307Z store_length: 76
+[1/1] product_id: 101 2024-04-01T07:18:06.984Z
+[1/1] product_id: 101 2024-04-01T07:18:16.000Z store_length: 76
+[1/1] product_id: 101 2024-04-01T07:18:33.698Z
+[1/1] product_id: 101 2024-04-01T07:18:42.222Z store_length: 76
+[1/1] product_id: 101 2024-04-01T07:18:52.002Z
+[1/1] product_id: 101 2024-04-01T07:18:59.927Z store_length: 76
+[1/1] product_id: 101 2024-04-01T07:43:09.908Z
+[ERROR] getStoreList Waiting for selector `div#content` failed: Waiting failed: 8000ms exceeded
+[1/1] product_id: 101 2024-04-01T07:43:29.720Z
+[1/1] product_id: 101 2024-04-01T07:43:35.424Z store_length: 36
+[1/1] product_id: 101 2024-04-01T07:43:51.453Z
+[1/1] product_id: 101 2024-04-01T07:43:57.125Z store_length: 36
+[1/1] product_id: 101 2024-04-01T07:44:37.443Z
+[1/1] product_id: 101 2024-04-01T07:44:49.664Z store_length: 36
+[1/1] product_id: 101 2024-04-01T07:45:03.498Z
+[1/1] product_id: 101 2024-04-01T07:45:15.550Z store_length: 76
+[1/1] product_id: 101 2024-04-01T07:45:27.943Z
+[1/1] product_id: 101 2024-04-01T07:45:39.649Z store_length: 76
+[1/1] product_id: 101 2024-04-01T07:47:31.506Z
+[1/1] product_id: 101 2024-04-01T07:47:48.469Z store_length: 76
+[1/1] product_id: 101 2024-04-01T08:16:25.380Z
+[1/1] product_id: 101 2024-04-01T08:16:32.360Z
+[1/1] product_id: 101 2024-04-01T08:16:39.313Z store_length: 36
+[1/1] product_id: 101 2024-04-01T08:17:43.323Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/1] product_id: 101 2024-04-01T08:17:54.668Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/1] product_id: 101 2024-04-01T08:18:03.619Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/1] product_id: 101 2024-04-01T08:18:12.905Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/1] product_id: 101 2024-04-01T08:19:04.590Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/1] product_id: 101 2024-04-01T08:19:17.906Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/1] product_id: 101 2024-04-01T08:19:26.557Z
+[ERROR] getStoreList Navigating frame was detached
+[1/3] product_id: 101 2024-04-01T08:22:31.506Z
+[1/3] product_id: 101 2024-04-01T08:22:43.321Z store_length: 36
+[2/3] product_id: 103 2024-04-01T08:22:50.426Z
+[2/3] product_id: 103 2024-04-01T08:23:02.226Z store_length: 36
+[3/3] product_id: 105 2024-04-01T08:23:09.012Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/3] product_id: 101 2024-04-01T08:26:24.101Z
+[1/3] product_id: 101 2024-04-01T08:26:35.468Z store_length: 76
+[2/3] product_id: 103 2024-04-01T08:26:42.411Z
+[2/3] product_id: 103 2024-04-01T08:27:03.152Z store_length: 36
+[3/3] product_id: 105 2024-04-01T08:27:09.877Z
+[3/3] product_id: 105 2024-04-01T08:27:20.416Z store_length: 64
+[1/3] product_id: 101 2024-04-01T08:27:27.050Z
+[1/3] product_id: 101 2024-04-01T08:27:39.525Z store_length: 76
+[1/3] product_id: 101 2024-04-01T08:28:24.615Z
+[1/3] product_id: 101 2024-04-01T08:28:37.082Z store_length: 76
+[2/3] product_id: 103 2024-04-01T08:28:45.222Z
+[1/3] product_id: 101 2024-04-01T08:29:59.476Z
+[1/3] product_id: 101 2024-04-01T08:30:11.678Z store_length: 76
+[2/3] product_id: 103 2024-04-01T08:30:18.604Z
+[2/3] product_id: 103 2024-04-01T08:30:39.113Z store_length: 36
+[3/3] product_id: 105 2024-04-01T08:30:45.674Z
+[3/3] product_id: 105 2024-04-01T08:31:06.360Z store_length: 35
+[1/3] product_id: 101 2024-04-01T08:31:11.821Z
+[1/3] product_id: 101 2024-04-01T08:31:44.161Z store_length: 36
+[2/3] product_id: 103 2024-04-01T08:31:51.041Z
+[2/3] product_id: 103 2024-04-01T08:32:09.274Z store_length: 76
+[3/3] product_id: 105 2024-04-01T08:32:16.046Z
+[3/3] product_id: 105 2024-04-01T08:32:33.650Z store_length: 65
+[1/3] product_id: 101 2024-04-01T08:32:40.462Z
+[1/3] product_id: 101 2024-04-01T08:33:13.389Z store_length: 36
+[1/3] product_id: 101 2024-04-01T08:33:43.386Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/3] product_id: 101 2024-04-01T08:34:09.236Z
+[1/3] product_id: 101 2024-04-01T08:34:23.144Z store_length: 76
+[2/3] product_id: 103 2024-04-01T08:34:30.066Z
+[2/3] product_id: 103 2024-04-01T08:34:44.049Z store_length: 76
+[3/3] product_id: 105 2024-04-01T08:34:55.767Z
+[3/3] product_id: 105 2024-04-01T08:35:11.674Z store_length: 65
+[1/3] product_id: 101 2024-04-01T08:35:18.645Z
+[1/3] product_id: 101 2024-04-01T08:35:32.861Z store_length: 76
+[1/3] product_id: 101 2024-04-01T08:38:39.467Z
+[1/3] product_id: 101 2024-04-01T08:38:50.419Z store_length: 36
+[2/3] product_id: 103 2024-04-01T08:38:57.632Z
+[2/3] product_id: 103 2024-04-01T08:39:09.028Z store_length: 36
+[1/3] product_id: 101 2024-04-01T08:39:17.673Z
+[1/3] product_id: 101 2024-04-01T08:39:28.248Z store_length: 36
+[1/3] product_id: 101 2024-04-01T08:40:54.351Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/3] product_id: 101 2024-04-01T08:41:04.316Z
+[1/3] product_id: 101 2024-04-01T08:41:17.269Z store_length: 36
+[2/3] product_id: 103 2024-04-01T08:41:24.386Z
+[2/3] product_id: 103 2024-04-01T08:41:34.602Z store_length: 36
+[3/3] product_id: 105 2024-04-01T08:41:41.519Z
+[3/3] product_id: 105 2024-04-01T08:41:53.082Z store_length: 64
+[1/3] product_id: 101 2024-04-01T08:42:00.171Z
+[1/3] product_id: 101 2024-04-01T08:42:11.167Z store_length: 36
+[1/3] product_id: 101 2024-04-01T08:42:28.750Z
+[1/3] product_id: 101 2024-04-01T08:42:39.673Z store_length: 36
+[2/3] product_id: 103 2024-04-01T08:42:46.893Z
+[2/3] product_id: 103 2024-04-01T08:42:58.419Z store_length: 76
+[3/3] product_id: 105 2024-04-01T08:43:05.743Z
+[3/3] product_id: 105 2024-04-01T08:43:15.677Z store_length: 35
+[1/3] product_id: 101 2024-04-01T08:43:22.684Z
+[ERROR] getStoreList Protocol error (Page.reload): Session closed. Most likely the page has been closed.
+[1/3] product_id: 101 2024-04-01T08:45:38.270Z
+[1/3] product_id: 101 2024-04-01T08:45:49.289Z store_length: 36
+[2/3] product_id: 103 2024-04-01T08:45:56.450Z
+[2/3] product_id: 103 2024-04-01T08:46:10.453Z store_length: 76
+[3/3] product_id: 105 2024-04-01T08:46:17.582Z
+[3/3] product_id: 105 2024-04-01T08:46:28.741Z store_length: 65
+[1/3] product_id: 101 2024-04-01T08:46:35.625Z
+[1/3] product_id: 101 2024-04-01T08:46:50.023Z store_length: 76
+[1/3] product_id: 101 2024-04-01T08:47:31.882Z
+[1/3] product_id: 101 2024-04-01T08:47:44.121Z store_length: 76
+[2/3] product_id: 103 2024-04-01T08:47:51.310Z
+[2/3] product_id: 103 2024-04-01T08:48:01.963Z store_length: 36
+[3/3] product_id: 105 2024-04-01T08:48:08.769Z
+[3/3] product_id: 105 2024-04-01T08:48:19.008Z store_length: 64
+[1/3] product_id: 101 2024-04-01T08:48:25.465Z
+[1/3] product_id: 101 2024-04-01T08:48:39.464Z store_length: 76
+[2/3] product_id: 103 2024-04-01T08:48:46.293Z
+[2/3] product_id: 103 2024-04-01T08:48:57.179Z store_length: 76
+[3/3] product_id: 105 2024-04-01T08:49:04.649Z
+[3/3] product_id: 105 2024-04-01T08:49:14.616Z store_length: 34
+[1/3] product_id: 101 2024-04-01T08:49:22.005Z
+[1/3] product_id: 101 2024-04-01T08:49:33.242Z store_length: 76
+[1/3] product_id: 101 2024-04-01T08:51:17.156Z
+[1/3] product_id: 101 2024-04-01T08:51:30.030Z store_length: 76
+[2/3] product_id: 103 2024-04-01T08:51:38.088Z
+[2/3] product_id: 103 2024-04-01T08:51:39.662Z store_length: 36
+[3/3] product_id: 105 2024-04-01T08:51:46.238Z
+[3/3] product_id: 105 2024-04-01T08:51:56.601Z store_length: 65
+[1/3] product_id: 101 2024-04-01T08:52:03.397Z
+[1/3] product_id: 101 2024-04-01T08:52:22.691Z store_length: 76

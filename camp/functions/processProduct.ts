@@ -84,7 +84,7 @@ export const processProduct = async (
   // #3 중고거래 API 크롤링하기
   await getNaverUsedStoreListAndSave(product.product_id, product.naver_used_keyword);
 
-  const randomTime = Math.floor(Math.random() * 500 + 2000);
+  const randomTime = Math.floor(Math.random() * 500 + 6000);
   await wrapSlept(randomTime);
 
   return true;

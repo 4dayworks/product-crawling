@@ -1,6 +1,6 @@
 import { load } from "cheerio";
 
-import { StoreType } from "../types/craw";
+import { StoreType } from "../../function/types/craw";
 import { ProductType } from "./getProductIdList";
 import { getProxyData } from "./getProxyData";
 import { l } from "../../function/console";

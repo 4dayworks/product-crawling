@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./types", "./node_modules/@types"],
+    "typeRoots": ["function/types", "./node_modules/@types"],
     "strict": true,
     "module": "commonjs",
     "moduleResolution": "node",

@@ -1,5 +1,5 @@
 import { uniqBy } from "lodash";
-import { ItemscoutType } from "../types/craw";
+import { ItemscoutType } from "../../function/types/craw";
 
 /** 절대 허용하지 말아야할 카테고리 - 아이템스카우트 카테고리 기준 */
 const exceptCategoryObj: {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ItemscoutType, StoreType } from "../types/craw";
+import { ItemscoutType, StoreType } from "../../function/types/craw";
 import { filterArray } from "./getItemscoutStroeListFunctions";
 import { ProductType } from "./getProductIdList";
 import { getProxyData } from "./getProxyData";

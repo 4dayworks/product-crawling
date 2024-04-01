@@ -1,5 +1,5 @@
 import axios from "axios";
-import { StoreType } from "../types/craw";
+import { StoreType } from "../../function/types/craw";
 import { writeLog } from "../writeLog";
 import { UpdateByProductIdType } from "./UpdateByProductIdType";
 import { getCoupangStoreList } from "./getCoupangStoreList";

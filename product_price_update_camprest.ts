@@ -7,11 +7,7 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${AuthorizationKey()}`;
 updateByCampProduct({
   // page: 0,
   // size: 6000,
-  productSelectedList: [
-    176, 180, 162, 189, 169, 191, 200, 202, 204, 235, 255, 271, 321, 324, 326, 333, 334, 338, 343, 364, 366, 380, 381,
-    383, 387, 389, 390, 391, 398, 399, 407, 413, 415, 428, 438, 441, 444, 447, 456, 463, 469, 470, 483, 494, 336, 367,
-    455,
-  ],
+  productSelectedList: [101, 102, 103, 105],
   type: "all",
 });
 
