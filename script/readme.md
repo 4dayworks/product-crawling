@@ -25,6 +25,7 @@ AWS Ubuntu Crontab
 0 0 * * * /home/ubuntu/product-crawling/script/update:camp-feed-naver-seo.sh
 0 0 * * * /home/ubuntu/product-crawling/script/update:camp-seo.sh
 0 0 * * * /home/ubuntu/product-crawling/script/update:camperest-campsite-all.sh
+30 0 * * * /home/ubuntu/product-crawling/script/update:delete-search-used-function.sh
 ```
 
 ====================================================================================
