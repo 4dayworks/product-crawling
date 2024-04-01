@@ -1,6 +1,5 @@
-[Mon Apr  1 10:05:00 KST 2024] Script started
+[2024년 4월  1일 월요일 10시 26분 35초 KST] Script started
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-curl: (7) Failed to connect to localhost port 4003 after 2 ms: Couldn't connect to server
-[Mon Apr  1 10:05:00 KST 2024] Script encountered an error
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    33  100    33    0     0    895      0 --:--:-- --:--:-- --:--:--   916
+{"data":true,"message":"no list"}[2024년 4월  1일 월요일 10시 26분 35초 KST] Script completed successfully

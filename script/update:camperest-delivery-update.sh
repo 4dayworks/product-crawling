@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FILE="/home/ubuntu/product-crawling/script/update:camperest-delivery-update.log"
+LOG_FILE="/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:camperest-delivery-update.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 
