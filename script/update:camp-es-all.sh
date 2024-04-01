@@ -2,7 +2,7 @@
 
 sleep 5
 
-LOG_FILE="/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:camp-es-all.log"
+LOG_FILE="/home/ubuntu/product-crawling/script/update:camp-es-all.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 
