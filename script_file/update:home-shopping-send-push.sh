@@ -2,7 +2,7 @@
 
 sleep 5
 
-LOG_FILE="/home/ubuntu/product-crawling/script/update:home-shopping-send-push.log"
+LOG_FILE="/home/ubuntu/product-crawling/script_file/update:home-shopping-send-push.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 

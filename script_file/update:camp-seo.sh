@@ -1,6 +1,6 @@
 # #!/bin/bash
 
-# LOG_FILE="/home/ubuntu/product-crawling/script/update:camp-seo.log"
+# LOG_FILE="/home/ubuntu/product-crawling/script_file/update:camp-seo.log"
 
 # echo "[$(date)] Script started" > $LOG_FILE
 

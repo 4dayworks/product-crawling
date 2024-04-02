@@ -1,6 +1,6 @@
 # #!/bin/bash
 
-# LOG_FILE="/home/ubuntu/product-crawling/script/update:home-shopping-get-shoppingmall.log"
+# LOG_FILE="/home/ubuntu/product-crawling/script_file/update:home-shopping-get-shoppingmall.log"
 
 # echo "[$(date)] Script started" > $LOG_FILE
 

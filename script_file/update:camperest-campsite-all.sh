@@ -2,7 +2,7 @@
 
 sleep 5
 
-LOG_FILE="/home/ubuntu/product-crawling/script/update:camperest-campsite-all.log"
+LOG_FILE="/home/ubuntu/product-crawling/script_file/update:camperest-campsite-all.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 

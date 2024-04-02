@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FILE="/Users/yagiyagi/projects/dayworks4/product-crawling/script/update:camperest-camppost-resize-all.log"
+LOG_FILE="/Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-camppost-resize-all.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 

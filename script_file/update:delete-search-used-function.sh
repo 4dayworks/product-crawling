@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FILE="/home/ubuntu/product-crawling/script/update:delete-search-used-function.log"
+LOG_FILE="/home/ubuntu/product-crawling/script_file/update:delete-search-used-function.log"
 
 echo "[$(date)] Script started" > $LOG_FILE
 
