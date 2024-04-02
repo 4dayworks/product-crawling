@@ -3,10 +3,6 @@ import puppeteer, { Page } from "puppeteer";
 import { StoreType } from "../types/craw";
 import { getUserAgent } from "./getUserAgent";
 
-// import puppeteerExtra from "puppeteer-extra";
-// import StealthPlugin from "puppeteer-extra-plugin-stealth";
-// puppeteerExtra.use(StealthPlugin());
-
 // 사용자 에이전트 리스트 중 하나를 랜덤으로 선택하는 로직 추가
 
 export default async function getNaverStoreList({ keyword }: { keyword: string | null }): Promise<StoreType[]> {
