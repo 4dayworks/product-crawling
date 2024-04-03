@@ -2,7 +2,6 @@ import axios from "axios";
 import { load } from "cheerio";
 import { l } from "../../function/console";
 import fs from "fs/promises";
-import { has, template } from "lodash";
 
 export async function getThankyouCampingData() {
   let page = 1;
@@ -10,40 +9,20 @@ export async function getThankyouCampingData() {
 
   // 추출할 데이터를 담을 배열
   const list: { id: string; title: string; address: string }[] = [];
+  await fs.writeFile("thankyoucamping-data.csv", "id, title, address\n", "utf-8");
 
   while (hasNext) {
-    const data = {
-      res_dt: "",
-      res_edt: "",
-      region: "",
-      region_all: "",
-      sub_region: "",
-      disp_site_tp: "",
-      tema: "",
-      camp_tp: "",
-      partnseq: "",
-      page_num: page,
-      res_url: "",
-      res_back: "",
-      tq_push_yn: "",
-      tq_loc_yn: "",
-      thankq_app: "",
-      reseventseq: "",
-      login_loc: "",
-      couponId: "",
-      pre_url: "list.hbb",
-      ser_st: "N",
-      mem_lat: "",
-      mem_lng: "",
-      nearby: "",
-      ser_res_dt: "",
-      ser_res_edt: "",
-      ser_res_days: 1,
-      ser_keyword: "",
-      ser_festa_yn: "",
-      ser_sort: "P",
-    };
-    const res = await axios.post(`https://m.thankqcamping.com/resv/ax_list.hbb`, data).then((d) => d.data);
+    const res = await axios
+      .post(
+        `https://m.thankqcamping.com/resv/ax_list.hbb?res_dt=&res_edt=&region=&region_all=&sub_region=&disp_site_tp=&tema=&camp_tp=&partnseq=&page_num=${page}&res_url=&res_back=&tq_push_yn=&tq_loc_yn=&thankq_app=&reseventseq=&login_loc=&couponId=&pre_url=list.hbb&ser_st=N&mem_lat=&mem_lng=&nearby=&ser_res_dt=&ser_res_edt=&ser_res_days=1&ser_keyword=&ser_festa_yn=&ser_sort=P`,
+        {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+          },
+        }
+      )
+      .then((d) => d.data);
     // cheerio를 사용하여 HTML 로드
     if (!res) return l("Err", "red", "getThankyouCampingData no res");
 
@@ -61,35 +40,28 @@ export async function getThankyouCampingData() {
       const address = $(this).find(".txt_box .addr").text().trim();
 
       // 추출된 데이터를 배열에 추가
+
       if (id && title && address) {
         tempList.push({ id, title, address });
+        saveData({ id, title, address });
       }
     });
     console.info("getThankyouCampingData page:", page, tempList.length, new Date().toISOString());
-    hasNext = tempList.length === 20;
+
     page++;
-    list.push(...tempList);
-
-    // if (page > 10) break;
+    hasNext = tempList.length === 20;
   }
-
-  saveData(list);
 }
 getThankyouCampingData();
 
-async function saveData(list: any[]) {
-  // JSON 데이터를 문자열로 변환
-  const dataString = JSON.stringify(list, null, 2);
+async function saveData(item: { id: string; title: string; address: string }) {
+  // JSON 데이터를 CSV 문자열로 변환하고, 줄바꿈 문자를 추가합니다.
+  const dataString = `${item.id}, "${item.title}", "${item.address}"\n`;
 
   try {
-    // 'thankyoucamping-data.json' 파일에 데이터를 비동기적으로 쓴다.
-    await fs.writeFile("thankyoucamping-data.json", dataString, "utf-8");
-    l(
-      "SUCCESS",
-      "green",
-      `getThankyouCampingData: Data saved to thankyoucamping-data.json successfully. length: ${list.length}`
-    );
+    // 'thankyoucamping-data.csv' 파일에 데이터를 비동기적으로 추가합니다.
+    await fs.appendFile("thankyoucamping-data.csv", dataString, "utf-8");
   } catch (error) {
-    l("ERR", "red", "Error saving data to file:" + error);
+    l("ERR", "red", "Error appending data to file:" + error);
   }
 }
