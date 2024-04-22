@@ -11,7 +11,7 @@
     "update:product-thirthmall": "ts-node ./backup/product_thirthmall_update",
     "pub": "git add . && git commit --allow-empty -m \"npm run patch\" && npm version patch && git add . && git commit --allow-empty -m \"npm run patch\" && git push",
     "update:yagiyagi": "ts-node ./product_price_update_yagiyagi",
-    "update:camperest": "ts-node ./product_price_update_camprest",
+    "update:camperest": "export PUPPETEER_EXECUTABLE_PATH=\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" && ts-node ./product_price_update_camprest",
     "update:shop": "ts-node ./home_shopping_update"
   },
   "author": "",

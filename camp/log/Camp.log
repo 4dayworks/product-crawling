@@ -1385,3 +1385,13 @@ For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides
 [1/1] product_id: 110 2024-04-03T02:26:20.382Z store_length: 36
 [1/1] product_id: 110 2024-04-03T02:26:41.528Z
 [1/1] product_id: 110 2024-04-03T02:26:54.447Z store_length: 76
+[1/1] product_id: 101 2024-04-22T02:12:20.087Z
+[ERROR] getStoreList Could not find Chrome (ver. 122.0.6261.111). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /Users/yagiyagi/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+[1/1] product_id: 101 2024-04-22T02:12:55.428Z
+[ERROR] getStoreList Could not find Chrome (ver. 122.0.6261.111). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npx puppeteer browsers install chrome`) or
+ 2. your cache path is incorrectly configured (which is: /Users/yagiyagi/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
