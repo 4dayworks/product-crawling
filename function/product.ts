@@ -85,6 +85,8 @@ export const getStoreListV5 = async (product: getProductTypeV6) => {
       getNaverCatalogStoreListV5(product),
       getEtcStoreListV1(product),
     ]);
+    if (naverStoreList.length === 0) throw Error("No store");
+
     const naverStoreListV5 = naverStoreList.map((i) => ({ ...i, yagi_keyword: i.camp_keyword } as StoreTypeV5));
     return coupangStoreList.concat(
       iherbStoreData,
