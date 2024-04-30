@@ -1397,3 +1397,1088 @@ For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides
 For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
 [1/1] product_id: 101 2024-04-22T02:14:01.509Z
 [1/1] product_id: 101 2024-04-22T02:14:22.462Z store_length: 76
+[1/9] product_id: 103 2024-04-22T02:31:39.178Z
+[1/9] product_id: 103 2024-04-22T02:32:04.011Z store_length: 76
+[2/9] product_id: 104 2024-04-22T02:32:11.152Z
+[2/9] product_id: 104 2024-04-22T02:32:32.882Z store_length: 76
+[3/9] product_id: 105 2024-04-22T02:32:40.954Z
+[3/9] product_id: 105 2024-04-22T02:33:00.601Z store_length: 76
+[4/9] product_id: 106 2024-04-22T02:33:08.169Z
+[4/9] product_id: 106 2024-04-22T02:33:28.677Z store_length: 76
+[5/9] product_id: 107 2024-04-22T02:33:35.504Z
+[5/9] product_id: 107 2024-04-22T02:33:49.186Z store_length: 66
+[6/9] product_id: 108 2024-04-22T02:33:56.116Z
+[6/9] product_id: 108 2024-04-22T02:34:16.883Z store_length: 65
+[7/9] product_id: 109 2024-04-22T02:34:23.931Z
+[7/9] product_id: 109 2024-04-22T02:34:43.200Z store_length: 17
+[8/9] product_id: 110 2024-04-22T02:34:50.793Z
+[8/9] product_id: 110 2024-04-22T02:35:09.970Z store_length: 76
+[9/9] product_id: 111 2024-04-22T02:35:17.316Z
+[9/9] product_id: 111 2024-04-22T02:35:37.474Z store_length: 49
+[1/3] product_id: 5001 2024-04-29T08:31:45.685Z
+[1/1] product_id: 5002 2024-04-29T08:34:37.448Z
+[1/1] product_id: 5002 2024-04-29T08:34:50.169Z store_length: 69
+[1/1] product_id: 5002 2024-04-29T08:36:03.158Z
+[1/1] product_id: 5002 2024-04-29T08:36:09.273Z store_length: 70
+[1/1] product_id: 5002 2024-04-29T08:37:10.444Z
+[1/1] product_id: 5002 2024-04-29T08:37:21.313Z store_length: 69
+[1/1] product_id: 5002 2024-04-29T08:38:57.844Z
+[1/1] product_id: 5002 2024-04-29T08:39:07.118Z store_length: 69
+[1/1] product_id: 5002 2024-04-29T08:40:53.961Z
+[1/1] product_id: 5002 2024-04-29T08:41:00.249Z store_length: 70
+[1/1] product_id: 5001 2024-04-29T08:41:20.370Z
+[1/1] product_id: 5001 2024-04-29T08:41:41.516Z store_length: 76
+[1/1] product_id: 5002 2024-04-29T08:42:44.516Z
+[1/1] product_id: 5002 2024-04-29T08:42:53.983Z store_length: 69
+[1/1] product_id: 5001 2024-04-29T08:45:41.991Z
+[1/1] product_id: 5001 2024-04-29T08:45:58.656Z store_length: 76
+[1/1] product_id: 5001 2024-04-29T08:46:17.963Z
+[1/1] product_id: 5001 2024-04-29T08:46:29.200Z store_length: 76
+[1/1] product_id: 5001 2024-04-29T08:48:12.559Z
+[1/1] product_id: 5001 2024-04-29T08:48:25.359Z store_length: 76
+[1/1] product_id: 5001 2024-04-29T08:48:52.093Z
+[1/1] product_id: 5001 2024-04-29T08:49:02.529Z store_length: 76
+[1/1] product_id: 5004 2024-04-29T08:53:53.101Z
+[1/1] product_id: 5004 2024-04-29T08:54:04.489Z store_length: 76
+[1/3] product_id: 5001 2024-04-30T01:00:34.178Z
+[1/3] product_id: 5001 2024-04-30T01:00:47.769Z store_length: 76
+[2/3] product_id: 5002 2024-04-30T01:00:54.413Z
+[2/3] product_id: 5002 2024-04-30T01:01:04.012Z store_length: 70
+[3/3] product_id: 5004 2024-04-30T01:01:13.207Z
+[3/3] product_id: 5004 2024-04-30T01:01:25.492Z store_length: 76
+[1/1] product_id: 5001 2024-04-30T01:03:12.793Z
+[1/1] product_id: 5001 2024-04-30T01:03:27.054Z store_length: 76
+[1/4] product_id: 9424 2024-04-30T01:14:15.913Z
+[1/4] product_id: 9424 2024-04-30T01:14:27.603Z store_length: 45
+[2/4] product_id: 9426 2024-04-30T01:14:34.539Z
+[2/4] product_id: 9426 2024-04-30T01:14:41.619Z store_length: 12
+[3/4] product_id: 9427 2024-04-30T01:14:48.346Z
+[3/4] product_id: 9427 2024-04-30T01:14:56.784Z store_length: 59
+[4/4] product_id: 9428 2024-04-30T01:15:03.578Z
+[4/4] product_id: 9428 2024-04-30T01:15:16.521Z store_length: 22
+[1/4] product_id: 9424 2024-04-30T01:18:25.226Z
+[1/4] product_id: 9424 2024-04-30T01:18:34.220Z store_length: 40
+[2/4] product_id: 9426 2024-04-30T01:18:41.000Z
+[2/4] product_id: 9426 2024-04-30T01:18:43.408Z store_length: 29
+[3/4] product_id: 9427 2024-04-30T01:18:49.998Z
+[3/4] product_id: 9427 2024-04-30T01:18:58.231Z store_length: 24
+[4/4] product_id: 9428 2024-04-30T01:19:05.143Z
+[4/4] product_id: 9428 2024-04-30T01:19:20.084Z store_length: 61
+[1/4] product_id: 9424 2024-04-30T01:20:47.310Z
+[1/4] product_id: 9424 2024-04-30T01:20:53.621Z store_length: 31
+[2/4] product_id: 9426 2024-04-30T01:21:00.693Z
+[2/4] product_id: 9426 2024-04-30T01:21:05.794Z store_length: 29
+[3/4] product_id: 9427 2024-04-30T01:21:12.654Z
+[3/4] product_id: 9427 2024-04-30T01:21:18.361Z store_length: 24
+[4/4] product_id: 9428 2024-04-30T01:21:25.102Z
+[4/4] product_id: 9428 2024-04-30T01:21:36.890Z store_length: 61
+[1/4] product_id: 9424 2024-04-30T01:22:39.021Z
+[1/4] product_id: 9424 2024-04-30T01:22:41.969Z store_length: 40
+[2/4] product_id: 9426 2024-04-30T01:22:48.808Z
+[2/4] product_id: 9426 2024-04-30T01:22:51.446Z store_length: 29
+[3/4] product_id: 9427 2024-04-30T01:22:58.125Z
+[3/4] product_id: 9427 2024-04-30T01:23:12.506Z store_length: 24
+[4/4] product_id: 9428 2024-04-30T01:23:19.146Z
+[4/4] product_id: 9428 2024-04-30T01:23:24.599Z store_length: 61
+[1/1] product_id: 9424 2024-04-30T01:25:05.130Z
+[1/1] product_id: 9424 2024-04-30T01:25:07.913Z store_length: 40
+[1/1] product_id: 9426 2024-04-30T01:26:50.055Z
+[1/1] product_id: 9426 2024-04-30T01:27:01.884Z store_length: 29
+[1/1] product_id: 9427 2024-04-30T01:28:29.141Z
+[1/1] product_id: 9427 2024-04-30T01:28:38.089Z store_length: 24
+[1/4] product_id: 9424 2024-04-30T01:31:25.747Z
+[1/4] product_id: 9424 2024-04-30T01:31:45.908Z store_length: 76
+[2/4] product_id: 9426 2024-04-30T01:31:53.380Z
+[2/4] product_id: 9426 2024-04-30T01:32:01.096Z store_length: 47
+[3/4] product_id: 9427 2024-04-30T01:32:09.255Z
+[3/4] product_id: 9427 2024-04-30T01:32:24.718Z store_length: 76
+[4/4] product_id: 9428 2024-04-30T01:32:32.616Z
+[4/4] product_id: 9428 2024-04-30T01:32:52.788Z store_length: 76
+[1/1] product_id: 9428 2024-04-30T01:34:12.012Z
+[1/1] product_id: 9428 2024-04-30T01:34:26.086Z store_length: 76
+[1/1] product_id: 9457 2024-04-30T01:36:29.835Z
+[1/1] product_id: 9457 2024-04-30T01:36:33.031Z store_length: 39
+[1/1] product_id: 9457 2024-04-30T01:38:27.112Z
+[1/1] product_id: 9457 2024-04-30T01:38:43.084Z store_length: 76
+[1/1] product_id: 9457 2024-04-30T01:39:26.001Z
+[1/1] product_id: 9457 2024-04-30T01:39:37.717Z store_length: 76
+[1/1] product_id: 9147 2024-04-30T01:42:18.692Z
+[1/1] product_id: 9147 2024-04-30T01:42:25.972Z store_length: 76
+[1/1] product_id: 9147 2024-04-30T01:44:37.565Z
+[1/1] product_id: 9147 2024-04-30T01:44:48.094Z store_length: 76
+[1/273] product_id: 6039 2024-04-30T02:48:47.804Z
+[1/273] product_id: 6039 2024-04-30T02:48:59.402Z store_length: 76
+[2/273] product_id: 6070 2024-04-30T02:49:05.962Z
+[2/273] product_id: 6070 2024-04-30T02:49:16.194Z store_length: 76
+[3/273] product_id: 6071 2024-04-30T02:49:23.176Z
+[3/273] product_id: 6071 2024-04-30T02:49:33.307Z store_length: 76
+[4/273] product_id: 6358 2024-04-30T02:49:40.308Z
+[4/273] product_id: 6358 2024-04-30T02:49:47.468Z store_length: 76
+[5/273] product_id: 6603 2024-04-30T02:49:53.987Z
+[5/273] product_id: 6603 2024-04-30T02:50:02.769Z store_length: 20
+[6/273] product_id: 6622 2024-04-30T02:50:09.525Z
+[6/273] product_id: 6622 2024-04-30T02:50:16.580Z store_length: 76
+[7/273] product_id: 6624 2024-04-30T02:50:23.371Z
+[7/273] product_id: 6624 2024-04-30T02:50:39.515Z store_length: 76
+[8/273] product_id: 6625 2024-04-30T02:50:46.333Z
+[8/273] product_id: 6625 2024-04-30T02:50:57.207Z store_length: 76
+[9/273] product_id: 6626 2024-04-30T02:51:03.916Z
+[9/273] product_id: 6626 2024-04-30T02:51:11.140Z store_length: 76
+[10/273] product_id: 6767 2024-04-30T02:51:18.084Z
+[10/273] product_id: 6767 2024-04-30T02:51:34.298Z store_length: 76
+[11/273] product_id: 6768 2024-04-30T02:51:41.204Z
+[11/273] product_id: 6768 2024-04-30T02:51:48.561Z store_length: 76
+[12/273] product_id: 6776 2024-04-30T02:51:55.440Z
+[12/273] product_id: 6776 2024-04-30T02:52:06.111Z store_length: 76
+[13/273] product_id: 6777 2024-04-30T02:52:12.770Z
+[13/273] product_id: 6777 2024-04-30T02:52:29.511Z store_length: 76
+[14/273] product_id: 6778 2024-04-30T02:52:36.323Z
+[14/273] product_id: 6778 2024-04-30T02:52:46.543Z store_length: 76
+[15/273] product_id: 6779 2024-04-30T02:52:53.526Z
+[15/273] product_id: 6779 2024-04-30T02:52:59.911Z store_length: 39
+[16/273] product_id: 6780 2024-04-30T02:53:07.061Z
+[16/273] product_id: 6780 2024-04-30T02:53:15.121Z store_length: 76
+[17/273] product_id: 6781 2024-04-30T02:53:21.751Z
+[17/273] product_id: 6781 2024-04-30T02:53:35.743Z store_length: 76
+[18/273] product_id: 6782 2024-04-30T02:53:42.341Z
+[18/273] product_id: 6782 2024-04-30T02:53:45.309Z store_length: 41
+[19/273] product_id: 6783 2024-04-30T02:53:52.280Z
+[19/273] product_id: 6783 2024-04-30T02:54:09.548Z store_length: 76
+[20/273] product_id: 6784 2024-04-30T02:54:16.105Z
+[20/273] product_id: 6784 2024-04-30T02:54:28.481Z store_length: 74
+[21/273] product_id: 6785 2024-04-30T02:54:35.256Z
+[21/273] product_id: 6785 2024-04-30T02:54:43.298Z store_length: 76
+[22/273] product_id: 6786 2024-04-30T02:54:50.094Z
+[22/273] product_id: 6786 2024-04-30T02:55:07.630Z store_length: 76
+[23/273] product_id: 6787 2024-04-30T02:55:14.116Z
+[23/273] product_id: 6787 2024-04-30T02:55:22.498Z store_length: 76
+[24/273] product_id: 6788 2024-04-30T02:55:29.398Z
+[24/273] product_id: 6788 2024-04-30T02:55:35.671Z store_length: 46
+[25/273] product_id: 6789 2024-04-30T02:55:42.525Z
+[25/273] product_id: 6789 2024-04-30T02:55:54.233Z store_length: 7
+[26/273] product_id: 6790 2024-04-30T02:56:00.759Z
+[26/273] product_id: 6790 2024-04-30T02:56:09.947Z store_length: 59
+[27/273] product_id: 6791 2024-04-30T02:56:17.463Z
+[27/273] product_id: 6791 2024-04-30T02:56:29.536Z store_length: 76
+[28/273] product_id: 6792 2024-04-30T02:56:36.491Z
+[28/273] product_id: 6792 2024-04-30T02:56:45.042Z store_length: 76
+[29/273] product_id: 6793 2024-04-30T02:56:51.931Z
+[29/273] product_id: 6793 2024-04-30T02:57:09.943Z store_length: 56
+[30/273] product_id: 6794 2024-04-30T02:57:17.167Z
+[30/273] product_id: 6794 2024-04-30T02:57:30.611Z store_length: 96
+[31/273] product_id: 6795 2024-04-30T02:57:38.048Z
+[31/273] product_id: 6795 2024-04-30T02:57:51.791Z store_length: 19
+[32/273] product_id: 6796 2024-04-30T02:57:59.603Z
+[32/273] product_id: 6796 2024-04-30T02:58:11.219Z store_length: 57
+[33/273] product_id: 6797 2024-04-30T02:58:18.341Z
+[33/273] product_id: 6797 2024-04-30T02:58:26.998Z store_length: 58
+[34/273] product_id: 6798 2024-04-30T02:58:34.644Z
+[34/273] product_id: 6798 2024-04-30T02:58:55.308Z store_length: 76
+[35/273] product_id: 6799 2024-04-30T02:59:04.078Z
+[35/273] product_id: 6799 2024-04-30T02:59:13.189Z store_length: 76
+[36/273] product_id: 6800 2024-04-30T02:59:21.304Z
+[36/273] product_id: 6800 2024-04-30T02:59:28.548Z store_length: 20
+[37/273] product_id: 6801 2024-04-30T02:59:35.983Z
+[37/273] product_id: 6801 2024-04-30T02:59:53.405Z store_length: 76
+[38/273] product_id: 6802 2024-04-30T03:00:00.165Z
+[38/273] product_id: 6802 2024-04-30T03:00:11.861Z store_length: 76
+[39/273] product_id: 6803 2024-04-30T03:00:18.661Z
+[39/273] product_id: 6803 2024-04-30T03:00:29.419Z store_length: 74
+[40/273] product_id: 6804 2024-04-30T03:00:36.695Z
+[40/273] product_id: 6804 2024-04-30T03:00:45.173Z store_length: 76
+[41/273] product_id: 6805 2024-04-30T03:00:51.931Z
+[41/273] product_id: 6805 2024-04-30T03:01:01.211Z store_length: 43
+[42/273] product_id: 6806 2024-04-30T03:01:07.825Z
+[42/273] product_id: 6806 2024-04-30T03:01:15.354Z store_length: 76
+[43/273] product_id: 6807 2024-04-30T03:01:21.975Z
+[43/273] product_id: 6807 2024-04-30T03:01:37.066Z store_length: 67
+[44/273] product_id: 6808 2024-04-30T03:01:43.806Z
+[44/273] product_id: 6808 2024-04-30T03:01:50.627Z store_length: 49
+[45/273] product_id: 6809 2024-04-30T03:01:57.524Z
+[45/273] product_id: 6809 2024-04-30T03:02:05.996Z store_length: 76
+[46/273] product_id: 6810 2024-04-30T03:02:12.621Z
+[46/273] product_id: 6810 2024-04-30T03:02:24.145Z store_length: 18
+[47/273] product_id: 6811 2024-04-30T03:02:31.324Z
+[47/273] product_id: 6811 2024-04-30T03:02:35.232Z store_length: 47
+[48/273] product_id: 6812 2024-04-30T03:02:41.822Z
+[48/273] product_id: 6812 2024-04-30T03:02:51.941Z store_length: 76
+[49/273] product_id: 6813 2024-04-30T03:02:58.953Z
+[49/273] product_id: 6813 2024-04-30T03:03:15.493Z store_length: 76
+[50/273] product_id: 6814 2024-04-30T03:03:22.280Z
+[50/273] product_id: 6814 2024-04-30T03:03:33.321Z store_length: 76
+[51/273] product_id: 6815 2024-04-30T03:03:39.856Z
+[51/273] product_id: 6815 2024-04-30T03:03:50.642Z store_length: 76
+[52/273] product_id: 6816 2024-04-30T03:03:57.644Z
+[52/273] product_id: 6816 2024-04-30T03:04:05.891Z store_length: 76
+[53/273] product_id: 6817 2024-04-30T03:04:12.790Z
+[53/273] product_id: 6817 2024-04-30T03:04:22.615Z store_length: 13
+[54/273] product_id: 6818 2024-04-30T03:04:29.566Z
+[54/273] product_id: 6818 2024-04-30T03:04:38.769Z store_length: 67
+[55/273] product_id: 6819 2024-04-30T03:04:45.332Z
+[55/273] product_id: 6819 2024-04-30T03:05:02.519Z store_length: 76
+[56/273] product_id: 6820 2024-04-30T03:05:09.637Z
+[56/273] product_id: 6820 2024-04-30T03:05:21.172Z store_length: 76
+[57/273] product_id: 6821 2024-04-30T03:05:28.034Z
+[57/273] product_id: 6821 2024-04-30T03:05:35.894Z store_length: 76
+[58/273] product_id: 6822 2024-04-30T03:05:42.885Z
+[58/273] product_id: 6822 2024-04-30T03:05:59.415Z store_length: 75
+[59/273] product_id: 6823 2024-04-30T03:06:06.000Z
+[59/273] product_id: 6823 2024-04-30T03:06:15.574Z store_length: 76
+[60/273] product_id: 6824 2024-04-30T03:06:22.546Z
+[ERROR] getStoreList read ECONNRESET
+[Error] Remaining chances: 2, 2024-04-30T03:17:32.747Z
+[61/273] product_id: 6825 2024-04-30T03:17:32.819Z
+[61/273] product_id: 6825 2024-04-30T03:17:49.701Z store_length: 76
+[62/273] product_id: 6826 2024-04-30T03:17:56.510Z
+[62/273] product_id: 6826 2024-04-30T03:18:06.716Z store_length: 76
+[63/273] product_id: 6827 2024-04-30T03:18:13.897Z
+[63/273] product_id: 6827 2024-04-30T03:18:24.054Z store_length: 76
+[64/273] product_id: 6828 2024-04-30T03:18:31.005Z
+[64/273] product_id: 6828 2024-04-30T03:18:34.217Z store_length: 45
+[65/273] product_id: 6829 2024-04-30T03:18:40.945Z
+[65/273] product_id: 6829 2024-04-30T03:18:54.504Z store_length: 76
+[66/273] product_id: 6830 2024-04-30T03:19:00.983Z
+[66/273] product_id: 6830 2024-04-30T03:19:34.891Z store_length: 6
+[67/273] product_id: 6831 2024-04-30T03:19:41.883Z
+[67/273] product_id: 6831 2024-04-30T03:19:44.615Z store_length: 9
+[68/273] product_id: 6832 2024-04-30T03:19:51.242Z
+[68/273] product_id: 6832 2024-04-30T03:19:58.938Z store_length: 76
+[69/273] product_id: 6833 2024-04-30T03:20:05.587Z
+[69/273] product_id: 6833 2024-04-30T03:20:16.332Z store_length: 76
+[70/273] product_id: 6834 2024-04-30T03:20:22.838Z
+[70/273] product_id: 6834 2024-04-30T03:20:39.966Z store_length: 64
+[71/273] product_id: 6835 2024-04-30T03:20:46.613Z
+[71/273] product_id: 6835 2024-04-30T03:20:52.507Z store_length: 40
+[72/273] product_id: 6836 2024-04-30T03:20:59.348Z
+[72/273] product_id: 6836 2024-04-30T03:21:04.443Z store_length: 37
+[73/273] product_id: 6837 2024-04-30T03:21:11.350Z
+[73/273] product_id: 6837 2024-04-30T03:21:16.194Z store_length: 56
+[74/273] product_id: 6838 2024-04-30T03:21:23.146Z
+[74/273] product_id: 6838 2024-04-30T03:21:35.931Z store_length: 67
+[75/273] product_id: 6839 2024-04-30T03:21:42.773Z
+[75/273] product_id: 6839 2024-04-30T03:21:50.927Z store_length: 76
+[76/273] product_id: 6840 2024-04-30T03:21:57.719Z
+[76/273] product_id: 6840 2024-04-30T03:22:14.610Z store_length: 57
+[77/273] product_id: 6841 2024-04-30T03:22:21.149Z
+[77/273] product_id: 6841 2024-04-30T03:22:31.359Z store_length: 76
+[78/273] product_id: 6842 2024-04-30T03:22:38.062Z
+[78/273] product_id: 6842 2024-04-30T03:22:45.800Z store_length: 76
+[79/273] product_id: 6843 2024-04-30T03:22:52.327Z
+[79/273] product_id: 6843 2024-04-30T03:23:07.781Z store_length: 63
+[80/273] product_id: 6844 2024-04-30T03:23:14.488Z
+[80/273] product_id: 6844 2024-04-30T03:23:18.721Z store_length: 31
+[81/273] product_id: 6845 2024-04-30T03:23:25.396Z
+[81/273] product_id: 6845 2024-04-30T03:23:35.743Z store_length: 40
+[82/273] product_id: 6846 2024-04-30T03:23:42.498Z
+[82/273] product_id: 6846 2024-04-30T03:23:54.598Z store_length: 44
+[83/273] product_id: 6847 2024-04-30T03:24:01.651Z
+[83/273] product_id: 6847 2024-04-30T03:24:12.248Z store_length: 76
+[84/273] product_id: 6848 2024-04-30T03:24:19.044Z
+[84/273] product_id: 6848 2024-04-30T03:24:30.457Z store_length: 76
+[85/273] product_id: 6849 2024-04-30T03:24:37.293Z
+[85/273] product_id: 6849 2024-04-30T03:24:45.360Z store_length: 76
+[86/273] product_id: 6850 2024-04-30T03:24:52.206Z
+[86/273] product_id: 6850 2024-04-30T03:25:06.054Z store_length: 76
+[87/273] product_id: 6851 2024-04-30T03:25:12.981Z
+[87/273] product_id: 6851 2024-04-30T03:25:18.883Z store_length: 36
+[88/273] product_id: 6852 2024-04-30T03:25:25.371Z
+[88/273] product_id: 6852 2024-04-30T03:25:58.640Z store_length: 10
+[89/273] product_id: 6853 2024-04-30T03:26:05.451Z
+[89/273] product_id: 6853 2024-04-30T03:26:10.825Z store_length: 35
+[90/273] product_id: 6854 2024-04-30T03:26:17.607Z
+[90/273] product_id: 6854 2024-04-30T03:26:28.721Z store_length: 76
+[91/273] product_id: 6855 2024-04-30T03:26:35.589Z
+[91/273] product_id: 6855 2024-04-30T03:26:52.860Z store_length: 74
+[92/273] product_id: 6856 2024-04-30T03:26:59.378Z
+[92/273] product_id: 6856 2024-04-30T03:27:09.708Z store_length: 40
+[93/273] product_id: 6857 2024-04-30T03:27:16.521Z
+[93/273] product_id: 6857 2024-04-30T03:27:25.130Z store_length: 62
+[94/273] product_id: 6858 2024-04-30T03:27:32.003Z
+[94/273] product_id: 6858 2024-04-30T03:27:39.426Z store_length: 76
+[95/273] product_id: 6859 2024-04-30T03:27:46.058Z
+[95/273] product_id: 6859 2024-04-30T03:27:58.977Z store_length: 41
+[96/273] product_id: 6860 2024-04-30T03:28:05.909Z
+[96/273] product_id: 6860 2024-04-30T03:28:10.305Z store_length: 53
+[97/273] product_id: 6861 2024-04-30T03:28:17.003Z
+[97/273] product_id: 6861 2024-04-30T03:28:35.065Z store_length: 76
+[98/273] product_id: 6862 2024-04-30T03:28:42.389Z
+[98/273] product_id: 6862 2024-04-30T03:28:49.733Z store_length: 50
+[99/273] product_id: 6863 2024-04-30T03:28:56.344Z
+[99/273] product_id: 6863 2024-04-30T03:29:04.051Z store_length: 76
+[100/273] product_id: 6864 2024-04-30T03:29:10.598Z
+[100/273] product_id: 6864 2024-04-30T03:29:27.130Z store_length: 75
+[101/273] product_id: 6865 2024-04-30T03:29:34.605Z
+[101/273] product_id: 6865 2024-04-30T03:29:42.296Z store_length: 76
+[102/273] product_id: 6866 2024-04-30T03:29:49.319Z
+[102/273] product_id: 6866 2024-04-30T03:29:54.574Z store_length: 37
+[103/273] product_id: 6867 2024-04-30T03:30:01.388Z
+[103/273] product_id: 6867 2024-04-30T03:30:18.535Z store_length: 76
+[104/273] product_id: 6868 2024-04-30T03:30:25.301Z
+[104/273] product_id: 6868 2024-04-30T03:30:35.814Z store_length: 76
+[105/273] product_id: 6869 2024-04-30T03:30:42.532Z
+[105/273] product_id: 6869 2024-04-30T03:30:52.409Z store_length: 76
+[106/273] product_id: 6870 2024-04-30T03:30:59.470Z
+[106/273] product_id: 6870 2024-04-30T03:31:02.034Z store_length: 5
+[107/273] product_id: 6871 2024-04-30T03:31:08.588Z
+[107/273] product_id: 6871 2024-04-30T03:31:16.778Z store_length: 17
+[108/273] product_id: 6872 2024-04-30T03:31:23.371Z
+[108/273] product_id: 6872 2024-04-30T03:31:30.648Z store_length: 76
+[109/273] product_id: 6873 2024-04-30T03:31:37.614Z
+[109/273] product_id: 6873 2024-04-30T03:31:54.192Z store_length: 76
+[110/273] product_id: 6874 2024-04-30T03:32:00.704Z
+[110/273] product_id: 6874 2024-04-30T03:32:08.057Z store_length: 49
+[111/273] product_id: 6875 2024-04-30T03:32:14.856Z
+[111/273] product_id: 6875 2024-04-30T03:32:17.739Z store_length: 38
+[112/273] product_id: 6876 2024-04-30T03:32:24.748Z
+[112/273] product_id: 6876 2024-04-30T03:32:37.849Z store_length: 50
+[113/273] product_id: 6877 2024-04-30T03:32:44.581Z
+[113/273] product_id: 6877 2024-04-30T03:32:51.934Z store_length: 76
+[114/273] product_id: 6878 2024-04-30T03:32:58.917Z
+[114/273] product_id: 6878 2024-04-30T03:33:09.496Z store_length: 76
+[115/273] product_id: 6879 2024-04-30T03:33:16.414Z
+[115/273] product_id: 6879 2024-04-30T03:33:32.993Z store_length: 54
+[116/273] product_id: 6880 2024-04-30T03:33:39.791Z
+[116/273] product_id: 6880 2024-04-30T03:33:50.413Z store_length: 54
+[117/273] product_id: 6881 2024-04-30T03:33:56.981Z
+[117/273] product_id: 6881 2024-04-30T03:34:07.141Z store_length: 50
+[118/273] product_id: 6882 2024-04-30T03:34:13.745Z
+[118/273] product_id: 6882 2024-04-30T03:34:21.843Z store_length: 76
+[119/273] product_id: 6883 2024-04-30T03:34:28.676Z
+[119/273] product_id: 6883 2024-04-30T03:34:42.174Z store_length: 76
+[120/273] product_id: 6884 2024-04-30T03:34:48.825Z
+[120/273] product_id: 6884 2024-04-30T03:34:55.810Z store_length: 41
+[121/273] product_id: 6885 2024-04-30T03:35:02.919Z
+[121/273] product_id: 6885 2024-04-30T03:35:18.543Z store_length: 72
+[122/273] product_id: 6886 2024-04-30T03:35:25.493Z
+[122/273] product_id: 6886 2024-04-30T03:35:32.661Z store_length: 49
+[123/273] product_id: 6887 2024-04-30T03:35:39.505Z
+[123/273] product_id: 6887 2024-04-30T03:35:47.360Z store_length: 76
+[124/273] product_id: 6888 2024-04-30T03:35:54.787Z
+[124/273] product_id: 6888 2024-04-30T03:36:09.781Z store_length: 38
+[125/273] product_id: 6889 2024-04-30T03:36:16.639Z
+[125/273] product_id: 6889 2024-04-30T03:36:19.618Z store_length: 41
+[126/273] product_id: 6890 2024-04-30T03:36:26.191Z
+[126/273] product_id: 6890 2024-04-30T03:36:37.637Z store_length: 76
+[127/273] product_id: 6891 2024-04-30T03:36:44.647Z
+[127/273] product_id: 6891 2024-04-30T03:37:02.304Z store_length: 76
+[128/273] product_id: 6892 2024-04-30T03:37:09.150Z
+[128/273] product_id: 6892 2024-04-30T03:37:20.970Z store_length: 76
+[129/273] product_id: 6893 2024-04-30T03:37:28.067Z
+[129/273] product_id: 6893 2024-04-30T03:37:39.170Z store_length: 76
+[130/273] product_id: 6894 2024-04-30T03:37:46.103Z
+[130/273] product_id: 6894 2024-04-30T03:37:49.723Z store_length: 46
+[131/273] product_id: 6895 2024-04-30T03:37:56.352Z
+[131/273] product_id: 6895 2024-04-30T03:38:29.827Z store_length: 27
+[132/273] product_id: 6896 2024-04-30T03:38:37.007Z
+[132/273] product_id: 6896 2024-04-30T03:38:53.353Z store_length: 76
+[133/273] product_id: 6897 2024-04-30T03:39:00.150Z
+[133/273] product_id: 6897 2024-04-30T03:39:08.464Z store_length: 76
+[134/273] product_id: 6898 2024-04-30T03:39:15.275Z
+[134/273] product_id: 6898 2024-04-30T03:39:27.200Z store_length: 76
+[135/273] product_id: 6899 2024-04-30T03:39:33.904Z
+[135/273] product_id: 6899 2024-04-30T03:39:52.614Z store_length: 76
+[136/273] product_id: 6900 2024-04-30T03:39:59.318Z
+[136/273] product_id: 6900 2024-04-30T03:40:10.686Z store_length: 76
+[137/273] product_id: 6901 2024-04-30T03:40:17.616Z
+[137/273] product_id: 6901 2024-04-30T03:40:29.210Z store_length: 76
+[138/273] product_id: 6902 2024-04-30T03:40:35.839Z
+[138/273] product_id: 6902 2024-04-30T03:40:42.603Z store_length: 76
+[139/273] product_id: 6903 2024-04-30T03:40:49.870Z
+[139/273] product_id: 6903 2024-04-30T03:41:03.290Z store_length: 76
+[140/273] product_id: 6904 2024-04-30T03:41:10.216Z
+[140/273] product_id: 6904 2024-04-30T03:41:15.012Z store_length: 25
+[141/273] product_id: 6905 2024-04-30T03:41:21.600Z
+[141/273] product_id: 6905 2024-04-30T03:41:38.175Z store_length: 76
+[142/273] product_id: 6906 2024-04-30T03:41:45.008Z
+[142/273] product_id: 6906 2024-04-30T03:41:55.906Z store_length: 76
+[143/273] product_id: 6907 2024-04-30T03:42:02.399Z
+[143/273] product_id: 6907 2024-04-30T03:42:09.485Z store_length: 59
+[144/273] product_id: 6908 2024-04-30T03:42:16.345Z
+[144/273] product_id: 6908 2024-04-30T03:42:28.704Z store_length: 42
+[145/273] product_id: 6909 2024-04-30T03:42:36.556Z
+[145/273] product_id: 6909 2024-04-30T03:42:43.976Z store_length: 76
+[146/273] product_id: 6910 2024-04-30T03:42:50.615Z
+[146/273] product_id: 6910 2024-04-30T03:43:00.740Z store_length: 76
+[147/273] product_id: 6911 2024-04-30T03:43:07.808Z
+[147/273] product_id: 6911 2024-04-30T03:43:24.116Z store_length: 76
+[148/273] product_id: 6912 2024-04-30T03:43:30.881Z
+[148/273] product_id: 6912 2024-04-30T03:43:41.448Z store_length: 76
+[149/273] product_id: 6913 2024-04-30T03:43:48.024Z
+[149/273] product_id: 6913 2024-04-30T03:43:55.294Z store_length: 43
+[150/273] product_id: 6914 2024-04-30T03:44:02.211Z
+[150/273] product_id: 6914 2024-04-30T03:44:09.533Z store_length: 76
+[151/273] product_id: 6915 2024-04-30T03:44:16.240Z
+[151/273] product_id: 6915 2024-04-30T03:44:51.324Z store_length: 36
+[152/273] product_id: 6916 2024-04-30T03:44:58.094Z
+[152/273] product_id: 6916 2024-04-30T03:45:12.589Z store_length: 34
+[153/273] product_id: 6917 2024-04-30T03:45:19.492Z
+[153/273] product_id: 6917 2024-04-30T03:45:23.018Z store_length: 25
+[154/273] product_id: 6918 2024-04-30T03:45:29.783Z
+[154/273] product_id: 6918 2024-04-30T03:45:40.489Z store_length: 74
+[155/273] product_id: 6919 2024-04-30T03:45:47.503Z
+[155/273] product_id: 6919 2024-04-30T03:46:04.361Z store_length: 53
+[156/273] product_id: 6920 2024-04-30T03:46:11.193Z
+[156/273] product_id: 6920 2024-04-30T03:46:22.204Z store_length: 76
+[157/273] product_id: 6921 2024-04-30T03:46:29.974Z
+[157/273] product_id: 6921 2024-04-30T03:46:41.384Z store_length: 71
+[158/273] product_id: 6922 2024-04-30T03:46:48.212Z
+[158/273] product_id: 6922 2024-04-30T03:46:55.987Z store_length: 61
+[159/273] product_id: 6923 2024-04-30T03:47:02.913Z
+[159/273] product_id: 6923 2024-04-30T03:47:17.595Z store_length: 76
+[160/273] product_id: 6924 2024-04-30T03:47:24.758Z
+[160/273] product_id: 6924 2024-04-30T03:47:33.367Z store_length: 76
+[161/273] product_id: 6925 2024-04-30T03:47:40.315Z
+[161/273] product_id: 6925 2024-04-30T03:47:54.257Z store_length: 53
+[162/273] product_id: 6926 2024-04-30T03:48:00.906Z
+[162/273] product_id: 6926 2024-04-30T03:48:11.958Z store_length: 76
+[163/273] product_id: 6927 2024-04-30T03:48:18.655Z
+[163/273] product_id: 6927 2024-04-30T03:48:27.079Z store_length: 76
+[164/273] product_id: 6928 2024-04-30T03:48:33.850Z
+[164/273] product_id: 6928 2024-04-30T03:48:51.463Z store_length: 76
+[165/273] product_id: 6929 2024-04-30T03:48:57.975Z
+[165/273] product_id: 6929 2024-04-30T03:49:05.752Z store_length: 61
+[166/273] product_id: 6930 2024-04-30T03:49:12.438Z
+[166/273] product_id: 6930 2024-04-30T03:49:23.481Z store_length: 76
+[167/273] product_id: 6931 2024-04-30T03:49:30.597Z
+[167/273] product_id: 6931 2024-04-30T03:49:45.040Z store_length: 59
+[168/273] product_id: 6932 2024-04-30T03:49:51.616Z
+[168/273] product_id: 6932 2024-04-30T03:50:02.174Z store_length: 76
+[169/273] product_id: 6933 2024-04-30T03:50:09.171Z
+[169/273] product_id: 6933 2024-04-30T03:50:14.392Z store_length: 37
+[170/273] product_id: 6934 2024-04-30T03:50:21.114Z
+[170/273] product_id: 6934 2024-04-30T03:50:35.775Z store_length: 55
+[171/273] product_id: 6935 2024-04-30T03:50:42.527Z
+[171/273] product_id: 6935 2024-04-30T03:50:56.211Z store_length: 76
+[172/273] product_id: 6936 2024-04-30T03:51:02.949Z
+[172/273] product_id: 6936 2024-04-30T03:51:07.085Z store_length: 51
+[173/273] product_id: 6937 2024-04-30T03:51:13.724Z
+[173/273] product_id: 6937 2024-04-30T03:51:30.675Z store_length: 51
+[174/273] product_id: 6938 2024-04-30T03:51:37.526Z
+[174/273] product_id: 6938 2024-04-30T03:51:48.697Z store_length: 76
+[175/273] product_id: 6939 2024-04-30T03:51:55.497Z
+[175/273] product_id: 6939 2024-04-30T03:51:59.939Z store_length: 49
+[176/273] product_id: 6940 2024-04-30T03:52:06.714Z
+[176/273] product_id: 6940 2024-04-30T03:52:24.471Z store_length: 76
+[177/273] product_id: 6941 2024-04-30T03:52:32.116Z
+[177/273] product_id: 6941 2024-04-30T03:52:39.007Z store_length: 46
+[178/273] product_id: 6942 2024-04-30T03:52:45.857Z
+[178/273] product_id: 6942 2024-04-30T03:52:51.441Z store_length: 39
+[179/273] product_id: 6943 2024-04-30T03:52:58.208Z
+[179/273] product_id: 6943 2024-04-30T03:53:11.307Z store_length: 52
+[180/273] product_id: 6944 2024-04-30T03:53:17.987Z
+[180/273] product_id: 6944 2024-04-30T03:53:28.526Z store_length: 76
+[181/273] product_id: 6945 2024-04-30T03:53:35.491Z
+[181/273] product_id: 6945 2024-04-30T03:53:45.628Z store_length: 76
+[182/273] product_id: 6946 2024-04-30T03:53:52.478Z
+[182/273] product_id: 6946 2024-04-30T03:54:00.267Z store_length: 76
+[183/273] product_id: 6947 2024-04-30T03:54:07.246Z
+[183/273] product_id: 6947 2024-04-30T03:54:28.789Z store_length: 76
+[184/273] product_id: 6948 2024-04-30T03:54:38.138Z
+[184/273] product_id: 6948 2024-04-30T03:54:50.071Z store_length: 76
+[185/273] product_id: 6949 2024-04-30T03:54:56.711Z
+[185/273] product_id: 6949 2024-04-30T03:55:12.159Z store_length: 40
+[186/273] product_id: 6950 2024-04-30T03:55:20.078Z
+[186/273] product_id: 6950 2024-04-30T03:55:30.883Z store_length: 45
+[187/273] product_id: 6951 2024-04-30T03:55:41.038Z
+[187/273] product_id: 6951 2024-04-30T03:55:51.793Z store_length: 76
+[188/273] product_id: 6952 2024-04-30T03:55:59.043Z
+[188/273] product_id: 6952 2024-04-30T03:56:15.059Z store_length: 52
+[189/273] product_id: 6953 2024-04-30T03:56:22.691Z
+[189/273] product_id: 6953 2024-04-30T03:56:33.318Z store_length: 76
+[190/273] product_id: 6954 2024-04-30T03:56:40.440Z
+[190/273] product_id: 6954 2024-04-30T03:56:51.749Z store_length: 76
+[191/273] product_id: 6955 2024-04-30T03:56:58.445Z
+[191/273] product_id: 6955 2024-04-30T03:57:15.113Z store_length: 50
+[192/273] product_id: 6956 2024-04-30T03:57:21.903Z
+[192/273] product_id: 6956 2024-04-30T03:57:35.800Z store_length: 47
+[193/273] product_id: 6957 2024-04-30T03:57:44.915Z
+[193/273] product_id: 6957 2024-04-30T03:57:56.524Z store_length: 41
+[194/273] product_id: 6958 2024-04-30T03:58:06.461Z
+[194/273] product_id: 6958 2024-04-30T03:58:16.407Z store_length: 76
+[195/273] product_id: 6959 2024-04-30T03:58:23.286Z
+[195/273] product_id: 6959 2024-04-30T03:58:36.950Z store_length: 55
+[196/273] product_id: 6960 2024-04-30T03:58:43.597Z
+[196/273] product_id: 6960 2024-04-30T03:58:51.332Z store_length: 76
+[197/273] product_id: 6961 2024-04-30T03:58:58.339Z
+[197/273] product_id: 6961 2024-04-30T03:59:14.567Z store_length: 75
+[198/273] product_id: 6962 2024-04-30T03:59:21.536Z
+[198/273] product_id: 6962 2024-04-30T03:59:34.607Z store_length: 76
+[199/273] product_id: 6963 2024-04-30T03:59:41.886Z
+[199/273] product_id: 6963 2024-04-30T03:59:44.958Z store_length: 38
+[200/273] product_id: 6964 2024-04-30T03:59:51.919Z
+[200/273] product_id: 6964 2024-04-30T04:00:06.570Z store_length: 32
+[201/273] product_id: 6965 2024-04-30T04:00:13.910Z
+[201/273] product_id: 6965 2024-04-30T04:00:23.242Z store_length: 76
+[202/273] product_id: 6966 2024-04-30T04:00:30.021Z
+[202/273] product_id: 6966 2024-04-30T04:00:40.844Z store_length: 76
+[203/273] product_id: 6967 2024-04-30T04:00:47.636Z
+[203/273] product_id: 6967 2024-04-30T04:01:06.640Z store_length: 51
+[204/273] product_id: 6968 2024-04-30T04:01:14.635Z
+[204/273] product_id: 6968 2024-04-30T04:01:27.269Z store_length: 76
+[205/273] product_id: 6969 2024-04-30T04:01:34.475Z
+[205/273] product_id: 6969 2024-04-30T04:01:46.696Z store_length: 52
+[206/273] product_id: 6970 2024-04-30T04:01:56.138Z
+[206/273] product_id: 6970 2024-04-30T04:01:58.666Z store_length: 15
+[207/273] product_id: 6971 2024-04-30T04:02:08.310Z
+[207/273] product_id: 6971 2024-04-30T04:02:21.171Z store_length: 51
+[208/273] product_id: 6972 2024-04-30T04:02:27.886Z
+[208/273] product_id: 6972 2024-04-30T04:03:33.863Z store_length: 33
+[209/273] product_id: 6973 2024-04-30T04:03:41.453Z
+[209/273] product_id: 6973 2024-04-30T04:03:53.720Z store_length: 39
+[210/273] product_id: 6974 2024-04-30T04:04:00.324Z
+[210/273] product_id: 6974 2024-04-30T04:04:13.212Z store_length: 55
+[211/273] product_id: 6975 2024-04-30T04:04:20.722Z
+[211/273] product_id: 6975 2024-04-30T04:04:31.344Z store_length: 76
+[212/273] product_id: 6990 2024-04-30T04:04:38.007Z
+[212/273] product_id: 6990 2024-04-30T04:04:55.725Z store_length: 76
+[213/273] product_id: 7021 2024-04-30T04:05:02.580Z
+[213/273] product_id: 7021 2024-04-30T04:05:10.197Z store_length: 76
+[214/273] product_id: 7023 2024-04-30T04:05:17.319Z
+[214/273] product_id: 7023 2024-04-30T04:05:30.242Z store_length: 76
+[215/273] product_id: 7026 2024-04-30T04:05:37.477Z
+[215/273] product_id: 7026 2024-04-30T04:05:50.651Z store_length: 38
+[216/273] product_id: 7027 2024-04-30T04:05:57.310Z
+[216/273] product_id: 7027 2024-04-30T04:06:03.854Z store_length: 13
+[217/273] product_id: 7028 2024-04-30T04:06:10.480Z
+[217/273] product_id: 7028 2024-04-30T04:06:20.897Z store_length: 76
+[218/273] product_id: 7029 2024-04-30T04:06:28.121Z
+[218/273] product_id: 7029 2024-04-30T04:06:36.709Z store_length: 76
+[219/273] product_id: 7030 2024-04-30T04:06:43.660Z
+[219/273] product_id: 7030 2024-04-30T04:06:54.920Z store_length: 53
+[220/273] product_id: 7031 2024-04-30T04:07:03.314Z
+[220/273] product_id: 7031 2024-04-30T04:07:06.685Z store_length: 22
+[221/273] product_id: 7032 2024-04-30T04:07:13.555Z
+[221/273] product_id: 7032 2024-04-30T04:07:38.236Z store_length: 76
+[222/273] product_id: 7033 2024-04-30T04:07:45.092Z
+[222/273] product_id: 7033 2024-04-30T04:07:52.103Z store_length: 51
+[223/273] product_id: 7034 2024-04-30T04:07:58.820Z
+[223/273] product_id: 7034 2024-04-30T04:08:02.483Z store_length: 24
+[224/273] product_id: 7163 2024-04-30T04:08:09.161Z
+[ERROR] getStoreList read ECONNRESET
+[1/1] product_id: 6039 2024-04-30T04:10:49.776Z
+[1/1] product_id: 6039 2024-04-30T04:10:58.073Z store_length: 76
+[1/1] product_id: 6039 2024-04-30T04:11:35.143Z
+[1/1] product_id: 6039 2024-04-30T04:11:45.820Z store_length: 76
+[1/1] product_id: 6039 2024-04-30T04:12:08.930Z
+[1/1] product_id: 6039 2024-04-30T04:12:16.295Z store_length: 76
+[1/1] product_id: 6039 2024-04-30T04:13:38.928Z
+[1/1] product_id: 6039 2024-04-30T04:13:46.124Z store_length: 76
+[1/1] product_id: 6039 2024-04-30T04:14:11.713Z
+[1/1] product_id: 6039 2024-04-30T04:14:19.537Z store_length: 76
+[1/1] product_id: 6039 2024-04-30T04:15:36.222Z
+[1/1] product_id: 6039 2024-04-30T04:15:49.633Z store_length: 76
+[1/1] product_id: 6039 2024-04-30T04:18:37.988Z
+[1/1] product_id: 6039 2024-04-30T04:18:48.453Z store_length: 76
+[1/273] product_id: 6039 2024-04-30T04:19:25.798Z
+[1/273] product_id: 6039 2024-04-30T04:19:39.192Z store_length: 76
+[1/1] product_id: 6070 2024-04-30T04:19:41.667Z
+[1/1] product_id: 6070 2024-04-30T04:19:51.506Z store_length: 76
+[1/273] product_id: 6039 2024-04-30T04:20:00.774Z
+[1/273] product_id: 6039 2024-04-30T04:20:15.738Z store_length: 76
+[2/273] product_id: 6070 2024-04-30T04:20:22.282Z
+[2/273] product_id: 6070 2024-04-30T04:20:32.609Z store_length: 76
+[3/273] product_id: 6071 2024-04-30T04:20:39.547Z
+[3/273] product_id: 6071 2024-04-30T04:20:56.798Z store_length: 76
+[4/273] product_id: 6358 2024-04-30T04:21:03.722Z
+[4/273] product_id: 6358 2024-04-30T04:21:14.283Z store_length: 76
+[5/273] product_id: 6603 2024-04-30T04:21:21.320Z
+[5/273] product_id: 6603 2024-04-30T04:21:24.102Z store_length: 20
+[6/273] product_id: 6622 2024-04-30T04:21:31.214Z
+[6/273] product_id: 6622 2024-04-30T04:21:53.246Z store_length: 76
+[7/273] product_id: 6624 2024-04-30T04:22:00.703Z
+[7/273] product_id: 6624 2024-04-30T04:22:08.733Z store_length: 76
+[8/273] product_id: 6625 2024-04-30T04:22:16.285Z
+[8/273] product_id: 6625 2024-04-30T04:22:28.156Z store_length: 76
+[9/273] product_id: 6626 2024-04-30T04:22:34.866Z
+[9/273] product_id: 6626 2024-04-30T04:22:52.369Z store_length: 76
+[10/273] product_id: 6767 2024-04-30T04:22:59.288Z
+[10/273] product_id: 6767 2024-04-30T04:23:09.798Z store_length: 76
+[11/273] product_id: 6768 2024-04-30T04:23:17.048Z
+[11/273] product_id: 6768 2024-04-30T04:23:28.228Z store_length: 76
+[12/273] product_id: 6776 2024-04-30T04:23:34.942Z
+[12/273] product_id: 6776 2024-04-30T04:23:43.505Z store_length: 76
+[13/273] product_id: 6777 2024-04-30T04:23:50.373Z
+[13/273] product_id: 6777 2024-04-30T04:24:05.052Z store_length: 76
+[14/273] product_id: 6778 2024-04-30T04:24:12.871Z
+[14/273] product_id: 6778 2024-04-30T04:24:20.153Z store_length: 76
+[15/273] product_id: 6779 2024-04-30T04:24:28.405Z
+[15/273] product_id: 6779 2024-04-30T04:24:40.769Z store_length: 39
+[16/273] product_id: 6780 2024-04-30T04:24:47.672Z
+[16/273] product_id: 6780 2024-04-30T04:24:59.849Z store_length: 76
+[1/1] product_id: 6070 2024-04-30T04:25:04.891Z
+[1/1] product_id: 6070 2024-04-30T04:25:14.381Z store_length: 76
+[1/2] product_id: 6070 2024-04-30T04:26:53.829Z
+[1/2] product_id: 6070 2024-04-30T04:27:07.813Z store_length: 76
+[2/2] product_id: 6071 2024-04-30T04:27:14.596Z
+[2/2] product_id: 6071 2024-04-30T04:27:22.317Z store_length: 76
+[1/1] product_id: 6358 2024-04-30T04:29:06.195Z
+[1/1] product_id: 6358 2024-04-30T04:29:17.783Z store_length: 76
+[1/1] product_id: 6358 2024-04-30T04:29:42.177Z
+[1/1] product_id: 6358 2024-04-30T04:29:49.209Z store_length: 76
+[1/1] product_id: 6358 2024-04-30T04:30:41.638Z
+[1/1] product_id: 6358 2024-04-30T04:30:50.382Z store_length: 76
+[1/1] product_id: 6358 2024-04-30T04:31:51.362Z
+[1/1] product_id: 6358 2024-04-30T04:31:58.758Z store_length: 76
+[1/1] product_id: 6622 2024-04-30T04:57:20.586Z
+[1/1] product_id: 6622 2024-04-30T04:57:32.486Z store_length: 76
+[1/1] product_id: 6622 2024-04-30T04:58:10.784Z
+[1/1] product_id: 6622 2024-04-30T04:58:18.595Z store_length: 76
+[1/1] product_id: 6624 2024-04-30T04:58:49.031Z
+[1/1] product_id: 6624 2024-04-30T04:58:57.415Z store_length: 76
+[1/1] product_id: 6624 2024-04-30T04:59:44.580Z
+[1/1] product_id: 6624 2024-04-30T04:59:58.067Z store_length: 76
+[1/1] product_id: 6625 2024-04-30T05:00:46.306Z
+[1/1] product_id: 6625 2024-04-30T05:00:54.296Z store_length: 76
+[1/1] product_id: 6625 2024-04-30T05:01:13.838Z
+[1/1] product_id: 6625 2024-04-30T05:01:31.984Z store_length: 76
+[1/1] product_id: 6625 2024-04-30T05:02:13.074Z
+[1/1] product_id: 6625 2024-04-30T05:02:24.653Z store_length: 76
+[1/1] product_id: 6625 2024-04-30T05:06:25.502Z
+[1/1] product_id: 6625 2024-04-30T05:06:39.642Z store_length: 76
+[1/1] product_id: 6625 2024-04-30T05:07:28.256Z
+[1/1] product_id: 6625 2024-04-30T05:07:36.501Z store_length: 76
+[1/1] product_id: 6626 2024-04-30T05:08:38.869Z
+[1/1] product_id: 6626 2024-04-30T05:08:46.427Z store_length: 76
+[1/1] product_id: 6767 2024-04-30T05:10:52.918Z
+[1/1] product_id: 6767 2024-04-30T05:11:01.077Z store_length: 76
+[1/1] product_id: 6767 2024-04-30T05:11:27.536Z
+[1/1] product_id: 6767 2024-04-30T05:11:35.691Z store_length: 76
+[1/1] product_id: 6767 2024-04-30T05:15:08.699Z
+[1/1] product_id: 6767 2024-04-30T05:15:17.021Z store_length: 76
+[1/1] product_id: 6767 2024-04-30T05:22:21.248Z
+[1/1] product_id: 6767 2024-04-30T05:22:34.651Z store_length: 76
+[1/1] product_id: 6768 2024-04-30T05:23:56.505Z
+[1/1] product_id: 6768 2024-04-30T05:24:09.913Z store_length: 76
+[1/1] product_id: 6776 2024-04-30T05:25:17.835Z
+[1/1] product_id: 6776 2024-04-30T05:25:40.078Z store_length: 76
+[1/1] product_id: 6776 2024-04-30T05:26:01.685Z
+[1/1] product_id: 6776 2024-04-30T05:26:09.227Z store_length: 76
+[1/1] product_id: 6777 2024-04-30T05:26:53.998Z
+[1/1] product_id: 6777 2024-04-30T05:27:05.231Z store_length: 76
+[1/1] product_id: 6777 2024-04-30T05:27:34.294Z
+[1/1] product_id: 6777 2024-04-30T05:28:20.600Z store_length: 76
+[1/7] product_id: 6777 2024-04-30T05:33:36.806Z
+[1/7] product_id: 6777 2024-04-30T05:33:44.715Z store_length: 76
+[2/7] product_id: 6778 2024-04-30T05:33:51.224Z
+[2/7] product_id: 6778 2024-04-30T05:34:03.728Z store_length: 76
+[3/7] product_id: 6779 2024-04-30T05:34:10.943Z
+[3/7] product_id: 6779 2024-04-30T05:34:14.066Z store_length: 39
+[4/7] product_id: 6780 2024-04-30T05:34:21.057Z
+[4/7] product_id: 6780 2024-04-30T05:34:37.802Z store_length: 76
+[5/7] product_id: 6781 2024-04-30T05:34:44.488Z
+[5/7] product_id: 6781 2024-04-30T05:34:52.301Z store_length: 76
+[6/7] product_id: 6782 2024-04-30T05:34:59.208Z
+[6/7] product_id: 6782 2024-04-30T05:35:05.062Z store_length: 41
+[7/7] product_id: 6783 2024-04-30T05:35:11.858Z
+[7/7] product_id: 6783 2024-04-30T05:35:28.010Z store_length: 76
+[1/7] product_id: 6784 2024-04-30T05:36:42.390Z
+[1/7] product_id: 6784 2024-04-30T05:36:55.492Z store_length: 74
+[2/7] product_id: 6785 2024-04-30T05:37:02.184Z
+[2/7] product_id: 6785 2024-04-30T05:37:10.180Z store_length: 76
+[3/7] product_id: 6786 2024-04-30T05:37:17.197Z
+[3/7] product_id: 6786 2024-04-30T05:37:30.629Z store_length: 76
+[4/7] product_id: 6787 2024-04-30T05:37:37.297Z
+[4/7] product_id: 6787 2024-04-30T05:37:55.025Z store_length: 76
+[5/7] product_id: 6788 2024-04-30T05:38:01.975Z
+[5/7] product_id: 6788 2024-04-30T05:38:09.342Z store_length: 46
+[6/7] product_id: 6789 2024-04-30T05:38:16.278Z
+[6/7] product_id: 6789 2024-04-30T05:38:21.909Z store_length: 8
+[7/7] product_id: 6790 2024-04-30T05:38:28.600Z
+[7/7] product_id: 6790 2024-04-30T05:38:33.760Z store_length: 59
+[1/2] product_id: 6779 2024-04-30T05:41:27.435Z
+[1/2] product_id: 6779 2024-04-30T05:41:39.558Z store_length: 39
+[2/2] product_id: 6782 2024-04-30T05:41:47.135Z
+[2/2] product_id: 6782 2024-04-30T05:41:50.649Z store_length: 41
+[1/1] product_id: 6781 2024-04-30T05:42:14.785Z
+[1/1] product_id: 6781 2024-04-30T05:42:25.277Z store_length: 76
+[1/2] product_id: 6781 2024-04-30T05:44:32.371Z
+[1/2] product_id: 6781 2024-04-30T05:44:45.604Z store_length: 76
+[2/2] product_id: 6782 2024-04-30T05:44:52.390Z
+[2/2] product_id: 6782 2024-04-30T05:44:54.922Z store_length: 41
+[1/2] product_id: 6781 2024-04-30T05:45:06.368Z
+[1/2] product_id: 6781 2024-04-30T05:45:17.909Z store_length: 76
+[2/2] product_id: 6782 2024-04-30T05:45:25.057Z
+[2/2] product_id: 6782 2024-04-30T05:45:28.205Z store_length: 41
+[1/1] product_id: 6786 2024-04-30T05:46:41.802Z
+[1/1] product_id: 6786 2024-04-30T05:46:53.147Z store_length: 76
+[1/14] product_id: 6805 2024-04-30T05:49:49.154Z
+[1/14] product_id: 6805 2024-04-30T05:49:52.489Z store_length: 43
+[2/14] product_id: 6806 2024-04-30T05:49:59.289Z
+[2/14] product_id: 6806 2024-04-30T05:50:07.118Z store_length: 76
+[3/14] product_id: 6807 2024-04-30T05:50:15.550Z
+[3/14] product_id: 6807 2024-04-30T05:50:33.102Z store_length: 67
+[4/14] product_id: 6808 2024-04-30T05:50:40.169Z
+[4/14] product_id: 6808 2024-04-30T05:50:55.933Z store_length: 49
+[5/14] product_id: 6809 2024-04-30T05:51:02.637Z
+[5/14] product_id: 6809 2024-04-30T05:51:14.776Z store_length: 76
+[6/14] product_id: 6810 2024-04-30T05:51:23.989Z
+[6/14] product_id: 6810 2024-04-30T05:51:29.660Z store_length: 25
+[7/14] product_id: 6811 2024-04-30T05:51:37.846Z
+[7/14] product_id: 6811 2024-04-30T05:51:42.311Z store_length: 47
+[8/14] product_id: 6812 2024-04-30T05:51:48.892Z
+[8/14] product_id: 6812 2024-04-30T05:52:05.673Z store_length: 76
+[9/14] product_id: 6813 2024-04-30T05:52:12.845Z
+[9/14] product_id: 6813 2024-04-30T05:52:24.041Z store_length: 76
+[10/14] product_id: 6814 2024-04-30T05:52:31.004Z
+[10/14] product_id: 6814 2024-04-30T05:52:47.789Z store_length: 76
+[11/14] product_id: 6815 2024-04-30T05:52:54.598Z
+[11/14] product_id: 6815 2024-04-30T05:53:04.893Z store_length: 76
+[12/14] product_id: 6816 2024-04-30T05:53:15.189Z
+[12/14] product_id: 6816 2024-04-30T05:53:23.167Z store_length: 76
+[13/14] product_id: 6817 2024-04-30T05:53:31.266Z
+[13/14] product_id: 6817 2024-04-30T05:53:46.214Z store_length: 13
+[14/14] product_id: 6818 2024-04-30T05:53:53.835Z
+[14/14] product_id: 6818 2024-04-30T05:54:03.042Z store_length: 67
+[1/14] product_id: 6805 2024-04-30T05:54:16.160Z
+[1/14] product_id: 6805 2024-04-30T05:54:19.893Z store_length: 43
+[2/14] product_id: 6806 2024-04-30T05:54:26.538Z
+[2/14] product_id: 6806 2024-04-30T05:54:39.220Z store_length: 76
+[3/14] product_id: 6807 2024-04-30T05:54:46.107Z
+[3/14] product_id: 6807 2024-04-30T05:55:02.826Z store_length: 67
+[4/14] product_id: 6808 2024-04-30T05:55:10.004Z
+[4/14] product_id: 6808 2024-04-30T05:55:18.205Z store_length: 49
+[5/14] product_id: 6809 2024-04-30T05:55:26.587Z
+[5/14] product_id: 6809 2024-04-30T05:55:38.265Z store_length: 76
+[6/14] product_id: 6810 2024-04-30T05:55:44.807Z
+[6/14] product_id: 6810 2024-04-30T05:55:46.942Z store_length: 25
+[7/14] product_id: 6811 2024-04-30T05:55:53.626Z
+[7/14] product_id: 6811 2024-04-30T05:56:04.881Z store_length: 47
+[8/14] product_id: 6812 2024-04-30T05:56:11.815Z
+[8/14] product_id: 6812 2024-04-30T05:56:19.824Z store_length: 76
+[9/14] product_id: 6813 2024-04-30T05:56:26.864Z
+[9/14] product_id: 6813 2024-04-30T05:56:45.766Z store_length: 76
+[10/14] product_id: 6814 2024-04-30T05:56:52.594Z
+[10/14] product_id: 6814 2024-04-30T05:57:03.604Z store_length: 76
+[11/14] product_id: 6815 2024-04-30T05:57:12.269Z
+[11/14] product_id: 6815 2024-04-30T05:57:21.422Z store_length: 76
+[12/14] product_id: 6816 2024-04-30T05:57:28.354Z
+[12/14] product_id: 6816 2024-04-30T05:57:47.922Z store_length: 76
+[13/14] product_id: 6817 2024-04-30T05:57:55.064Z
+[13/14] product_id: 6817 2024-04-30T05:57:59.295Z store_length: 13
+[14/14] product_id: 6818 2024-04-30T05:58:06.270Z
+[14/14] product_id: 6818 2024-04-30T05:58:18.186Z store_length: 67
+[1/14] product_id: 6805 2024-04-30T06:38:43.875Z
+[1/14] product_id: 6805 2024-04-30T06:38:49.954Z store_length: 43
+[2/14] product_id: 6806 2024-04-30T06:38:56.538Z
+[2/14] product_id: 6806 2024-04-30T06:39:07.658Z store_length: 76
+[3/14] product_id: 6807 2024-04-30T06:39:14.555Z
+[3/14] product_id: 6807 2024-04-30T06:39:21.203Z store_length: 67
+[4/14] product_id: 6808 2024-04-30T06:39:29.961Z
+[4/14] product_id: 6808 2024-04-30T06:39:39.954Z store_length: 49
+[5/14] product_id: 6809 2024-04-30T06:39:46.942Z
+[5/14] product_id: 6809 2024-04-30T06:39:55.214Z store_length: 76
+[6/14] product_id: 6810 2024-04-30T06:40:01.785Z
+[6/14] product_id: 6810 2024-04-30T06:40:13.954Z store_length: 24
+[7/14] product_id: 6811 2024-04-30T06:40:21.302Z
+[7/14] product_id: 6811 2024-04-30T06:40:29.695Z store_length: 47
+[8/14] product_id: 6812 2024-04-30T06:40:36.372Z
+[8/14] product_id: 6812 2024-04-30T06:40:43.902Z store_length: 76
+[9/14] product_id: 6813 2024-04-30T06:40:51.118Z
+[9/14] product_id: 6813 2024-04-30T06:41:08.869Z store_length: 76
+[10/14] product_id: 6814 2024-04-30T06:41:15.803Z
+[10/14] product_id: 6814 2024-04-30T06:41:24.476Z store_length: 76
+[11/14] product_id: 6815 2024-04-30T06:41:34.406Z
+[11/14] product_id: 6815 2024-04-30T06:41:45.098Z store_length: 76
+[12/14] product_id: 6816 2024-04-30T06:41:52.072Z
+[12/14] product_id: 6816 2024-04-30T06:42:09.310Z store_length: 76
+[13/14] product_id: 6817 2024-04-30T06:42:16.058Z
+[13/14] product_id: 6817 2024-04-30T06:42:22.992Z store_length: 13
+[14/14] product_id: 6818 2024-04-30T06:42:29.969Z
+[14/14] product_id: 6818 2024-04-30T06:42:41.323Z store_length: 65
+[1/1] product_id: 6813 2024-04-30T06:50:17.225Z
+[1/1] product_id: 6813 2024-04-30T06:50:31.531Z store_length: 76
+[1/14] product_id: 6819 2024-04-30T06:52:20.296Z
+[1/14] product_id: 6819 2024-04-30T07:06:40.416Z
+[1/14] product_id: 6819 2024-04-30T07:06:48.386Z store_length: 76
+[2/14] product_id: 6820 2024-04-30T07:06:56.372Z
+[2/14] product_id: 6820 2024-04-30T07:07:17.806Z store_length: 76
+[3/14] product_id: 6821 2024-04-30T07:07:24.765Z
+[3/14] product_id: 6821 2024-04-30T07:07:38.212Z store_length: 76
+[4/14] product_id: 6822 2024-04-30T07:07:44.778Z
+[4/14] product_id: 6822 2024-04-30T07:07:55.285Z store_length: 76
+[5/14] product_id: 6823 2024-04-30T07:08:02.308Z
+[5/14] product_id: 6823 2024-04-30T07:08:18.880Z store_length: 76
+[6/14] product_id: 6824 2024-04-30T07:08:26.859Z
+[6/14] product_id: 6824 2024-04-30T07:08:35.154Z store_length: 76
+[7/14] product_id: 6825 2024-04-30T07:08:42.902Z
+[7/14] product_id: 6825 2024-04-30T07:08:52.762Z store_length: 76
+[8/14] product_id: 6826 2024-04-30T07:09:00.696Z
+[8/14] product_id: 6826 2024-04-30T07:09:23.327Z store_length: 76
+[9/14] product_id: 6827 2024-04-30T07:09:30.300Z
+[9/14] product_id: 6827 2024-04-30T07:09:44.042Z store_length: 76
+[10/14] product_id: 6828 2024-04-30T07:09:51.246Z
+[10/14] product_id: 6828 2024-04-30T07:09:59.623Z store_length: 45
+[11/14] product_id: 6829 2024-04-30T07:10:06.759Z
+[11/14] product_id: 6829 2024-04-30T07:10:15.954Z store_length: 76
+[12/14] product_id: 6830 2024-04-30T07:10:23.132Z
+[12/14] product_id: 6830 2024-04-30T07:10:56.492Z store_length: 4
+[13/14] product_id: 6831 2024-04-30T07:11:03.423Z
+[13/14] product_id: 6831 2024-04-30T07:11:15.301Z store_length: 9
+[14/14] product_id: 6832 2024-04-30T07:11:22.150Z
+[14/14] product_id: 6832 2024-04-30T07:11:30.430Z store_length: 76
+[1/1] product_id: 6826 2024-04-30T07:15:56.364Z
+[1/1] product_id: 6826 2024-04-30T07:16:08.311Z store_length: 76
+[1/1] product_id: 6826 2024-04-30T07:21:24.510Z
+[1/1] product_id: 6830 2024-04-30T07:21:29.385Z
+[1/1] product_id: 6830 2024-04-30T07:22:03.376Z store_length: 11
+[1/1] product_id: 6830 2024-04-30T07:23:15.983Z
+[1/1] product_id: 6830 2024-04-30T07:23:24.655Z store_length: 28
+[1/13] product_id: 6833 2024-04-30T07:35:57.141Z
+[1/13] product_id: 6833 2024-04-30T07:36:13.736Z store_length: 76
+[2/13] product_id: 6834 2024-04-30T07:36:20.735Z
+[2/13] product_id: 6834 2024-04-30T07:36:28.383Z store_length: 64
+[3/13] product_id: 6835 2024-04-30T07:36:35.096Z
+[3/13] product_id: 6835 2024-04-30T07:36:48.564Z store_length: 40
+[4/13] product_id: 6836 2024-04-30T07:36:55.381Z
+[4/13] product_id: 6836 2024-04-30T07:37:00.673Z store_length: 37
+[5/13] product_id: 6837 2024-04-30T07:37:07.533Z
+[5/13] product_id: 6837 2024-04-30T07:37:12.364Z store_length: 56
+[6/13] product_id: 6838 2024-04-30T07:37:19.404Z
+[6/13] product_id: 6838 2024-04-30T07:37:34.628Z store_length: 67
+[7/13] product_id: 6839 2024-04-30T07:37:41.716Z
+[7/13] product_id: 6839 2024-04-30T07:37:49.206Z store_length: 76
+[8/13] product_id: 6840 2024-04-30T07:37:56.550Z
+[8/13] product_id: 6840 2024-04-30T07:38:07.316Z store_length: 64
+[9/13] product_id: 6841 2024-04-30T07:38:14.117Z
+[9/13] product_id: 6841 2024-04-30T07:38:32.153Z store_length: 76
+[10/13] product_id: 6842 2024-04-30T07:38:39.160Z
+[10/13] product_id: 6842 2024-04-30T07:38:50.179Z store_length: 76
+[11/13] product_id: 6843 2024-04-30T07:38:57.024Z
+[11/13] product_id: 6843 2024-04-30T07:39:03.091Z store_length: 43
+[12/13] product_id: 6844 2024-04-30T07:39:10.032Z
+[12/13] product_id: 6844 2024-04-30T07:39:14.209Z store_length: 31
+[13/13] product_id: 6845 2024-04-30T07:39:21.131Z
+[13/13] product_id: 6845 2024-04-30T07:39:34.534Z store_length: 40
+[1/10] product_id: 6846 2024-04-30T07:40:15.664Z
+[1/10] product_id: 6846 2024-04-30T07:40:22.712Z store_length: 44
+[2/10] product_id: 6847 2024-04-30T07:40:29.371Z
+[2/10] product_id: 6847 2024-04-30T07:40:41.149Z store_length: 76
+[3/10] product_id: 6848 2024-04-30T07:40:47.952Z
+[3/10] product_id: 6848 2024-04-30T07:41:01.248Z store_length: 76
+[4/10] product_id: 6849 2024-04-30T07:41:12.725Z
+[4/10] product_id: 6849 2024-04-30T07:41:33.466Z store_length: 76
+[5/10] product_id: 6850 2024-04-30T07:41:40.552Z
+[5/10] product_id: 6850 2024-04-30T07:41:53.404Z store_length: 76
+[6/10] product_id: 6851 2024-04-30T07:42:00.847Z
+[6/10] product_id: 6851 2024-04-30T07:42:09.382Z store_length: 36
+[7/10] product_id: 6852 2024-04-30T07:42:16.145Z
+[7/10] product_id: 6852 2024-04-30T07:42:50.021Z store_length: 1
+[8/10] product_id: 6853 2024-04-30T07:42:57.073Z
+[8/10] product_id: 6853 2024-04-30T07:43:02.121Z store_length: 26
+[9/10] product_id: 6854 2024-04-30T07:43:09.320Z
+[9/10] product_id: 6854 2024-04-30T07:43:16.635Z store_length: 76
+[10/10] product_id: 6855 2024-04-30T07:43:23.378Z
+[10/10] product_id: 6855 2024-04-30T07:43:39.788Z store_length: 74
+[1/9] product_id: 6856 2024-04-30T07:46:03.300Z
+[1/9] product_id: 6856 2024-04-30T07:46:10.919Z store_length: 40
+[2/9] product_id: 6857 2024-04-30T07:46:19.456Z
+[2/9] product_id: 6857 2024-04-30T07:46:29.077Z store_length: 62
+[3/9] product_id: 6858 2024-04-30T07:46:36.931Z
+[3/9] product_id: 6858 2024-04-30T07:46:48.606Z store_length: 76
+[4/9] product_id: 6859 2024-04-30T07:46:56.547Z
+[4/9] product_id: 6859 2024-04-30T07:47:14.007Z store_length: 42
+[5/9] product_id: 6860 2024-04-30T07:47:20.977Z
+[5/9] product_id: 6860 2024-04-30T07:47:25.804Z store_length: 53
+[6/9] product_id: 6861 2024-04-30T07:47:32.640Z
+[6/9] product_id: 6861 2024-04-30T07:47:43.844Z store_length: 76
+[7/9] product_id: 6862 2024-04-30T07:47:50.626Z
+[7/9] product_id: 6862 2024-04-30T07:48:03.982Z store_length: 50
+[8/9] product_id: 6863 2024-04-30T07:48:10.808Z
+[8/9] product_id: 6863 2024-04-30T07:48:21.387Z store_length: 76
+[9/9] product_id: 6864 2024-04-30T07:48:28.131Z
+[9/9] product_id: 6864 2024-04-30T07:48:39.132Z store_length: 75
+[1/19] product_id: 6865 2024-04-30T08:03:28.089Z
+[1/19] product_id: 6865 2024-04-30T08:03:43.284Z store_length: 76
+[2/19] product_id: 6866 2024-04-30T08:03:50.176Z
+[2/19] product_id: 6866 2024-04-30T08:03:55.468Z store_length: 37
+[3/19] product_id: 6867 2024-04-30T08:04:02.135Z
+[3/19] product_id: 6867 2024-04-30T08:04:13.397Z store_length: 76
+[4/19] product_id: 6868 2024-04-30T08:04:20.973Z
+[4/19] product_id: 6868 2024-04-30T08:04:29.288Z store_length: 76
+[5/19] product_id: 6869 2024-04-30T08:04:35.920Z
+[5/19] product_id: 6869 2024-04-30T08:04:50.833Z store_length: 76
+[6/19] product_id: 6870 2024-04-30T08:04:57.573Z
+[6/19] product_id: 6870 2024-04-30T08:05:00.416Z store_length: 5
+[7/19] product_id: 6871 2024-04-30T08:05:07.148Z
+[7/19] product_id: 6871 2024-04-30T08:05:18.390Z store_length: 25
+[8/19] product_id: 6872 2024-04-30T08:05:25.074Z
+[8/19] product_id: 6872 2024-04-30T08:05:36.962Z store_length: 76
+[9/19] product_id: 6873 2024-04-30T08:05:43.790Z
+[9/19] product_id: 6873 2024-04-30T08:05:52.487Z store_length: 76
+[10/19] product_id: 6874 2024-04-30T08:05:59.182Z
+[10/19] product_id: 6874 2024-04-30T08:06:13.775Z store_length: 49
+[11/19] product_id: 6875 2024-04-30T08:06:20.682Z
+[11/19] product_id: 6875 2024-04-30T08:06:24.822Z store_length: 40
+[12/19] product_id: 6876 2024-04-30T08:06:34.466Z
+[12/19] product_id: 6876 2024-04-30T08:06:41.640Z store_length: 50
+[13/19] product_id: 6877 2024-04-30T08:06:49.680Z
+[13/19] product_id: 6877 2024-04-30T08:07:04.948Z store_length: 43
+[14/19] product_id: 6878 2024-04-30T08:07:11.624Z
+[ERROR] getStoreList read ECONNRESET
+[1/19] product_id: 6865 2024-04-30T08:16:43.198Z
+[1/19] product_id: 6865 2024-04-30T08:16:53.347Z store_length: 76
+[2/19] product_id: 6866 2024-04-30T08:17:00.412Z
+[2/19] product_id: 6866 2024-04-30T08:17:12.584Z store_length: 37
+[3/19] product_id: 6867 2024-04-30T08:17:19.548Z
+[3/19] product_id: 6867 2024-04-30T08:17:30.552Z store_length: 76
+[4/19] product_id: 6868 2024-04-30T08:17:37.348Z
+[4/19] product_id: 6868 2024-04-30T08:17:48.395Z store_length: 76
+[5/19] product_id: 6869 2024-04-30T08:17:55.126Z
+[5/19] product_id: 6869 2024-04-30T08:18:02.334Z store_length: 76
+[6/19] product_id: 6870 2024-04-30T08:18:09.516Z
+[6/19] product_id: 6870 2024-04-30T08:18:18.146Z store_length: 5
+[7/19] product_id: 6871 2024-04-30T08:18:25.419Z
+[7/19] product_id: 6871 2024-04-30T08:18:29.497Z store_length: 25
+[8/19] product_id: 6872 2024-04-30T08:18:36.231Z
+[8/19] product_id: 6872 2024-04-30T08:18:52.600Z store_length: 76
+[9/19] product_id: 6873 2024-04-30T08:18:59.132Z
+[9/19] product_id: 6873 2024-04-30T08:19:09.676Z store_length: 76
+[10/19] product_id: 6874 2024-04-30T08:19:16.489Z
+[10/19] product_id: 6874 2024-04-30T08:19:20.362Z store_length: 49
+[11/19] product_id: 6875 2024-04-30T08:19:27.477Z
+[11/19] product_id: 6875 2024-04-30T08:19:39.422Z store_length: 40
+[12/19] product_id: 6876 2024-04-30T08:19:46.870Z
+[12/19] product_id: 6876 2024-04-30T08:19:50.780Z store_length: 50
+[13/19] product_id: 6877 2024-04-30T08:19:57.273Z
+[13/19] product_id: 6877 2024-04-30T08:20:03.293Z store_length: 43
+[14/19] product_id: 6878 2024-04-30T08:20:10.160Z
+[14/19] product_id: 6878 2024-04-30T08:20:28.029Z store_length: 76
+[15/19] product_id: 6879 2024-04-30T08:20:34.704Z
+[15/19] product_id: 6879 2024-04-30T08:20:49.266Z store_length: 54
+[16/19] product_id: 6880 2024-04-30T08:20:56.134Z
+[16/19] product_id: 6880 2024-04-30T08:21:06.663Z store_length: 52
+[17/19] product_id: 6881 2024-04-30T08:21:13.412Z
+[17/19] product_id: 6881 2024-04-30T08:21:20.860Z store_length: 50
+[18/19] product_id: 6882 2024-04-30T08:21:27.781Z
+[18/19] product_id: 6882 2024-04-30T08:21:36.920Z store_length: 40
+[19/19] product_id: 6883 2024-04-30T08:21:44.420Z
+[19/19] product_id: 6883 2024-04-30T08:21:52.861Z store_length: 76
+[1/19] product_id: 6884 2024-04-30T08:22:48.740Z
+[1/19] product_id: 6884 2024-04-30T08:23:05.582Z store_length: 50
+[2/19] product_id: 6885 2024-04-30T08:23:12.410Z
+[2/19] product_id: 6885 2024-04-30T08:23:20.108Z store_length: 52
+[3/19] product_id: 6886 2024-04-30T08:23:27.044Z
+[3/19] product_id: 6886 2024-04-30T08:23:34.078Z store_length: 49
+[4/19] product_id: 6887 2024-04-30T08:23:41.142Z
+[4/19] product_id: 6887 2024-04-30T08:23:50.670Z store_length: 76
+[5/19] product_id: 6888 2024-04-30T08:23:57.221Z
+[5/19] product_id: 6888 2024-04-30T08:24:09.836Z store_length: 38
+[6/19] product_id: 6889 2024-04-30T08:24:16.481Z
+[6/19] product_id: 6889 2024-04-30T08:24:19.140Z store_length: 40
+[7/19] product_id: 6890 2024-04-30T08:24:25.837Z
+[7/19] product_id: 6890 2024-04-30T08:24:43.991Z store_length: 76
+[8/19] product_id: 6891 2024-04-30T08:24:50.556Z
+[8/19] product_id: 6891 2024-04-30T08:25:00.983Z store_length: 76
+[9/19] product_id: 6892 2024-04-30T08:25:07.709Z
+[9/19] product_id: 6892 2024-04-30T08:25:15.548Z store_length: 76
+[10/19] product_id: 6893 2024-04-30T08:25:22.318Z
+[10/19] product_id: 6893 2024-04-30T08:25:38.877Z store_length: 76
+[11/19] product_id: 6894 2024-04-30T08:25:45.652Z
+[11/19] product_id: 6894 2024-04-30T08:25:49.308Z store_length: 46
+[12/19] product_id: 6895 2024-04-30T08:25:56.222Z
+[12/19] product_id: 6895 2024-04-30T08:26:29.985Z store_length: 35
+[ERROR] No Store List  setStoreList result: null for product_id:6895 2024-04-30T08:26:30.106Z
+[1/1] product_id: 6897 2024-04-30T08:27:25.179Z
+[1/1] product_id: 6897 2024-04-30T08:27:32.660Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:27:39.349Z
+[1/1] product_id: 6897 2024-04-30T08:27:49.735Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:27:56.758Z
+[1/1] product_id: 6897 2024-04-30T08:28:03.859Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:28:10.784Z
+[1/1] product_id: 6897 2024-04-30T08:28:23.983Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:28:30.507Z
+[1/1] product_id: 6897 2024-04-30T08:28:37.352Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:28:44.006Z
+[1/1] product_id: 6897 2024-04-30T08:29:00.166Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:29:07.043Z
+[1/1] product_id: 6897 2024-04-30T08:29:17.148Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:29:23.788Z
+[1/1] product_id: 6897 2024-04-30T08:29:30.942Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:33:26.386Z
+[1/1] product_id: 6897 2024-04-30T08:33:33.592Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:33:40.090Z
+[1/1] product_id: 6897 2024-04-30T08:33:50.125Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:33:56.881Z
+[1/1] product_id: 6897 2024-04-30T08:34:04.399Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:34:11.261Z
+[1/1] product_id: 6897 2024-04-30T08:34:27.105Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:34:34.071Z
+[1/1] product_id: 6897 2024-04-30T08:34:40.858Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:34:47.843Z
+[1/1] product_id: 6897 2024-04-30T08:34:58.561Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:35:05.160Z
+[1/1] product_id: 6897 2024-04-30T08:35:22.141Z store_length: 76
+[1/1] product_id: 6897 2024-04-30T08:35:28.794Z
+[1/1] product_id: 6897 2024-04-30T08:35:41.180Z store_length: 76
+[1/14] product_id: 6791 2024-04-30T08:40:24.542Z
+[1/14] product_id: 6791 2024-04-30T08:40:32.472Z store_length: 76
+[2/14] product_id: 6792 2024-04-30T08:40:39.309Z
+[2/14] product_id: 6792 2024-04-30T08:40:51.104Z store_length: 76
+[3/14] product_id: 6793 2024-04-30T08:40:58.521Z
+[3/14] product_id: 6793 2024-04-30T08:41:15.750Z store_length: 56
+[4/14] product_id: 6794 2024-04-30T08:41:22.327Z
+[4/14] product_id: 6794 2024-04-30T08:41:34.163Z store_length: 96
+[5/14] product_id: 6795 2024-04-30T08:41:41.140Z
+[5/14] product_id: 6795 2024-04-30T08:41:52.116Z store_length: 55
+[6/14] product_id: 6796 2024-04-30T08:41:58.991Z
+[6/14] product_id: 6796 2024-04-30T08:42:06.812Z store_length: 66
+[7/14] product_id: 6797 2024-04-30T08:42:13.794Z
+[7/14] product_id: 6797 2024-04-30T08:42:24.535Z store_length: 58
+[8/14] product_id: 6798 2024-04-30T08:42:31.366Z
+[8/14] product_id: 6798 2024-04-30T08:42:41.068Z store_length: 76
+[9/14] product_id: 6799 2024-04-30T08:42:48.183Z
+[9/14] product_id: 6799 2024-04-30T08:43:04.856Z store_length: 76
+[10/14] product_id: 6800 2024-04-30T08:43:11.804Z
+[10/14] product_id: 6800 2024-04-30T08:43:18.647Z store_length: 20
+[11/14] product_id: 6801 2024-04-30T08:43:25.732Z
+[11/14] product_id: 6801 2024-04-30T08:43:33.816Z store_length: 76
+[12/14] product_id: 6802 2024-04-30T08:43:40.729Z
+[12/14] product_id: 6802 2024-04-30T08:43:58.099Z store_length: 76
+[13/14] product_id: 6803 2024-04-30T08:44:07.682Z
+[13/14] product_id: 6803 2024-04-30T08:44:10.683Z store_length: 38
+[14/14] product_id: 6804 2024-04-30T08:44:17.866Z
+[14/14] product_id: 6804 2024-04-30T08:44:28.879Z store_length: 76
+[1/1] product_id: 6838 2024-04-30T08:50:58.026Z
+[1/1] product_id: 6838 2024-04-30T08:51:12.014Z store_length: 67
+[1/1] product_id: 6838 2024-04-30T08:51:42.536Z
+[1/1] product_id: 6838 2024-04-30T08:51:49.566Z store_length: 67
+[1/1] product_id: 6855 2024-04-30T08:55:21.034Z
+[1/1] product_id: 6855 2024-04-30T08:55:29.751Z store_length: 74
+[1/1] product_id: 6854 2024-04-30T08:56:08.609Z
+[1/1] product_id: 6854 2024-04-30T08:56:15.449Z store_length: 75
+[1/1] product_id: 6801 2024-04-30T08:57:28.840Z
+[1/1] product_id: 6801 2024-04-30T08:57:39.370Z store_length: 76
+[1/1] product_id: 6801 2024-04-30T08:57:48.094Z
+[1/1] product_id: 6801 2024-04-30T08:58:01.336Z store_length: 76
+[1/1] product_id: 6801 2024-04-30T08:58:32.334Z
+[1/1] product_id: 6801 2024-04-30T08:58:39.662Z store_length: 76
+[1/1] product_id: 6801 2024-04-30T08:59:14.964Z
+[1/1] product_id: 6798 2024-04-30T08:59:21.706Z
+[1/1] product_id: 6798 2024-04-30T08:59:28.588Z store_length: 76
+[1/12] product_id: 6872 2024-04-30T09:07:21.195Z
+[1/1] product_id: 6883 2024-04-30T09:08:50.644Z
+[1/1] product_id: 6883 2024-04-30T09:09:06.857Z store_length: 76
+[1/1] product_id: 6883 2024-04-30T09:09:26.687Z
+[1/1] product_id: 6883 2024-04-30T09:09:36.562Z store_length: 76
+[1/1] product_id: 6883 2024-04-30T09:10:10.067Z
+[1/1] product_id: 6883 2024-04-30T09:10:26.209Z store_length: 76
+[1/2] product_id: 7021 2024-04-30T09:15:48.280Z
+[1/2] product_id: 7021 2024-04-30T09:16:05.586Z store_length: 76
+[2/2] product_id: 7023 2024-04-30T09:16:12.359Z
+[2/2] product_id: 7023 2024-04-30T09:16:22.674Z store_length: 75
+[1/2] product_id: 7021 2024-04-30T09:17:38.787Z
+[1/2] product_id: 7021 2024-04-30T09:17:45.713Z store_length: 76
+[2/2] product_id: 7023 2024-04-30T09:17:52.677Z
+[2/2] product_id: 7023 2024-04-30T09:18:07.414Z store_length: 75
+[1/2] product_id: 7021 2024-04-30T09:19:50.776Z
+[1/2] product_id: 7021 2024-04-30T09:19:59.416Z store_length: 76
+[2/2] product_id: 7023 2024-04-30T09:20:06.322Z
+[2/2] product_id: 7023 2024-04-30T09:20:14.434Z store_length: 74
+[1/4] product_id: 6903 2024-04-30T09:21:15.484Z
+[1/4] product_id: 6903 2024-04-30T09:21:27.250Z store_length: 75
+[2/4] product_id: 6909 2024-04-30T09:21:34.123Z
+[2/4] product_id: 6909 2024-04-30T09:21:46.798Z store_length: 75
+[3/4] product_id: 6911 2024-04-30T09:21:53.546Z
+[3/4] product_id: 6911 2024-04-30T09:22:01.536Z store_length: 75
+[4/4] product_id: 6990 2024-04-30T09:22:08.292Z
+[4/4] product_id: 6990 2024-04-30T09:22:22.616Z store_length: 76
