@@ -163,7 +163,8 @@ export default async function getNaverStoreList({ keyword }: { keyword: string |
     })
   );
 
-  return list;
+  //가격으로 필터링
+  return list.filter((i) => i.price && i.price > 0);
 }
 
 // 페이지 끝까지 자동으로 스크롤하는 함수
