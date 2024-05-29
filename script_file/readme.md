@@ -8,7 +8,7 @@ MacOS Crontab
 * * * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-camppost-resize-all.sh
 */5 * * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-delivery-update.sh
 */5 * * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-delivery-update.sh
-* * * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-instagram-crawling.sh
+0 */7 * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/recreate:camperest-instagram-crawling.sh
 
 ```
 
