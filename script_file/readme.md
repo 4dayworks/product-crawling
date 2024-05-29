@@ -4,13 +4,7 @@
 
 MacOS Crontab
 
-```
-* * * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-camppost-resize-all.sh
-*/5 * * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-delivery-update.sh
-*/5 * * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/update:camperest-delivery-update.sh
-0 */7 * * * /Users/yagiyagi/projects/dayworks4/product-crawling/script_file/recreate:camperest-instagram-crawling.sh
-
-```
+-> app.ts 반복서버 처리로 이동됨
 
 ====================================================================================
 
