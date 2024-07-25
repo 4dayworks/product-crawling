@@ -6948,3 +6948,9 @@ For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides
 [1/1] product_id: 5006 2024-05-16T01:06:49.699Z store_length: 77
 [1/1] product_id: 5006 2024-05-16T01:47:03.579Z
 [1/1] product_id: 5006 2024-05-16T01:47:09.806Z store_length: 77
+[1/1] product_id: 10229 2024-07-03T01:10:44.706Z
+[ERROR] getStoreList getProxyData Error http://34.22.96.146:3001, https://www.coupang.com/np/search?component=&q=%ED%9E%90%EB%A0%88%EB%B2%A0%EB%A5%B4%EA%B7%B8%20%ED%85%90%ED%8A%B8%20%EB%82%98%EB%A7%88%EC%B8%A0%202GT%20%EC%BA%A0%ED%95%91%20%EB%B0%B1%ED%8C%A8%ED%82%B9%202%EC%9D%B8%EC%9A%A9%20%ED%85%90%ED%8A%B8%20%ED%8C%8C%EC%BB%A4%EC%8A%A4%EC%9D%B8%ED%84%B0%EB%82%B4%EC%85%94%EB%84%90%20%EC%A0%95%EC%8B%9D&channel=user, NaN
+[1/1] product_id: 10229 2024-07-03T01:16:50.045Z
+[ERROR] getStoreList getProxyData Error http://34.22.96.146:3001, https://www.coupang.com/np/search?component=&q=%ED%9E%90%EB%A0%88%EB%B2%A0%EB%A5%B4%EA%B7%B8%20%ED%85%90%ED%8A%B8%20%EB%82%98%EB%A7%88%EC%B8%A0%202GT%20%EC%BA%A0%ED%95%91%20%EB%B0%B1%ED%8C%A8%ED%82%B9%202%EC%9D%B8%EC%9A%A9%20%ED%85%90%ED%8A%B8%20%ED%8C%8C%EC%BB%A4%EC%8A%A4%EC%9D%B8%ED%84%B0%EB%82%B4%EC%85%94%EB%84%90%20%EC%A0%95%EC%8B%9D&channel=user, NaN
+[1/1] product_id: 10229 2024-07-03T01:18:42.653Z
+[1/1] product_id: 10229 2024-07-03T01:18:56.420Z store_length: 58

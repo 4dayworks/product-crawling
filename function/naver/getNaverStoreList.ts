@@ -36,7 +36,6 @@ export default async function getNaverStoreList({ keyword }: { keyword: string |
       // 데이터 추출 로직 여기에 추가
       break; // 성공하면 반복 중단
     } catch (error) {
-      console.log(`Attempt ${attempt + 1}: Selector not found, refreshing the page with a new user agent...`);
       // 새로운 사용자 에이전트로 업데이트하고 페이지 새로 고침
       const userAgentString = getUserAgent();
       await page.setUserAgent(userAgentString);

@@ -30,6 +30,5 @@ const userAgentList = [
 
 let userAgentIndex = Math.floor(Math.random() * userAgentList.length);
 export const getUserAgent = () => {
-  console.log("getUserAgent userAgentIndex", userAgentIndex);
   return userAgentList[userAgentIndex++ % userAgentList.length];
 };
